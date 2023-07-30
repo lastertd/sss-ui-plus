@@ -1,0 +1,199 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 4078839 */
+  src: url('iconfont.woff2?t=1690722405388') format('woff2'),
+       url('iconfont.woff?t=1690722405388') format('woff'),
+       url('iconfont.ttf?t=1690722405388') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.sss-eye:before {
+  content: "\e63f";
+}
+
+.sss-other:before {
+  content: "\e603";
+}
+
+.sss-chart-line:before {
+  content: "\eb96";
+}
+
+.sss-store:before {
+  content: "\e621";
+}
+
+.sss-user-group:before {
+  content: "\e607";
+}
+
+.sss-controll:before {
+  content: "\e636";
+}
+
+.sss-comps:before {
+  content: "\e730";
+}
+
+.sss-time-fill:before {
+  content: "\ee45";
+}
+
+.sss-user-fill:before {
+  content: "\e64d";
+}
+
+.sss-tag-fill:before {
+  content: "\e86e";
+}
+
+.sss-time:before {
+  content: "\e8b8";
+}
+
+.sss-star:before {
+  content: "\e658";
+}
+
+.sss-star-fill:before {
+  content: "\e709";
+}
+
+.sss-star2:before {
+  content: "\ea93";
+}
+
+.sss-minus:before {
+  content: "\eaf5";
+}
+
+.sss-plus:before {
+  content: "\e6ea";
+}
+
+.sss-triangle-left:before {
+  content: "\ee39";
+}
+
+.sss-triangle-top:before {
+  content: "\ee3a";
+}
+
+.sss-triangle-right:before {
+  content: "\ee44";
+}
+
+.sss-triangle-bottom:before {
+  content: "\ee3b";
+}
+
+.sss-home:before {
+  content: "\e63d";
+}
+
+.sss-medal:before {
+  content: "\e6d1";
+}
+
+.sss-option:before {
+  content: "\e61c";
+}
+
+.sss-title:before {
+  content: "\e6e8";
+}
+
+.sss-email:before {
+  content: "\e908";
+}
+
+.sss-upload:before {
+  content: "\ec1d";
+}
+
+.sss-delete:before {
+  content: "\ec7b";
+}
+
+.sss-editor:before {
+  content: "\ec88";
+}
+
+.sss-menu:before {
+  content: "\e64f";
+}
+
+.sss-user:before {
+  content: "\e648";
+}
+
+.sss-file-md:before {
+  content: "\e6b4";
+}
+
+.sss-upload-2:before {
+  content: "\e6f0";
+}
+
+.sss-triangle-line-up:before {
+  content: "\ee49";
+}
+
+.sss-dongtai:before {
+  content: "\ee41";
+}
+
+.sss-logout:before {
+  content: "\ee43";
+}
+
+.sss-triangle-line-right:before {
+  content: "\ee46";
+}
+
+.sss-triangle-line-left:before {
+  content: "\ee47";
+}
+
+.sss-triangle-line-bottom:before {
+  content: "\ee48";
+}
+
+.sss-cricle-close:before {
+  content: "\e712";
+}
+
+.sss-close:before {
+  content: "\ee37";
+}
+
+.sss-user2:before {
+  content: "\ee40";
+}
+
+.sss-success:before {
+  content: "\ee3c";
+}
+
+.sss-danger:before {
+  content: "\ee3d";
+}
+
+.sss-warning:before {
+  content: "\ee3e";
+}
+
+.sss-info:before {
+  content: "\ee3f";
+}
+
+.sss-loading:before {
+  content: "\e78b";
+}
+

@@ -1,0 +1,94 @@
+.sss-message-drawer-container{
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+}
+
+.sss-drawer-pos-top{
+    position: fixed;
+    top: 0;
+    bottom: unset;
+    width: 100vw;
+    height: 30vh;
+    border-radius: unset;
+    padding: 20px 30px;
+}
+
+.sss-drawer-pos-right{
+    position: fixed;
+    right: 0;
+    left: unset;
+    width: 30vw;
+    height: 100vh;
+    border-radius: unset;
+    padding: 20px 30px;
+}
+
+.sss-drawer-pos-bottom{
+    position: fixed;
+    bottom: 0;
+    top: unset;
+    width: 100vw;
+    height: 30vh;
+    border-radius: unset;
+    padding: 20px 30px;
+}
+
+.sss-drawer-pos-left{
+    position: fixed;
+    left: 0;
+    right: unset;
+    width: 30vw;
+    height: 100vh;
+    border-radius: unset;
+    padding: 20px 30px;
+}
+
+
+
+
+.sss-transition-top-enter-from,
+.sss-transition-top-leave-to{
+    transform: translateY(-100%);
+    opacity: 0;
+}
+.sss-transition-top-enter-active,
+.sss-transition-top-leave-active{
+    transition: all .3s ease;
+}
+
+
+.sss-transition-right-enter-from,
+.sss-transition-right-leave-to{
+    transform: translateX(100%);
+    opacity: 0;
+}
+.sss-transition-right-enter-active,
+.sss-transition-right-leave-active{
+    transition: all .3s ease;
+}
+
+
+.sss-transition-bottom-enter-from,
+.sss-transition-bottom-leave-to{
+    transform: translateY(100%);
+    opacity: 0;
+}
+.sss-transition-bottom-enter-active,
+.sss-transition-bottom-leave-active{
+    transition: all .3s ease;
+}
+
+
+
+.sss-transition-left-enter-from,
+.sss-transition-left-leave-to{
+    transform: translateX(-100%);
+    opacity: 0;
+}
+.sss-transition-left-enter-active,
+.sss-transition-left-leave-active{
+    transition: all .3s ease;
+}
