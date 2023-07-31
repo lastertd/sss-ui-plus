@@ -15,12 +15,12 @@ export default defineConfig({
         vue(),
         DefineOptions(),
         dts({
-            outDir: ['es', "lib",'dist/@types'],
+            outDir: ['es', "lib", 'dist/@types'],
             tsConfigFilePath: resolve(__dirname, "tsconfig.json"),
         }),
         postcss({
             extract: 'index.css',
-            plugins:[autoprefixer()],
+            plugins: [autoprefixer()],
 
         }),
         terser({
@@ -31,11 +31,11 @@ export default defineConfig({
             },
         }),
         copy({
-            targets:[
-                { src: 'es/*.css', dest: 'dist' },
+            targets: [
+                {src: 'es/*.css', dest: 'dist'},
             ],
-            verbose:true,
-            hook:'generateBundle'
+            verbose: true,
+            hook: 'generateBundle'
 
         }),
         del({
@@ -56,7 +56,6 @@ export default defineConfig({
             input: './index.ts',
 
             output: [
-
                 {
                     format: "es",
                     entryFileNames: "[name].mjs",
@@ -65,9 +64,6 @@ export default defineConfig({
                     exports: "named",
                     //配置打包根目录
                     dir: "es",
-
-
-
                 },
                 {
                     //打包格式

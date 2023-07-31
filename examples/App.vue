@@ -24,16 +24,7 @@ const handleClosed = ()  => {
 
 
 onMounted( async () => {
-	notify({
-		text:"11111",
-		type:'success',
-		timeout:0
-	})
-	await nextTick()
-	notify({
-		text:"11111",
-		timeout:0
-	})
+
 })
 
 </script>

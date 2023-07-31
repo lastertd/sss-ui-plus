@@ -8,10 +8,6 @@ declare module '@vue/runtime-core' {
         SDialog: typeof import('sss-ui-plus')['SDialog'],
         SDrawer: typeof import('sss-ui-plus')['SDrawer'],
 
-
-
-
-
     }
     interface ComponentCustomProperties {
         $message: typeof import('sss-ui-plus')['message'],
