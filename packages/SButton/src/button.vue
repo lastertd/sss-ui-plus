@@ -20,7 +20,7 @@
 		:type="props.nativeType"
 
 	>
-		<s-icon :target="props.prefixIcon" ></s-icon>
+		<s-icon :target="props.prefixIcon"  ></s-icon>
 		<slot></slot>
 		<s-icon :target="props.suffixIcon" ></s-icon>
 
@@ -40,6 +40,7 @@ defineOptions({
 })
 
 const props = defineProps({...SButtonProps})
+
 const emits =  defineEmits({...SButtonEmits})
 
 

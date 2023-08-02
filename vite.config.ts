@@ -14,39 +14,37 @@ export default defineConfig({
     plugins: [
         vue(),
         DefineOptions(),
-        dts({
-            outDir: ['es', "lib", 'dist/@types'],
-            tsConfigFilePath: resolve(__dirname, "tsconfig.json"),
-        }),
-        postcss({
-            extract: 'index.css',
-            plugins: [autoprefixer()],
-
-        }),
-        terser({
-            format: {
-                comments: 'all', // 保留至少包含 "@license" 或 "@preserve" 的注释
-                // comments: /^My special comment$/, // 保留内容为 "My special comment" 的注释
-                // comments: false, // 默认值，删除所有注释
-            },
-        }),
-        copy({
-            targets: [
-                {src: 'es/*.css', dest: 'dist'},
-            ],
-            verbose: true,
-            hook: 'generateBundle'
-
-        }),
-        del({
-            targets: [
-                // 设置删除规则，删除原来位置的 CSS 文件
-                'es/*.css',
-                'lib/*.css',
-                'dist/style.css',
-            ],
-            hook: 'closeBundle', // 在 writeBundle 钩子时执行删除操作
-        }),
+        // dts({
+        //     outDir: ['es', "lib"],
+        //     tsConfigFilePath: resolve(__dirname, "tsconfig.json"),
+        // }),
+        // postcss({
+        //     extract: 'index.css',
+        //     plugins: [autoprefixer()],
+        //
+        // }),
+        // terser({
+        //     format: {
+        //         comments: 'all', // 保留至少包含 "@license" 或 "@preserve" 的注释
+        //     },
+        // }),
+        // copy({
+        //     targets: [
+        //         {src: 'es/*.css', dest: 'dist'},
+        //     ],
+        //     verbose: true,
+        //     hook: 'generateBundle'
+        //
+        // }),
+        // del({
+        //     targets: [
+        //         // 设置删除规则，删除原来位置的 CSS 文件
+        //         'es/*.css',
+        //         'lib/*.css',
+        //         'dist/style.css',
+        //     ],
+        //     hook: 'closeBundle', // 在 writeBundle 钩子时执行删除操作
+        // }),
     ],
 
     build: {

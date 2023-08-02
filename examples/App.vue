@@ -2,9 +2,10 @@
 
 <!--<s-dialog v-model="f" @closed="handleClosed"> 111</s-dialog>-->
 
+<s-row style="height: 100px;border: solid 1px black">
+	<s-button type="primary" >ccc</s-button>
 	<s-button type="primary" prefix-icon="medal">ccc</s-button>
-
-
+</s-row>
 
 
 </template>

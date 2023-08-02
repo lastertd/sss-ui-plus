@@ -4,8 +4,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 
 
-import "../dist/index.css"
-import ui from "../es/index"
+
+import ui from "../index"
 
 
 const app = createApp(App)

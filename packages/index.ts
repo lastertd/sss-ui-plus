@@ -4,6 +4,7 @@ import SIcon from "./SIcon";
 import SLink from "./SLink";
 import SDialog from "./SDialog";
 import SDrawer from "./SDrawer";
+import SRow from "./SRow";
 
 
 
@@ -14,5 +15,6 @@ export {
     SLink,
     SDrawer,
     SDialog,
+    SRow,
 
 }

@@ -2,7 +2,7 @@
   "name": "sss-ui-plus",
   "main": "lib/index.js",
   "module": "es/index.mjs",
-  "types": "dist/@types/index.d.ts",
+  "types": "dist/es/index.d.ts",
   "private": false,
   "version": "0.0.8",
   "type": "module",
