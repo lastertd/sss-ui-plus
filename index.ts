@@ -4,16 +4,10 @@ import "./src/styles/variable.less"
 import "./src/styles/global.less"
 import "./src/styles/icons/iconfont.css"
 
-import * as comps from "./packages"
 
-import {App} from "vue";
+import installer from "./installer";
 export * from "./packages"
 export * from "./packages/SMessage"
 
-
-export default (Vue:App) => {
-    for (let key in comps){
-        Vue.component(key, comps[key]);
-    }
-}
+export default installer
 

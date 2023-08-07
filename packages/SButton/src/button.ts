@@ -14,7 +14,7 @@ const sButtonTypes = [
 ] as const;
 
 
-const sButtonNativeTypes = ['button', 'submit', 'reset'] as const;
+    const sButtonNativeTypes = ['button', 'submit', 'reset'] as const;
 const sElementSize = ['normal', 'small', 'large'] as const;
 
 

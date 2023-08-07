@@ -34,7 +34,8 @@
     "packages/**/*.tsx",
     "packages/**/*.vue",
 
-    "index.ts"
+    "index.ts",
+    "installer.ts"
   ],
   "references": [
     {

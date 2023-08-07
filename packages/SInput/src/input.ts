@@ -1,4 +1,4 @@
-import {PropType, ComponentObjectPropsOptions} from "vue";
+import {PropType} from "vue";
 import {isString} from "@vue/shared"
 
 const SInputTypes = [

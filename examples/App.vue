@@ -1,11 +1,10 @@
 <template>
 
-<!--<s-dialog v-model="f" @closed="handleClosed"> 111</s-dialog>-->
 
-<s-row style="height: 100px;border: solid 1px black">
-	<s-button type="primary" >ccc</s-button>
-	<s-button type="primary" prefix-icon="medal">ccc</s-button>
-</s-row>
+
+
+
+	<s-switch v-model="f"   ></s-switch>
 
 
 </template>
@@ -13,20 +12,19 @@
 <script setup lang="ts">
 
 import {ref} from "@vue/runtime-core";
-// import {message} from "../packages/SMessage"
-import {notify} from "../es/index"
-import {nextTick, onMounted} from "vue";
+import {confirm, notify} from "../packages/SMessage"
+
 
 const f = ref(true);
 
-const handleClosed = ()  => {
-	console.log("dialog closed!")
+
+const handleClick = () => {
+	notify({
+		type:'success',
+		text:'hh11111111111111111111111111hh',
+	})
 }
 
-
-onMounted( async () => {
-
-})
 
 </script>
 
@@ -41,6 +39,11 @@ onMounted( async () => {
 	color: var(--sss-color-black-dark);
 }
 
+.test{
+	width: 400px;
+	height: 600px;
+	border: 1px solid #af4242;
+}
 
 
 </style>

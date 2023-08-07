@@ -5,6 +5,8 @@ import SLink from "./SLink";
 import SDialog from "./SDialog";
 import SDrawer from "./SDrawer";
 import SRow from "./SRow";
+import SDivider from "./SDivider";
+import SSwitch from "./SSwitch";
 
 
 
@@ -16,5 +18,7 @@ export {
     SDrawer,
     SDialog,
     SRow,
+    SDivider,
+    SSwitch,
 
 }

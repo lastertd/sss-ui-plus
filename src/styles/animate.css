@@ -76,6 +76,7 @@
 
 
 
+
 /*下降，淡入*/
 .sss-transition-down-fade-enter-from,
 .sss-transition-down-fade-leave-to{
@@ -86,6 +87,36 @@
 .sss-transition-down-fade-leave-active {
     transition: all  .3s;
 }
+
+/*往左，淡入*/
+.sss-transition-left-fade-enter-from,
+.sss-transition-left-fade-leave-to{
+    transform: translateX(15px) ;
+    opacity: 0;
+}
+.sss-transition-left-fade-enter-active,
+.sss-transition-left-fade-leave-active {
+    transition: all  .3s;
+}
+
+/*往右，淡入*/
+.sss-transition-right-fade-enter-from,
+.sss-transition-right-fade-leave-to{
+    transform: translateX(-15px) ;
+    opacity: 0;
+}
+.sss-transition-right-fade-enter-active,
+.sss-transition-right-fade-leave-active {
+    transition: all  .3s;
+}
+
+.sss-transition-fadeIn{
+ animation:  fade .4s ease forwards;
+}
+.sss-transition-fadeOut{
+    animation:  fade reverse .3s ease-in forwards;
+}
+
 
 @keyframes down {
     0%{
@@ -104,10 +135,12 @@
     }
 
 }
+@keyframes rotate {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
 
-.sss-transition-fadeIn{
- animation:  fade .4s ease forwards;
-}
-.sss-transition-fadeOut{
-    animation:  fade reverse .3s ease-in forwards;
 }

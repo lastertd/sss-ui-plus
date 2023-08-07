@@ -1,6 +1,6 @@
-import {App, ComponentObjectPropsOptions, PropType} from "vue";
+import {PropType} from "vue";
 import {isString} from "@vue/shared";
-import {MessageTypes,MessageTriggerTypes} from "../../../src/types";
+import {MessageTriggerTypes} from "../../../src/types";
 
 export const SDialogProps = {
     showFoot:{
@@ -65,7 +65,7 @@ export const SDialogProps = {
 } as const
 
 export const SDialogEmits = {
-    "update:modelValue": (val) => typeof val === 'boolean',
+    "update:modelValue": (val:Boolean) => true,
     open: () => true,
     opened:() => true,
     close: (trigger: MessageTriggerTypes) => isString(trigger),

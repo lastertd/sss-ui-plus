@@ -20,9 +20,9 @@
 		:type="props.nativeType"
 
 	>
-		<s-icon :target="props.prefixIcon"  ></s-icon>
+		<s-icon :target="props.prefixIcon" :vertical-padding="0" ></s-icon>
 		<slot></slot>
-		<s-icon :target="props.suffixIcon" ></s-icon>
+		<s-icon :target="props.suffixIcon" :vertical-padding="0" ></s-icon>
 
 	</button>
 </template>

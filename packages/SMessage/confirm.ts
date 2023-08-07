@@ -3,6 +3,7 @@ import {App, createApp} from "vue";
 import indexManager from "../../src/utils/managers/IndexManager";
 import {MessageTriggerTypes, MessageTypes} from "../../src/types";
 import useMark from "../../src/hooks/useMark";
+import MsgBox from "../SMessageBox/src/msgBox.vue";
 
 
 interface options {
@@ -47,7 +48,7 @@ export default function (options: Partial<options>) {
             cancelBtnText:options.cancelBtnText,
             top:options.top,
             onClose(trigger: MessageTriggerTypes) {
-                reject(`close by ${trigger}`)
+                reject(trigger)
                 if (_showMark) hiddenMark();
             },
             onCancel() {
@@ -72,17 +73,17 @@ export default function (options: Partial<options>) {
         const appendTo: HTMLElement = document.body;
         const {mark,hiddenMark, showMark} = useMark(mountTo,'cover');
         const handleClickMark = function (){
-            app._instance!.exposed!.close('mark');
+            vm.close('mark');
         }
 
 
         mark.addEventListener("click", handleClickMark);
-        app.mount(mountTo);
+        const vm = app.mount(mountTo) as InstanceType<typeof MsgBox>;
         initMountTo(mountTo);
         appendTo.appendChild(mountTo);
 
 
-        app._instance!.exposed!.open();
+        vm.open();
 
 
     })

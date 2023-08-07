@@ -2,9 +2,9 @@
   "name": "sss-ui-plus",
   "main": "lib/index.js",
   "module": "es/index.mjs",
-  "types": "dist/es/index.d.ts",
+  "types": "es/index.d.ts",
   "private": false,
-  "version": "0.0.8",
+  "version": "0.1.0-beta.7",
   "type": "module",
   "author": {
     "name": "laster",

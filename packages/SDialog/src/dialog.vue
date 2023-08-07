@@ -64,7 +64,8 @@ const props = defineProps({...SDialogProps});
 const emits = defineEmits({...SDialogEmits})
 
 
-const msgBox= ref<typeof MsgBox | undefined>(undefined);
+const msgBox= ref<InstanceType<typeof MsgBox> | undefined>(undefined);
+
 
 const container = ref<Element | undefined>(undefined);
 const visible = ref<Boolean>(props.modelValue);

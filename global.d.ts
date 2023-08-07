@@ -7,6 +7,7 @@ declare module '@vue/runtime-core' {
         SLink: typeof import('sss-ui-plus')['SLink'],
         SDialog: typeof import('sss-ui-plus')['SDialog'],
         SDrawer: typeof import('sss-ui-plus')['SDrawer'],
+        SRow: typeof import('sss-ui-plus')['SRow'],
 
     }
     interface ComponentCustomProperties {

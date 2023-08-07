@@ -16,6 +16,7 @@ jsconfig.json
 vite.config.js
 index.html
 index.ts
+installer.ts
 vite.config.ts
 tsconfig.json
 tsconfig.node.json

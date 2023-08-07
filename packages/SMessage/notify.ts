@@ -4,6 +4,7 @@ import indexManager from "../../src/utils/managers/IndexManager";
 import LayoutManager from "../../src/utils/managers/LayoutManager";
 import delay from "../../src/utils/delay";
 import {MessageTypes} from "../../src/types";
+import MsgBox from "../SMessageBox/src/msgBox.vue";
 
 
 
@@ -121,13 +122,14 @@ export default async function (options:Partial<options>) {
 
 
 
-    app.mount(mountTo);
+    const vm = app.mount(mountTo) as InstanceType<typeof MsgBox>;
     initMountTo(mountTo, placement, offset);
     appendTo.appendChild(mountTo);
 
 
+    vm.open();
 
-    app._instance!.exposed!.open();
+    // app._instance!.exposed!.open();
     push(mountTo, placement);
 
     // 不会自动关闭
@@ -136,7 +138,10 @@ export default async function (options:Partial<options>) {
     }
 
     await delay(timeout);
-    app._instance!.exposed!.close('system');
+    vm.close('system');
+
+
+
 
 
 

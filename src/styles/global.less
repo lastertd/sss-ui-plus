@@ -24,13 +24,17 @@
 }
 
 .is-round {
-    border-radius: 999px;
+    border-radius: 9999px !important;
 
     &:after,
     &:before {
-        border-radius: 999px !important;
+        border-radius: 9999px !important;
     }
 
+}
+
+.is-active{
+    color: var(--sss-color-cyan);
 }
 
 .is-disabled {
@@ -49,22 +53,31 @@
 }
 
 .is-loading {
-    cursor: wait;
-    opacity: 0.3;
+    user-select: none;
+    //pointer-events: none;
     animation: none !important;
     -webkit-animation: none !important;
     transition: none !important;
+    & * {
+        pointer-events: none;
+
+    }
+    cursor: wait;
+    opacity: 0.3;
 }
 .is-circle {
-    min-height: 37px;
-    min-width: 37px;
-    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    border-radius: 50% !important;
     padding: 9px;
     &:after,
     &:before {
-        border-radius: 50%;
-
+        border-radius: 50% !important;
     }
+}
+
+.is-rotating{
+    animation: rotate 2s infinite linear;
 }
 
 .has-underline {

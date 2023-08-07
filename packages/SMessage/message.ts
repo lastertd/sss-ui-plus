@@ -4,6 +4,7 @@ import delay from "../../src/utils/delay";
 import LayoutManager from "../../src/utils/managers/LayoutManager";
 import indexManager from "../../src/utils/managers/IndexManager";
 import {MessageTypes} from "../../src/types";
+import MsgBox from "../SMessageBox/src/msgBox.vue";
 
 
 interface options {
@@ -58,14 +59,14 @@ export default async function (options:Partial<options>) {
     });
     const mountTo: HTMLElement = document.createElement('div');
     const appendTo: HTMLElement = document.body;
-    app.mount(mountTo);
+    const vm = app.mount(mountTo) as InstanceType<typeof MsgBox>;
 
 
     initMountTo(mountTo, offset);
     appendTo.appendChild(mountTo);
 
 
-    app._instance!.exposed!.open();
+    vm.open();
     autoLayoutDown.push(mountTo);
 
 
@@ -75,7 +76,8 @@ export default async function (options:Partial<options>) {
     }
 
     await delay(timeout);
-    app._instance!.exposed!.close('system');
+
+    vm.close('system');
 
 
 
