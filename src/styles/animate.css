@@ -1,24 +1,4 @@
-/*用来给popper延时的*/
-.sss-transition-temp-leave-active, .sss-transition-temp-enter-active {
-    background-position: bottom;
-    transition: background-position 3s linear;
-}
 
-.sss-transition-temp-enter, .sss-transition-temp-leave-to {
-    background-position: bottom;
-}
-
-/*淡出*/
-.sss-transition-fade-enter-active,
-.sss-transition-fade-leave-active {
-    opacity: 1;
-    transition: opacity 400ms cubic-bezier(0.23, 1, 0.72, 1);
-}
-
-.sss-transition-fade-enter,
-.sss-transition-fade-leave-to {
-    opacity: 0;
-}
 
 /*垂直卷轴 方向默认向top收缩*/
 .sss-transition-vertical-scroll-enter-active,
@@ -31,7 +11,7 @@
 }
 
 .sss-transition-vertical-scroll-leave-to,
-.sss-transition-vertical-scroll-enter {
+.sss-transition-vertical-scroll-enter-from {
     transform: scaleY(0);
     opacity: 0;
 }
@@ -47,13 +27,13 @@
 }
 
 .sss-transition-horizontal-scroll-leave-to,
-.sss-transition-horizontal-scroll-enter {
+.sss-transition-horizontal-scroll-enter-from {
     transform: scaleX(0);
     opacity: 0;
 }
 
 
-/*水平卷轴 方向默认向left收缩*/
+/*收缩, 使用时可以具体指明变换原点*/
 .sss-transition-scale-enter-active,
 .sss-transition-scale-leave-active {
     transform: scale(1);
@@ -64,7 +44,7 @@
 }
 
 .sss-transition-scale-leave-to,
-.sss-transition-scale-enter {
+.sss-transition-scale-enter-from {
     transform: scale(.8);
     opacity: 0;
 }
@@ -74,7 +54,17 @@
 
 
 
+/*淡入*/
+.sss-transition-fade-enter-active,
+.sss-transition-fade-leave-active {
+    opacity: 1;
+    transition: opacity 300ms cubic-bezier(0.23, 1, 0.72, 1);
+}
 
+.sss-transition-fade-enter-from,
+.sss-transition-fade-leave-to {
+    opacity: 0;
+}
 
 
 /*下降，淡入*/

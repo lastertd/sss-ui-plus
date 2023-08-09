@@ -9,5 +9,10 @@ import installer from "./installer";
 export * from "./packages"
 export * from "./packages/SMessage"
 
+import creatFloatingContainer from "./packages/SFloating/src/creatFloatingContainer";
+
+creatFloatingContainer();
+
+
 export default installer
 

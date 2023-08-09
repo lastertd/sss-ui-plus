@@ -8,8 +8,13 @@ declare module '@vue/runtime-core' {
         SDialog: typeof import('sss-ui-plus')['SDialog'],
         SDrawer: typeof import('sss-ui-plus')['SDrawer'],
         SRow: typeof import('sss-ui-plus')['SRow'],
+        SSwitch: typeof import('sss-ui-plus')['SSwitch'],
+        SFloating: typeof import('sss-ui-plus')['SFloating'],
+        STooltip: typeof import('sss-ui-plus')['STooltip'],
+        SPopconfirm: typeof import('sss-ui-plus')['SPopconfirm'],
 
     }
+
     interface ComponentCustomProperties {
         $message: typeof import('sss-ui-plus')['message'],
         $notify: typeof import('sss-ui-plus')['notify'],

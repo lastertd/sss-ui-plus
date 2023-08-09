@@ -50,7 +50,7 @@ export default defineConfig({
     build: {
 
         rollupOptions: {
-            external: ["vue", '@vueuse/core', '@floating-ui/vue'],
+            external: ["vue", '@vueuse/core', '@floating-ui/vue','@floating-ui/vue'],
             input: './index.ts',
 
             output: [

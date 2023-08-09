@@ -6,6 +6,8 @@
     padding: 10px 10px 15px;
     box-sizing: border-box;
 
+
+
     & * {
         box-sizing: inherit;
     }
@@ -33,23 +35,36 @@
 
 
 .sss-message {
-    width: 100%;
+   flex: 1;
+
     display: flex;
     flex-flow: column nowrap;
     gap: 10px;
+    overflow: hidden;
+
+
+
 }
 
 .sss-message-head {
     display: flex;
     justify-content: space-between;
+
     align-items: center;
     gap: 5px;
 
+
     h3 {
+
         margin: 0;
         //wink~
         font-weight: 520;
         font-size: var(--sss-font-size-large);
+        overflow: hidden;
+        word-wrap: break-word;
+
+
+
     }
 
     .sss-message-head-icon {
@@ -64,6 +79,10 @@
     }
 }
 
+.sss-message-body {
+    flex: 1;
+
+}
 .sss-message-text {
     margin: 0;
     font-size: 13px;
@@ -72,14 +91,11 @@
 
 }
 
-.sss-message-body {
-    flex: 1;
-}
-
 .sss-message-foot {
     display: flex;
     justify-content: flex-end;
     gap: 5px;
+
 }
 
 .sss-message-type-default {

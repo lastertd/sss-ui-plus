@@ -7,6 +7,9 @@ import SDrawer from "./SDrawer";
 import SRow from "./SRow";
 import SDivider from "./SDivider";
 import SSwitch from "./SSwitch";
+import SFloating from "./SFloating";
+import STooltip from "./STooltip";
+import SPopconfirm from "./SPopConfirm";
 
 
 
@@ -20,5 +23,8 @@ export {
     SRow,
     SDivider,
     SSwitch,
+    SFloating,
+    STooltip,
+    SPopconfirm,
 
 }

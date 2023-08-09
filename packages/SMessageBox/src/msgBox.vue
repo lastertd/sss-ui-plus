@@ -26,7 +26,7 @@
 					v-if="props.showHead"
 					class="sss-message-head"
 				>
-					<h3>{{ props.title }}</h3>
+					<h3 >{{ props.title }}</h3>
 					<s-icon
 						ref="closeIcon"
 						v-if="props.showClose"
@@ -81,7 +81,7 @@ import SButton from "../../SButton";
 import {SMsgBoxProps, SMsgBoxEmits} from "./msgBox";
 import "./msgBox.less"
 import useFlag from "../../../src/hooks/useFlag";
-import {computed, nextTick, Ref, ref} from "vue";
+import {computed, nextTick, onMounted, Ref, ref} from "vue";
 import throttle from "../../../src/utils/decorator/throttle";
 import {fnUnion} from "../../../src/utils/fnUnion";
 import getHTMLElement from "../../../src/utils/getHTMLElement";

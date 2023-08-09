@@ -1,7 +1,7 @@
 import {PropType} from "vue";
 import "./msgBox.less"
 import {isString} from "@vue/shared";
-import {ElementSizes, MessageTriggerTypes, MessageTypes} from "../../../src/types";
+import {ElementSizes, MessageTriggerTypes, MessageTypes,Transition} from "../../../src/types";
 
 
 export const SMsgBoxProps = {
@@ -13,7 +13,7 @@ export const SMsgBoxProps = {
     },
     text:String,
     transition:{
-        type:String,
+        type:String as PropType<Transition>,
         default:'down-fade'
     },
     closeOnPressEscape:{
