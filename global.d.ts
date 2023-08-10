@@ -12,6 +12,8 @@ declare module '@vue/runtime-core' {
         SFloating: typeof import('sss-ui-plus')['SFloating'],
         STooltip: typeof import('sss-ui-plus')['STooltip'],
         SPopconfirm: typeof import('sss-ui-plus')['SPopconfirm'],
+        SDropdown: typeof import('sss-ui-plus')['SDropdown'],
+        SScrollbar: typeof import('sss-ui-plus')['SScrollbar'],
 
     }
 

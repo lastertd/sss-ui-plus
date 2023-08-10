@@ -1,18 +1,15 @@
 <template>
 
-
-	<div style="height: 800px"></div>
-
+	<s-button @click="data.push(1)">click me</s-button>
 
 
-
-
-
-	<s-popconfirm type="info"  title="are you sure?"
-	>
-		<s-button type="primary" ghost >hover me</s-button>
-
-	</s-popconfirm>
+	<s-scrollbar horizontal  style="width: 200px;height: 300px">
+		<div class="test">
+			<s-button
+				v-for="item in data"
+			>click me</s-button>
+		</div>
+	</s-scrollbar>
 
 	<div style="height: 1000px"></div>
 
@@ -20,11 +17,17 @@
 
 <script setup lang="ts">
 
-import {ref} from "@vue/runtime-core";
 import { notify} from "../packages/SMessage"
+import {ref} from "vue";
 
 
 const f = ref(true);
+
+const hei = ref({
+	height:'200px'
+});
+
+const data = ref(new Array(300));
 
 
 const handleClick = () => {
@@ -51,7 +54,10 @@ const handleClick = () => {
 }
 
 .test{
-	//width: 100px;
+	width: 600px;
+	padding: 10px;
+	//height: 500px;
+	border: 1px solid gray;
 }
 .flex{
 	display: flex;

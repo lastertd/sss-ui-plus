@@ -26,7 +26,8 @@
     "@floating-ui/vue": "^1.0.2",
     "@vue/runtime-core": "^3.3.4",
     "@vueuse/core": "^10.2.1",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "vue3-perfect-scrollbar": "^1.6.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",

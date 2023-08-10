@@ -10,6 +10,8 @@ import SSwitch from "./SSwitch";
 import SFloating from "./SFloating";
 import STooltip from "./STooltip";
 import SPopconfirm from "./SPopConfirm";
+import SDropdown from "./SDropdown";
+import SScrollbar from "./SScrollbar";
 
 
 
@@ -26,5 +28,7 @@ export {
     SFloating,
     STooltip,
     SPopconfirm,
+    SDropdown,
+    SScrollbar,
 
 }
