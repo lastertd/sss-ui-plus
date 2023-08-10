@@ -3,7 +3,7 @@
 	<s-button @click="data.push(1)">click me</s-button>
 
 
-	<s-scrollbar horizontal  style="width: 200px;height: 300px">
+	<s-scrollbar horizontal is-outside  style="width: 200px;height: 300px">
 		<div class="test">
 			<s-button
 				v-for="item in data"

@@ -6,5 +6,6 @@ export const SScrollbarProps = {
     horizontal:Boolean,
     noResize:Boolean,
     always:Boolean,
+    isOutside:Boolean,
 
 }

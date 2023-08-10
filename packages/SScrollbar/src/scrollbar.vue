@@ -10,10 +10,17 @@
 		<div ref="warp" class="sss-scrollbar-warp">
 			<slot></slot>
 		</div>
-		<div v-show="props.vertical" ref="barY" class="sss-scrollbar-bar is-vertical">
+		<div  ref="barY" class="sss-scrollbar-bar is-vertical"
+		      v-show="props.vertical"
+		      :class="[{'is-outside':props.isOutside}]"
+		>
 			<div ref="thumbY" class="sss-scrollbar-thumb is-round" :style="thumbYStyle"></div>
 		</div>
-		<div v-show="props.horizontal" ref="barX" class="sss-scrollbar-bar is-horizontal ">
+		<div  ref="barX" class="sss-scrollbar-bar is-horizontal "
+		      v-show="props.horizontal"
+		      :class="[{'is-outside':props.isOutside}]"
+
+		>
 			<div ref="thumbX" class="sss-scrollbar-thumb is-round" :style="thumbXStyle"></div>
 		</div>
 	</div>
