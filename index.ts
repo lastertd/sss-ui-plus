@@ -6,12 +6,10 @@ import "./src/styles/icons/iconfont.css"
 
 
 import installer from "./installer";
+import {onMounted} from "vue";
 export * from "./packages"
 export * from "./packages/SMessage"
 
-import creatFloatingContainer from "./packages/SFloating/src/creatFloatingContainer";
-
-creatFloatingContainer();
 
 
 export default installer

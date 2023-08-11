@@ -56,7 +56,6 @@ const {flag, setTrue, setFalse} = useFlag(false);
 let openTimer: NodeJS.Timeout;
 let closeTimer: NodeJS.Timeout;
 
-const container = document.body.querySelector('.___sss-floating-container') as HTMLDivElement;
 
 const style = ref<{
 	left:string | undefined
@@ -151,12 +150,16 @@ if (props.closeOnClickBody) {
 
 
 onMounted(() => {
+	import("./creatFloatingContainer").then(() => {
+		if (props.teleported) {
+			const container = document.body.querySelector('.___sss-floating-container') as HTMLDivElement;
+			container.appendChild(unrefElement(floating)!);
+		}
+	});
 	if (props.openOnMounted) {
 		open();
 	}
-	if (props.teleported) {
-		container.appendChild(unrefElement(floating)!);
-	}
+
 })
 
 defineExpose({

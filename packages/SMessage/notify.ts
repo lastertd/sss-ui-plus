@@ -129,7 +129,7 @@ export default async function (options:Partial<options>) {
 
     vm.open();
 
-    // app._instance!.exposed!.open();
+
     push(mountTo, placement);
 
     // 不会自动关闭

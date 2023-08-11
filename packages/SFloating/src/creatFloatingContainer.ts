@@ -1,10 +1,13 @@
-import IndexManager from "../../../src/utils/managers/IndexManager.ts";
+import IndexManager from "../../../src/utils/managers/IndexManager";
 
-export default function () {
+const _ = function () {
     const floatingContainer: HTMLElement = document.createElement('div');
     const appendTo = document.body;
 
     floatingContainer.classList.add('___sss-floating-container');
     floatingContainer.style.zIndex = IndexManager.nextIndex().toString();
     appendTo.appendChild(floatingContainer);
+    return "＞﹏＜";
 }
+
+export default _();

@@ -1,17 +1,19 @@
 <template>
+	<div style="width: 500px">
+		<s-button @click="addItem">add item</s-button>
+		<s-button style="margin: 0 0 30px 30px" @click="delItem">del item</s-button>
+		<s-scrollbar style="height: 400px">
+			<div class="container">
+				<div class="item"
+				     v-for="(item,index) in dataList"
+				>
+					{{index}}
+				</div>
+			</div>
+		</s-scrollbar>
+	</div>
 
-	<s-button @click="data.push(1)">click me</s-button>
-
-
-	<s-scrollbar horizontal is-outside  style="width: 200px;height: 300px">
-		<div class="test">
-			<s-button
-				v-for="item in data"
-			>click me</s-button>
-		</div>
-	</s-scrollbar>
-
-	<div style="height: 1000px"></div>
+<div style="height: 500px"></div>
 
 </template>
 
@@ -20,15 +22,13 @@
 import { notify} from "../packages/SMessage"
 import {ref} from "vue";
 
-
-const f = ref(true);
-
-const hei = ref({
-	height:'200px'
-});
-
-const data = ref(new Array(300));
-
+const dataList = ref(new Array(5));
+const addItem = () => {
+	dataList.value.push(0);
+}
+const delItem = () => {
+	dataList.value.pop();
+}
 
 const handleClick = () => {
 	notify({
@@ -53,31 +53,19 @@ const handleClick = () => {
 	color: var(--sss-color-black-dark);
 }
 
-.test{
-	width: 600px;
+.container{
 	padding: 10px;
-	//height: 500px;
-	border: 1px solid gray;
 }
-.flex{
-	display: flex;
-	width: 300px;
-	border: 1px solid black;
-	gap: 10px;
-	.inner{
-		width: 100%;
-		overflow: hidden; /* 隐藏溢出部分 */
-		word-wrap: break-word; /* 自动换行，尽量保持单词完整 */
-
-		padding-right: 10px;
-	}
-}
-
-.h{
-	border: solid 1px black;
-	width: 200px;
-	overflow: hidden;
-	word-wrap: break-word;
+.item{
+	margin: 10px 0;
+	width: 100%;
+	height: 80px;
+	border: solid 1px var(--sss-color-gray-dark);
+	background: var(--sss-color-primary-fade);
+	border-radius: 5px;
+	color: var(--sss-color-black-light);
+	text-align: center;
+	line-height: 80px;
 }
 
 </style>

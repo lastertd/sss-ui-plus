@@ -24,6 +24,9 @@
 			<div ref="thumbX" class="sss-scrollbar-thumb is-round" :style="thumbXStyle"></div>
 		</div>
 	</div>
+
+
+
 </template>
 
 <script setup lang="ts">
@@ -93,16 +96,46 @@ const handleMove = (evt: MouseEvent) => {
 	const warpEl = unrefElement(warp);
 	const barYEl = unrefElement(barY);
 	const barXEl = unrefElement(barX);
-	const warpHeight = warpEl.scrollHeight;
-	const warpWidth = warpEl.scrollWidth;
-	const barHeight = barYEl.offsetHeight;
-	const barWidth = barXEl.offsetWidth;
+	const warpHeight = warpEl!.scrollHeight;
+	const warpWidth = warpEl!.scrollWidth;
+	const barHeight = barYEl!.offsetHeight;
+	const barWidth = barXEl!.offsetWidth;
 
 	if (flag === 'thumbY') {
 		unrefElement(warp)!.scrollTop = warpHeight * offset.y / barHeight + origin.y;
 	}
 	else if (flag === 'thumbX') {
 		unrefElement(warp)!.scrollLeft = warpWidth * offset.x / barWidth + origin.x;
+	}
+}
+
+const handleClick = (evt:MouseEvent) => {
+	if (evt.target !== evt.currentTarget) return;
+	evt.stopPropagation();
+
+	const warpEl = unrefElement(warp);
+	const barYEl = unrefElement(barY);
+	const thumbYEl = unrefElement(thumbY);
+	const thumbXEl = unrefElement(thumbX);
+	const barXEl = unrefElement(barX);
+	const warpHeight = warpEl!.scrollHeight;
+	const warpWidth = warpEl!.scrollWidth;
+	const barHeight = barYEl!.offsetHeight;
+	const barWidth = barXEl!.offsetWidth;
+
+	offset.y = evt.clientY - barYEl!.getBoundingClientRect().top - thumbYEl!.offsetHeight / 2;
+	offset.x = evt.clientX - barXEl!.getBoundingClientRect().left - thumbXEl!.offsetWidth / 2;
+
+	offset.y = Math.min(Math.max(0,offset.y), barYEl!.offsetHeight - thumbYEl!.offsetHeight);
+	offset.x = Math.min(Math.max(0, offset.x), barXEl!.offsetWidth - thumbXEl!.offsetWidth);
+
+
+
+	if (flag === 'thumbY') {
+		unrefElement(warp)!.scrollTop = warpHeight * offset.y / barHeight;
+	}
+	else if (flag === 'thumbX') {
+		unrefElement(warp)!.scrollLeft = warpWidth * offset.x / barWidth;
 	}
 }
 
@@ -113,13 +146,29 @@ const computedThumbSize = () => {
 	const warpEl = unrefElement(warp);
 	const barYEl = unrefElement(barY);
 	const barXEl = unrefElement(barX);
-	const {scrollHeight:warpHeight, scrollWidth:warpWidth,offsetHeight: viewHeight, offsetWidth:viewWidth} = warpEl;
+	const {scrollHeight:warpHeight, scrollWidth:warpWidth,offsetHeight: viewHeight, offsetWidth:viewWidth} = warpEl!;
 
-	const barHeight = barYEl.offsetHeight;
-	const barWidth = barXEl.offsetWidth;
+	const barHeight = barYEl!.offsetHeight;
+	const barWidth = barXEl!.offsetWidth;
 
 	const thumbHeight = viewHeight * barHeight / warpHeight;
 	const thumbWidth = viewWidth * barWidth / warpWidth;
+
+
+	// 在不可滚动时，设置滚动条不可见
+	if (thumbHeight === viewHeight) {
+		unrefElement(barY)!.style.opacity = '0';
+
+	}else {
+		unrefElement(barY)!.style.opacity = '';
+	}
+
+	if (thumbWidth === viewWidth) {
+		unrefElement(barX)!.style.opacity = '0';
+	}else {
+		unrefElement(barX)!.style.opacity = '';
+
+	}
 
 	thumbYStyle.value.height = `${thumbHeight}px`;
 	thumbXStyle.value.width = `${thumbWidth}px`;
@@ -136,10 +185,10 @@ const computedThumbPos = () => {
 	const barYEl = unrefElement(barY);
 	const barXEl = unrefElement(barX);
 
-	const {scrollHeight:warpHeight, scrollWidth:warpWidth,scrollTop: viewOffsetY, scrollLeft:viewOffsetX} = warpEl;
+	const {scrollHeight:warpHeight, scrollWidth:warpWidth,scrollTop: viewOffsetY, scrollLeft:viewOffsetX} = warpEl!;
 
-	const barHeight = barYEl.offsetHeight;
-	const barWidth = barXEl.offsetWidth;
+	const barHeight = barYEl!.offsetHeight;
+	const barWidth = barXEl!.offsetWidth;
 
 
 	const thumbOffsetY = viewOffsetY * barHeight / warpHeight;
@@ -155,6 +204,16 @@ const computedThumbPos = () => {
 useEventListener(warp, 'scroll', () => {
 	computedThumbPos();
 })
+
+useEventListener(barY, "click",(evt:MouseEvent) =>{
+	flag = 'thumbY';
+	handleClick(evt);
+});
+useEventListener(barX, "click",(evt:MouseEvent) =>{
+	flag = 'thumbX';
+	handleClick(evt);
+});
+
 
 
 if (!props.noResize) {
@@ -193,7 +252,7 @@ useEventListener(thumbX, "mousedown", (evt: MouseEvent) => {
 })
 
 
-useEventListener(document.body, 'mouseup', (evt: MouseEvent) => {
+useEventListener(document.body, 'mouseup', () => {
 	active.value = false;
 
 	unrefElement(document.body)!.removeEventListener('mousemove', handleMove);
