@@ -21,5 +21,8 @@ export const SDividerProps = {
     prefixIcon:String,
     suffixIcon:String,
     content:String,
+    gap:{
+        type:Number,
+    }
 
 } as const

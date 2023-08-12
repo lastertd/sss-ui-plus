@@ -69,6 +69,7 @@
 			</div>
 		</div>
 	</transition>
+
 	<div ref="drag" :style="`top:${props.top}`" v-if="draggable" class="sss-message-draggable-container">
 
 	</div>

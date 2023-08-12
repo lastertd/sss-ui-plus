@@ -1,5 +1,5 @@
 import {PropType} from "vue";
-import {FloatingTrigger, Transition} from "../../../src/types";
+import {Expression, FloatingTrigger, Transition} from "../../../src/types";
 import {Placement} from "@floating-ui/vue";
 
 
@@ -46,6 +46,13 @@ export const STooltipProps = {
         type: Boolean,
         default:true
     },
+    expression:{
+        type:String as PropType<Expression>,
+        default:'block'
+    },
+    floatingClass:String,
+    reference:Object as PropType<any>,
+    quickTrack:Boolean,
 
 
 } as const

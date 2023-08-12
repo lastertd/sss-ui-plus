@@ -1,5 +1,5 @@
 import {PropType} from "vue";
-import {FloatingTrigger, Transition} from "../../../src/types";
+import {Expression, FloatingTrigger, Transition} from "../../../src/types";
 import {Placement} from "@floating-ui/vue";
 import {MessageTypes} from "../../../src/types";
 
@@ -57,6 +57,13 @@ export const SPopconfirmProps = {
         default:'确认'
     },
     title:String,
+    expression:{
+        type:String as PropType<Expression>,
+        default:'block'
+    },
+    floatingClass:String,
+    reference:Object as PropType<any>,
+    quickTrack:Boolean,
 
 
 } as const

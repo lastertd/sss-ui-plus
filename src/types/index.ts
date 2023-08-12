@@ -17,3 +17,7 @@ export type Transition = String |
     'left-fade'|
     'right-fade'|
     'none';
+
+export type ComponentTag = string | 'span' | 'div';
+
+export type Expression = 'inline' | 'block' | 'inline-block';

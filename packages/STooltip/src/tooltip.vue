@@ -12,6 +12,10 @@
 		:open-on-mounted="props.openOnMounted"
 		:teleported="props.teleported"
 		:show-arrow="props.showArrow"
+		:expression="props.expression"
+		:floating-class="props.floatingClass"
+		:reference="props.reference"
+		:quick-track="props.quickTrack"
 
 		@open="emits('open')"
 		@opened="emits('opened')"
@@ -21,7 +25,8 @@
 		class="sss-tooltip"
 
 	>
-		<template #reference>
+
+		<template #reference v-if="slots.reference" >
 			<slot name="reference"></slot>
 		</template>
 
@@ -35,9 +40,11 @@
 import "./tooltip.less"
 import {STooltipEmits, STooltipProps} from "./tooltip";
 import SFloating from "../../SFloating";
+import {useSlots} from "@vue/runtime-core";
 
 const props = defineProps({...STooltipProps});
 const emits = defineEmits({...STooltipEmits})
+const slots = useSlots();
 
 
 </script>

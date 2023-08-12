@@ -1,4 +1,7 @@
+@import "src/styles/global";
+
 .sss-floating-reference{
+
 }
 
 
@@ -11,20 +14,21 @@
     position: relative;
     white-space: nowrap;
 
-    &[data-theme="dark"]{
-        background-color: var(--sss-color-black-dark);
-        color: var(--sss-color-default-dark-deep);
-        .sss-floating-arrow:after{
-            background-color: var(--sss-color-black-dark);
-        }
-    }
-    &[data-theme="light"]{
-        background-color: var(--sss-color-white);
-        color: var(--sss-color-black-dark);
+    .use-dark-theme();
+    .use-light-theme();
+
+    &[data-theme="light"] {
         .sss-floating-arrow:after{
             background-color: var(--sss-color-white);
         }
     }
+    &[data-theme="dark"] {
+        .sss-floating-arrow:after{
+            background-color: var(--sss-color-black-dark);
+        }
+    }
+
+
 }
 
 

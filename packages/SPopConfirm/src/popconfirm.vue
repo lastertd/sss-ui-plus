@@ -13,6 +13,10 @@
 		:open-on-mounted="props.openOnMounted"
 		:teleported="props.teleported"
 		:show-arrow="props.showArrow"
+		:expression="props.expression"
+		:floating-class="props.floatingClass"
+		:reference="props.reference"
+		:quick-track="props.quickTrack"
 
 		@open="handleOpen"
 		@opened="emits('opened')"
@@ -22,7 +26,7 @@
 		class="sss-popconfirm"
 
 	>
-		<template #reference>
+		<template #reference v-if="slots.default">
 			<slot ></slot>
 		</template>
 
@@ -54,10 +58,12 @@ import SFloating from "../../SFloating";
 import MsgBox from "../../SMessageBox/src/msgBox.vue";
 import {nextTick, onMounted, ref} from "vue";
 import delay from "../../../src/utils/delay.ts";
+import {useSlots} from "@vue/runtime-core";
 
 
 const props = defineProps({...SPopconfirmProps});
 const emits = defineEmits({...SPopconfirmEmits})
+const slots = useSlots();
 
 const msgBox = ref<InstanceType<typeof MsgBox> | undefined>(undefined);
 
@@ -68,14 +74,14 @@ const floating = ref<InstanceType<typeof SFloating> | undefined>(undefined);
 const handleOpen = () => {
 	emits('open');
 	nextTick().then(() => {
-		msgBox.value.open();
+		msgBox.value!.open();
 	})
 }
 
 
 const _ = () => {
-	msgBox.value.open();
-	floating.value.close();
+	msgBox.value!.open();
+	floating.value!.close();
 }
 
 const handleClose = () => {

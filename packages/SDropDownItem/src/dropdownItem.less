@@ -1,0 +1,23 @@
+@import "src/styles/global";
+
+.sss-dropdown-item{
+
+
+    .flex-row-start-center();
+    .is-border-box();
+    flex-flow: row nowrap;
+
+    position: relative;
+    padding: 5px 16px;
+    transition: all .1s ease;
+    cursor: default;
+    gap: 5px;
+
+    &:hover{
+        background-color: var(--sss-color-primary-fade);
+        color: var(--sss-color-primary);
+    }
+    &[data-center="true"] {
+        justify-content: center;
+    }
+}

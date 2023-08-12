@@ -139,9 +139,7 @@ const handleClick = (evt:MouseEvent) => {
 	}
 }
 
-/**
- * 计算滑块大小
- */
+// 计算滑块大小
 const computedThumbSize = () => {
 	const warpEl = unrefElement(warp);
 	const barYEl = unrefElement(barY);
@@ -155,15 +153,17 @@ const computedThumbSize = () => {
 	const thumbWidth = viewWidth * barWidth / warpWidth;
 
 
+
 	// 在不可滚动时，设置滚动条不可见
-	if (thumbHeight === viewHeight) {
+	if (thumbHeight === barHeight) {
 		unrefElement(barY)!.style.opacity = '0';
 
 	}else {
 		unrefElement(barY)!.style.opacity = '';
 	}
 
-	if (thumbWidth === viewWidth) {
+
+	if (thumbWidth === barWidth) {
 		unrefElement(barX)!.style.opacity = '0';
 	}else {
 		unrefElement(barX)!.style.opacity = '';
@@ -177,9 +177,7 @@ const computedThumbSize = () => {
 
 
 
-/**
- * 计算滑块的位置
- */
+// 计算滑块高度
 const computedThumbPos = () => {
 	const warpEl = unrefElement(warp);
 	const barYEl = unrefElement(barY);
@@ -205,16 +203,16 @@ useEventListener(warp, 'scroll', () => {
 	computedThumbPos();
 })
 
-useEventListener(barY, "click",(evt:MouseEvent) =>{
-	flag = 'thumbY';
-	handleClick(evt);
-});
-useEventListener(barX, "click",(evt:MouseEvent) =>{
-	flag = 'thumbX';
-	handleClick(evt);
-});
-
-
+if (props.quickJump) {
+	useEventListener(barY, "click",(evt:MouseEvent) =>{
+		flag = 'thumbY';
+		handleClick(evt);
+	});
+	useEventListener(barX, "click",(evt:MouseEvent) =>{
+		flag = 'thumbX';
+		handleClick(evt);
+	});
+}
 
 if (!props.noResize) {
 	// 监听元素大小变化

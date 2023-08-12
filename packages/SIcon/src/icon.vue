@@ -4,7 +4,7 @@
 	<i
 		ref="icon"
 		v-if="props.target"
-		class="iconfont sss-icon"
+		class=" sss-icon iconfont"
 		:class="[{
 			'is-rotating':props.rotating
 		},

@@ -1,5 +1,6 @@
 <template>
 	<div
+		ref="divider"
 		class="sss-divider"
 		:class="[
 			`sss-divider-${props.type}`,
@@ -20,10 +21,13 @@
 import "./divider.less"
 import {SDividerProps} from "./divider";
 import {onMounted, ref} from "vue";
+import {MaybeHTMLElement} from "../../../src/types";
+import {unrefElement} from "@vueuse/core";
 
 const props = defineProps({...SDividerProps});
 
 const content = ref<Element | undefined>(undefined);
+const divider = ref<MaybeHTMLElement>(undefined);
 
 onMounted(() => {
 	const el = content.value as HTMLElement;
@@ -42,6 +46,10 @@ onMounted(() => {
 			el.style.left = props.contentPosition;
 		}
 
+		if (props.gap !== undefined) {
+			unrefElement(divider)!.style.margin = `${props.gap}px 0`
+		}
+
 	} else if (props.direction === 'vertical') {
 		if (props.contentPosition === 'start') {
 			el.style.top = '15px';
@@ -53,6 +61,10 @@ onMounted(() => {
 			el.style.bottom = '15px';
 		} else {
 			el.style.top = props.contentPosition;
+		}
+
+		if (props.gap !== undefined) {
+			unrefElement(divider)!.style.margin = `0 ${props.gap}px`
 		}
 	}
 })

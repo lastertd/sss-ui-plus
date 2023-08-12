@@ -11,6 +11,7 @@ import SFloating from "./SFloating";
 import STooltip from "./STooltip";
 import SPopconfirm from "./SPopConfirm";
 import SDropdown from "./SDropdown";
+import SDropdownItem from "./SDropDownItem";
 import SScrollbar from "./SScrollbar";
 
 
@@ -29,6 +30,7 @@ export {
     STooltip,
     SPopconfirm,
     SDropdown,
+    SDropdownItem,
     SScrollbar,
 
 }

@@ -13,6 +13,7 @@ declare module '@vue/runtime-core' {
         STooltip: typeof import('sss-ui-plus')['STooltip'],
         SPopconfirm: typeof import('sss-ui-plus')['SPopconfirm'],
         SDropdown: typeof import('sss-ui-plus')['SDropdown'],
+        SDropdownItem: typeof import('sss-ui-plus')['SDropdownItem'],
         SScrollbar: typeof import('sss-ui-plus')['SScrollbar'],
 
     }

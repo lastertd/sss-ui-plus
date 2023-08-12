@@ -1,43 +1,43 @@
 <template>
-	<div style="width: 500px">
-		<s-button @click="addItem">add item</s-button>
-		<s-button style="margin: 0 0 30px 30px" @click="delItem">del item</s-button>
-		<s-scrollbar style="height: 400px">
-			<div class="container">
-				<div class="item"
-				     v-for="(item,index) in dataList"
-				>
-					{{index}}
-				</div>
-			</div>
-		</s-scrollbar>
-	</div>
 
-<div style="height: 500px"></div>
+
+
+	<div ref="ipt" style="height: 50px;width: 50px;border: 1px solid black"></div>
+
+
+	<s-dropdown trigger="click" :reference="ipt"  show-arrow quick-track>
+		<s-dropdown-item label="hhhhh" value="nihaoya"></s-dropdown-item>
+		<s-dropdown-item label="hhhhh" value="nihaoya"></s-dropdown-item>
+	</s-dropdown>
 
 </template>
 
 <script setup lang="ts">
 
-import { notify} from "../packages/SMessage"
-import {ref} from "vue";
+import {notify} from "../packages/SMessage"
+import {computed, onMounted, provide, ref} from "vue";
+import {useDraggable} from "../src/hooks/useDraggable";
+import {MaybeHTMLElement} from "../src/types";
+const btn = ref<MaybeHTMLElement>(undefined);
+const ipt = ref<MaybeHTMLElement>(undefined);
 
-const dataList = ref(new Array(5));
-const addItem = () => {
-	dataList.value.push(0);
-}
-const delItem = () => {
-	dataList.value.pop();
-}
+
+const f = computed(() => {
+	return true;
+})
+
+useDraggable(ipt, ipt, f);
+
+
 
 const handleClick = () => {
 	notify({
-		type:'success',
-		title:'nih',
-		text:'hh1111111111111111111111111111111hh',
-		timeout:0
+		type: 'success',
+		title: 'nih',
+		text: 'hh1111111111111111111111111111111hh',
 	})
 }
+
 
 
 </script>
@@ -50,13 +50,18 @@ const handleClick = () => {
 	align-items: center;
 	gap: 10px;
 	margin-top: 50px;
-	color: var(--sss-color-black-dark);
+	color: var(--sss-color-black-light);
 }
 
-.container{
+.container {
+	position: relative;
 	padding: 10px;
+	width: 300px;
+	height: 300px;
 }
-.item{
+
+.item {
+	box-sizing: border-box;
 	margin: 10px 0;
 	width: 100%;
 	height: 80px;
