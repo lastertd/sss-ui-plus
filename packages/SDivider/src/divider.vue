@@ -9,7 +9,10 @@
 	>
 		<span class="sss-divider-content" ref="content">
 			<s-icon :target="props.prefixIcon" style="padding: 0;"></s-icon>
-			{{ props.content }}
+			<template v-if="slots.default">
+				<slot></slot>
+			</template>
+			<template v-else>{{ props.content }}</template>
 			<s-icon :target="props.suffixIcon" style="padding: 0"></s-icon>
 		</span>
 	</div>
@@ -20,7 +23,7 @@
 
 import "./divider.less"
 import {SDividerProps} from "./divider";
-import {onMounted, ref} from "vue";
+import {onMounted, ref, useSlots} from "vue";
 import {MaybeHTMLElement} from "../../../src/types";
 import {unrefElement} from "@vueuse/core";
 
@@ -28,6 +31,7 @@ const props = defineProps({...SDividerProps});
 
 const content = ref<Element | undefined>(undefined);
 const divider = ref<MaybeHTMLElement>(undefined);
+const slots = useSlots();
 
 onMounted(() => {
 	const el = content.value as HTMLElement;

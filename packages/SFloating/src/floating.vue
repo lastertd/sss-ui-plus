@@ -1,18 +1,19 @@
-<template>
+	<template>
 
 	<div v-if="slots.reference" class="sss-floating-reference" ref="reference" :style="`display:${props.expression}`">
 		<slot name="reference"></slot>
 	</div>
 
 
-	<div ref="floating" :style="floatingStyles" :class="props.floatingClass">
+	<div ref="floating" :style="_floatingStyles" :class="props.floatingClass">
 
 		<transition
 			:name="`sss-transition-${props.transition}`"
 			@afterEnter="emits('opened')"
 			@afterLeave="emits('closed')"
 		>
-			<div v-if="flag " class="sss-floating-floating"
+			<div v-if="flag "
+			     class="sss-floating-floating"
 			     :data-placement="placement"
 			     :data-theme="props.theme"
 			     v-bind="$attrs"
@@ -32,10 +33,12 @@
 import "./floating.less"
 import {SFloatingEmits, SFloatingProps} from "./floating";
 import {useFloating, offset, flip, shift, autoUpdate, arrow} from "@floating-ui/vue";
-import {ref, useSlots} from "@vue/runtime-core";
-import useFlag from "../../../src/hooks/useFlag";
-import {computed, onMounted, watch} from "vue";
+
+import {computed, onMounted, watch, ref, useSlots, onBeforeUnmount} from "vue";
+
 import {unrefElement, useEventListener, useMutationObserver} from "@vueuse/core";
+import useFlag from "../../../src/hooks/useFlag";
+
 import IndexManager from "../../../src/utils/managers/IndexManager";
 
 
@@ -48,8 +51,16 @@ const props = defineProps({...SFloatingProps});
 const emits = defineEmits({...SFloatingEmits});
 const slots = useSlots();
 
-
-console.log(slots.reference)
+// 在floating不可见时， 阻止修改css样式
+let _:any;
+const _floatingStyles = computed(() => {
+	if (flag.value){
+		_ = floatingStyles.value;
+		return floatingStyles.value;
+	}else {
+		return _;
+	}
+})
 
 
 const t = computed(() => {
@@ -57,9 +68,9 @@ const t = computed(() => {
 })
 
 
-const reference = ref<HTMLElement | undefined>(undefined);
-const floating = ref<HTMLElement | undefined>(undefined);
-const _arrow = ref<HTMLElement | undefined>(undefined);
+const reference = ref<HTMLElement | null>(null);
+const floating = ref<HTMLElement | null>(null);
+const _arrow = ref<HTMLElement | null>(null);
 
 
 // 当元素具有reference槽时优先槽，其次reference属性
@@ -208,6 +219,15 @@ if (props.trigger === 'click') {
 
 }
 
+if (props.trigger === 'clickToOpen' ) {
+	if (slots.reference) {
+		useEventListener(reference, 'click', open);
+
+	} else {
+		useEventListener(t, 'click', open);
+	}
+}
+
 
 if (props.trigger === 'focus') {
 	if (slots.reference) {
@@ -221,6 +241,7 @@ if (props.trigger === 'focus') {
 }
 
 
+
 onMounted(() => {
 	// ssr友好
 	import("./creatFloatingContainer").then(() => {
@@ -231,6 +252,12 @@ onMounted(() => {
 	});
 
 
+})
+onBeforeUnmount(() => {
+	if (props.teleported) {
+		const container = document.body.querySelector('.___sss-floating-container') as HTMLDivElement;
+		container.removeChild(unrefElement(floating)!);
+	}
 })
 
 

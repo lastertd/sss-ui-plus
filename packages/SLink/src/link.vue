@@ -10,7 +10,7 @@
 				'is-disabled':props.disabled
 			}
 		]"
-
+		@click.prevent="handleClick"
 
 	>
 		<s-icon :target="props.prefixIcon" class="sss-link-prefix-icon"></s-icon>
@@ -35,10 +35,20 @@ defineOptions({
 const props = defineProps({...SLinkProps});
 const a = ref<Element | undefined>(undefined);
 
-onMounted(() => {
-	const el = a.value as HTMLElement;
-	el.style.pointerEvents = 'none';
-})
+
+const handleClick = () => {
+	if (!props.href || props.disabled) return;
+
+	if (props.jumpMethod === 'push') {
+		window.location.href = props.href
+	}
+	else if (props.jumpMethod === 'replace') {
+		window.location.replace(props.href);
+	}
+	else if (props.jumpMethod === 'newView') {
+		window.open(props.href);
+	}
+}
 
 </script>
 

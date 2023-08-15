@@ -10,7 +10,7 @@ export const SPopconfirmProps = {
      */
     trigger: {
         type: String as PropType<FloatingTrigger>,
-        default: "click"
+        default: "clickToOpen"
     },
     placement: {
         type: String as PropType<Placement>,
@@ -47,6 +47,16 @@ export const SPopconfirmProps = {
         type: Boolean,
         default:true
     },
+    expression:{
+        type:String as PropType<Expression>,
+        default:'block'
+    },
+    floatingClass:String,
+    reference:Object as PropType<any>,
+    quickTrack:Boolean,
+
+    content:String,
+
     type:String as PropType<MessageTypes>,
     cancelBtnText:{
         type:String,
@@ -56,14 +66,7 @@ export const SPopconfirmProps = {
         type:String,
         default:'确认'
     },
-    title:String,
-    expression:{
-        type:String as PropType<Expression>,
-        default:'block'
-    },
-    floatingClass:String,
-    reference:Object as PropType<any>,
-    quickTrack:Boolean,
+
 
 
 } as const

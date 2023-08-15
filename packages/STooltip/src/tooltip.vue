@@ -26,12 +26,17 @@
 
 	>
 
-		<template #reference v-if="slots.reference" >
-			<slot name="reference"></slot>
+		<template #reference v-if="slots.default" >
+			<slot></slot>
 		</template>
 
 		<template #default>
-			<slot></slot>
+			<template v-if="slots.content">
+				<slot name="content"></slot>
+			</template>
+			<template v-else>
+				{{props.content}}
+			</template>
 		</template>
 	</s-floating>
 </template>
@@ -40,7 +45,7 @@
 import "./tooltip.less"
 import {STooltipEmits, STooltipProps} from "./tooltip";
 import SFloating from "../../SFloating";
-import {useSlots} from "@vue/runtime-core";
+import {useSlots} from "vue";
 
 const props = defineProps({...STooltipProps});
 const emits = defineEmits({...STooltipEmits})

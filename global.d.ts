@@ -5,6 +5,7 @@ declare module '@vue/runtime-core' {
         SInput: typeof import('sss-ui-plus')['SInput'],
         SIcon: typeof import('sss-ui-plus')['SIcon'],
         SLink: typeof import('sss-ui-plus')['SLink'],
+        SDivider: typeof import('sss-ui-plus')['SDivider'],
         SDialog: typeof import('sss-ui-plus')['SDialog'],
         SDrawer: typeof import('sss-ui-plus')['SDrawer'],
         SRow: typeof import('sss-ui-plus')['SRow'],
@@ -15,6 +16,7 @@ declare module '@vue/runtime-core' {
         SDropdown: typeof import('sss-ui-plus')['SDropdown'],
         SDropdownItem: typeof import('sss-ui-plus')['SDropdownItem'],
         SScrollbar: typeof import('sss-ui-plus')['SScrollbar'],
+        SCascader: typeof import('sss-ui-plus')['SCascader'],
 
     }
 

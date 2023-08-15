@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 4078839 */
-  src: url('iconfont.woff2?t=1690722405388') format('woff2'),
-       url('iconfont.woff?t=1690722405388') format('woff'),
-       url('iconfont.ttf?t=1690722405388') format('truetype');
+  src: url('iconfont.woff2?t=1691855917410') format('woff2'),
+       url('iconfont.woff?t=1691855917410') format('woff'),
+       url('iconfont.ttf?t=1691855917410') format('truetype');
 }
 
 .iconfont {
@@ -13,36 +13,84 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.sss-email:before {
+  content: "\e856";
+}
+
+.sss-logout:before {
+  content: "\e651";
+}
+
+.sss-delete:before {
+  content: "\e710";
+}
+
+.sss-edit:before {
+  content: "\e61a";
+}
+
+.sss-user:before {
+  content: "\ea94";
+}
+
+.sss-loading:before {
+  content: "\e6da";
+}
+
+.sss-tg-top-1:before {
+  content: "\e6c8";
+}
+
+.sss-tg-top-2:before {
+  content: "\ee4a";
+}
+
+.sss-tg-right-1:before {
+  content: "\ee4b";
+}
+
+.sss-tg-right-2:before {
+  content: "\ee4c";
+}
+
+.sss-tg-right-3:before {
+  content: "\ee4d";
+}
+
+.sss-tg-bottom-1:before {
+  content: "\ee4e";
+}
+
+.sss-tg-left-1:before {
+  content: "\ee4f";
+}
+
+.sss-tg-bottom-2:before {
+  content: "\ee50";
+}
+
+.sss-tg-left-2:before {
+  content: "\ee51";
+}
+
+.sss-tg-bottom-3:before {
+  content: "\ee52";
+}
+
+.sss-tg-left-3:before {
+  content: "\ee53";
+}
+
+.sss-tg-top-3:before {
+  content: "\e600";
+}
+
 .sss-eye:before {
   content: "\e63f";
 }
 
 .sss-other:before {
   content: "\e603";
-}
-
-.sss-chart-line:before {
-  content: "\eb96";
-}
-
-.sss-store:before {
-  content: "\e621";
-}
-
-.sss-user-group:before {
-  content: "\e607";
-}
-
-.sss-controll:before {
-  content: "\e636";
-}
-
-.sss-comps:before {
-  content: "\e730";
-}
-
-.sss-time-fill:before {
-  content: "\ee45";
 }
 
 .sss-user-fill:before {
@@ -57,15 +105,11 @@
   content: "\e8b8";
 }
 
-.sss-star:before {
-  content: "\e658";
-}
-
 .sss-star-fill:before {
   content: "\e709";
 }
 
-.sss-star2:before {
+.sss-star:before {
   content: "\ea93";
 }
 
@@ -75,22 +119,6 @@
 
 .sss-plus:before {
   content: "\e6ea";
-}
-
-.sss-triangle-left:before {
-  content: "\ee39";
-}
-
-.sss-triangle-top:before {
-  content: "\ee3a";
-}
-
-.sss-triangle-right:before {
-  content: "\ee44";
-}
-
-.sss-triangle-bottom:before {
-  content: "\ee3b";
 }
 
 .sss-home:before {
@@ -105,64 +133,12 @@
   content: "\e61c";
 }
 
-.sss-title:before {
-  content: "\e6e8";
-}
-
-.sss-email:before {
-  content: "\e908";
-}
-
 .sss-upload:before {
   content: "\ec1d";
 }
 
-.sss-delete:before {
-  content: "\ec7b";
-}
-
-.sss-editor:before {
-  content: "\ec88";
-}
-
-.sss-menu:before {
-  content: "\e64f";
-}
-
-.sss-user:before {
-  content: "\e648";
-}
-
-.sss-file-md:before {
-  content: "\e6b4";
-}
-
-.sss-upload-2:before {
-  content: "\e6f0";
-}
-
-.sss-triangle-line-up:before {
-  content: "\ee49";
-}
-
 .sss-dongtai:before {
   content: "\ee41";
-}
-
-.sss-logout:before {
-  content: "\ee43";
-}
-
-.sss-triangle-line-right:before {
-  content: "\ee46";
-}
-
-.sss-triangle-line-left:before {
-  content: "\ee47";
-}
-
-.sss-triangle-line-bottom:before {
-  content: "\ee48";
 }
 
 .sss-cricle-close:before {
@@ -191,9 +167,5 @@
 
 .sss-info:before {
   content: "\ee3f";
-}
-
-.sss-loading:before {
-  content: "\e78b";
 }
 

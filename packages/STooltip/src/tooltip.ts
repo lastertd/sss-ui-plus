@@ -54,6 +54,8 @@ export const STooltipProps = {
     reference:Object as PropType<any>,
     quickTrack:Boolean,
 
+    content:String,
+
 
 } as const
 

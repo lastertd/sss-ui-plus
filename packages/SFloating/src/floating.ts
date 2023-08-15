@@ -1,4 +1,4 @@
-import {PropType, Ref} from "vue";
+import {PropType} from "vue";
 import {Expression, FloatingTrigger, Transition} from "../../../src/types";
 import {Placement} from "@floating-ui/vue";
 

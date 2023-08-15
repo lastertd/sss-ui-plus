@@ -39,7 +39,7 @@
 			        :type="props.type"
 			        :cancel-btn-text="props.cancelBtnText"
 			        :confirm-btn-text="props.confirmBtnType"
-			        :title="props.title"
+			        :title="props.content"
 
 			        @close="handleClose"
 			        @cancel="handleCancel"
@@ -56,9 +56,7 @@ import "./popconfirm.less"
 import {SPopconfirmEmits, SPopconfirmProps} from "./popconfirm";
 import SFloating from "../../SFloating";
 import MsgBox from "../../SMessageBox/src/msgBox.vue";
-import {nextTick, onMounted, ref} from "vue";
-import delay from "../../../src/utils/delay.ts";
-import {useSlots} from "@vue/runtime-core";
+import {nextTick, ref,useSlots} from "vue";
 
 
 const props = defineProps({...SPopconfirmProps});

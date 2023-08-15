@@ -1,10 +1,16 @@
 import {PropType} from "vue";
 import {Expression, FloatingTrigger, MessageTypes, Transition} from "../../../src/types";
 import {Placement} from "@floating-ui/vue";
-import {isString} from "@vue/shared";
-import {isObject} from "@vueuse/core";
 
-export const SDropdownProps = {
+
+export type CascaderOptionsType = {
+    label:string,
+    value:string,
+    children?:CascaderOptionsType[]
+}
+
+
+export const SCascaderProps = {
 
     /*以下是floating属性*/
     trigger: {
@@ -46,6 +52,16 @@ export const SDropdownProps = {
         type: Boolean,
         default:true
     },
+    type:String as PropType<MessageTypes>,
+    cancelBtnText:{
+        type:String,
+        default:'取消'
+    },
+    confirmBtnType:{
+        type:String,
+        default:'确认'
+    },
+    title:String,
     expression:{
         type:String as PropType<Expression>,
         default:'block'
@@ -63,7 +79,10 @@ export const SDropdownProps = {
     // 是否显示水平滚动条
     scrollbarHorizontal: Boolean,
     // 视口大小不再改变
-    scrollbarNoResize: Boolean,
+    scrollbarNoResize: {
+        type:Boolean,
+        default:true,
+    },
     // 滚动条始终显示
     scrollbarAlways: Boolean,
     // 滚动条显示在视口外面
@@ -82,13 +101,26 @@ export const SDropdownProps = {
     },
     prefix:Array<string>,
 
+    /*以下是cascader属性*/
+    options:{
+        type:Object as PropType<CascaderOptionsType[]>,
+        default:[],
+    },
+    subCascaderPlacement:{
+        type:String as PropType<'left' | 'right'>,
+        default:'right'
+    }
+
+
+
+
 
 
 } as const;
 
 
-export const SDropdownEmits = {
-    select:(value:string, prefix?:string[]) => isString(value),
+export const SCascaderEmits = {
+    select:(value:string, prefix?:string[]) => true,
     open:() => true,
     opened:() => true,
     close:() => true,

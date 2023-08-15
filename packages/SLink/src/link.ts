@@ -19,6 +19,10 @@ export const SLinkProps = {
     underline:Boolean,
     href:String,
     prefixIcon:String,
-    suffixIcon:String
+    suffixIcon:String,
+    jumpMethod:{
+        type: String as PropType<'replace' | 'push' | 'newView'>,
+        default:'push'
+    }
 
 }

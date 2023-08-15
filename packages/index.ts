@@ -13,6 +13,7 @@ import SPopconfirm from "./SPopConfirm";
 import SDropdown from "./SDropdown";
 import SDropdownItem from "./SDropDownItem";
 import SScrollbar from "./SScrollbar";
+import SCascader from "./SCascader";
 
 
 
@@ -32,5 +33,6 @@ export {
     SDropdown,
     SDropdownItem,
     SScrollbar,
+    SCascader,
 
 }

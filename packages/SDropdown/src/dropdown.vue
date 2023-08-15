@@ -1,6 +1,7 @@
 <template>
 	<s-floating
 		ref="floating"
+		class="sss-dropdown"
 		:trigger="props.trigger"
 		:placement="props.placement"
 		:transition="props.transition"
@@ -49,9 +50,8 @@
 <script setup lang="ts">
 import "./dropdown.less"
 import {SDropdownEmits, SDropdownProps} from "./dropdown.ts";
-import {provide, ref} from "vue";
+import {provide, ref,useSlots} from "vue";
 import SFloating from "../../SFloating";
-import {useSlots} from "@vue/runtime-core";
 
 const props = defineProps({...SDropdownProps});
 const emits = defineEmits({...SDropdownEmits});
@@ -60,20 +60,22 @@ const slots = useSlots();
 const floating = ref<InstanceType<typeof SFloating> | undefined>(undefined);
 
 
-const open = () => floating.value!.open;
-const close = () => floating.value!.close;
-const toggle = () => floating.value!.toggle;
+const open = () => floating.value!.open();
+const close = () => floating.value!.close();
+const toggle = () => floating.value!.toggle();
 
 
 provide('inDropdown', true);
 provide('isCenter', props.center);
-provide('handleItemClick', (val: string) => {
-	emits("select", val);
-	if (props.closeOnClickItem) {
-		floating.value!.close()
-	}
+provide('DropdownItemClick', (val: string) => {
+	emits("select", val, props.prefix);
 
 });
+provide('DropdownClose',() => {
+	if (props.closeOnClickItem) {
+		close();
+	}
+})
 
 
 defineExpose({

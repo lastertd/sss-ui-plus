@@ -2,7 +2,8 @@ import { PropType} from "vue";
 
 type Direction = 'vertical' | 'horizontal';
 type Type = 'dashed' | 'solid';
-type Position = string | 'start' | 'center' | 'end';
+type SDividerContentPosition = 'start' | 'center' | 'end' | String;
+
 
 
 export const SDividerProps = {
@@ -15,7 +16,7 @@ export const SDividerProps = {
       default:'solid'
     },
     contentPosition:{
-        type:String as PropType<Position>,
+        type:String as PropType<SDividerContentPosition>,
         default:'center'
     },
     prefixIcon:String,

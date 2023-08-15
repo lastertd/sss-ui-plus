@@ -4,7 +4,7 @@ export type MessageTriggerTypes =  'system' | 'esc' | 'mark' | 'icon';
 
 export type ElementSizes = 'small' | 'normal' | 'large';
 
-export type FloatingTrigger = 'hover' | 'click' | 'focus' ;
+export type FloatingTrigger = 'hover' | 'click' | 'focus' | 'clickToOpen' | 'unset' ;
 
 export type MaybeHTMLElement = HTMLElement | undefined | null;
 
@@ -21,3 +21,4 @@ export type Transition = String |
 export type ComponentTag = string | 'span' | 'div';
 
 export type Expression = 'inline' | 'block' | 'inline-block';
+

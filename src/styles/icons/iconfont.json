@@ -6,6 +6,132 @@
   "description": "sssui组件库",
   "glyphs": [
     {
+      "icon_id": "34453208",
+      "name": "email",
+      "font_class": "email",
+      "unicode": "e856",
+      "unicode_decimal": 59478
+    },
+    {
+      "icon_id": "5776856",
+      "name": "logout",
+      "font_class": "logout",
+      "unicode": "e651",
+      "unicode_decimal": 58961
+    },
+    {
+      "icon_id": "1508921",
+      "name": "delete",
+      "font_class": "delete",
+      "unicode": "e710",
+      "unicode_decimal": 59152
+    },
+    {
+      "icon_id": "25972469",
+      "name": "edit",
+      "font_class": "edit",
+      "unicode": "e61a",
+      "unicode_decimal": 58906
+    },
+    {
+      "icon_id": "12004325",
+      "name": "User",
+      "font_class": "user",
+      "unicode": "ea94",
+      "unicode_decimal": 60052
+    },
+    {
+      "icon_id": "897115",
+      "name": "loading",
+      "font_class": "loading",
+      "unicode": "e6da",
+      "unicode_decimal": 59098
+    },
+    {
+      "icon_id": "20797371",
+      "name": "下滑三角",
+      "font_class": "tg-top-1",
+      "unicode": "e6c8",
+      "unicode_decimal": 59080
+    },
+    {
+      "icon_id": "36882125",
+      "name": "收起三角-copy",
+      "font_class": "tg-top-2",
+      "unicode": "ee4a",
+      "unicode_decimal": 61002
+    },
+    {
+      "icon_id": "36882126",
+      "name": "下滑三角-copy",
+      "font_class": "tg-right-1",
+      "unicode": "ee4b",
+      "unicode_decimal": 61003
+    },
+    {
+      "icon_id": "36882127",
+      "name": "收起三角-copy-copy",
+      "font_class": "tg-right-2",
+      "unicode": "ee4c",
+      "unicode_decimal": 61004
+    },
+    {
+      "icon_id": "36882128",
+      "name": "向上-copy",
+      "font_class": "tg-right-3",
+      "unicode": "ee4d",
+      "unicode_decimal": 61005
+    },
+    {
+      "icon_id": "36882131",
+      "name": "下滑三角-copy",
+      "font_class": "tg-bottom-1",
+      "unicode": "ee4e",
+      "unicode_decimal": 61006
+    },
+    {
+      "icon_id": "36882132",
+      "name": "下滑三角-copy",
+      "font_class": "tg-left-1",
+      "unicode": "ee4f",
+      "unicode_decimal": 61007
+    },
+    {
+      "icon_id": "36882133",
+      "name": "收起三角-copy-copy",
+      "font_class": "tg-bottom-2",
+      "unicode": "ee50",
+      "unicode_decimal": 61008
+    },
+    {
+      "icon_id": "36882134",
+      "name": "收起三角-copy-copy",
+      "font_class": "tg-left-2",
+      "unicode": "ee51",
+      "unicode_decimal": 61009
+    },
+    {
+      "icon_id": "36882137",
+      "name": "向上-copy-copy",
+      "font_class": "tg-bottom-3",
+      "unicode": "ee52",
+      "unicode_decimal": 61010
+    },
+    {
+      "icon_id": "36882138",
+      "name": "向上-copy-copy-copy",
+      "font_class": "tg-left-3",
+      "unicode": "ee53",
+      "unicode_decimal": 61011
+    },
+    {
+      "icon_id": "1348",
+      "name": "向上",
+      "font_class": "tg-top-3",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
       "icon_id": "6419928",
       "name": "Open eyes",
       "font_class": "eye",
@@ -18,48 +144,6 @@
       "font_class": "other",
       "unicode": "e603",
       "unicode_decimal": 58883
-    },
-    {
-      "icon_id": "4354248",
-      "name": "图表-折线图",
-      "font_class": "chart-line",
-      "unicode": "eb96",
-      "unicode_decimal": 60310
-    },
-    {
-      "icon_id": "18683507",
-      "name": "厂商准入",
-      "font_class": "store",
-      "unicode": "e621",
-      "unicode_decimal": 58913
-    },
-    {
-      "icon_id": "31850954",
-      "name": "icon-person-renmen",
-      "font_class": "user-group",
-      "unicode": "e607",
-      "unicode_decimal": 58887
-    },
-    {
-      "icon_id": "9697597",
-      "name": "控制台",
-      "font_class": "controll",
-      "unicode": "e636",
-      "unicode_decimal": 58934
-    },
-    {
-      "icon_id": "7193681",
-      "name": "组件",
-      "font_class": "comps",
-      "unicode": "e730",
-      "unicode_decimal": 59184
-    },
-    {
-      "icon_id": "35907399",
-      "name": "time_fill-copy",
-      "font_class": "time-fill",
-      "unicode": "ee45",
-      "unicode_decimal": 60997
     },
     {
       "icon_id": "963411",
@@ -83,13 +167,6 @@
       "unicode_decimal": 59576
     },
     {
-      "icon_id": "564943",
-      "name": "star",
-      "font_class": "star",
-      "unicode": "e658",
-      "unicode_decimal": 58968
-    },
-    {
       "icon_id": "7239563",
       "name": "star",
       "font_class": "star-fill",
@@ -99,7 +176,7 @@
     {
       "icon_id": "12004320",
       "name": "Star",
-      "font_class": "star2",
+      "font_class": "star",
       "unicode": "ea93",
       "unicode_decimal": 60051
     },
@@ -116,34 +193,6 @@
       "font_class": "plus",
       "unicode": "e6ea",
       "unicode_decimal": 59114
-    },
-    {
-      "icon_id": "35626885",
-      "name": "triangle-left",
-      "font_class": "triangle-left",
-      "unicode": "ee39",
-      "unicode_decimal": 60985
-    },
-    {
-      "icon_id": "35626973",
-      "name": "triangle-top",
-      "font_class": "triangle-top",
-      "unicode": "ee3a",
-      "unicode_decimal": 60986
-    },
-    {
-      "icon_id": "35907389",
-      "name": "triangle-right",
-      "font_class": "triangle-right",
-      "unicode": "ee44",
-      "unicode_decimal": 60996
-    },
-    {
-      "icon_id": "35627045",
-      "name": "triangle-bottom",
-      "font_class": "triangle-bottom",
-      "unicode": "ee3b",
-      "unicode_decimal": 60987
     },
     {
       "icon_id": "356492",
@@ -167,20 +216,6 @@
       "unicode_decimal": 58908
     },
     {
-      "icon_id": "2733954",
-      "name": "标题",
-      "font_class": "title",
-      "unicode": "e6e8",
-      "unicode_decimal": 59112
-    },
-    {
-      "icon_id": "4552970",
-      "name": "邮箱",
-      "font_class": "email",
-      "unicode": "e908",
-      "unicode_decimal": 59656
-    },
-    {
       "icon_id": "4932636",
       "name": "云端上传",
       "font_class": "upload",
@@ -188,88 +223,11 @@
       "unicode_decimal": 60445
     },
     {
-      "icon_id": "6061533",
-      "name": "删除",
-      "font_class": "delete",
-      "unicode": "ec7b",
-      "unicode_decimal": 60539
-    },
-    {
-      "icon_id": "6337498",
-      "name": "编辑",
-      "font_class": "editor",
-      "unicode": "ec88",
-      "unicode_decimal": 60552
-    },
-    {
-      "icon_id": "7155218",
-      "name": "菜单",
-      "font_class": "menu",
-      "unicode": "e64f",
-      "unicode_decimal": 58959
-    },
-    {
-      "icon_id": "7791969",
-      "name": "用户名",
-      "font_class": "user",
-      "unicode": "e648",
-      "unicode_decimal": 58952
-    },
-    {
-      "icon_id": "20113481",
-      "name": "bxs-file-md",
-      "font_class": "file-md",
-      "unicode": "e6b4",
-      "unicode_decimal": 59060
-    },
-    {
-      "icon_id": "25532215",
-      "name": "Commit 1-outlined",
-      "font_class": "upload-2",
-      "unicode": "e6f0",
-      "unicode_decimal": 59120
-    },
-    {
-      "icon_id": "35929464",
-      "name": "triangle-line-up",
-      "font_class": "triangle-line-up",
-      "unicode": "ee49",
-      "unicode_decimal": 61001
-    },
-    {
       "icon_id": "35907385",
       "name": "动态-copy",
       "font_class": "dongtai",
       "unicode": "ee41",
       "unicode_decimal": 60993
-    },
-    {
-      "icon_id": "35907388",
-      "name": "登出-copy",
-      "font_class": "logout",
-      "unicode": "ee43",
-      "unicode_decimal": 60995
-    },
-    {
-      "icon_id": "35929446",
-      "name": "triangle-line-right",
-      "font_class": "triangle-line-right",
-      "unicode": "ee46",
-      "unicode_decimal": 60998
-    },
-    {
-      "icon_id": "35929447",
-      "name": "triangle-line-left",
-      "font_class": "triangle-line-left",
-      "unicode": "ee47",
-      "unicode_decimal": 60999
-    },
-    {
-      "icon_id": "35929449",
-      "name": "triangle-empty-bottom",
-      "font_class": "triangle-line-bottom",
-      "unicode": "ee48",
-      "unicode_decimal": 61000
     },
     {
       "icon_id": "6874595",
@@ -319,13 +277,6 @@
       "font_class": "info",
       "unicode": "ee3f",
       "unicode_decimal": 60991
-    },
-    {
-      "icon_id": "10232771",
-      "name": "加载",
-      "font_class": "loading",
-      "unicode": "e78b",
-      "unicode_decimal": 59275
     }
   ]
 }
