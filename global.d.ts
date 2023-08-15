@@ -17,6 +17,8 @@ declare module '@vue/runtime-core' {
         SDropdownItem: typeof import('sss-ui-plus')['SDropdownItem'],
         SScrollbar: typeof import('sss-ui-plus')['SScrollbar'],
         SCascader: typeof import('sss-ui-plus')['SCascader'],
+        SSkeleton: typeof import('sss-ui-plus')['SSkeleton'],
+        SSkeletonItem: typeof import('sss-ui-plus')['SSkeletonItem'],
 
     }
 

@@ -14,8 +14,8 @@ import SDropdown from "./SDropdown";
 import SDropdownItem from "./SDropDownItem";
 import SScrollbar from "./SScrollbar";
 import SCascader from "./SCascader";
-
-
+import SSkeleton from "./SSkeleton";
+import SSkeletonItem from "./SSkeletonItem";
 
 export {
     SInput,
@@ -34,5 +34,7 @@ export {
     SDropdownItem,
     SScrollbar,
     SCascader,
+    SSkeleton,
+    SSkeletonItem,
 
 }

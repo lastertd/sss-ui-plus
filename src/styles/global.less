@@ -1,3 +1,7 @@
+@import "border";
+@import "background";
+
+
 .sss-mark-cover {
     position: fixed;
     top: 0;
@@ -153,21 +157,16 @@
     justify-content: flex-start;
 }
 
-.is-border-box {
-    box-sizing: border-box;
-    & * {
-        box-sizing: inherit;
-    }
-}
 
-.use-light-theme {
+
+.useLightTheme {
     &[data-theme="light"]{
         background-color: var(--sss-color-white);
         color: var(--sss-color-black-light);
 
     }
 }
-.use-dark-theme {
+.useDarkTheme {
     &[data-theme="dark"]{
         background-color: var(--sss-color-black-dark);
         color: var(--sss-color-default-dark-deep);

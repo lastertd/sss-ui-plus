@@ -1,0 +1,42 @@
+
+.useBGColorGray {
+    background-color: var(--sss-color-gray);
+}
+.useBGColorGrayLighter {
+    background-color: var(--sss-color-gray-fade);
+}
+.useBGColorGrayLightest {
+    background-color: var(--sss-color-gray-deep-fade);
+}
+
+.useBGColorGrayDarker {
+    background-color: var(--sss-color-gray-dark);
+}
+.useBGColorGrayDarkest {
+    background-color: var(--sss-color-gray-dark);
+}
+.useBGScanningLine (@bgColor){
+    background: linear-gradient(
+            100deg,
+            rgba(255, 255, 255, 0) 30%,
+            rgba(255, 255, 255, .5) 50%,
+            rgba(255, 255, 255, 0) 70%
+    ) @bgColor;
+    background-size: 200% 100%;
+    background-position-x: 180%;
+    animation: 1.2s __bgLine linear infinite;
+
+}
+
+
+
+
+
+
+
+
+@keyframes __bgLine {
+    to {
+        background-position-x: -20%;
+    }
+}
