@@ -1,19 +1,8 @@
+@import "../../../src/styles/global";
+
 .sss-divider{
-    box-sizing: border-box;
+    .useBorderBox();
     position: relative;
-}
-
-.sss-divider-vertical{
-    margin: 0 10px;
-    height: 1em;
-    width: 0;
-    display: inline-flex;
-}
-
-.sss-divider-horizontal{
-    margin: 10px 0;
-    width: 100%;
-    height: 0;
 }
 
 .sss-divider-solid{
@@ -28,6 +17,10 @@
 }
 
 .sss-divider-vertical{
+    margin: 0 10px;
+    height: 1em;
+    width: 0;
+    display: inline-flex;
     & .sss-divider-content{
         transform: translateX(-50%);
         flex-flow: column nowrap;
@@ -36,6 +29,9 @@
     }
 }
 .sss-divider-horizontal{
+    margin: 10px 0;
+    width: 100%;
+    height: 0;
     & .sss-divider-content{
         transform: translateY(-50%);
         padding: 0 10px;
@@ -47,13 +43,15 @@
 
 .sss-divider-content{
     position: absolute;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    .flex-row-center-center();
     gap: 5px;
-    background: var(--sss-color-bg);
     opacity: 1;
+
+    background: var(--sss-color-bg);
     color: var(--sss-color-black-light);
 
+}
 
+body.dark .sss-divider-content{
+    background: var(--sss-color-black);     //更换背景颜色
 }

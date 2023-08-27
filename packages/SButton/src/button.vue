@@ -39,6 +39,7 @@ defineOptions({
 	name:"SButton"
 })
 
+
 const props = defineProps({...SButtonProps})
 
 const emits =  defineEmits({...SButtonEmits})

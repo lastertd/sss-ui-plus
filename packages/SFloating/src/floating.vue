@@ -1,4 +1,4 @@
-	<template>
+<template>
 
 	<div v-if="slots.reference" class="sss-floating-reference" ref="reference" :style="`display:${props.expression}`">
 		<slot name="reference"></slot>
@@ -185,10 +185,7 @@ if (props.closeOnClickBody) {
 	useEventListener(document.body, 'click', clickBody);
 }
 
-// 是否在挂载后默认打开
-onMounted(() => {
-	if (props.openOnMounted) open();
-})
+
 
 
 // trigger
@@ -242,6 +239,7 @@ if (props.trigger === 'focus') {
 
 
 
+
 onMounted(() => {
 	// ssr友好
 	import("./creatFloatingContainer").then(() => {
@@ -250,6 +248,10 @@ onMounted(() => {
 			container.appendChild(unrefElement(floating)!);
 		}
 	});
+
+	// 是否在挂载后打开
+	if (props.openOnMounted) open();
+
 
 
 })

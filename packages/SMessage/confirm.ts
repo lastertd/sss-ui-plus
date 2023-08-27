@@ -2,8 +2,8 @@ import MsgExecutor from "../SMessageBox/src/msgBox.vue";
 import {App, createApp} from "vue";
 import indexManager from "../../src/utils/managers/IndexManager";
 import {MessageTriggerTypes, MessageTypes} from "../../src/types";
-import useMark from "../../src/hooks/useMark";
 import MsgBox from "../SMessageBox/src/msgBox.vue";
+import Mark from "../../src/utils/element/Mark.ts";
 
 
 interface options {
@@ -49,37 +49,38 @@ export default function (options: Partial<options>) {
             top:options.top,
             onClose(trigger: MessageTriggerTypes) {
                 reject(trigger)
-                if (_showMark) hiddenMark();
+                if (_showMark) mark.close();
             },
             onCancel() {
                 reject('cancel')
-                if (_showMark) hiddenMark();
+                if (_showMark) mark.close();
 
             },
             onConfirm() {
-                if (_showMark) hiddenMark();
+                if (_showMark) mark.close();
                 resolve("confirm");
             },
             onOpen(){
-              if (_showMark) showMark();
+              if (_showMark) mark.open();
             },
             onClosed(){
-                mark.removeEventListener('click',handleClickMark);
+                mark.element.removeEventListener('click',handleClickMark);
                 appendTo.removeChild(mountTo);
                 app.unmount();
             }
         });
         const mountTo: HTMLElement = document.createElement('div');
         const appendTo: HTMLElement = document.body;
-        const {mark,hiddenMark, showMark} = useMark(mountTo,'cover');
+        const mark = new Mark('cover');
         const handleClickMark = function (){
             vm.close('mark');
         }
 
 
-        mark.addEventListener("click", handleClickMark);
+        mark.element.addEventListener("click", handleClickMark);
         const vm = app.mount(mountTo) as InstanceType<typeof MsgBox>;
         initMountTo(mountTo);
+        mountTo.appendChild(mark.element)
         appendTo.appendChild(mountTo);
 
 

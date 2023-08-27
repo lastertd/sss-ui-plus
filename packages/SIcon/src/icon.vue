@@ -51,6 +51,11 @@ onMounted(() => {
 })
 
 
+defineExpose({
+	hh:'111'
+})
+
+
 </script>
 
 

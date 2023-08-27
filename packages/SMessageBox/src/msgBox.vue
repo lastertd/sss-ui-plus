@@ -70,6 +70,7 @@
 		</div>
 	</transition>
 
+<!--	draggable container-->
 	<div ref="drag" :style="`top:${props.top}`" v-if="draggable" class="sss-message-draggable-container">
 
 	</div>
@@ -82,10 +83,9 @@ import SButton from "../../SButton";
 import {SMsgBoxProps, SMsgBoxEmits} from "./msgBox";
 import "./msgBox.less"
 import useFlag from "../../../src/hooks/useFlag";
-import {computed, nextTick, onMounted, Ref, ref} from "vue";
+import {computed, nextTick, Ref, ref} from "vue";
 import throttle from "../../../src/utils/decorator/throttle";
 import {fnUnion} from "../../../src/utils/fnUnion";
-import getHTMLElement from "../../../src/utils/getHTMLElement";
 import {useDraggable} from "../../../src/hooks/useDraggable";
 import {MessageTriggerTypes} from "../../../src/types";
 
@@ -98,7 +98,9 @@ defineOptions({
 const props = defineProps({...SMsgBoxProps});
 const emits = defineEmits({...SMsgBoxEmits})
 
-const closeIcon: Ref<typeof SIcon | undefined> = ref(undefined);
+
+
+const closeIcon:Ref<InstanceType<typeof SIcon> | null> = ref(null);
 const outer: Ref<HTMLElement | undefined> = ref(undefined);
 const head: Ref<HTMLElement | undefined> = ref(undefined);
 const drag: Ref<HTMLElement | undefined> = ref(undefined);
@@ -123,7 +125,7 @@ const open = fnUnion(setTrue, async () => {
 
 	if (!props.showClose) return
 	await nextTick();
-	getHTMLElement(closeIcon).focus();
+	closeIcon.value!.$el.focus();
 
 
 });

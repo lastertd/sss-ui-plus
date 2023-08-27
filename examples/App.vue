@@ -1,34 +1,71 @@
 <template>
 
 
-	<s-button @click="handleClick">click me</s-button>
-	<div class="container_">
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div class="item"></div>
-		<div>
-			<div class="item" ref="item"></div>
+	<s-button  @click="handleClick">click me</s-button>
 
-		</div>
-	</div>
 
-	<div style="height: 500px"></div>
+	<s-dialog
+		v-model="f"
+		show-foot
+	>
+		hhh
+	</s-dialog>
+
+	<button ref="btn" v-if="f" >click me</button>
+
+
+
+<!--	<el-button type="primary"></el-button>-->
+
+
+
+
+
+
+	<!--	<div class="container_">-->
+	<!--		<div class="item"></div>-->
+	<!--		<div class="item"></div>-->
+	<!--		<div class="item"></div>-->
+	<!--		<div class="item"></div>-->
+	<!--		<div class="item"></div>-->
+	<!--		<div class="item"></div>-->
+	<!--		<div>-->
+	<!--			<div class="item" ref="item"></div>-->
+
+	<!--		</div>-->
+	<!--	</div>-->
+
+	<!--	<div style="height: 500px"></div>-->
+
+	<img
+		src="https://pic.imgdb.cn/item/64ddccfa661c6c8e5441200e.jpg"
+		alt="test"
+		class="img"
+		ref="img"
+	>
 
 
 </template>
 
 <script setup lang="ts">
 
-import {onMounted, ref} from "vue";
+import {nextTick, onMounted, ref} from "vue";
 import {unrefElement, useElementVisibility} from "@vueuse/core";
+import delay from "../src/utils/delay";
+import {confirm, notify} from "../packages/SMessage";
+import useMark from "../src/hooks/useMark.ts";
 
 const item = ref();
+const img = ref();
+const btn = ref(null);
+const f=  ref(false);
+
+// useMark(btn, "cover")
+
+
 const targetIsVisible = useElementVisibility(item)
 
-const getScrollParent = function (el:HTMLElement):HTMLElement {
+const getScrollParent = function (el: HTMLElement): HTMLElement {
 	const fa = el.parentNode as HTMLElement;
 	const overflow = window.getComputedStyle(fa).overflow;
 	if (fa === document.body || el === document.body) return document.body;
@@ -38,15 +75,43 @@ const getScrollParent = function (el:HTMLElement):HTMLElement {
 
 
 const handleClick = () => {
-	const el = unrefElement(item) as HTMLElement;
-	const parent = getScrollParent(el) as HTMLElement;
-	console.log(el.offsetTop, el.getBoundingClientRect().top, parent.offsetHeight+parent.getBoundingClientRect().top)
-	console.log(targetIsVisible.value)
+	// confirm({
+	// 	title:'ggg'
+	// })
+	f.value = !f.value;
 
 
-	console.log(getScrollParent(el))
+	// const el = unrefElement(item) as HTMLElement;
+	// const parent = getScrollParent(el) as HTMLElement;
+	// console.log(el.offsetTop, el.getBoundingClientRect().top, parent.offsetHeight+parent.getBoundingClientRect().top)
+	// console.log(targetIsVisible.value)
+	//
+	//
+	// console.log(getScrollParent(el))
+  //
+	// const el = unrefElement(img) as HTMLElement;
+  // const clone = el.cloneNode(true) as HTMLElement;
+  // clone.classList.add('clearPos');
+  //
+  // const {left, top} = el.getBoundingClientRect();
+  //
+  // clone.style.left = `${left}px`;
+  // clone.style.top = `${top}px`;
+  //
+  // delay(0).then(() => {
+	//   clone.style.left = '50%';
+	//   clone.style.top = '50%';
+	//   clone.style.transform = 'translate(-50%, -50%)';
+	//   clone.style.height = '100%';
+	//   el.style.opacity = '0';
+  //
+  // })
+  //
+  //
+  //
+  // document.body.appendChild(clone);
+
 }
-
 
 
 </script>
@@ -55,12 +120,25 @@ const handleClick = () => {
 <style lang="less">
 @import "src/styles/global";
 
+.clearPos{
+	position: absolute;
+	left: 0;
+	top: 0;
+	transition: unset;
+}
+.img {
+	height: 400px;
+	transition: all .3s ease;
+}
+
+
+
 #app {
 	display: flex;
 	flex-flow: column nowrap;
 	align-items: center;
 	gap: 10px;
-	margin-top: 50px;
+	padding-top: 50px;
 	color: var(--sss-color-black-light);
 }
 
@@ -81,6 +159,8 @@ const handleClick = () => {
 	margin: 10px 0;
 	height: 100px;
 }
+
+
 
 
 </style>
