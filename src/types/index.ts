@@ -22,3 +22,5 @@ export type ComponentTag = string | 'span' | 'div';
 
 export type Expression = 'inline' | 'block' | 'inline-block';
 
+export type AnyFunction = (...args:any) => any
+

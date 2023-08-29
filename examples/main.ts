@@ -14,6 +14,8 @@ const app = createApp(App)
 app.use(ui,{
     zIndex:4000
 })
+
+
 app.use(PerfectScrollbar)
 app.mount('#app')
 

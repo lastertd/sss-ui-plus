@@ -145,17 +145,19 @@ const onClose = throttle(function (trigger: MessageTriggerTypes) {
 		done();
 	}
 
-}, {}, 500);
+}, 500);
+
+
 
 const onCancelBtnClick = throttle(function () {
 	hidden();
 	emits("cancel");
-}, {}, 500);
+}, 500);
 
 const onConfirmBtnClick = throttle(function () {
 	hidden();
 	emits('confirm');
-}, {}, 500);
+},  500);
 
 
 const handleAfterLeave = function () {

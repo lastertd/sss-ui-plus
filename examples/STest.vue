@@ -1,16 +1,24 @@
-
-
-
 <script setup lang="ts">
-import Test from "./Test";
+import {asyncDebounce, debounce} from "../src/utils/decorator/debounce.ts";
 
 
+type myType = '123' | '456';
 
-// const a = new Test(3);
-// const b = new Test(5);
-//
-//
-// console.log('a==b: ', a===b);
+const func = asyncDebounce((a: myType) => {
+	console.log(a);
+	return 'hello world!';
+}, 3000);
+
+
+let res = func('123');
+res = func('123');
+res = func('123');
+
+res.then((data) => {
+
+})
+
+
 
 
 

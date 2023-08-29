@@ -1,3 +1,5 @@
+import {AnyFunction} from "../../types";
+
 /**
  * @description
  * 节流装饰器
@@ -7,13 +9,13 @@
  * @param context
  * @param timeout
  */
-const throttle = function (fn: Function, context: object, timeout: number) {
+const throttle = function <T extends AnyFunction>(fn: T, timeout: number, context?: object) {
     let timeFlag: number = 0;
 
-    return function (...args: any): void {
+    return function (...args: Parameters<T>): void {
         const now: number = new Date().getTime();
 
-        if ( (now - timeFlag) >= timeout ) {
+        if ((now - timeFlag) >= timeout) {
             timeFlag = now;
             fn.apply(context, args);
         }
@@ -29,14 +31,14 @@ const throttle = function (fn: Function, context: object, timeout: number) {
  * @param context
  * @param timeout
  */
-const asyncThrottle = function (fn:Function, context: object, timeout: number):Function {
+const asyncThrottle = function <T extends AnyFunction>(fn: T, timeout: number, context?: object) {
     let timeFlag: number = 0;
 
-    return function (...args: any):Promise<any>{
+    return function (...args: Parameters<T>): Promise<ReturnType<T>> {
         const now: number = new Date().getTime();
 
         return new Promise((resolve) => {
-            if ( (now - timeFlag) >= timeout ) {
+            if ((now - timeFlag) >= timeout) {
                 timeFlag = now;
 
                 resolve(fn.apply(context, args));

@@ -1,3 +1,5 @@
+import {AnyFunction} from "../../types";
+
 /**
  * @description
  * 防抖装饰器。
@@ -8,16 +10,17 @@
  * @param timeout
  */
 
-const debounce = function (fn:() => void, context:object, timeout:number = 0):Function {
-    let timer:any;
+const debounce = function <T extends AnyFunction>(fn: T, timeout: number = 0, context?: object) {
+    let timer: any;
 
-    return function (...args: any){
+    return function (...args: Parameters<T>): void {
         clearTimeout(timer);
         timer = setTimeout(() => {
             fn.apply(context, args);
-        },timeout)
+        }, timeout)
     }
 }
+
 
 /**
  * @description
@@ -28,15 +31,15 @@ const debounce = function (fn:() => void, context:object, timeout:number = 0):Fu
  * @param context
  * @param timeout
  */
-const asyncDebounce = function (fn:Function, context:object, timeout:number = 0):Function {
-    let timer:any;
-    return  function (...args: any): Promise<any>{
+const asyncDebounce = function <T extends AnyFunction>(fn: T, timeout: number = 0, context?: object) {
+    let timer: any;
+    return function (...args: Parameters<T>): Promise<ReturnType<T>> {
         clearTimeout(timer);
 
         return new Promise((resolve) => {
             timer = setTimeout(() => {
                 resolve(fn.apply(context, args));
-            },timeout)
+            }, timeout)
         })
     }
 }
