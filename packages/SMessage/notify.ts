@@ -1,6 +1,6 @@
 import MsgExecutor from "../SMessageBox/src/msgBox.vue";
 import { createApp} from "vue";
-import indexManager from "../../src/utils/managers/IndexManager";
+import IndexManager from "../../src/utils/managers/IndexManager";
 import LayoutManager from "../../src/utils/managers/LayoutManager";
 import delay from "../../src/utils/delay";
 import {MessageTypes} from "../../src/types";
@@ -51,6 +51,7 @@ const autoLayoutUp = new LayoutManager('up');
 const autoLayoutUp2 = new LayoutManager('up');
 
 
+
 /**
  * @description 向管理器中添加节点
  * @param el
@@ -72,23 +73,40 @@ const push = function (el:HTMLElement, placement: positions) {
     }
 }
 
+
+// el的上一个元素聚焦
+const previousEleFocus = function (layout:LayoutManager, el:HTMLElement){
+    const previousPos = layout.getIndexOf(el) - 1;
+    (layout.getEl(previousPos)?.firstElementChild as HTMLElement)?.focus()
+
+}
+
 /**
  * @description 从管理器中删除节点
  * @param mountTo
  * @param placement
  */
-const close = function (mountTo:HTMLElement, placement: positions) {
+const del = function (mountTo:HTMLElement, placement: positions) {
     if (placement === 'top-right') {
+        previousEleFocus(autoLayoutDown, mountTo);
+
         autoLayoutDown.delete(mountTo);
+
     }
     else if (placement === 'bottom-right') {
+        previousEleFocus(autoLayoutUp, mountTo);
+
         autoLayoutUp.delete(mountTo);
     }
     else if (placement === 'top-left') {
+        previousEleFocus(autoLayoutDown2, mountTo);
+
         autoLayoutDown2.delete(mountTo);
 
     }
     else if (placement === 'bottom-left') {
+        previousEleFocus(autoLayoutUp2, mountTo);
+
         autoLayoutUp2.delete(mountTo);
     }
 
@@ -109,7 +127,7 @@ export default async function (options:Partial<options>) {
         showClose:true,
         transition: (placement === "top-left" || placement === 'bottom-left') ? 'notify-left':'notify-right',
         onClose(){
-            close(mountTo, placement);
+            del(mountTo, placement);
             delay(500).then(() => {
                 appendTo.removeChild(mountTo);
                 app.unmount();
@@ -163,20 +181,20 @@ const initMountTo = function (el:HTMLElement, placement:string, offset:number) {
 
     // 修改即将出现的el的位移
     if (placement === 'top-right') {
-        el.style.top = `${autoLayoutDown.next()}px`;
+        el.style.top = `${autoLayoutDown.nextPos()}px`;
     }
     else if (placement === 'top-left') {
-        el.style.top = `${autoLayoutDown2.next()}px`;
+        el.style.top = `${autoLayoutDown2.nextPos()}px`;
     }
     else if (placement === 'bottom-right' ) {
-        el.style.bottom = `${autoLayoutUp.next()}px`;
+        el.style.bottom = `${autoLayoutUp.nextPos()}px`;
     }
     else if(placement === 'bottom-left') {
-        el.style.bottom = `${autoLayoutUp2.next()}px`;
+        el.style.bottom = `${autoLayoutUp2.nextPos()}px`;
 
     }
     el.classList.add('sss-message-notify-container')
-    el.style.zIndex = indexManager.nextIndex().toString();
+    el.style.zIndex = new IndexManager().nextIndex().toString();
 
 
 }

@@ -1,6 +1,6 @@
 import MsgExecutor from "../SMessageBox/src/msgBox.vue";
 import {App, createApp} from "vue";
-import indexManager from "../../src/utils/managers/IndexManager";
+import IndexManager from "../../src/utils/managers/IndexManager";
 import {MessageTriggerTypes, MessageTypes} from "../../src/types";
 import MsgBox from "../SMessageBox/src/msgBox.vue";
 import Mark from "../../src/utils/element/Mark.ts";
@@ -28,6 +28,7 @@ interface options {
 
     draggable: Boolean,
 }
+
 
 
 export default function (options: Partial<options>) {
@@ -95,7 +96,7 @@ export default function (options: Partial<options>) {
 
 const initMountTo = function (el: HTMLElement) {
     el.classList.add('sss-message-confirm-container')
-    el.style.zIndex = indexManager.nextIndex().toString();
+    el.style.zIndex = new IndexManager().nextIndex().toString();
 
 
 }

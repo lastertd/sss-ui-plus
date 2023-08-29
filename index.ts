@@ -6,7 +6,6 @@ import "./src/styles/icons/iconfont.css"
 
 
 import installer from "./installer";
-import {onMounted} from "vue";
 export * from "./packages"
 export * from "./packages/SMessage"
 

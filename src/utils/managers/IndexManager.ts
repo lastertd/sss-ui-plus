@@ -1,6 +1,7 @@
+import singleTon from "../singleTon";
 class IndexManager{
-    index:number
-    constructor(index:number) {
+    protected index:number
+    constructor(index:number = 2000) {
         this.index = index;
     }
     nextIndex(){
@@ -8,4 +9,4 @@ class IndexManager{
     }
 }
 
-export default new IndexManager(2000);
+export default singleTon(IndexManager);

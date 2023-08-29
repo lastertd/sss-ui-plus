@@ -48,7 +48,7 @@ import useLockScroll from "../../../src/hooks/useLockScroll";
 import useMark from "../../../src/hooks/useMark";
 import {nextTick, onMounted, Ref, watch, ref} from "vue";
 import {unrefElement, useEventListener} from "@vueuse/core";
-import indexManager from "../../../src/utils/managers/IndexManager";
+import IndexManager from "../../../src/utils/managers/IndexManager";
 import {MessageTriggerTypes} from "../../../src/types";
 
 
@@ -58,6 +58,7 @@ defineOptions({
 
 const props = defineProps({...SDrawerProps});
 const emits = defineEmits({...SDialogEmits})
+const indexManager = new IndexManager();
 
 
 const msgBox: Ref<InstanceType<typeof MsgBox> | null> = ref(null);

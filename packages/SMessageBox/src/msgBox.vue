@@ -123,9 +123,10 @@ const open = fnUnion(setTrue, async () => {
 	emits("open");
 	if (props.draggable) drag.value!.appendChild(outer.value!);
 
-	if (!props.showClose) return
 	await nextTick();
-	closeIcon.value!.$el.focus();
+
+	outer.value?.focus();
+	closeIcon.value?.$el.focus();
 
 
 });

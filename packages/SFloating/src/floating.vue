@@ -50,6 +50,7 @@ defineOptions({
 const props = defineProps({...SFloatingProps});
 const emits = defineEmits({...SFloatingEmits});
 const slots = useSlots();
+const indexManager = new IndexManager();
 
 // 在floating不可见时， 阻止修改css样式
 let _:any;
@@ -107,7 +108,7 @@ const open = () => {
 
 	openTimer = setTimeout(() => {
 		setTrue();
-		floating.value!.style.zIndex = IndexManager.nextIndex().toString();
+		floating.value!.style.zIndex = indexManager.nextIndex().toString();
 
 
 		emits("open");

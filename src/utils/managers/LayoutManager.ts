@@ -32,7 +32,7 @@ class LayoutManager{
     /**
      * @description 下一个元素的位置
      */
-    next() {
+    nextPos() {
         let res = 0;
         this.appList.forEach(item => {
             res += parseInt(item.getAttribute('data-space') as string) + item.offsetHeight;
@@ -40,6 +40,13 @@ class LayoutManager{
         return res;
     }
 
+    getEl(index:number):HTMLElement | undefined {
+        return this.appList[index];
+    }
+
+    getIndexOf(el:HTMLElement) :number {
+        return this.appList.indexOf(el);
+    }
     /**
      * @description 更新元素位置
      * @protected
@@ -52,6 +59,9 @@ class LayoutManager{
             this._layoutDown();
         }
     }
+
+
+
     protected _layoutUp(){
         let bottom = 0;
         this.appList.forEach(item => {

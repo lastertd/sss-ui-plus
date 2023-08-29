@@ -2,7 +2,7 @@ import MsgExecutor from "../SMessageBox/src/msgBox.vue";
 import {App, createApp} from "vue";
 import delay from "../../src/utils/delay";
 import LayoutManager from "../../src/utils/managers/LayoutManager";
-import indexManager from "../../src/utils/managers/IndexManager";
+import IndexManager from "../../src/utils/managers/IndexManager";
 import {MessageTypes} from "../../src/types";
 import MsgBox from "../SMessageBox/src/msgBox.vue";
 
@@ -15,41 +15,41 @@ interface options {
     /**
      * @description 消息的图标
      */
-    icon:string,
+    icon: string,
     /**
      * @description 消息的主体
      */
-    text:string,
+    text: string,
     /**
      * @description 消息的存活时间
      */
-    timeout:number,
+    timeout: number,
     /**
      * @description 距离上一个消息的间距
      */
-    offset:number,
+    offset: number,
 
-    showClose:Boolean,
+    showClose: Boolean,
 }
 
 // 管理notify的位移
 const autoLayoutDown = new LayoutManager('down');
 
 
-
-
-
-
-export default async function (options:Partial<options>) {
+export default async function (options: Partial<options>) {
     const {timeout = 3000, offset = 10} = options;
-    const app: App<Element> = createApp(MsgExecutor,{
-        type:options.type,
-        icon:options.icon,
-        title:options.text,
-        showHead:true,
-        showClose:options.showClose,
+    const app: App<Element> = createApp(MsgExecutor, {
+        type: options.type,
+        icon: options.icon,
+        title: options.text,
+        showHead: true,
+        showClose: options.showClose,
         transition: 'msg',
-        onClose(){
+        onClose() {
+
+            // 上一个节点聚焦
+            (autoLayoutDown.getEl(autoLayoutDown.getIndexOf(mountTo) - 1)?.firstElementChild as HTMLElement)?.focus();
+
             autoLayoutDown.delete(mountTo);
             delay(500).then(() => {
                 appendTo.removeChild(mountTo);
@@ -71,7 +71,7 @@ export default async function (options:Partial<options>) {
 
 
     // 不会自动关闭
-    if (timeout === 0){
+    if (timeout === 0) {
         return
     }
 
@@ -80,20 +80,15 @@ export default async function (options:Partial<options>) {
     vm.close('system');
 
 
-
-
 }
 
 
-
-const initMountTo = function (el:HTMLElement, offset:number ) {
+const initMountTo = function (el: HTMLElement, offset: number) {
     el.classList.add('pos-top-center');
     el.classList.add('sss-message-msg-container')
-    el.setAttribute('data-space',offset.toString());
-    el.style.top = `${autoLayoutDown.next()}px`;
-    el.style.zIndex = indexManager.nextIndex().toString();
-
-
+    el.setAttribute('data-space', offset.toString());
+    el.style.top = `${autoLayoutDown.nextPos()}px`;
+    el.style.zIndex = new IndexManager().nextIndex().toString();
 
 
 }
