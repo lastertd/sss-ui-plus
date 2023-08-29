@@ -2,14 +2,11 @@ import {AnyFunction} from "../../types";
 
 /**
  * @description
- * 防抖装饰器。
- * 注意fn必须是空返回值。
- * 新函数没有返回值。
+ * 防抖装饰器, fn返回值将被忽略
  * @param fn
- * @param context
- * @param timeout
+ * @param timeout default = 0
+ * @param context 执行上下文
  */
-
 const debounce = function <T extends AnyFunction>(fn: T, timeout: number = 0, context?: object) {
     let timer: any;
 
@@ -24,12 +21,10 @@ const debounce = function <T extends AnyFunction>(fn: T, timeout: number = 0, co
 
 /**
  * @description
- * 异步防抖装饰器。
- * fn必须有返回值。
- * 新函数返回原值。
+ * 异步防抖装饰器, 适用于fn需要返回值的时候
  * @param fn
- * @param context
- * @param timeout
+ * @param timeout default = 0
+ * @param context 执行上下文
  */
 const asyncDebounce = function <T extends AnyFunction>(fn: T, timeout: number = 0, context?: object) {
     let timer: any;

@@ -2,14 +2,12 @@ import {AnyFunction} from "../../types";
 
 /**
  * @description
- * 节流装饰器
- * 注意fn空返回值
- * 新函数无返回值
+ * 节流装饰器, fn返回值将被忽略
  * @param fn
- * @param context
- * @param timeout
+ * @param timeout default = 0
+ * @param context 执行上下文
  */
-const throttle = function <T extends AnyFunction>(fn: T, timeout: number, context?: object) {
+const throttle = function <T extends AnyFunction>(fn: T, timeout: number = 0, context?: object) {
     let timeFlag: number = 0;
 
     return function (...args: Parameters<T>): void {
@@ -24,14 +22,12 @@ const throttle = function <T extends AnyFunction>(fn: T, timeout: number, contex
 
 /**
  * @description
- * 异步节流装饰器。
- * 注意fn需要有返回值
- * 新函数返回原值
+ * 异步节流装饰器, 适用于fn需要返回值的时候
  * @param fn
- * @param context
- * @param timeout
+ * @param timeout default = 0
+ * @param context 执行上下文
  */
-const asyncThrottle = function <T extends AnyFunction>(fn: T, timeout: number, context?: object) {
+const asyncThrottle = function <T extends AnyFunction>(fn: T, timeout: number = 0, context?: object) {
     let timeFlag: number = 0;
 
     return function (...args: Parameters<T>): Promise<ReturnType<T>> {
