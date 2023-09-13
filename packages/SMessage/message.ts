@@ -1,8 +1,7 @@
 import MsgExecutor from "../SMessageBox/src/msgBox.vue";
 import {App, createApp} from "vue";
-import delay from "../../src/utils/delay";
-import LayoutManager from "../../src/utils/managers/LayoutManager";
-import IndexManager from "../../src/utils/managers/IndexManager";
+import {IndexManager, delay, LayoutManager} from "@sss-ui-plus/utils";
+
 import {MessageTypes} from "../../src/types";
 import MsgBox from "../SMessageBox/src/msgBox.vue";
 

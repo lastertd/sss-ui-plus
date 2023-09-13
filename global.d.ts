@@ -20,6 +20,7 @@ declare module '@vue/runtime-core' {
         SSkeleton: typeof import('sss-ui-plus')['SSkeleton'],
         SSkeletonItem: typeof import('sss-ui-plus')['SSkeletonItem'],
 
+
     }
 
     interface ComponentCustomProperties {

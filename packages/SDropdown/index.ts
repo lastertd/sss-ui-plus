@@ -1,9 +1,10 @@
 import Dropdown from "./src/dropdown.vue";
 import {App} from "vue";
+import {registerInstall} from "@sss-ui-plus/utils";
 
 Dropdown.install = function (Vue:App) {
     Vue.component('SDropdown',Dropdown);
 }
 
 
-export default Dropdown;
+export default registerInstall(Dropdown)

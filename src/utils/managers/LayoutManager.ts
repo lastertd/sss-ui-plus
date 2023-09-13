@@ -82,4 +82,6 @@ class LayoutManager{
 }
 
 
-export default LayoutManager
+export {
+    LayoutManager
+}

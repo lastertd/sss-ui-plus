@@ -8,4 +8,6 @@ const singleTon = function <T extends AnyConstructor>(classType: T) {
     })
 }
 
-export default singleTon
+export {
+    singleTon
+}

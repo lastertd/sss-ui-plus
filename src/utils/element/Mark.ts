@@ -1,7 +1,8 @@
 import {noop} from "@vueuse/core";
 
+
 export type MarkType = 'cover' | 'part';
-export default class Mark {
+class Mark {
     readonly element: HTMLElement
     protected closed: () => void
 
@@ -43,6 +44,9 @@ export default class Mark {
     }
 
 
+}
+export {
+    Mark,
 }
 
 

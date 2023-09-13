@@ -1,6 +1,6 @@
 import {onUnmounted, Ref, watch} from "vue";
 import {noop, unrefElement} from "@vueuse/core";
-import Mark, {MarkType} from "../utils/element/Mark";
+import {Mark, MarkType} from "@sss-ui-plus/utils"
 
 
 /**

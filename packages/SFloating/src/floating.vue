@@ -39,7 +39,8 @@ import {computed, onMounted, watch, ref, useSlots, onBeforeUnmount} from "vue";
 import {unrefElement, useEventListener, useMutationObserver} from "@vueuse/core";
 import useFlag from "../../../src/hooks/useFlag";
 
-import IndexManager from "../../../src/utils/managers/IndexManager";
+import {IndexManager} from "@sss-ui-plus/utils";
+
 
 
 defineOptions({

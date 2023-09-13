@@ -52,7 +52,7 @@ import useLockScroll from "../../../src/hooks/useLockScroll";
 import useMark from "../../../src/hooks/useMark";
 import {nextTick, onMounted, watch, ref} from "vue";
 import {unrefElement, useEventListener} from "@vueuse/core";
-import IndexManager from "../../../src/utils/managers/IndexManager";
+import {IndexManager} from "@sss-ui-plus/utils";
 import {MessageTriggerTypes} from "../../../src/types";
 import {SDialogEmits, SDialogProps} from "./dialog";
 import "./dialog.less"

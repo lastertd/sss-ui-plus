@@ -84,8 +84,8 @@ import {SMsgBoxProps, SMsgBoxEmits} from "./msgBox";
 import "./msgBox.less"
 import useFlag from "../../../src/hooks/useFlag";
 import {computed, nextTick, Ref, ref} from "vue";
-import throttle from "../../../src/utils/decorator/throttle";
-import {fnUnion} from "../../../src/utils/fnUnion";
+import {throttle} from "@sss-ui-plus/utils";
+import {fnUnion} from "@sss-ui-plus/utils";
 import {useDraggable} from "../../../src/hooks/useDraggable";
 import {MessageTriggerTypes} from "../../../src/types";
 

@@ -1,4 +1,4 @@
-import {AnyFunction} from "../../types";
+type AnyFunction = (...args:any) => any
 
 /**
  * @description
@@ -50,4 +50,3 @@ export {
     asyncThrottle
 }
 
-export default throttle

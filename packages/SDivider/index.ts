@@ -1,9 +1,10 @@
 import Divider from "./src/divider.vue";
 import {App} from "vue";
+import {registerInstall} from "@sss-ui-plus/utils";
 
 
 Divider.install = function (Vue:App) {
     Vue.component('SDivider', Divider);
 }
 
-export default Divider;
+export default registerInstall(Divider);

@@ -1,7 +1,6 @@
 import {App} from "vue";
 import * as comps from "./packages";
-import IndexManager from "./src/utils/managers/IndexManager";
-
+import {IndexManager} from "@sss-ui-plus/utils";
 
 declare interface SuiOptions {
     zIndex:number
@@ -13,7 +12,6 @@ const init = function (options?:Partial<SuiOptions>) {
 
     const {zIndex = 2000} = options;
 
-    console.log(zIndex)
 
     new IndexManager(zIndex);
 
@@ -23,7 +21,7 @@ const init = function (options?:Partial<SuiOptions>) {
 const installer = function (Vue:App, options?:Partial<SuiOptions>) {
     init(options);
     for (let key in comps){
-        Vue.component(key, comps[key]);
+        Vue.component(key, Reflect.get(comps, key));
     }
 }
 

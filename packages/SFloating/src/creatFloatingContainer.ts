@@ -1,4 +1,4 @@
-import IndexManager from "../../../src/utils/managers/IndexManager";
+import {IndexManager} from "@sss-ui-plus/utils";
 
 
 const _ = function () {

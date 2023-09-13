@@ -3,20 +3,22 @@ import { createApp } from 'vue'
 
 import App from './App.vue'
 
+/*css引入 特别注意全局样式最先引入*/
+
 import ui from "../index"
 
-import PerfectScrollbar from 'vue3-perfect-scrollbar'
-import 'vue3-perfect-scrollbar/dist/vue3-perfect-scrollbar.css'
+
+
 
 
 const app = createApp(App)
-
 app.use(ui,{
-    zIndex:4000
+    zIndex:3000
 })
 
 
-app.use(PerfectScrollbar)
+
+
 app.mount('#app')
 
 

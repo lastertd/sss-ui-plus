@@ -21,7 +21,8 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+
   },
   "include": [
     "src/**/*.ts",
@@ -34,10 +35,7 @@
     "packages/**/*.tsx",
     "packages/**/*.vue",
 
-    "examples/**/*.ts",
-    "examples/**/*.d.ts",
-    "examples/**/*.tsx",
-    "examples/**/*.vue",
+
 
     "index.ts",
     "installer.ts"

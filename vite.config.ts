@@ -12,49 +12,54 @@ import {terser} from "rollup-plugin-terser";
 // https://vitejs.dev/config/
 export default defineConfig({
     plugins: [
+
         vue(),
         DefineOptions(),
-        // dts({
-        //     outDir: ['es', "lib"],
-        //     tsConfigFilePath: resolve(__dirname, "tsconfig.json"),
-        // }),
-        // postcss({
-        //     extract: 'index.css',
-        //     plugins: [autoprefixer()],
-        //
-        // }),
-        // terser({
-        //     format: {
-        //         comments: 'all', // 保留至少包含 "@license" 或 "@preserve" 的注释
-        //     },
-        // }),
-        // copy({
-        //     targets: [
-        //         {src: 'es/*.css', dest: 'dist'},
-        //     ],
-        //     verbose: true,
-        //     hook: 'generateBundle'
-        //
-        // }),
-        // del({
-        //     targets: [
-        //         // 设置删除规则，删除原来位置的 CSS 文件
-        //         'es/*.css',
-        //         'lib/*.css',
-        //         'dist/style.css',
-        //     ],
-        //     hook: 'closeBundle', // 在 writeBundle 钩子时执行删除操作
-        // }),
+        dts({
+            outDir: ['es', "lib"],
+            tsConfigFilePath: resolve(__dirname, "tsconfig.json"),
+        }),
+        postcss({
+            extract: 'index.css',
+            plugins: [autoprefixer()],
+
+        }),
+
+        terser({
+            format: {
+                comments: 'all', // 保留至少包含 "@license" 或 "@preserve" 的注释
+            },
+        }),
+        copy({
+            targets: [
+                {src: 'es/*.css', dest: 'dist'},
+            ],
+            verbose: true,
+            hook: 'generateBundle'
+
+        }),
+        del({
+            targets: [
+                // 设置删除规则，删除原来位置的 CSS 文件
+                'es/*.css',
+                'lib/*.css',
+                'dist/style.css',
+            ],
+            hook: 'closeBundle', // 在 writeBundle 钩子时执行删除操作
+        }),
     ],
+
 
     build: {
 
         rollupOptions: {
-            external: ["vue", '@vueuse/core', '@floating-ui/vue','@floating-ui/vue'],
+
+            external: ["vue", '@vueuse/core', '@floating-ui/vue', '@floating-ui/vue', '@sss-ui-plus/utils'],
             input: './index.ts',
 
             output: [
                 {
+
                     format: "es",
                     entryFileNames: "[name].mjs",
                     //让打包目录和我们目录对应
@@ -76,10 +81,12 @@ export default defineConfig({
 
         },
         lib: {
+
             entry: "./index.ts",
             name: 'sss-ui-plus',
             fileName: 'sss-ui-plus',
             formats: ["es", "umd", "cjs"],
+
         }
 
 

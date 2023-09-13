@@ -1,4 +1,5 @@
-import {AnyFunction} from "../../types";
+ type AnyFunction = (...args:any) => any
+
 
 /**
  * @description
@@ -31,9 +32,13 @@ const asyncDebounce = function <T extends AnyFunction>(fn: T, timeout: number = 
     return function (...args: Parameters<T>): Promise<ReturnType<T>> {
         clearTimeout(timer);
 
-        return new Promise((resolve) => {
+        return new Promise((resolve, reject) => {
             timer = setTimeout(() => {
-                resolve(fn.apply(context, args));
+                try {
+                    resolve(fn.apply(context, args));
+                } catch (e) {
+                    reject(e);
+                }
             }, timeout)
         })
     }
@@ -45,4 +50,3 @@ export {
     asyncDebounce
 }
 
-export default debounce

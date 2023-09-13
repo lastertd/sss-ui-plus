@@ -16,8 +16,12 @@ export const SInputProps = {
         default: SInputTypes[0],
     },
     modelValue: {
-        type: String || Number || null || undefined
+        type: String || Number || null || undefined,
+
     },
+    /**
+     * @description test
+     */
     placeholder: String,
     maxLength: Number,
     minLength: Number,
@@ -35,11 +39,10 @@ export const SInputProps = {
     suffixIcon:String,
     
     checkFunc:Function as PropType<(value:string, alert:(alertText:string, alertIcon?:string ) => void) => void>
-    
-    
+
+} as const
 
 
-}
 
 
 

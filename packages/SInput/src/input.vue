@@ -7,12 +7,12 @@
 			}
 		]"
 	>
-<!--		input prefixSlot-->
+		<!--		input prefixSlot-->
 		<div class="sss-input-prefixSlot" v-if="$slots.prefixSlot">
 			<slot name="prefixSlot"></slot>
 		</div>
 
-<!--		input prefix icon-->
+		<!--		input prefix icon-->
 		<label :for="props.id" @mousedown.prevent v-if="props.prefixIcon">
 			<s-icon class="sss-input-icon" style="padding-right: 0" :target="props.prefixIcon"></s-icon>
 		</label>
@@ -38,12 +38,12 @@
 			@compositionend="handleCompositionEnd"
 		>
 
-<!--		input suffix icon-->
+		<!--		input suffix icon-->
 		<label :for="props.id" @mousedown.prevent v-if="props.suffixIcon">
 			<s-icon class="sss-input-icon" :target="props.suffixIcon"></s-icon>
 		</label>
 
-<!--		input word limit icon-->
+		<!--		input word limit icon-->
 		<label
 			v-if="showWordLimit"
 			class="sss-input-limit"
@@ -81,15 +81,12 @@
 
 		<!--	input alert-->
 		<transition name="sss-transition-down-fade">
-			<label v-if="alertFlag"  class="sss-input-alert" :for="id" >
+			<label v-if="alertFlag" class="sss-input-alert" :for="id">
 				<s-icon :target="alertIcon"></s-icon>
 				{{ alertText }}
 			</label>
 		</transition>
 	</div>
-
-
-
 
 
 </template>
@@ -99,22 +96,25 @@ import "./input.less"
 import {SInputEmits, SInputProps} from "./input";
 import SIcon from "../../SIcon/src/icon.vue";
 
-import {computed, onMounted, Ref, watch, ref} from "vue";
+import {computed, onMounted, Ref, watch, ref, ExtractPropTypes, ComponentObjectPropsOptions} from "vue";
 
 defineOptions({
 	name: "SInput",
-	inheritAttrs:false
+	inheritAttrs: false
 })
+
+
 
 const props = defineProps({...SInputProps});
 const emits = defineEmits({...SInputEmits});
 
 
-const inner:Ref<HTMLElement | undefined> = ref(undefined);
+
+const inner: Ref<HTMLElement | undefined> = ref(undefined);
 /**
  * 标志是否正在组合中文
  */
-const composing:Ref<Boolean> = ref(false);
+const composing: Ref<Boolean> = ref(false);
 /**
  * 判断是不是第一次输入，此时如果没有绑定v-model将会控制台提示
  */
@@ -127,10 +127,10 @@ let f = true;
 const alertFlag = ref(false);
 const alertText = ref("default text");
 const alertIcon = ref("error");
-const alert = function (text:string, icon?:string) {
+const alert = function (text: string, icon?: string) {
 	alertFlag.value = true;
 	alertText.value = text;
-	alertIcon.value = icon ? icon:"error";
+	alertIcon.value = icon ? icon : "error";
 
 }
 
@@ -205,7 +205,7 @@ const handleCompositionEnd = function () {
 	emits('input', input.value);
 }
 
-const handleBlur =  function () {
+const handleBlur = function () {
 	if (props.checkFunc) {
 		props.checkFunc(props.modelValue as string, alert)
 	}
@@ -240,7 +240,6 @@ watch(modelValue, () => {
 onMounted(() => {
 	setNativeInputValue();
 })
-
 
 
 </script>

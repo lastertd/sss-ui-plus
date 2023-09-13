@@ -1,9 +1,8 @@
 import MsgExecutor from "../SMessageBox/src/msgBox.vue";
 import {App, createApp} from "vue";
-import IndexManager from "../../src/utils/managers/IndexManager";
+import {IndexManager, Mark} from "@sss-ui-plus/utils";
 import {MessageTriggerTypes, MessageTypes} from "../../src/types";
 import MsgBox from "../SMessageBox/src/msgBox.vue";
-import Mark from "../../src/utils/element/Mark.ts";
 
 
 interface options {

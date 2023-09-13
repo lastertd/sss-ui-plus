@@ -1,5 +1,6 @@
 import Input from "./src/input.vue";
 import {App} from "vue";
+import {registerInstall} from "@sss-ui-plus/utils";
 
 
 
@@ -10,4 +11,4 @@ Input.install = function (Vue:App) {
 
 }
 
-export default Input
+export default registerInstall(Input)

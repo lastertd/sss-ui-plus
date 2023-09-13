@@ -36,11 +36,12 @@ import SIcon from "../../SIcon";
 
 
 defineOptions({
-	name:"SButton"
+	name:"SButton",
 })
 
 
 const props = defineProps({...SButtonProps})
+
 
 const emits =  defineEmits({...SButtonEmits})
 

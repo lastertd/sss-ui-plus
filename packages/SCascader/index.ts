@@ -5,4 +5,4 @@ Cascader.install = function (Vue:App) {
     Vue.component("SCascader",Cascader);
 }
 
-export default  Cascader;
+export default  Cascader

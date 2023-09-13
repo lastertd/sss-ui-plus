@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import "./skeletonItem.less"
 import {SSkeletonItemProps} from "./skeletonItem";
-import {computed, inject, onMounted, Ref, ref} from "vue";
+import {inject, Ref, ref} from "vue";
 import {MaybeHTMLElement} from "../../../src/types";
 
 const props = defineProps({...SSkeletonItemProps});

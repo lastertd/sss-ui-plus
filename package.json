@@ -4,7 +4,8 @@
   "module": "es/index.mjs",
   "types": "es/index.d.ts",
   "private": false,
-  "version": "0.2.0-beta.10",
+  "sideEffects": false,
+  "version": "0.2.0-beta.12",
   "type": "module",
   "author": {
     "name": "laster",
@@ -22,12 +23,15 @@
     "build": "vue-tsc && vite build",
     "preview": "vite preview"
   },
+  "workspaces": [
+    "src/utils"
+  ],
   "dependencies": {
+    "@sss-ui-plus/utils": "workspace:*",
     "@floating-ui/vue": "^1.0.2",
     "@vue/runtime-core": "^3.3.4",
     "@vueuse/core": "^10.2.1",
-    "vue": "^3.3.4",
-    "vue3-perfect-scrollbar": "^1.6.1"
+    "vue": "^3.3.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.2.3",
@@ -38,7 +42,9 @@
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-terser": "^7.0.2",
-    "typescript": "^5.0.2",
+    "rollup-plugin-typescript2": "^0.35.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2",
     "unplugin-vue-define-options": "^1.3.11",
     "vite": "^4.4.0",
     "vite-plugin-dts": "^3.3.1",
