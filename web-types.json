@@ -1,0 +1,290 @@
+{
+  "framework": "vue",
+  "name": "sss-ui-plus",
+  "version": "0.2.0-beta.17",
+  "contributions": {
+    "html": {
+      "description-markup": "markdown",
+      "types-syntax": "typescript",
+      "tags": [
+        {
+          "name": "button",
+          "description": "",
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./packages/SButton/src/button.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "cascader",
+          "description": "",
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./packages/SCascader/src/cascader.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "dialog",
+          "description": "",
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./packages/SDialog/src/dialog.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "divider",
+          "description": "",
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./packages/SDivider/src/divider.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "drawer",
+          "description": "",
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./packages/SDrawer/src/drawer.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "dropdown",
+          "description": "",
+          "slots": [
+            {
+              "name": "reference"
+            },
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./packages/SDropdown/src/dropdown.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "dropdownItem",
+          "description": "",
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./packages/SDropDownItem/src/dropdownItem.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "floating",
+          "description": "",
+          "slots": [
+            {
+              "name": "reference"
+            },
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./packages/SFloating/src/floating.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "icon",
+          "description": "",
+          "attributes": [
+            {
+              "name": "target",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            },
+            {
+              "name": "verticalPadding",
+              "value": {
+                "kind": "expression",
+                "type": "number"
+              }
+            },
+            {
+              "name": "rotating",
+              "value": {
+                "kind": "expression",
+                "type": "boolean"
+              }
+            },
+            {
+              "name": "color",
+              "value": {
+                "kind": "expression",
+                "type": "string"
+              }
+            }
+          ],
+          "source": {
+            "module": "./packages/SIcon/src/icon.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "input",
+          "description": "",
+          "slots": [
+            {
+              "name": "prefixSlot"
+            },
+            {
+              "name": "suffixSlot"
+            }
+          ],
+          "source": {
+            "module": "./packages/SInput/src/input.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "link",
+          "description": "",
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./packages/SLink/src/link.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "msgBox",
+          "description": "",
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./packages/SMessageBox/src/msgBox.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "popconfirm",
+          "description": "",
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./packages/SPopConfirm/src/popconfirm.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "row",
+          "description": "",
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./packages/SRow/src/row.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "scrollbar",
+          "description": "",
+          "slots": [
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./packages/SScrollbar/src/scrollbar.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "skeleton",
+          "description": "",
+          "slots": [
+            {
+              "name": "skeleton"
+            },
+            {
+              "name": "default"
+            }
+          ],
+          "source": {
+            "module": "./packages/SSkeleton/src/skeleton.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "skeletonItem",
+          "description": "",
+          "source": {
+            "module": "./packages/SSkeletonItem/src/skeletonItem.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "switch",
+          "description": "",
+          "source": {
+            "module": "./packages/SSwitch/src/switch.vue",
+            "symbol": "default"
+          }
+        },
+        {
+          "name": "tooltip",
+          "description": "",
+          "slots": [
+            {
+              "name": "default"
+            },
+            {
+              "name": "content"
+            }
+          ],
+          "source": {
+            "module": "./packages/STooltip/src/tooltip.vue",
+            "symbol": "default"
+          }
+        }
+      ]
+    }
+  }
+}

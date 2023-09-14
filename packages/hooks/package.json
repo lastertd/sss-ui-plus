@@ -1,0 +1,8 @@
+{
+  "name": "@sss-ui-plus/hooks",
+  "version": "1.0.0",
+  "private": false,
+  "main": "index.ts",
+  "dependencies": {
+  }
+}

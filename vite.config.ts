@@ -15,38 +15,38 @@ export default defineConfig({
 
         vue(),
         DefineOptions(),
-        dts({
-            outDir: ['es', "lib"],
-            tsConfigFilePath: resolve(__dirname, "tsconfig.json"),
-        }),
-        postcss({
-            extract: 'index.css',
-            plugins: [autoprefixer()],
-
-        }),
-
-        terser({
-            format: {
-                comments: 'all', // 保留至少包含 "@license" 或 "@preserve" 的注释
-            },
-        }),
-        copy({
-            targets: [
-                {src: 'es/*.css', dest: 'dist'},
-            ],
-            verbose: true,
-            hook: 'generateBundle'
-
-        }),
-        del({
-            targets: [
-                // 设置删除规则，删除原来位置的 CSS 文件
-                'es/*.css',
-                'lib/*.css',
-                'dist/style.css',
-            ],
-            hook: 'closeBundle', // 在 writeBundle 钩子时执行删除操作
-        }),
+        // dts({
+        //     outDir: ['es', "lib"],
+        //     tsConfigFilePath: resolve(__dirname, "tsconfig.json"),
+        // }),
+        // postcss({
+        //     extract: 'index.css',
+        //     plugins: [autoprefixer()],
+        //
+        // }),
+        //
+        // terser({
+        //     format: {
+        //         comments: 'all', // 保留至少包含 "@license" 或 "@preserve" 的注释
+        //     },
+        // }),
+        // copy({
+        //     targets: [
+        //         {src: 'es/*.css', dest: 'dist'},
+        //     ],
+        //     verbose: true,
+        //     hook: 'generateBundle'
+        //
+        // }),
+        // del({
+        //     targets: [
+        //         // 设置删除规则，删除原来位置的 CSS 文件
+        //         'es/*.css',
+        //         'lib/*.css',
+        //         'dist/style.css',
+        //     ],
+        //     hook: 'closeBundle', // 在 writeBundle 钩子时执行删除操作
+        // }),
     ],
 
 
@@ -54,7 +54,7 @@ export default defineConfig({
 
         rollupOptions: {
 
-            external: ["vue", '@vueuse/core', '@floating-ui/vue', '@floating-ui/vue', '@sss-ui-plus/utils'],
+            external: ["vue", '@vueuse/core', '@floating-ui/vue', '@floating-ui/vue'],
             input: './index.ts',
 
             output: [

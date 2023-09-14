@@ -3,9 +3,10 @@
   "main": "lib/index.js",
   "module": "es/index.mjs",
   "types": "es/index.d.ts",
+  "style": "dist/index.css",
   "private": false,
   "sideEffects": false,
-  "version": "0.2.0-beta.12",
+  "version": "0.2.0-beta.17",
   "type": "module",
   "author": {
     "name": "laster",
@@ -21,22 +22,34 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "update-web-types": "vue-docgen-web-types"
+  },
+  "web-types": "./web-types.json",
+  "vetur": {
+    "tags": "config outDir/tags.json",
+    "attributes": "config outDir/attributes.json"
   },
   "workspaces": [
-    "src/utils"
+    "packages/*",
+    "docs"
   ],
   "dependencies": {
-    "@sss-ui-plus/utils": "workspace:*",
     "@floating-ui/vue": "^1.0.2",
     "@vue/runtime-core": "^3.3.4",
     "@vueuse/core": "^10.2.1",
     "vue": "^3.3.4"
   },
   "devDependencies": {
+    "@sss-ui-plus/utils": "workspace:*",
+    "@sss-ui-plus/styles": "workspace:*",
+    "@sss-ui-plus/typings": "workspace:*",
+    "@sss-ui-plus/hooks": "workspace:*",
+    "@sss-ui-plus/components": "workspace:*",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vue-macros/volar": "^0.12.2",
     "autoprefixer": "^10.4.14",
+    "components-helper": "^2.1.4",
     "less-loader": "^11.1.3",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-delete": "^2.0.0",

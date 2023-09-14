@@ -17,7 +17,7 @@ sss-ui-plus
 │    ├─ App.vue
 │    └─ main.ts
 ├─ packages    //组件存放处
-│    └─ index.ts
+│    └─ base.ts
 ├─ src     //项目需要用到的一些资源
 │    ├─ hooks   //hook函数
 │    ├─ styles  //全局样式variables.less, global.less, animation.less

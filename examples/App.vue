@@ -1,13 +1,19 @@
 <template>
 
-	<s-button type="default" ghost   ></s-button>
-	<s-input type="text" readonly ></s-input>
+	<s-button type="default"  @click="handleClick"     >click me</s-button>
 
 
 </template>
 
 <script setup lang="ts">
+import {notify, confirm, message} from "@sss-ui-plus/components"
 
+const handleClick = function (){
+	notify({
+		title:'hhh',
+		type:'success'
+	})
+}
 
 </script>
 

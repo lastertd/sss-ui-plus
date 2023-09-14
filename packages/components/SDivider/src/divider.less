@@ -1,0 +1,57 @@
+@import "../../../styles/global";
+
+.sss-divider{
+    .useBorderBox();
+    position: relative;
+}
+
+.sss-divider-solid{
+    border-top: 1px solid var(--sss-color-gray);
+    border-left: 1px solid var(--sss-color-gray);
+}
+
+.sss-divider-dashed{
+    border-top: 1px dashed var(--sss-color-gray);
+    border-left: 1px dashed var(--sss-color-gray);
+
+}
+
+.sss-divider-vertical{
+    margin: 0 10px;
+    height: 1em;
+    width: 0;
+    display: inline-flex;
+    & .sss-divider-content{
+        transform: translateX(-50%);
+        flex-flow: column nowrap;
+        padding: 10px 0;
+
+    }
+}
+.sss-divider-horizontal{
+    margin: 10px 0;
+    width: 100%;
+    height: 0;
+    & .sss-divider-content{
+        transform: translateY(-50%);
+        padding: 0 10px;
+
+    }
+}
+
+
+
+.sss-divider-content{
+    position: absolute;
+    .flex-row-center-center();
+    gap: 5px;
+    opacity: 1;
+
+    background: var(--sss-color-bg);
+    color: var(--sss-color-black-light);
+
+}
+
+body.dark .sss-divider-content{
+    background: var(--sss-color-black);     //更换背景颜色
+}

@@ -15,7 +15,7 @@ babel.config.js
 jsconfig.json
 vite.config.js
 index.html
-index.ts
+base.ts
 installer.ts
 vite.config.ts
 tsconfig.json

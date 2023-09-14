@@ -1,0 +1,39 @@
+@import "../../../styles/global";
+
+.sss-skeleton-item{
+
+    .useBorderBox();
+    .useBorderRadius3px();
+    .useBGColorGrayLightest();
+
+    width: 100%;
+    height: 20px;
+    margin: 10px 0;
+    overflow: hidden;
+
+
+    &.animated {
+        //使用扫描线
+        .useBGScanningLine(var(--sss-color-gray-deep-fade));
+    }
+    &.is-circle{
+        height: unset;
+        width: unset;
+        aspect-ratio:  1 / 1;
+    }
+
+
+
+}
+.sss-skeleton-item-image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    & > * {
+        width: 70%;
+        height: 70%;
+        color: var(--sss-color-gray);
+        background: transparent;
+    }
+
+}

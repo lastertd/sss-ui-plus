@@ -1,0 +1,10 @@
+{
+  "name": "@sss-ui-plus/utils",
+  "private": false,
+  "license": "MIT",
+  "main": "index.ts",
+  "dependencies": {
+    "vue": "^3.3.4",
+    "@vueuse/core": "^10.2.1"
+  }
+}

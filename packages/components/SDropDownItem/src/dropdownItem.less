@@ -1,0 +1,36 @@
+@import "../../../styles/global";
+
+.sss-dropdown-item{
+
+
+    .flex-row-start-center();
+    .useBorderBox();
+    flex-flow: row nowrap;
+
+    position: relative;
+    padding: 5px 16px;
+    transition: all .1s ease;
+    cursor: default;
+    gap: 5px;
+    color: var(--sss-color-black-light);
+
+    &:hover{
+        background-color: var(--sss-color-primary-fade);
+        color: var(--sss-color-primary-light);
+    }
+    &[data-center="true"] {
+        justify-content: center;
+    }
+    &.is-disabled{
+        user-select: none;
+        pointer-events: none;
+        &:hover{
+            color: unset;
+            background-color: unset;
+        }
+    }
+    &.is-active{
+        font-weight: 1000;
+        color: var(--sss-color-primary-dark);
+    }
+}
