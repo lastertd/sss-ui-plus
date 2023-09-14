@@ -1,18 +1,52 @@
 <template>
 
-	<s-button type="default"  @click="handleClick"     >click me</s-button>
+<!--	<s-button ref="btn" >click me</s-button>-->
+	<button ref="btn">cccc</button>
+
+
+
+	<s-floating trigger="click" :reference="btn" quick-track >
+		<template #reference>
+			<button ref="ipt">cccc</button>
+			<s-input placeholder="hhh"></s-input>
+		</template>
+		<template #default>
+			hello
+		</template>
+	</s-floating>
+
+
 
 
 </template>
 
 <script setup lang="ts">
-import {notify, confirm, message} from "@sss-ui-plus/components"
+import {notify} from "@sss-ui-plus/components"
+import SPlay from "./SPlay.vue";
+import {ref} from "@vue/runtime-core";
+import {useDraggable} from "@sss-ui-plus/hooks";
+import {computed} from "vue";
+import {SPartial} from "../packages/components/abstract"
+
+const f= ref(false);
+const btn = ref();
+const ipt = ref();
+
+const v = computed(() => {
+	return true
+})
+
+useDraggable(btn, btn, v);
+useDraggable(ipt, ipt, v);
+
+
 
 const handleClick = function (){
 	notify({
 		title:'hhh',
 		type:'success'
 	})
+	f.value = !f.value
 }
 
 </script>

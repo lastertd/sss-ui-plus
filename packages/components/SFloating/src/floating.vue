@@ -2,10 +2,11 @@
 import "./floating.less"
 import {SFloatingProps, SFloatingEmits} from "./floating.ts";
 import {useFloating, offset, flip, shift, autoUpdate, arrow} from "@floating-ui/vue";
-import {computed, onMounted, watch, ref, useSlots, onBeforeUnmount} from "vue";
+import {computed, onMounted, watch, ref, useSlots, onBeforeUnmount, Ref} from "vue";
 import {unrefElement, useEventListener, useMutationObserver} from "@vueuse/core";
 import {useFlag} from "@sss-ui-plus/hooks";
 import {IndexManager} from "@sss-ui-plus/utils";
+import {SPartial} from "../../abstract"
 
 
 defineOptions({
@@ -29,34 +30,20 @@ const _floatingStyles = computed(() => {
 	}
 })
 
-
-const t = computed(() => {
+// slot.reference优先级高于props.reference
+const reference: Ref<HTMLElement | null> = slots.reference ? ref(null) : computed(() => {
 	return ref(unrefElement(props.reference)).value;
-})
 
-
-const reference = ref<HTMLElement | null>(null);
+});
 const floating = ref<HTMLElement | null>(null);
 const _arrow = ref<HTMLElement | null>(null);
 
 
-// 当元素具有reference槽时优先槽，其次reference属性
-const {floatingStyles, placement, middlewareData, update} = (() => {
-	if (slots.reference) {
-		return useFloating(reference, floating, {
-			placement: props.placement,
-			whileElementsMounted: autoUpdate,
-			middleware: [offset(props.offset), flip(), shift(), arrow({element: _arrow})]
-		});
-	} else {
-		return useFloating(t, floating, {
-			placement: props.placement,
-			whileElementsMounted: autoUpdate,
-			middleware: [offset(props.offset), flip(), shift(), arrow({element: _arrow})]
-		});
-	}
-
-})();
+const {floatingStyles, placement, middlewareData, update} = useFloating(reference, floating, {
+	placement: props.placement,
+	whileElementsMounted: autoUpdate,
+	middleware: [offset(props.offset), flip(), shift(), arrow({element: _arrow})]
+});
 const {flag, setTrue, setFalse} = useFlag(false);
 
 
@@ -140,7 +127,7 @@ if (props.showArrow) {
 
 // 当reference是可以移动的时，快速跟踪
 if (props.quickTrack) {
-	useMutationObserver(t, () => {
+	useMutationObserver(reference, () => {
 		update();
 	}, {
 		attributes: true
@@ -156,13 +143,8 @@ if (props.closeOnClickBody) {
 // trigger
 if (props.trigger === 'hover') {
 
-	if (slots.reference) {
-		useEventListener(reference, 'mouseenter', open);
-		useEventListener(reference, 'mouseleave', close);
-	} else {
-		useEventListener(t, 'mouseenter', open);
-		useEventListener(t, 'mouseleave', close);
-	}
+	useEventListener(reference, 'mouseenter', open);
+	useEventListener(reference, 'mouseleave', close);
 
 
 	useEventListener(floating, 'mouseenter', open);
@@ -171,33 +153,21 @@ if (props.trigger === 'hover') {
 
 if (props.trigger === 'click') {
 
-	if (slots.reference) {
-		useEventListener(reference, 'click', toggle);
+	useEventListener(reference, 'click', toggle);
 
-	} else {
-		useEventListener(t, 'click', toggle);
-	}
 
 
 }
 
 if (props.trigger === 'clickToOpen') {
-	if (slots.reference) {
-		useEventListener(reference, 'click', open);
+	useEventListener(reference, 'click', open);
 
-	} else {
-		useEventListener(t, 'click', open);
-	}
 }
 
 
 if (props.trigger === 'focus') {
-	if (slots.reference) {
-		useEventListener(reference, 'mousedown', open);
-	} else {
-		useEventListener(t, 'mousedown', open);
+	useEventListener(reference, 'mousedown', open);
 
-	}
 	useEventListener(document.body, 'mouseup', close);
 
 }
@@ -236,9 +206,10 @@ defineExpose({
 
 <template>
 
-	<div v-if="slots.reference" class="sss-floating-reference" ref="reference" :style="`display:${props.expression}`">
+	<SPartial v-if="slots.reference" class="sss-floating-reference" ref="reference"
+	          :style="`display:${props.expression}`">
 		<slot name="reference"></slot>
-	</div>
+	</SPartial>
 
 
 	<div ref="floating" :style="_floatingStyles" :class="props.floatingClass">
