@@ -19,16 +19,7 @@ const emits = defineEmits({...SFloatingEmits});
 const slots = useSlots();
 const indexManager = new IndexManager();
 
-// 在floating不可见时， 阻止修改css样式
-let _: any;
-const _floatingStyles = computed(() => {
-	if (flag.value) {
-		_ = floatingStyles.value;
-		return floatingStyles.value;
-	} else {
-		return _;
-	}
-})
+
 
 // slot.reference优先级高于props.reference
 const reference: Ref<HTMLElement | null> = slots.reference ? ref(null) : computed(() => {
@@ -46,6 +37,16 @@ const {floatingStyles, placement, middlewareData, update} = useFloating(referenc
 });
 const {flag, setTrue, setFalse} = useFlag(false);
 
+// 在floating不可见时， 阻止修改css样式
+let _: any;
+const _floatingStyles = computed(() => {
+	if (flag.value) {
+		_ = floatingStyles.value;
+		return floatingStyles.value;
+	} else {
+		return _;
+	}
+})
 
 let openTimer: NodeJS.Timeout;
 let closeTimer: NodeJS.Timeout;
@@ -206,7 +207,7 @@ defineExpose({
 
 <template>
 
-	<SPartial v-if="slots.reference" class="sss-floating-reference" ref="reference"
+	<SPartial v-if="slots.reference" ref="reference"
 	          :style="`display:${props.expression}`">
 		<slot name="reference"></slot>
 	</SPartial>

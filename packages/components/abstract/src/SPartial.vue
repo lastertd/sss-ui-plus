@@ -13,15 +13,18 @@ export default defineComponent({
 		const attr = useAttrs();
 		let dft = slots.default && slots.default()[0];
 
+		// 没传
 		if (!dft) {
 			warn('SPartial has empty slot');
 		}
 
 
+		// 排除template slot 节点
 		while (typeof dft!.type === 'symbol') {
 			dft = (dft as any)!.children[0];
 		}
 
+		// 不允许第一个元素是文本(注释)节点
 		if ((dft as unknown as string) === ' '){
 			dft  = h('div',{reason:'not allowed', result:'force replacement with div'});
 			warn('The first child node of SPartial is a text (annotation) node, which is not allowed');
@@ -34,9 +37,6 @@ export default defineComponent({
 
 	},
 	name: 'SPartial',
-	expose:{
-		test:'laster'
-	}
 
 
 })
