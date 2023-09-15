@@ -1,17 +1,10 @@
 <template>
 
-	<s-button ref="btn" type="cyan" @click="handleClick">click me</s-button>
+<!--	<s-button ref="btn" type="cyan" @click="handleClick">click me</s-button>-->
 
-
-	<s-badge>
-
-	</s-badge>
-
-
-
-
-
-
+	<s-partial ref="default">
+		<slot></slot>
+	</s-partial>
 
 
 </template>
