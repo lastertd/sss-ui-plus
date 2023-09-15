@@ -16,6 +16,7 @@ import SScrollbar from "./SScrollbar";
 import SCascader from "./SCascader";
 import SSkeleton from "./SSkeleton";
 import SSkeletonItem from "./SSkeletonItem";
+import SBadge from "./SBadge";
 import {App} from "vue";
 
 const comps =  {
@@ -37,6 +38,7 @@ const comps =  {
     SCascader,
     SSkeleton,
     SSkeletonItem,
+    SBadge
 
 }
 

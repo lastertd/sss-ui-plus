@@ -1,0 +1,64 @@
+.is-visible{
+    visibility: visible !important;
+}
+
+.is-invisible{
+    visibility: hidden!important;
+}
+
+.is-round {
+    border-radius: 9999px !important;
+
+    &:after,
+    &:before {
+        border-radius: 9999px !important;
+    }
+
+}
+.is-loading {
+    user-select: none;
+    animation: none !important;
+    -webkit-animation: none !important;
+    transition: none !important;
+    & * {
+        pointer-events: none;
+
+    }
+    cursor: wait;
+    opacity: 0.3;
+}
+.is-circle {
+    height: 35px;
+    width: 35px;
+    border-radius: 50% !important;
+    padding: 9px;
+    &:after,
+    &:before {
+        border-radius: 50% !important;
+    }
+}
+
+.is-relative{
+    position: relative !important;
+}
+
+.is-rotating{
+    animation: rotate 2s infinite linear !important;
+}
+
+
+.is-disabled {
+    cursor: not-allowed;
+    user-select: none;
+    //pointer-events: none;
+    opacity: 0.4;
+    animation: none !important;
+    -webkit-animation: none !important;
+    transition: none !important;
+    & * {
+        pointer-events: none;
+
+    }
+
+}
+

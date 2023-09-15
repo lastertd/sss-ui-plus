@@ -1,0 +1,39 @@
+@import "../mixn/_index";
+
+.s-badge {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(50%, -50%);
+    font-size: 10px;
+    padding: 0px 7px;
+
+    background: var(--sss-color-primary);
+    .useBorderRadiusInfinite();
+    .useBorderBox();
+    border: solid 1px var(--sss-color-bg);
+    color: var(--sss-color-white);
+
+
+    &:empty{
+        padding: 3px;
+    }
+
+
+    &__cyan {
+        background: var(--sss-color-cyan);
+    }
+
+    &__waring {
+        background: var(--sss-color-warning);
+    }
+
+    &__danger {
+        background: var(--sss-color-danger);
+    }
+
+    &__info {
+        background: var(--sss-color-info);
+    }
+
+}

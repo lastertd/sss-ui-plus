@@ -38,7 +38,7 @@ const handleClick = () => {
 		:class="[
 			`sss-link-type-${props.type}`,
 			{
-				'has-underline':props.underline,
+				'has-underline':props.underline && !props.disabled,
 				'is-disabled':props.disabled
 			}
 		]"

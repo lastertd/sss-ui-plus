@@ -6,7 +6,7 @@ import {provide, ref, useSlots} from "vue";
 
 
 defineOptions({
-	name: 'SFloating',
+	name: 'SDropdown',
 	inheritAttrs: false
 })
 
@@ -66,6 +66,7 @@ defineExpose({
 		:quick-track="props.quickTrack"
 		v-bind="$attrs"
 
+
 		@open="emits('open')"
 		@opened="emits('opened')"
 		@close="emits('close')"
@@ -86,6 +87,9 @@ defineExpose({
 			:always="props.scrollbarAlways"
 			:is-outside="props.scrollbarIsOutside"
 			:quick-jump="props.scrollbarQuickJump"
+
+
+
 		>
 			<slot></slot>
 		</s-scrollbar>

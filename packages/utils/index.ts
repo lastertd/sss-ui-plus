@@ -7,6 +7,7 @@ export * from "./decorator/throttle.ts"
 
 // element
 export * from "./element/Mark.ts"
+export * from "./element/Badge.ts"
 
 
 // manager

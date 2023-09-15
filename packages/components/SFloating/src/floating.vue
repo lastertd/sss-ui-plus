@@ -20,7 +20,6 @@ const slots = useSlots();
 const indexManager = new IndexManager();
 
 
-
 // slot.reference优先级高于props.reference
 const reference: Ref<HTMLElement | null> = slots.reference ? ref(null) : computed(() => {
 	return ref(unrefElement(props.reference)).value;
@@ -89,16 +88,6 @@ const toggle = () => {
 	else open();
 }
 
-const clickBody = (evt: Event) => {
-
-	const target = evt.target as HTMLElement;
-	const floatingEl = unrefElement(floating) as HTMLElement;
-	const referenceEl = unrefElement(reference) as HTMLElement;
-
-	if (!(floatingEl.contains(target) || referenceEl.contains(target))) {
-		close();
-	}
-}
 
 
 // 箭头相关
@@ -126,7 +115,7 @@ if (props.showArrow) {
 
 }
 
-// 当reference是可以移动的时，快速跟踪
+// 当reference位置会发生变化且floating元素跟不上变化时，开启此项
 if (props.quickTrack) {
 	useMutationObserver(reference, () => {
 		update();
@@ -137,27 +126,30 @@ if (props.quickTrack) {
 
 // 可以通过点击body关闭floating
 if (props.closeOnClickBody) {
-	useEventListener(document.body, 'click', clickBody);
+	useEventListener(document.body, 'click', (evt: Event) => {
+
+		const target = evt.target as HTMLElement;
+		const floatingEl = unrefElement(floating) as HTMLElement;
+		const referenceEl = unrefElement(reference) as HTMLElement;
+
+		if (!(floatingEl.contains(target) || referenceEl.contains(target))) {
+			close();
+		}
+	});
 }
 
 
 // trigger
 if (props.trigger === 'hover') {
-
 	useEventListener(reference, 'mouseenter', open);
 	useEventListener(reference, 'mouseleave', close);
-
 
 	useEventListener(floating, 'mouseenter', open);
 	useEventListener(floating, 'mouseleave', close);
 }
 
 if (props.trigger === 'click') {
-
 	useEventListener(reference, 'click', toggle);
-
-
-
 }
 
 if (props.trigger === 'clickToOpen') {
@@ -175,7 +167,7 @@ if (props.trigger === 'focus') {
 
 
 onMounted(() => {
-	// ssr友好
+	// 避免在加载文件时操作dom, ssr友好
 	import("./creatFloatingContainer.ts").then(() => {
 		if (props.teleported) {
 			const container = document.body.querySelector('.___sss-floating-container') as HTMLDivElement;

@@ -1,10 +1,10 @@
 
 
 <script setup lang="ts">
-import SIcon from "../../SIcon";
+import "./msgBox.less"
+import {SIcon, SIconInstance} from "../../SIcon";
 import SButton from "../../SButton";
 import {SMsgBoxProps, SMsgBoxEmits} from "./msgBox.ts";
-import "./msgBox.less"
 import {computed, nextTick, Ref, ref} from "vue";
 import {MessageTriggerTypes} from "@sss-ui-plus/typings/base.ts";
 import {useFlag, useDraggable} from "@sss-ui-plus/hooks";
@@ -21,13 +21,13 @@ const emits = defineEmits({...SMsgBoxEmits})
 
 
 
-const closeIcon:Ref<InstanceType<typeof SIcon> | null> = ref(null);
+const closeIcon:Ref<SIconInstance | null> = ref(null);
 const outer: Ref<HTMLElement | undefined> = ref(undefined);
 const head: Ref<HTMLElement | undefined> = ref(undefined);
 const drag: Ref<HTMLElement | undefined> = ref(undefined);
 
 const f = computed(() => {
-	return true
+	return props.draggable
 })
 
 
@@ -152,6 +152,7 @@ defineExpose({
 
 				</div>
 
+
 				<!--				message foot-->
 				<div
 					v-if="props.showFoot"
@@ -169,12 +170,13 @@ defineExpose({
 					>{{ props.confirmBtnText }}
 					</s-button>
 				</div>
+
 			</div>
 		</div>
 	</transition>
 
 	<!--	draggable container-->
-	<div ref="drag" :style="`top:${props.top}`" v-if="draggable" class="sss-message-draggable-container">
+	<div ref="drag" :style="`top:${props.top}`" v-if="props.draggable" class="sss-message-draggable-container">
 
 	</div>
 </template>

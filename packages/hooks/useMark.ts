@@ -47,6 +47,7 @@ export const useMark =  function (target: targetType, markType?: MarkType) {
 
     onUnmounted(() => {
         stop();
+        cleanup();
     })
 
 

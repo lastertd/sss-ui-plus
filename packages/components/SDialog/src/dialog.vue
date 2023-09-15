@@ -145,6 +145,7 @@ onMounted(() => {
 					<slot></slot>
 				</template>
 
+
 			</SMessageBox>
 
 		</div>

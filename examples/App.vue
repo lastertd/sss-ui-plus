@@ -1,19 +1,15 @@
 <template>
 
-<!--	<s-button ref="btn" >click me</s-button>-->
+	<s-button ref="btn" type="cyan" @click="handleClick">click me</s-button>
+
+
+	<s-badge>
+
+	</s-badge>
 
 
 
 
-
-	<s-floating trigger="click" :reference="btn" quick-track >
-		<template #reference>
-			<s-input placeholder="hhh"></s-input>
-		</template>
-		<template #default>
-			hello
-		</template>
-	</s-floating>
 
 
 
@@ -21,24 +17,27 @@
 </template>
 
 <script setup lang="ts">
-import {notify} from "@sss-ui-plus/components"
+import {notify, SPartial} from "@sss-ui-plus/components"
 import {ref} from "@vue/runtime-core";
+import {Badge} from "@sss-ui-plus/utils";
+import {onMounted} from "vue";
+import {useBadge} from "@sss-ui-plus/hooks/useBadge";
+import SPlay from "./SPlay.vue";
 
 
-const f= ref(false);
+const f = ref(false);
+const val = ref<number>(3)
+const btn = ref();
+const demo = ref();
 
 
-
-
-
-
-const handleClick = function (){
-	notify({
-		title:'hhh',
-		type:'success'
-	})
+const handleClick = function () {
 	f.value = !f.value
+	val.value++;
 }
+
+const {setTxt} = useBadge(demo, 'primary', val);
+
 
 </script>
 
@@ -55,6 +54,13 @@ const handleClick = function (){
 	color: var(--sss-color-black-light);
 }
 
+.demo {
+	width: 60px;
+	height: 30px;
+	border: solid 1px black;
+	background: #1BA784;
+
+}
 
 </style>
 
