@@ -13,7 +13,7 @@
       "prefixIcon",
       "suffixIcon"
     ],
-    "description": "[Docs](https://you.components/docs/index#Button)"
+    "description": "[Docs](https://sssui.4everland.app/comps/basic/button/#button)"
   },
   "s-link-链接": {
     "attributes": [
@@ -25,7 +25,7 @@
       "suffixIcon",
       "jumpMethod"
     ],
-    "description": "文字超链接\n\n[Docs](https://you.components/docs/index#Link-链接)"
+    "description": "文字超链接\n\n[Docs](https://sssui.4everland.app/comps/basic/link/#link-链接)"
   },
   "s-scrollbar-滚动条": {
     "attributes": [
@@ -36,7 +36,7 @@
       "isOutside",
       "quickJump"
     ],
-    "description": "[Docs](https://you.components/docs/index#Scrollbar-滚动条)"
+    "description": "[Docs](https://sssui.4everland.app/comps/basic/scrollbar/#scrollbar-滚动条)"
   },
   "s-dialog-对话框": {
     "attributes": [
@@ -54,7 +54,7 @@
       "top",
       "beforeClose"
     ],
-    "description": "[Docs](https://you.components/docs/index#Dialog-对话框)"
+    "description": "[Docs](https://sssui.4everland.app/comps/feedback/dialog/#dialog-对话框)"
   },
   "s-drawer-抽屉": {
     "attributes": [
@@ -74,7 +74,7 @@
       "btnSize",
       "beforeClose"
     ],
-    "description": "::: tip\n\n[Docs](https://you.components/docs/index#Drawer-抽屉)"
+    "description": "::: tip\n\n[Docs](https://sssui.4everland.app/comps/feedback/drawer/#drawer-抽屉)"
   },
   "s-dropdown-下拉框": {
     "attributes": [
@@ -89,7 +89,7 @@
       "href",
       "jumpMethod"
     ],
-    "description": "将数据放入到下拉框。\n\n[Docs](https://you.components/docs/index#Dropdown-下拉框)"
+    "description": "将数据放入到下拉框。\n\n[Docs](https://sssui.4everland.app/comps/floating/dropdown/#dropdown-下拉框)"
   },
   "s-floating-浮动": {
     "attributes": [
@@ -110,7 +110,7 @@
       "reference",
       "quickTrack"
     ],
-    "description": "在页面中我们也许经常看见一些: 文本提示框、气泡确认框、下拉框...等各种看起来不像是文档流的元素。\n\n[Docs](https://you.components/docs/index#Floating-浮动)"
+    "description": "在页面中我们也许经常看见一些: 文本提示框、气泡确认框、下拉框...等各种看起来不像是文档流的元素。\n\n[Docs](https://sssui.4everland.app/comps/floating/floating/#floating-浮动)"
   },
   "s-popconfirm-气泡确认框": {
     "attributes": [
@@ -134,7 +134,7 @@
       "confirmBtnType",
       "type"
     ],
-    "description": "当用于的某些操作需要确认时，比如点击按钮，可以用于代理一次按钮回调，让用于确认。\n\n[Docs](https://you.components/docs/index#Popconfirm-气泡确认框)"
+    "description": "当用于的某些操作需要确认时，比如点击按钮，可以用于代理一次按钮回调，让用于确认。\n\n[Docs](https://sssui.4everland.app/comps/floating/popconfirm/#popconfirm-气泡确认框)"
   },
   "s-tooltip-文本提示框": {
     "attributes": [
@@ -156,7 +156,7 @@
       "quickTrack",
       "content"
     ],
-    "description": "一般用在元素hover时展示提示信息\n\n[Docs](https://you.components/docs/index#Tooltip-文本提示框)"
+    "description": "一般用在元素hover时展示提示信息\n\n[Docs](https://sssui.4everland.app/comps/floating/tooltip/#tooltip-文本提示框)"
   },
   "s-divider-分割线": {
     "attributes": [
@@ -168,7 +168,7 @@
       "content",
       "gap"
     ],
-    "description": "通常用于隔断元素\n\n[Docs](https://you.components/docs/index#Divider-分割线)"
+    "description": "通常用于隔断元素\n\n[Docs](https://sssui.4everland.app/comps/other/divider/#divider-分割线)"
   },
   "s-skeleton-骨架屏": {
     "attributes": [
@@ -176,6 +176,6 @@
       "isCircle",
       "isRound"
     ],
-    "description": "当页面数据未被加载完成时显示, 并不会过分区分骨架屏内部Item的类别，所有骨架屏Item都应该是一个普通的矩形盒子, 通过css样式来改变外观和布局\n\n[Docs](https://you.components/docs/index#Skeleton-骨架屏)"
+    "description": "当页面数据未被加载完成时显示, 并不会过分区分骨架屏内部Item的类别，所有骨架屏Item都应该是一个普通的矩形盒子, 通过css样式来改变外观和布局\n\n[Docs](https://sssui.4everland.app/comps/other/skeleton/#skeleton-骨架屏)"
   }
 }

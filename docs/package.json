@@ -4,11 +4,6 @@
   "description": "文档描述",
   "main": "index.js",
   "type": "module",
-  "scripts": {
-    "docs:dev": "vitepress dev docs --host 0.0.0.0",
-    "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
-  },
   "author": "laster",
   "license": "ISC",
   "devDependencies": {

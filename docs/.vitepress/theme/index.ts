@@ -12,6 +12,7 @@ import DemoBlock from '@ruabick/vitepress-demo-block';
 import '@ruabick/vitepress-demo-block/dist/style.css';
 
 import IconList from "../../comps/basic/icon/src/iconList.vue";
+import Badge from "@sss-ui-plus/components/SBadge";
 
 
 export default {
@@ -21,6 +22,7 @@ export default {
         app.use(ui)
         app.component('demo', DemoBlock);
         app.component('IconList', IconList);
+        app.use(Badge)
 
     }
 

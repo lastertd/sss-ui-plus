@@ -16,6 +16,7 @@ babel.config.js
 jsconfig.json
 vite.config.js
 index.html
+buildWebTypes.js
 
 vite.config.ts
 tsconfig.json

@@ -34,7 +34,7 @@ function reComponentName(title) {
 
 function reWebTypesSource(title) {
     const symbol =
-        'App' +
+        'S' +
         title
             .replace(/-/, ' ')
             .replace(/^\w|\s+\w/g, (item) => item.trim().toUpperCase())
@@ -42,10 +42,11 @@ function reWebTypesSource(title) {
     return { symbol }
 }
 
-function reDocUrl(fileName, header) {
-    const docs = 'https://you.components/docs/'
+function reDocUrl(fileName, header, path) {
+    const url = (path.split('/').slice(1,-1).join('/') +'/').toLowerCase()
+    const docs = 'https://sssui.4everland.app/'
     const _header = header ? header.replace(/[ ]+/g, '-') : undefined
-    return docs + fileName + (_header ? '#' + _header : '')
+    return docs + url + (_header ? ('#' + _header).toLowerCase() : '')
 }
 
 function reAttribute(str, key) {

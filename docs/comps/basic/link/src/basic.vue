@@ -8,6 +8,7 @@
 		<s-link type="info">info</s-link>
 		<s-link type="warning">warning</s-link>
 		<s-link type="danger">danger</s-link>
+
 	</s-row>
 
 </template>

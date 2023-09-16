@@ -1,6 +1,8 @@
 
 <template>
 	<s-row horizontal="flex-start" :gap="10">
+
+		<s-button ></s-button>
 		<s-button type="default" >default</s-button>
 		<s-button type="primary"  >primary</s-button>
 		<s-button type="success"  >success</s-button>
@@ -8,6 +10,7 @@
 		<s-button type="danger"  >danger</s-button>
 		<s-button type="warning"  >waring</s-button>
 		<s-button type="cyan"  >waring</s-button>
+
 	</s-row>
 	<s-row horizontal="flex-start" :gap="10">
 		<s-button type="default" empty>default</s-button>

@@ -5,6 +5,7 @@
 	<s-partial ref="default">
 		<slot></slot>
 	</s-partial>
+	<s-button type="cyan" round >waring</s-button>
 
 
 </template>

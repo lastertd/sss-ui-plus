@@ -8,12 +8,14 @@ Button.install = function (Vue:App) {
 
 }
 
-const SButton = registerInstall(Button);
+export default registerInstall(Button);
+
 
 export type SButtonInstance = InstanceType<typeof Button>
 export * from "./src/button.ts"
-
-export default SButton
+export {
+    Button as SButton
+}
 
 
 
