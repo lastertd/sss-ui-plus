@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../node_modules/sss-ui-plus/es/packages/SFloating/src/creatFloatingContainer.mjs"],
+  "sourcesContent": ["import \"@vueuse/core\";\nimport { IndexManager as d } from \"../../../src/utils/managers/IndexManager.mjs\";\n(function() {\n  const n = document.createElement(\"div\"), e = document.body, t = new d();\n  n.classList.add(\"___sss-floating-container\"), n.style.zIndex = t.nextIndex().toString(), e.appendChild(n);\n})();\n"],
+  "mappings": ";;;;;;;CAEC,WAAW;AACV,QAAM,IAAI,SAAS,cAAc,KAAK,GAAG,IAAI,SAAS,MAAM,IAAI,IAAI,EAAE;AACtE,IAAE,UAAU,IAAI,2BAA2B,GAAG,EAAE,MAAM,SAAS,EAAE,UAAU,EAAE,SAAS,GAAG,EAAE,YAAY,CAAC;AAC1G,GAAG;",
+  "names": []
+}

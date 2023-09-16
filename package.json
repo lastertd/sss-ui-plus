@@ -23,12 +23,15 @@
     "dev": "vite --host 0.0.0.0",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
-    "update-web-types": "vue-docgen-web-types"
+    "docs:dev": "vitepress dev ./docs/ --host 0.0.0.0",
+    "docs:build": "vitepress build ./docs/",
+    "type:dev": "node buildWebTypes.mjs",
+    "type build": "vue-docgen-web-types"
   },
-  "web-types": "./web-types.json",
+  "web-types": " ./web-types.json",
   "vetur": {
-    "tags": "config outDir/tags.json",
-    "attributes": "config outDir/attributes.json"
+    "tags": "./tags.json",
+    "attributes": " ./attributes.json"
   },
   "workspaces": [
     "packages/*",
@@ -38,14 +41,15 @@
     "@floating-ui/vue": "^1.0.2",
     "@vue/runtime-core": "^3.3.4",
     "@vueuse/core": "^10.2.1",
-    "vue": "^3.3.4"
+    "vue": "^3.3.4",
+    "vue-docgen-web-types": "^0.1.8"
   },
   "devDependencies": {
-    "@sss-ui-plus/utils": "workspace:*",
+    "@sss-ui-plus/components": "workspace:*",
+    "@sss-ui-plus/hooks": "workspace:*",
     "@sss-ui-plus/styles": "workspace:*",
     "@sss-ui-plus/typings": "workspace:*",
-    "@sss-ui-plus/hooks": "workspace:*",
-    "@sss-ui-plus/components": "workspace:*",
+    "@sss-ui-plus/utils": "workspace:*",
     "@vitejs/plugin-vue": "^4.2.3",
     "@vue-macros/volar": "^0.12.2",
     "autoprefixer": "^10.4.14",

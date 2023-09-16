@@ -1,288 +1,1299 @@
 {
+  "$schema": "http://json.schemastore.org/web-types",
   "framework": "vue",
   "name": "sss-ui-plus",
   "version": "0.2.0-beta.17",
+  "js-types-syntax": "typescript",
+  "description-markup": "markdown",
   "contributions": {
     "html": {
-      "description-markup": "markdown",
-      "types-syntax": "typescript",
-      "tags": [
+      "vue-components": [
         {
-          "name": "button",
-          "description": "",
-          "slots": [
-            {
-              "name": "default"
-            }
-          ],
+          "name": "s-button",
           "source": {
-            "module": "./packages/SButton/src/button.vue",
-            "symbol": "default"
-          }
-        },
-        {
-          "name": "cascader",
-          "description": "",
-          "slots": [
+            "symbol": "AppButton"
+          },
+          "doc-url": "https://you.components/docs/index#Button",
+          "props": [
             {
-              "name": "default"
-            }
-          ],
-          "source": {
-            "module": "./packages/SCascader/src/cascader.vue",
-            "symbol": "default"
-          }
-        },
-        {
-          "name": "dialog",
-          "description": "",
-          "slots": [
-            {
-              "name": "default"
-            }
-          ],
-          "source": {
-            "module": "./packages/SDialog/src/dialog.vue",
-            "symbol": "default"
-          }
-        },
-        {
-          "name": "divider",
-          "description": "",
-          "slots": [
-            {
-              "name": "default"
-            }
-          ],
-          "source": {
-            "module": "./packages/SDivider/src/divider.vue",
-            "symbol": "default"
-          }
-        },
-        {
-          "name": "drawer",
-          "description": "",
-          "slots": [
-            {
-              "name": "default"
-            }
-          ],
-          "source": {
-            "module": "./packages/SDrawer/src/drawer.vue",
-            "symbol": "default"
-          }
-        },
-        {
-          "name": "dropdown",
-          "description": "",
-          "slots": [
-            {
-              "name": "reference"
+              "name": "type",
+              "description": "类型",
+              "doc-url": "https://you.components/docs/index#Button-Props",
+              "type": [
+                {
+                  "name": "`default`",
+                  "source": {
+                    "symbol": "`default`"
+                  }
+                },
+                {
+                  "name": "`primary`",
+                  "source": {
+                    "symbol": "`primary`"
+                  }
+                },
+                {
+                  "name": "`success`",
+                  "source": {
+                    "symbol": "`success`"
+                  }
+                },
+                {
+                  "name": "`info`",
+                  "source": {
+                    "symbol": "`info`"
+                  }
+                },
+                {
+                  "name": "`warning`",
+                  "source": {
+                    "symbol": "`warning`"
+                  }
+                },
+                {
+                  "name": "`danger`",
+                  "source": {
+                    "symbol": "`danger`"
+                  }
+                },
+                {
+                  "name": "`cyan`",
+                  "source": {
+                    "symbol": "`cyan`"
+                  }
+                },
+                {
+                  "name": "`dark`",
+                  "source": {
+                    "symbol": "`dark`"
+                  }
+                }
+              ],
+              "default": "default"
             },
             {
-              "name": "default"
-            }
-          ],
-          "source": {
-            "module": "./packages/SDropdown/src/dropdown.vue",
-            "symbol": "default"
-          }
-        },
-        {
-          "name": "dropdownItem",
-          "description": "",
-          "slots": [
-            {
-              "name": "default"
-            }
-          ],
-          "source": {
-            "module": "./packages/SDropDownItem/src/dropdownItem.vue",
-            "symbol": "default"
-          }
-        },
-        {
-          "name": "floating",
-          "description": "",
-          "slots": [
-            {
-              "name": "reference"
+              "name": "nativeType",
+              "description": "原生类型",
+              "doc-url": "https://you.components/docs/index#Button-Props",
+              "type": [
+                {
+                  "name": "`button`",
+                  "source": {
+                    "symbol": "`button`"
+                  }
+                },
+                {
+                  "name": "`submit`",
+                  "source": {
+                    "symbol": "`submit`"
+                  }
+                },
+                {
+                  "name": "`reset`",
+                  "source": {
+                    "symbol": "`reset`"
+                  }
+                }
+              ],
+              "default": "button"
             },
             {
-              "name": "default"
-            }
-          ],
-          "source": {
-            "module": "./packages/SFloating/src/floating.vue",
-            "symbol": "default"
-          }
-        },
-        {
-          "name": "icon",
-          "description": "",
-          "attributes": [
-            {
-              "name": "target",
-              "value": {
-                "kind": "expression",
-                "type": "string"
-              }
+              "name": "size",
+              "description": "大小",
+              "doc-url": "https://you.components/docs/index#Button-Props",
+              "type": [
+                {
+                  "name": "`small`",
+                  "source": {
+                    "symbol": "`small`"
+                  }
+                },
+                {
+                  "name": "`normal`",
+                  "source": {
+                    "symbol": "`normal`"
+                  }
+                },
+                {
+                  "name": "`large`",
+                  "source": {
+                    "symbol": "`large`"
+                  }
+                }
+              ],
+              "default": "normal"
             },
             {
-              "name": "verticalPadding",
-              "value": {
-                "kind": "expression",
-                "type": "number"
-              }
+              "name": "round",
+              "description": "圆角按钮",
+              "doc-url": "https://you.components/docs/index#Button-Props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "false"
             },
             {
-              "name": "rotating",
-              "value": {
-                "kind": "expression",
-                "type": "boolean"
-              }
+              "name": "circle",
+              "description": "圆形按钮",
+              "doc-url": "https://you.components/docs/index#Button-Props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "false"
             },
             {
-              "name": "color",
-              "value": {
-                "kind": "expression",
-                "type": "string"
-              }
-            }
-          ],
-          "source": {
-            "module": "./packages/SIcon/src/icon.vue",
-            "symbol": "default"
-          }
-        },
-        {
-          "name": "input",
-          "description": "",
-          "slots": [
-            {
-              "name": "prefixSlot"
+              "name": "disabled",
+              "description": "禁用按钮",
+              "doc-url": "https://you.components/docs/index#Button-Props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "false"
             },
             {
-              "name": "suffixSlot"
-            }
-          ],
-          "source": {
-            "module": "./packages/SInput/src/input.vue",
-            "symbol": "default"
-          }
-        },
-        {
-          "name": "link",
-          "description": "",
-          "slots": [
-            {
-              "name": "default"
-            }
-          ],
-          "source": {
-            "module": "./packages/SLink/src/link.vue",
-            "symbol": "default"
-          }
-        },
-        {
-          "name": "msgBox",
-          "description": "",
-          "slots": [
-            {
-              "name": "default"
-            }
-          ],
-          "source": {
-            "module": "./packages/SMessageBox/src/msgBox.vue",
-            "symbol": "default"
-          }
-        },
-        {
-          "name": "popconfirm",
-          "description": "",
-          "slots": [
-            {
-              "name": "default"
-            }
-          ],
-          "source": {
-            "module": "./packages/SPopConfirm/src/popconfirm.vue",
-            "symbol": "default"
-          }
-        },
-        {
-          "name": "row",
-          "description": "",
-          "slots": [
-            {
-              "name": "default"
-            }
-          ],
-          "source": {
-            "module": "./packages/SRow/src/row.vue",
-            "symbol": "default"
-          }
-        },
-        {
-          "name": "scrollbar",
-          "description": "",
-          "slots": [
-            {
-              "name": "default"
-            }
-          ],
-          "source": {
-            "module": "./packages/SScrollbar/src/scrollbar.vue",
-            "symbol": "default"
-          }
-        },
-        {
-          "name": "skeleton",
-          "description": "",
-          "slots": [
-            {
-              "name": "skeleton"
+              "name": "empty",
+              "description": "镂空按钮",
+              "doc-url": "https://you.components/docs/index#Button-Props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "false"
             },
             {
-              "name": "default"
-            }
-          ],
-          "source": {
-            "module": "./packages/SSkeleton/src/skeleton.vue",
-            "symbol": "default"
-          }
-        },
-        {
-          "name": "skeletonItem",
-          "description": "",
-          "source": {
-            "module": "./packages/SSkeletonItem/src/skeletonItem.vue",
-            "symbol": "default"
-          }
-        },
-        {
-          "name": "switch",
-          "description": "",
-          "source": {
-            "module": "./packages/SSwitch/src/switch.vue",
-            "symbol": "default"
-          }
-        },
-        {
-          "name": "tooltip",
-          "description": "",
-          "slots": [
-            {
-              "name": "default"
+              "name": "ghost",
+              "description": "幽灵按钮",
+              "doc-url": "https://you.components/docs/index#Button-Props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "false"
             },
             {
-              "name": "content"
+              "name": "loading",
+              "description": "加载中按钮",
+              "doc-url": "https://you.components/docs/index#Button-Props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "false"
+            },
+            {
+              "name": "prefixIcon",
+              "description": "前缀图标",
+              "doc-url": "https://you.components/docs/index#Button-Props",
+              "type": [
+                {
+                  "name": "`String`",
+                  "source": {
+                    "symbol": "`String`"
+                  }
+                }
+              ],
+              "default": "---"
+            },
+            {
+              "name": "suffixIcon",
+              "description": "后缀图标",
+              "doc-url": "https://you.components/docs/index#Button-Props",
+              "type": [
+                {
+                  "name": "`String`",
+                  "source": {
+                    "symbol": "`String`"
+                  }
+                }
+              ],
+              "default": "---"
             }
-          ],
+          ]
+        },
+        {
+          "name": "s-link-链接",
           "source": {
-            "module": "./packages/STooltip/src/tooltip.vue",
-            "symbol": "default"
-          }
+            "symbol": "AppLink 链接"
+          },
+          "description": "文字超链接",
+          "doc-url": "https://you.components/docs/index#Link-链接",
+          "props": [
+            {
+              "name": "href",
+              "description": "原生href",
+              "doc-url": "https://you.components/docs/index#props",
+              "type": [
+                {
+                  "name": "`String`",
+                  "source": {
+                    "symbol": "`String`"
+                  }
+                }
+              ],
+              "default": "---"
+            },
+            {
+              "name": "type",
+              "description": "类型",
+              "doc-url": "https://you.components/docs/index#props",
+              "type": [
+                {
+                  "name": "`default` `primary` `success` `info` `warning` `danger`",
+                  "source": {
+                    "symbol": "`default` `primary` `success` `info` `warning` `danger`"
+                  }
+                }
+              ],
+              "default": "default"
+            },
+            {
+              "name": "disabled",
+              "description": "禁用",
+              "doc-url": "https://you.components/docs/index#props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "false"
+            },
+            {
+              "name": "underline",
+              "description": "`hover`时是否有下划线",
+              "doc-url": "https://you.components/docs/index#props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "false"
+            },
+            {
+              "name": "prefixIcon",
+              "description": "前缀图标",
+              "doc-url": "https://you.components/docs/index#props",
+              "type": [
+                {
+                  "name": "`String`",
+                  "source": {
+                    "symbol": "`String`"
+                  }
+                }
+              ],
+              "default": "---"
+            },
+            {
+              "name": "suffixIcon",
+              "description": "后缀图标",
+              "doc-url": "https://you.components/docs/index#props",
+              "type": [
+                {
+                  "name": "`String`",
+                  "source": {
+                    "symbol": "`String`"
+                  }
+                }
+              ],
+              "default": "---"
+            },
+            {
+              "name": "jumpMethod",
+              "description": "跳转方式",
+              "doc-url": "https://you.components/docs/index#props",
+              "type": [
+                {
+                  "name": "`push` `replace` `newView`",
+                  "source": {
+                    "symbol": "`push` `replace` `newView`"
+                  }
+                }
+              ],
+              "default": "push"
+            }
+          ]
+        },
+        {
+          "name": "s-scrollbar-滚动条",
+          "source": {
+            "symbol": "AppScrollbar 滚动条"
+          },
+          "description": "",
+          "doc-url": "https://you.components/docs/index#Scrollbar-滚动条",
+          "props": [
+            {
+              "name": "vertical",
+              "description": "是否显示垂直滚动条",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "true"
+            },
+            {
+              "name": "horizontal",
+              "description": "水平滚动条",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "false"
+            },
+            {
+              "name": "noResize",
+              "description": "滚动视口大小是否不再改变，当视口大小不会改变时，添加此项可优化性能",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "false"
+            },
+            {
+              "name": "always",
+              "description": "是否一直显示",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "false"
+            },
+            {
+              "name": "isOutside",
+              "description": "是否显示在外部，设置此项，滚动条将会显示在视口外部",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "false"
+            },
+            {
+              "name": "quickJump",
+              "description": "是否在点击滚动条时，快速导航到对应位置",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "true"
+            }
+          ]
+        },
+        {
+          "name": "s-dialog-对话框",
+          "source": {
+            "symbol": "AppDialog 对话框"
+          },
+          "description": "",
+          "doc-url": "https://you.components/docs/index#Dialog-对话框",
+          "props": [
+            {
+              "name": "showFoot",
+              "description": "展示`footer`",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "false"
+            },
+            {
+              "name": "showHead",
+              "description": "展示`header`",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "true"
+            },
+            {
+              "name": "showMark",
+              "description": "展示遮罩",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "true"
+            },
+            {
+              "name": "cancelBtnText",
+              "description": "`取消按钮`的文本",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`String`",
+                  "source": {
+                    "symbol": "`String`"
+                  }
+                }
+              ],
+              "default": "取消"
+            },
+            {
+              "name": "confirmBtnText",
+              "description": "`确认按钮`的文本",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`String`",
+                  "source": {
+                    "symbol": "`String`"
+                  }
+                }
+              ],
+              "default": "确认"
+            },
+            {
+              "name": "closeOnClickMark",
+              "description": "通过点击遮罩关闭对话框",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "true"
+            },
+            {
+              "name": "closeOnPressEscape",
+              "description": "通过按下`ESC`关闭对话框",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "true"
+            },
+            {
+              "name": "lockScroll",
+              "description": "锁定浏览器滚动条",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "true"
+            },
+            {
+              "name": "appendToBody",
+              "description": "将对话框添加到`body`标签下，在嵌套对话框时，务必设置为true",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "false"
+            },
+            {
+              "name": "draggable",
+              "description": "可以拖拽",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "false"
+            },
+            {
+              "name": "title",
+              "description": "标题",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`String`",
+                  "source": {
+                    "symbol": "`String`"
+                  }
+                }
+              ],
+              "default": "default title"
+            },
+            {
+              "name": "top",
+              "description": "距离浏览器顶部的距离",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`String`",
+                  "source": {
+                    "symbol": "`String`"
+                  }
+                }
+              ],
+              "default": "15`vh`"
+            },
+            {
+              "name": "beforeClose",
+              "description": "关闭之前的回调，如果设置了这个属性，要手动调用`done()`函数才会关闭对话框",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`(done:() => void) => void `",
+                  "source": {
+                    "symbol": "`(done:() => void) => void `"
+                  }
+                }
+              ],
+              "default": "---"
+            }
+          ]
+        },
+        {
+          "name": "s-drawer-抽屉",
+          "source": {
+            "symbol": "AppDrawer 抽屉"
+          },
+          "description": "::: tip",
+          "doc-url": "https://you.components/docs/index#Drawer-抽屉",
+          "props": [
+            {
+              "name": "showFoot",
+              "description": "展示`footer`",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "false"
+            },
+            {
+              "name": "showHead",
+              "description": "展示`header`",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "true"
+            },
+            {
+              "name": "showMark",
+              "description": "展示遮罩",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "true"
+            },
+            {
+              "name": "cancelBtnText",
+              "description": "`取消按钮`的文本",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`String`",
+                  "source": {
+                    "symbol": "`String`"
+                  }
+                }
+              ],
+              "default": "取消"
+            },
+            {
+              "name": "confirmBtnText",
+              "description": "`确认按钮`的文本",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`String`",
+                  "source": {
+                    "symbol": "`String`"
+                  }
+                }
+              ],
+              "default": "确认"
+            },
+            {
+              "name": "closeOnClickMark",
+              "description": "通过点击遮罩关闭对话框",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "true"
+            },
+            {
+              "name": "closeOnPressEscape",
+              "description": "通过按下`ESC`关闭对话框",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "true"
+            },
+            {
+              "name": "lockScroll",
+              "description": "锁定浏览器滚动条",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "true"
+            },
+            {
+              "name": "appendToBody",
+              "description": "将对话框添加到`body`标签下，在嵌套对话框时，务必设置为true",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "false"
+            },
+            {
+              "name": "draggable",
+              "description": "可以拖拽",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`Boolean`",
+                  "source": {
+                    "symbol": "`Boolean`"
+                  }
+                }
+              ],
+              "default": "false"
+            },
+            {
+              "name": "title",
+              "description": "标题",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`String`",
+                  "source": {
+                    "symbol": "`String`"
+                  }
+                }
+              ],
+              "default": "default title"
+            },
+            {
+              "name": "top",
+              "description": "距离浏览器顶部的距离",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`String`",
+                  "source": {
+                    "symbol": "`String`"
+                  }
+                }
+              ],
+              "default": "15`vh`"
+            },
+            {
+              "name": "postion",
+              "description": "抽屉展示的位置",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`top` `right` `bottom` `left`",
+                  "source": {
+                    "symbol": "`top` `right` `bottom` `left`"
+                  }
+                }
+              ],
+              "default": "top"
+            },
+            {
+              "name": "btnSize",
+              "description": "尾部按钮的大小",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`small` `normal` `large`",
+                  "source": {
+                    "symbol": "`small` `normal` `large`"
+                  }
+                }
+              ],
+              "default": "normal"
+            },
+            {
+              "name": "beforeClose",
+              "description": "关闭之前的回调，如果设置了这个属性，要手动调用`done()`函数才会关闭对话框",
+              "doc-url": "https://you.components/docs/index#Props",
+              "type": [
+                {
+                  "name": "`(done:() => void) => void `",
+                  "source": {
+                    "symbol": "`(done:() => void) => void `"
+                  }
+                }
+              ],
+              "default": "---"
+            }
+          ]
+        },
+        {
+          "name": "s-dropdown-下拉框",
+          "source": {
+            "symbol": "AppDropdown 下拉框"
+          },
+          "description": "将数据放入到下拉框。",
+          "doc-url": "https://you.components/docs/index#Dropdown-下拉框",
+          "props": [
+            {
+              "name": "suffixIcon",
+              "description": "后缀图标",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "---"
+            },
+            {
+              "name": "prefixIcon",
+              "description": "前缀图标",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "---"
+            },
+            {
+              "name": "label",
+              "description": "文本",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "---"
+            },
+            {
+              "name": "value",
+              "description": "`DropdownItem`的`select`回调的参数， `Dropdown`的`select`回调的第一参数",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "---"
+            },
+            {
+              "name": "closeOnClick",
+              "description": "是否点击此`DropdownItem`时关闭下拉框， 优先级比下拉框的同名选项高",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "true"
+            },
+            {
+              "name": "isActive",
+              "description": "是否是活跃状态",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "false"
+            },
+            {
+              "name": "disabled",
+              "description": "是否是禁用状态",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "false"
+            },
+            {
+              "name": "tag",
+              "description": "组件的呈现类型",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "`div`"
+            },
+            {
+              "name": "href",
+              "description": "当`tag`为`s-link`时，需要跳转到的目标url",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "---"
+            },
+            {
+              "name": "jumpMethod",
+              "description": "当`tag`为`s-link`时，跳转方式",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "push"
+            }
+          ]
+        },
+        {
+          "name": "s-floating-浮动",
+          "source": {
+            "symbol": "AppFloating 浮动"
+          },
+          "description": "在页面中我们也许经常看见一些: 文本提示框、气泡确认框、下拉框...等各种看起来不像是文档流的元素。",
+          "doc-url": "https://you.components/docs/index#Floating-浮动",
+          "props": [
+            {
+              "name": "trigger",
+              "description": "触发浮动元素显示的类型",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "click"
+            },
+            {
+              "name": "placement",
+              "description": "浮动元素的定位",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "bottom"
+            },
+            {
+              "name": "transition",
+              "description": "浮动元素出现/消失过渡",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "fade"
+            },
+            {
+              "name": "openDelay",
+              "description": "浮动元素打开延时",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "0"
+            },
+            {
+              "name": "closeDelay",
+              "description": "浮动元素关闭延时",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "0"
+            },
+            {
+              "name": "disabled",
+              "description": "是否禁用浮动元素",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "false"
+            },
+            {
+              "name": "offset",
+              "description": "浮动元素的偏移量",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "5"
+            },
+            {
+              "name": "theme",
+              "description": "浮动元素的颜色主题",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "light"
+            },
+            {
+              "name": "closeOnClickBody",
+              "description": "是否在点击其他元素时关闭",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "false"
+            },
+            {
+              "name": "openOnMounted",
+              "description": "是否在挂载时立即显示",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "false"
+            },
+            {
+              "name": "teleported",
+              "description": "是否瞬移到body元素下",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "true"
+            },
+            {
+              "name": "showArrow",
+              "description": "是否展示箭头",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "false"
+            },
+            {
+              "name": "expression",
+              "description": "非解耦模式下reference元素默认会嵌套一层div，控制div的表现形式",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "block"
+            },
+            {
+              "name": "floatingClass",
+              "description": "floating元素默认会嵌套一层div，设置这层div的类名",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "---"
+            },
+            {
+              "name": "reference",
+              "description": "解耦模式下的引用元素",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "---"
+            },
+            {
+              "name": "quickTrack",
+              "description": "是否开启快速跟踪，在解耦模式下若浮动元素跟不上引用元素的改变开启此项",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "false"
+            }
+          ]
+        },
+        {
+          "name": "s-popconfirm-气泡确认框",
+          "source": {
+            "symbol": "AppPopconfirm 气泡确认框"
+          },
+          "description": "当用于的某些操作需要确认时，比如点击按钮，可以用于代理一次按钮回调，让用于确认。",
+          "doc-url": "https://you.components/docs/index#Popconfirm-气泡确认框",
+          "props": [
+            {
+              "name": "trigger",
+              "description": "触发浮动元素显示的类型",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "click"
+            },
+            {
+              "name": "placement",
+              "description": "浮动元素的定位",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "bottom"
+            },
+            {
+              "name": "transition",
+              "description": "浮动元素出现/消失过渡",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "fade"
+            },
+            {
+              "name": "openDelay",
+              "description": "浮动元素打开延时",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "0"
+            },
+            {
+              "name": "closeDelay",
+              "description": "浮动元素关闭延时",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "0"
+            },
+            {
+              "name": "disabled",
+              "description": "是否禁用浮动元素",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "false"
+            },
+            {
+              "name": "offset",
+              "description": "浮动元素的偏移量",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "5"
+            },
+            {
+              "name": "theme",
+              "description": "浮动元素的颜色主题",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "light"
+            },
+            {
+              "name": "closeOnClickBody",
+              "description": "是否在点击其他元素时关闭",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "false"
+            },
+            {
+              "name": "openOnMounted",
+              "description": "是否在挂载时立即显示",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "false"
+            },
+            {
+              "name": "teleported",
+              "description": "是否瞬移到body元素下",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "true"
+            },
+            {
+              "name": "showArrow",
+              "description": "是否展示箭头",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "false"
+            },
+            {
+              "name": "expression",
+              "description": "非解耦模式下reference元素默认会嵌套一层div，控制div的表现形式",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "block"
+            },
+            {
+              "name": "floatingClass",
+              "description": "floating元素默认会嵌套一层div，设置这层div的类名",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "---"
+            },
+            {
+              "name": "reference",
+              "description": "解耦模式下的引用元素",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "---"
+            },
+            {
+              "name": "quickTrack",
+              "description": "是否开启快速跟踪，在解耦模式下若浮动元素跟不上引用元素的改变开启此项",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "false"
+            },
+            {
+              "name": "cancelBtnText",
+              "description": "`取消按钮`的文本",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "取消"
+            },
+            {
+              "name": "confirmBtnType",
+              "description": "`确认按钮`的文本",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "确认"
+            },
+            {
+              "name": "type",
+              "description": "确认框的类型",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "---"
+            }
+          ]
+        },
+        {
+          "name": "s-tooltip-文本提示框",
+          "source": {
+            "symbol": "AppTooltip 文本提示框"
+          },
+          "description": "一般用在元素hover时展示提示信息",
+          "doc-url": "https://you.components/docs/index#Tooltip-文本提示框",
+          "props": [
+            {
+              "name": "trigger",
+              "description": "触发浮动元素显示的类型",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "hover"
+            },
+            {
+              "name": "placement",
+              "description": "浮动元素的定位",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "bottom"
+            },
+            {
+              "name": "transition",
+              "description": "浮动元素出现/消失过渡",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "fade"
+            },
+            {
+              "name": "openDelay",
+              "description": "浮动元素打开延时",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "50`ms`"
+            },
+            {
+              "name": "closeDelay",
+              "description": "浮动元素关闭延时",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "200`ms`"
+            },
+            {
+              "name": "disabled",
+              "description": "是否禁用浮动元素",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "false"
+            },
+            {
+              "name": "offset",
+              "description": "浮动元素的偏移量",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "10"
+            },
+            {
+              "name": "theme",
+              "description": "浮动元素的颜色主题",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "dark"
+            },
+            {
+              "name": "closeOnClickBody",
+              "description": "是否在点击其他元素时关闭",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "false"
+            },
+            {
+              "name": "openOnMounted",
+              "description": "是否在挂载时立即显示",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "false"
+            },
+            {
+              "name": "teleported",
+              "description": "是否瞬移到body元素下",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "true"
+            },
+            {
+              "name": "showArrow",
+              "description": "是否显示箭头",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "true"
+            },
+            {
+              "name": "expression",
+              "description": "非解耦模式下reference元素默认会嵌套一层div，控制div的表现形式",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "block"
+            },
+            {
+              "name": "floatingClass",
+              "description": "floating元素默认会嵌套一层div，设置这层div的类名",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "---"
+            },
+            {
+              "name": "reference",
+              "description": "解耦模式下的引用元素",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "---"
+            },
+            {
+              "name": "quickTrack",
+              "description": "是否开启快速跟踪，在解耦模式下若浮动元素跟不上引用元素的改变开启此项",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "false"
+            },
+            {
+              "name": "content",
+              "description": "提示框的文本",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "---"
+            }
+          ]
+        },
+        {
+          "name": "s-divider-分割线",
+          "source": {
+            "symbol": "AppDivider 分割线"
+          },
+          "description": "通常用于隔断元素",
+          "doc-url": "https://you.components/docs/index#Divider-分割线",
+          "props": [
+            {
+              "name": "direction",
+              "description": "分割线的方向",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "horizontal"
+            },
+            {
+              "name": "type",
+              "description": "分割线的类型",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "solid"
+            },
+            {
+              "name": "contentPosition",
+              "description": "分割线的文案的位置",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "center"
+            },
+            {
+              "name": "prefixIcon",
+              "description": "分割线的文案的前缀图标",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "---"
+            },
+            {
+              "name": "suffixIcon",
+              "description": "分割线的文案的后缀图标",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "---"
+            },
+            {
+              "name": "content",
+              "description": "分割线的文案",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "---"
+            },
+            {
+              "name": "gap",
+              "description": "分割线用于隔离的高度（宽度）",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "10"
+            }
+          ]
+        },
+        {
+          "name": "s-skeleton-骨架屏",
+          "source": {
+            "symbol": "AppSkeleton 骨架屏"
+          },
+          "description": "当页面数据未被加载完成时显示, 并不会过分区分骨架屏内部Item的类别，所有骨架屏Item都应该是一个普通的矩形盒子, 通过css样式来改变外观和布局",
+          "doc-url": "https://you.components/docs/index#Skeleton-骨架屏",
+          "props": [
+            {
+              "name": "type",
+              "description": "元素的类型",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "rectangle"
+            },
+            {
+              "name": "isCircle",
+              "description": "是否是圆形",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "false"
+            },
+            {
+              "name": "isRound",
+              "description": "是否是圆角",
+              "doc-url": "https://you.components/docs/index#Props",
+              "default": "false"
+            }
+          ]
         }
       ]
     }

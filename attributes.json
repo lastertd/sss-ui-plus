@@ -1,0 +1,420 @@
+{
+  "s-button/type": {
+    "type": "`default` | `primary` | `success`| `info` |`warning`| `danger` |`cyan`| `dark`",
+    "description": "类型, default: default.\n\n[Docs](https://you.components/docs/index#Button-Props)"
+  },
+  "s-button/nativeType": {
+    "type": "`button`| `submit` |`reset`",
+    "description": "原生类型, default: button.\n\n[Docs](https://you.components/docs/index#Button-Props)"
+  },
+  "s-button/size": {
+    "type": "`small`| `normal` |`large`",
+    "description": "大小, default: normal.\n\n[Docs](https://you.components/docs/index#Button-Props)"
+  },
+  "s-button/round": {
+    "type": "`Boolean`",
+    "description": "圆角按钮, default: false.\n\n[Docs](https://you.components/docs/index#Button-Props)"
+  },
+  "s-button/circle": {
+    "type": "`Boolean`",
+    "description": "圆形按钮, default: false.\n\n[Docs](https://you.components/docs/index#Button-Props)"
+  },
+  "s-button/disabled": {
+    "type": "`Boolean`",
+    "description": "禁用按钮, default: false.\n\n[Docs](https://you.components/docs/index#Button-Props)"
+  },
+  "s-button/empty": {
+    "type": "`Boolean`",
+    "description": "镂空按钮, default: false.\n\n[Docs](https://you.components/docs/index#Button-Props)"
+  },
+  "s-button/ghost": {
+    "type": "`Boolean`",
+    "description": "幽灵按钮, default: false.\n\n[Docs](https://you.components/docs/index#Button-Props)"
+  },
+  "s-button/loading": {
+    "type": "`Boolean`",
+    "description": "加载中按钮, default: false.\n\n[Docs](https://you.components/docs/index#Button-Props)"
+  },
+  "s-button/prefixIcon": {
+    "type": "`String`",
+    "description": "前缀图标, default: ---.\n\n[Docs](https://you.components/docs/index#Button-Props)"
+  },
+  "s-button/suffixIcon": {
+    "type": "`String`",
+    "description": "后缀图标, default: ---.\n\n[Docs](https://you.components/docs/index#Button-Props)"
+  },
+  "s-link-链接/href": {
+    "type": "`String`",
+    "description": "原生href, default: ---.\n\n[Docs](https://you.components/docs/index#props)"
+  },
+  "s-link-链接/type": {
+    "type": "`default` `primary` `success` `info` `warning` `danger`",
+    "description": "类型, default: default.\n\n[Docs](https://you.components/docs/index#props)"
+  },
+  "s-link-链接/disabled": {
+    "type": "`Boolean`",
+    "description": "禁用, default: false.\n\n[Docs](https://you.components/docs/index#props)"
+  },
+  "s-link-链接/underline": {
+    "type": "`Boolean`",
+    "description": "`hover`时是否有下划线, default: false.\n\n[Docs](https://you.components/docs/index#props)"
+  },
+  "s-link-链接/prefixIcon": {
+    "type": "`String`",
+    "description": "前缀图标, default: ---.\n\n[Docs](https://you.components/docs/index#props)"
+  },
+  "s-link-链接/suffixIcon": {
+    "type": "`String`",
+    "description": "后缀图标, default: ---.\n\n[Docs](https://you.components/docs/index#props)"
+  },
+  "s-link-链接/jumpMethod": {
+    "type": "`push` `replace` `newView`",
+    "description": "跳转方式, default: push.\n\n[Docs](https://you.components/docs/index#props)"
+  },
+  "s-scrollbar-滚动条/vertical": {
+    "description": "是否显示垂直滚动条, default: true.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-scrollbar-滚动条/horizontal": {
+    "description": "水平滚动条, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-scrollbar-滚动条/noResize": {
+    "description": "滚动视口大小是否不再改变，当视口大小不会改变时，添加此项可优化性能, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-scrollbar-滚动条/always": {
+    "description": "是否一直显示, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-scrollbar-滚动条/isOutside": {
+    "description": "是否显示在外部，设置此项，滚动条将会显示在视口外部, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-scrollbar-滚动条/quickJump": {
+    "description": "是否在点击滚动条时，快速导航到对应位置, default: true.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dialog-对话框/showFoot": {
+    "type": "`Boolean`",
+    "description": "展示`footer`, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dialog-对话框/showHead": {
+    "type": "`Boolean`",
+    "description": "展示`header`, default: true.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dialog-对话框/showMark": {
+    "type": "`Boolean`",
+    "description": "展示遮罩, default: true.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dialog-对话框/cancelBtnText": {
+    "type": "`String`",
+    "description": "`取消按钮`的文本, default: 取消.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dialog-对话框/confirmBtnText": {
+    "type": "`String`",
+    "description": "`确认按钮`的文本, default: 确认.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dialog-对话框/closeOnClickMark": {
+    "type": "`Boolean`",
+    "description": "通过点击遮罩关闭对话框, default: true.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dialog-对话框/closeOnPressEscape": {
+    "type": "`Boolean`",
+    "description": "通过按下`ESC`关闭对话框, default: true.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dialog-对话框/lockScroll": {
+    "type": "`Boolean`",
+    "description": "锁定浏览器滚动条, default: true.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dialog-对话框/appendToBody": {
+    "type": "`Boolean`",
+    "description": "将对话框添加到`body`标签下，在嵌套对话框时，务必设置为true, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dialog-对话框/draggable": {
+    "type": "`Boolean`",
+    "description": "可以拖拽, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dialog-对话框/title": {
+    "type": "`String`",
+    "description": "标题, default: default title.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dialog-对话框/top": {
+    "type": "`String`",
+    "description": "距离浏览器顶部的距离, default: 15`vh`.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dialog-对话框/beforeClose": {
+    "type": "`(done:() => void) => void `",
+    "description": "关闭之前的回调，如果设置了这个属性，要手动调用`done()`函数才会关闭对话框, default: ---.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-drawer-抽屉/showFoot": {
+    "type": "`Boolean`",
+    "description": "展示`footer`, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-drawer-抽屉/showHead": {
+    "type": "`Boolean`",
+    "description": "展示`header`, default: true.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-drawer-抽屉/showMark": {
+    "type": "`Boolean`",
+    "description": "展示遮罩, default: true.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-drawer-抽屉/cancelBtnText": {
+    "type": "`String`",
+    "description": "`取消按钮`的文本, default: 取消.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-drawer-抽屉/confirmBtnText": {
+    "type": "`String`",
+    "description": "`确认按钮`的文本, default: 确认.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-drawer-抽屉/closeOnClickMark": {
+    "type": "`Boolean`",
+    "description": "通过点击遮罩关闭对话框, default: true.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-drawer-抽屉/closeOnPressEscape": {
+    "type": "`Boolean`",
+    "description": "通过按下`ESC`关闭对话框, default: true.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-drawer-抽屉/lockScroll": {
+    "type": "`Boolean`",
+    "description": "锁定浏览器滚动条, default: true.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-drawer-抽屉/appendToBody": {
+    "type": "`Boolean`",
+    "description": "将对话框添加到`body`标签下，在嵌套对话框时，务必设置为true, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-drawer-抽屉/draggable": {
+    "type": "`Boolean`",
+    "description": "可以拖拽, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-drawer-抽屉/title": {
+    "type": "`String`",
+    "description": "标题, default: default title.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-drawer-抽屉/top": {
+    "type": "`String`",
+    "description": "距离浏览器顶部的距离, default: 15`vh`.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-drawer-抽屉/postion": {
+    "type": "`top` `right` `bottom` `left`",
+    "description": "抽屉展示的位置, default: top.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-drawer-抽屉/btnSize": {
+    "type": "`small` `normal` `large`",
+    "description": "尾部按钮的大小, default: normal.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-drawer-抽屉/beforeClose": {
+    "type": "`(done:() => void) => void `",
+    "description": "关闭之前的回调，如果设置了这个属性，要手动调用`done()`函数才会关闭对话框, default: ---.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dropdown-下拉框/suffixIcon": {
+    "description": "后缀图标, default: ---.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dropdown-下拉框/prefixIcon": {
+    "description": "前缀图标, default: ---.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dropdown-下拉框/label": {
+    "description": "文本, default: ---.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dropdown-下拉框/value": {
+    "description": "`DropdownItem`的`select`回调的参数， `Dropdown`的`select`回调的第一参数, default: ---.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dropdown-下拉框/closeOnClick": {
+    "description": "是否点击此`DropdownItem`时关闭下拉框， 优先级比下拉框的同名选项高, default: true.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dropdown-下拉框/isActive": {
+    "description": "是否是活跃状态, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dropdown-下拉框/disabled": {
+    "description": "是否是禁用状态, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dropdown-下拉框/tag": {
+    "description": "组件的呈现类型, default: `div`.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dropdown-下拉框/href": {
+    "description": "当`tag`为`s-link`时，需要跳转到的目标url, default: ---.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-dropdown-下拉框/jumpMethod": {
+    "description": "当`tag`为`s-link`时，跳转方式, default: push.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-floating-浮动/trigger": {
+    "description": "触发浮动元素显示的类型, default: click.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-floating-浮动/placement": {
+    "description": "浮动元素的定位, default: bottom.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-floating-浮动/transition": {
+    "description": "浮动元素出现/消失过渡, default: fade.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-floating-浮动/openDelay": {
+    "description": "浮动元素打开延时, default: 0.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-floating-浮动/closeDelay": {
+    "description": "浮动元素关闭延时, default: 0.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-floating-浮动/disabled": {
+    "description": "是否禁用浮动元素, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-floating-浮动/offset": {
+    "description": "浮动元素的偏移量, default: 5.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-floating-浮动/theme": {
+    "description": "浮动元素的颜色主题, default: light.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-floating-浮动/closeOnClickBody": {
+    "description": "是否在点击其他元素时关闭, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-floating-浮动/openOnMounted": {
+    "description": "是否在挂载时立即显示, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-floating-浮动/teleported": {
+    "description": "是否瞬移到body元素下, default: true.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-floating-浮动/showArrow": {
+    "description": "是否展示箭头, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-floating-浮动/expression": {
+    "description": "非解耦模式下reference元素默认会嵌套一层div，控制div的表现形式, default: block.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-floating-浮动/floatingClass": {
+    "description": "floating元素默认会嵌套一层div，设置这层div的类名, default: ---.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-floating-浮动/reference": {
+    "description": "解耦模式下的引用元素, default: ---.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-floating-浮动/quickTrack": {
+    "description": "是否开启快速跟踪，在解耦模式下若浮动元素跟不上引用元素的改变开启此项, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-popconfirm-气泡确认框/trigger": {
+    "description": "触发浮动元素显示的类型, default: click.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-popconfirm-气泡确认框/placement": {
+    "description": "浮动元素的定位, default: bottom.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-popconfirm-气泡确认框/transition": {
+    "description": "浮动元素出现/消失过渡, default: fade.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-popconfirm-气泡确认框/openDelay": {
+    "description": "浮动元素打开延时, default: 0.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-popconfirm-气泡确认框/closeDelay": {
+    "description": "浮动元素关闭延时, default: 0.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-popconfirm-气泡确认框/disabled": {
+    "description": "是否禁用浮动元素, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-popconfirm-气泡确认框/offset": {
+    "description": "浮动元素的偏移量, default: 5.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-popconfirm-气泡确认框/theme": {
+    "description": "浮动元素的颜色主题, default: light.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-popconfirm-气泡确认框/closeOnClickBody": {
+    "description": "是否在点击其他元素时关闭, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-popconfirm-气泡确认框/openOnMounted": {
+    "description": "是否在挂载时立即显示, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-popconfirm-气泡确认框/teleported": {
+    "description": "是否瞬移到body元素下, default: true.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-popconfirm-气泡确认框/showArrow": {
+    "description": "是否展示箭头, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-popconfirm-气泡确认框/expression": {
+    "description": "非解耦模式下reference元素默认会嵌套一层div，控制div的表现形式, default: block.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-popconfirm-气泡确认框/floatingClass": {
+    "description": "floating元素默认会嵌套一层div，设置这层div的类名, default: ---.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-popconfirm-气泡确认框/reference": {
+    "description": "解耦模式下的引用元素, default: ---.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-popconfirm-气泡确认框/quickTrack": {
+    "description": "是否开启快速跟踪，在解耦模式下若浮动元素跟不上引用元素的改变开启此项, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-popconfirm-气泡确认框/cancelBtnText": {
+    "description": "`取消按钮`的文本, default: 取消.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-popconfirm-气泡确认框/confirmBtnType": {
+    "description": "`确认按钮`的文本, default: 确认.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-popconfirm-气泡确认框/type": {
+    "description": "确认框的类型, default: ---.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-tooltip-文本提示框/trigger": {
+    "description": "触发浮动元素显示的类型, default: hover.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-tooltip-文本提示框/placement": {
+    "description": "浮动元素的定位, default: bottom.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-tooltip-文本提示框/transition": {
+    "description": "浮动元素出现/消失过渡, default: fade.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-tooltip-文本提示框/openDelay": {
+    "description": "浮动元素打开延时, default: 50`ms`.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-tooltip-文本提示框/closeDelay": {
+    "description": "浮动元素关闭延时, default: 200`ms`.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-tooltip-文本提示框/disabled": {
+    "description": "是否禁用浮动元素, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-tooltip-文本提示框/offset": {
+    "description": "浮动元素的偏移量, default: 10.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-tooltip-文本提示框/theme": {
+    "description": "浮动元素的颜色主题, default: dark.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-tooltip-文本提示框/closeOnClickBody": {
+    "description": "是否在点击其他元素时关闭, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-tooltip-文本提示框/openOnMounted": {
+    "description": "是否在挂载时立即显示, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-tooltip-文本提示框/teleported": {
+    "description": "是否瞬移到body元素下, default: true.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-tooltip-文本提示框/showArrow": {
+    "description": "是否显示箭头, default: true.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-tooltip-文本提示框/expression": {
+    "description": "非解耦模式下reference元素默认会嵌套一层div，控制div的表现形式, default: block.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-tooltip-文本提示框/floatingClass": {
+    "description": "floating元素默认会嵌套一层div，设置这层div的类名, default: ---.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-tooltip-文本提示框/reference": {
+    "description": "解耦模式下的引用元素, default: ---.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-tooltip-文本提示框/quickTrack": {
+    "description": "是否开启快速跟踪，在解耦模式下若浮动元素跟不上引用元素的改变开启此项, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-tooltip-文本提示框/content": {
+    "description": "提示框的文本, default: ---.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-divider-分割线/direction": {
+    "description": "分割线的方向, default: horizontal.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-divider-分割线/type": {
+    "description": "分割线的类型, default: solid.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-divider-分割线/contentPosition": {
+    "description": "分割线的文案的位置, default: center.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-divider-分割线/prefixIcon": {
+    "description": "分割线的文案的前缀图标, default: ---.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-divider-分割线/suffixIcon": {
+    "description": "分割线的文案的后缀图标, default: ---.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-divider-分割线/content": {
+    "description": "分割线的文案, default: ---.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-divider-分割线/gap": {
+    "description": "分割线用于隔离的高度（宽度）, default: 10.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-skeleton-骨架屏/type": {
+    "description": "元素的类型, default: rectangle.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-skeleton-骨架屏/isCircle": {
+    "description": "是否是圆形, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  },
+  "s-skeleton-骨架屏/isRound": {
+    "description": "是否是圆角, default: false.\n\n[Docs](https://you.components/docs/index#Props)"
+  }
+}
