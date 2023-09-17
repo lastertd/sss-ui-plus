@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "./drawer.less"
-import {SDrawerProps, SDrawerEmits } from "./drawer.ts"
+import {SDrawerProps, SDrawerEmits } from "./drawer"
 import {SMessageBox, SMessageBoxInstance} from "../../SMessageBox";
 import {nextTick, onMounted, Ref, watch, ref} from "vue";
 import {unrefElement, useEventListener} from "@vueuse/core";

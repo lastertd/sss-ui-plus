@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "./msgBox.less"
-import {SMsgBoxProps, SMsgBoxEmits} from "./msgBox.ts";
+import {SMsgBoxProps, SMsgBoxEmits} from "./msgBox";
 import {SIcon, SIconInstance} from "../../SIcon";
 import {SButton} from "../../SButton";
 import {computed, nextTick, Ref, ref} from "vue";

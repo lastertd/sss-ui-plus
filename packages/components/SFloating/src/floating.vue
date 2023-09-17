@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "./floating.less"
-import {SFloatingProps, SFloatingEmits} from "./floating.ts";
+import {SFloatingProps, SFloatingEmits} from "./floating";
 import {useFloating, offset, flip, shift, autoUpdate, arrow} from "@floating-ui/vue";
 import {computed, onMounted, watch, ref, useSlots, onBeforeUnmount, Ref} from "vue";
 import {unrefElement, useEventListener, useMutationObserver} from "@vueuse/core";
@@ -87,7 +87,6 @@ const toggle = () => {
 	if (flag.value) close()
 	else open();
 }
-
 
 
 // 箭头相关
@@ -199,8 +198,7 @@ defineExpose({
 
 <template>
 
-	<SPartial v-if="slots.reference" ref="reference"
-	          :style="`display:${props.expression}`">
+	<SPartial v-if="slots.reference" ref="reference">
 		<slot name="reference"></slot>
 	</SPartial>
 

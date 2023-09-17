@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "./dropdownItem.less"
-import {SDropdownItemEmits, SDropdownItemProps} from "./dropdownItem.ts"
+import {SDropdownItemEmits, SDropdownItemProps} from "./dropdownItem"
 import {SIcon} from "../../SIcon";
 import {Ref, inject} from "vue";
 

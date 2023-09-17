@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "./link.less"
-import {SLinkProps} from "./link.ts";
+import {SLinkProps} from "./link";
 import {SIcon} from "../../SIcon";
 import {ref} from "vue";
 

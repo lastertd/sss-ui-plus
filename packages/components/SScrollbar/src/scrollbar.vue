@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "./scrollbar.less"
-import {SScrollbarProps} from "./scrollbar.ts";
+import {SScrollbarProps} from "./scrollbar";
 import {ref} from "vue";
 import {unrefElement, useEventListener, useResizeObserver, useMutationObserver} from "@vueuse/core";
 

@@ -1,7 +1,7 @@
 
 <script setup lang="ts">
 import "./tooltip.less"
-import {STooltipEmits, STooltipProps} from "./tooltip.ts";
+import {STooltipEmits, STooltipProps} from "./tooltip";
 import {SFloating} from "../../SFloating";
 import {useSlots} from "vue";
 
@@ -31,7 +31,6 @@ const slots = useSlots();
 		:open-on-mounted="props.openOnMounted"
 		:teleported="props.teleported"
 		:show-arrow="props.showArrow"
-		:expression="props.expression"
 		:floating-class="props.floatingClass"
 		:reference="props.reference"
 		:quick-track="props.quickTrack"

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "./divider.less"
-import {SDividerProps} from "./divider.ts";
+import {SDividerProps} from "./divider";
 import {onMounted, ref, useSlots} from "vue";
 import {unrefElement, MaybeElement} from "@vueuse/core";
 

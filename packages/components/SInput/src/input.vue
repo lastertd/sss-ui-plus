@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "./input.less"
-import {SInputEmits, SInputProps} from "./input.ts"
+import {SInputEmits, SInputProps} from "./input"
 import {SIcon} from "../../SIcon";
 import {computed, onMounted, Ref, watch, ref} from "vue";
 

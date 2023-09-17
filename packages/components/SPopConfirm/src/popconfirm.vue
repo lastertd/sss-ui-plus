@@ -1,7 +1,7 @@
 
 <script setup lang="ts">
 import "./popconfirm.less"
-import {SPopconfirmEmits, SPopconfirmProps} from "./popconfirm.ts";
+import {SPopconfirmEmits, SPopconfirmProps} from "./popconfirm";
 import {SFloating} from "../../SFloating";
 import {SMessageBoxInstance, SMessageBox} from "../../SMessageBox";
 import {nextTick, ref,useSlots} from "vue";
@@ -70,7 +70,6 @@ const handleConfirm = () => {
 		:open-on-mounted="props.openOnMounted"
 		:teleported="props.teleported"
 		:show-arrow="props.showArrow"
-		:expression="props.expression"
 		:floating-class="props.floatingClass"
 		:reference="props.reference"
 		:quick-track="props.quickTrack"

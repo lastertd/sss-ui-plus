@@ -1,2 +1,2 @@
-export * from "./base.ts"
-export * from "./SuiOptions.ts"
+export * from "./base"
+export * from "./SuiOptions"

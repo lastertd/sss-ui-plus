@@ -1,9 +1,9 @@
-export * from "./useDraggable.ts"
+export * from "./useDraggable"
 
-export * from "./useFlag.ts"
+export * from "./useFlag"
 
-export * from "./useLockScroll.ts"
+export * from "./useLockScroll"
 
-export * from "./useMark.ts"
+export * from "./useMark"
 
-export * from "./useBadge.ts"
+export * from "./useBadge"

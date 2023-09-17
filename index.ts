@@ -7,7 +7,7 @@ import "./packages/styles/icons/iconfont.css"
 import {App} from "vue";
 import {IndexManager} from "@sss-ui-plus/utils";
 import {SuiOptions} from "@sss-ui-plus/typings";
-import installer from "@sss-ui-plus/components/installer.ts";
+import installer from "@sss-ui-plus/components/installer";
 
 export * from "./packages/components"
 export * from "@sss-ui-plus/hooks"

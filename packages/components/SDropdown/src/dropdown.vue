@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "./dropdown.less"
-import {SDropdownEmits, SDropdownProps} from "./dropdown.ts";
+import {SDropdownEmits, SDropdownProps} from "./dropdown";
 import {SFloating, SFloatingInstance} from "../../SFloating";
 import {SScrollbar} from "../../SScrollbar";
 import {provide, ref, useSlots} from "vue";

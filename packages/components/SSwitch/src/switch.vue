@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "./switch.less"
-import {SSwitchEmits, SSwitchProps} from "./switch.ts";
+import {SSwitchEmits, SSwitchProps} from "./switch";
 import {computed} from "vue";
 
 defineOptions({

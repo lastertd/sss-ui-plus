@@ -46,10 +46,6 @@ export const STooltipProps = {
         type: Boolean,
         default:true
     },
-    expression:{
-        type:String as PropType<Expression>,
-        default:'block'
-    },
     floatingClass:String,
     reference:Object as PropType<any>,
     quickTrack:Boolean,

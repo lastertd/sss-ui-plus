@@ -1,12 +1,12 @@
 import {PropType} from "vue";
-import {Expression, FloatingTrigger, MessageTypes, Transition} from "@sss-ui-plus/typings";
+import {FloatingTrigger, MessageTypes, Transition} from "@sss-ui-plus/typings";
 import {Placement} from "@floating-ui/vue";
 
 
 export type CascaderOptionsType = {
-    label:string,
-    value:string,
-    children?:CascaderOptionsType[]
+    label: string,
+    value: string,
+    children?: CascaderOptionsType[]
 }
 
 
@@ -21,54 +21,50 @@ export const SCascaderProps = {
         type: String as PropType<Placement>,
         default: "bottom"
     },
-    transition:{
-        type:String as PropType<Transition>,
-        default:"scale"
+    transition: {
+        type: String as PropType<Transition>,
+        default: "scale"
     },
-    openDelay:{
-        type:Number,
-        default:0
+    openDelay: {
+        type: Number,
+        default: 0
     },
-    closeDelay:{
-        type:Number,
-        default:0
+    closeDelay: {
+        type: Number,
+        default: 0
     },
-    disabled:Boolean,
-    offset:{
-        type:Number,
-        default:10,
+    disabled: Boolean,
+    offset: {
+        type: Number,
+        default: 10,
     },
-    theme:{
+    theme: {
         type: String as PropType<'light' | 'dark'>,
-        default:'light'
+        default: 'light'
     },
-    closeOnClickBody:Boolean,
-    openOnMounted:Boolean,
-    teleported:{
-        type:Boolean,
-        default:true,
-    },
-    showArrow:{
+    closeOnClickBody: Boolean,
+    openOnMounted: Boolean,
+    teleported: {
         type: Boolean,
-        default:true
+        default: true,
     },
-    type:String as PropType<MessageTypes>,
-    cancelBtnText:{
-        type:String,
-        default:'取消'
+    showArrow: {
+        type: Boolean,
+        default: true
     },
-    confirmBtnType:{
-        type:String,
-        default:'确认'
+    type: String as PropType<MessageTypes>,
+    cancelBtnText: {
+        type: String,
+        default: '取消'
     },
-    title:String,
-    expression:{
-        type:String as PropType<Expression>,
-        default:'block'
+    confirmBtnType: {
+        type: String,
+        default: '确认'
     },
-    floatingClass:String,
-    reference:Object as PropType<any>,
-    quickTrack:Boolean,
+    title: String,
+    floatingClass: String,
+    reference: Object as PropType<any>,
+    quickTrack: Boolean,
 
 
     /*以下是scrollbar属性*/
@@ -80,8 +76,8 @@ export const SCascaderProps = {
     scrollbarHorizontal: Boolean,
     // 视口大小不再改变
     scrollbarNoResize: {
-        type:Boolean,
-        default:true,
+        type: Boolean,
+        default: true,
     },
     // 滚动条始终显示
     scrollbarAlways: Boolean,
@@ -94,36 +90,32 @@ export const SCascaderProps = {
     },
 
     /*以下是dropdown属性*/
-    center:Boolean,
-    closeOnClickItem:{
-        type:Boolean,
-        default:true,
+    center: Boolean,
+    closeOnClickItem: {
+        type: Boolean,
+        default: true,
     },
-    prefix:Array<string>,
+    prefix: Array<string>,
 
     /*以下是cascader属性*/
-    options:{
-        type:Object as PropType<CascaderOptionsType[]>,
-        default:[],
+    options: {
+        type: Object as PropType<CascaderOptionsType[]>,
+        default: [],
     },
-    subCascaderPlacement:{
-        type:String as PropType<'left' | 'right'>,
-        default:'right'
+    subCascaderPlacement: {
+        type: String as PropType<'left' | 'right'>,
+        default: 'right'
     }
-
-
-
-
 
 
 } as const;
 
 
 export const SCascaderEmits = {
-    select:(_:string, __?:string[]) => true,
-    open:() => true,
-    opened:() => true,
-    close:() => true,
+    select: (_: string, __?: string[]) => true,
+    open: () => true,
+    opened: () => true,
+    close: () => true,
     closed: () => true,
 
 } as const;

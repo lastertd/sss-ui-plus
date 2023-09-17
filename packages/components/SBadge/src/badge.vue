@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import {SPartial} from "../../abstract/index.ts"
-import {SBadgeProps} from "./badge.ts";
+import {SPartial} from "../../abstract/index"
+import {SBadgeProps} from "./badge";
 import {computed, ref, useSlots, watch} from "vue";
 import {useBadge} from "@sss-ui-plus/hooks";
 

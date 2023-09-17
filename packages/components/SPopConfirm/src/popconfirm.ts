@@ -1,7 +1,6 @@
 import {PropType} from "vue";
-import {Expression, FloatingTrigger, Transition} from "../../../typings/base.ts";
+import {FloatingTrigger, Transition, MessageTypes} from "@sss-ui-plus/typings";
 import {Placement} from "@floating-ui/vue";
-import {MessageTypes} from "../../../typings/base.ts";
 
 
 export const SPopconfirmProps = {
@@ -46,10 +45,6 @@ export const SPopconfirmProps = {
     showArrow:{
         type: Boolean,
         default:true
-    },
-    expression:{
-        type:String as PropType<Expression>,
-        default:'block'
     },
     floatingClass:String,
     reference:Object as PropType<any>,

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "./skeletonItem.less"
-import {SSkeletonItemProps} from "./skeletonItem.ts";
+import {SSkeletonItemProps} from "./skeletonItem";
 import {inject, Ref, ref} from "vue";
 import {MaybeHTMLElement} from "@sss-ui-plus/typings";
 

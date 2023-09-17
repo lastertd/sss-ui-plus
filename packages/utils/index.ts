@@ -1,25 +1,25 @@
 
 
 // decorator
-export * from "./decorator/singleTon.ts"
-export * from "./decorator/debounce.ts"
-export * from "./decorator/throttle.ts"
+export * from "./decorator/singleTon"
+export * from "./decorator/debounce"
+export * from "./decorator/throttle"
 
 // element
-export * from "./element/Mark.ts"
-export * from "./element/Badge.ts"
+export * from "./element/Mark"
+export * from "./element/Badge"
 
 
 // manager
-export * from "./managers/IndexManager.ts"
-export * from "./managers/LayoutManager.ts"
+export * from "./managers/IndexManager"
+export * from "./managers/LayoutManager"
 
 // vn
-export * from "./vn/registerInstall.ts"
+export * from "./vn/registerInstall"
 
 // other
-export * from "./delay.ts"
-export * from "./fnUnion.ts"
+export * from "./delay"
+export * from "./fnUnion"
 
 
 

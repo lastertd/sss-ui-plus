@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "./icon.less"
-import {SIconProps} from "./icon.ts";
+import {SIconProps} from "./icon";
 import {onMounted, ref} from "vue";
 
 defineOptions({

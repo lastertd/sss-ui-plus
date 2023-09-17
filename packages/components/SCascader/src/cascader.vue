@@ -1,11 +1,11 @@
 
 <script setup lang="ts">
 import "./cascader.less"
-import {CascaderOptionsType, SCascaderEmits, SCascaderProps} from "./cascader.ts";
+import {CascaderOptionsType, SCascaderEmits, SCascaderProps} from "./cascader";
 import {nextTick, ref, useSlots} from "vue";
 import SDropdown from "../../SDropdown/src/dropdown.vue";
 import SDropDownItem from "../../SDropDownItem/src/dropdownItem.vue";
-import {SCascader} from "../index.ts";
+import {SCascader} from "../index";
 
 
 defineOptions({
@@ -70,7 +70,6 @@ defineExpose({
 		:open-on-mounted="props.openOnMounted"
 		:teleported="props.teleported"
 		:show-arrow="props.showArrow"
-		:expression="props.expression"
 		:floating-class="props.floatingClass"
 		:reference="props.reference"
 		:quick-track="props.quickTrack"

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "./row.less"
-import {SRowProps} from "./row.ts";
+import {SRowProps} from "./row";
 import {computed} from "vue";
 
 

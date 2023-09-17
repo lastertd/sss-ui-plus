@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "./button.less";
-import {SButtonProps, SButtonEmits} from "./button.ts"
+import {SButtonProps, SButtonEmits} from "./button"
 import {SIcon} from "../../SIcon";
 
 
