@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import "./dialog.less"
 import {SDialogEmits, SDialogProps} from "./dialog.ts"
-import {SMessageBox, SMessageBoxInstance} from "@sss-ui-plus/components"
+import {SMessageBox, SMessageBoxInstance} from "../../SMessageBox"
 import {nextTick, onMounted, watch, ref} from "vue";
 import {unrefElement, useEventListener} from "@vueuse/core";
 import {IndexManager} from "@sss-ui-plus/utils";

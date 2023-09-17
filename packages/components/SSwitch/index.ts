@@ -8,7 +8,6 @@ Switch.install = function (Vue:App){
 
 export default registerInstall(Switch)
 export type SSwitchInstance = InstanceType<typeof Switch>
-export * from "./src/switch.ts"
 export {
     Switch as SSwitch
 }

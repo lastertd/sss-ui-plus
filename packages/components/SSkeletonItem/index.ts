@@ -8,7 +8,6 @@ SkeletonItem.install = function (Vue:App) {
 
 export default registerInstall(SkeletonItem)
 export type SSkeletonItemInstance = InstanceType<typeof SkeletonItem>
-export * from "./src/skeletonItem.ts"
 export {
     SkeletonItem as SSkeletonItem
 }

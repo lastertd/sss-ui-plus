@@ -2,7 +2,8 @@
 <script setup lang="ts">
 import "./popconfirm.less"
 import {SPopconfirmEmits, SPopconfirmProps} from "./popconfirm.ts";
-import {SFloating, SMessageBox, SMessageBoxInstance} from "@sss-ui-plus/components";
+import {SFloating} from "../../SFloating";
+import {SMessageBoxInstance, SMessageBox} from "../../SMessageBox";
 import {nextTick, ref,useSlots} from "vue";
 
 defineOptions({

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": false,
   "main": "index.ts",
+  "sideEffects": false,
   "dependencies": {
   }
 }

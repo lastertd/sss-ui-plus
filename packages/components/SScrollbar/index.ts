@@ -8,7 +8,6 @@ Scrollbar.install = function (Vue:App) {
 
 export default registerInstall(Scrollbar);
 export type SScrollbarInstance = InstanceType<typeof Scrollbar>
-export * from "./src/scrollbar.ts"
 export {
     Scrollbar as SScrollbar
 }

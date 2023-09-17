@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import "./button.less";
-import SIcon from "../../SIcon/src/icon.vue";
 import {SButtonProps, SButtonEmits} from "./button.ts"
+import {SIcon} from "../../SIcon";
 
 
 defineOptions({
@@ -45,7 +45,7 @@ const handleClick = (evt: Event) => {
 		:type="props.nativeType"
 
 	>
-		<s-icon :target="props.prefixIcon"  :vertical-padding="0"></s-icon>
+		<s-icon :target="props.prefixIcon"   :vertical-padding="0"></s-icon>
 		<slot></slot>
 		<s-icon :target="props.suffixIcon" :vertical-padding="0"></s-icon>
 

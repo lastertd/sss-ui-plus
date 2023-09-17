@@ -12,7 +12,6 @@ export default registerInstall(Button);
 
 
 export type SButtonInstance = InstanceType<typeof Button>
-export * from "./src/button.ts"
 export {
     Button as SButton
 }

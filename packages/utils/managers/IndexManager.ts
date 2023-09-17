@@ -1,6 +1,6 @@
 import {singleTon} from "../decorator/singleTon.ts";
 
-class IndexManager{
+class IdxManager{
     protected index:number
     constructor(index:number = 2000) {
         this.index = index;
@@ -10,8 +10,9 @@ class IndexManager{
     }
 }
 
-const _ = singleTon(IndexManager);
+ const IndexManager = singleTon(IdxManager);
 
 export {
-    _ as IndexManager
+    IndexManager
 }
+

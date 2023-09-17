@@ -10,7 +10,6 @@ Dropdown.install = function (Vue:App) {
 
 export default registerInstall(Dropdown);
 export type SDropdownInstance = InstanceType<typeof Dropdown>;
-export * from "./src/dropdown.ts";
 export {
     Dropdown as SDropdown
 }

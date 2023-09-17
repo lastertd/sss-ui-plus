@@ -1,4 +1,4 @@
-export type BadgeType = 'primary' | 'waring' |'danger' |'info' | 'cyan';
+export declare type BadgeType = 'primary' | 'waring' |'danger' |'info' | 'cyan';
 class Badge {
     protected element: HTMLElement
     protected parent: HTMLElement | null

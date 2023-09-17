@@ -4,7 +4,7 @@ import helper from "components-helper"
 
 helper({
     name: 'sss-ui-plus',
-    version: '0.2.0-beta.17',
+    "version": "0.2.2",
     entry: 'docs/comps/**/*.md',
     outDir: '.',
     reComponentName,
@@ -66,7 +66,8 @@ function reAttribute(str, key) {
                         .join('/')
                     : str
             } else {
-                return str
+
+                return str.replace(/`([^`]+)`/g, '$1')
             }
     }
 }

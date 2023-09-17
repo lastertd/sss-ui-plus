@@ -9,7 +9,6 @@ Floating.install = function (Vue:App) {
 
 export default registerInstall(Floating);
 export type SFloatingInstance = InstanceType<typeof Floating>
-export * from "./src/floating.ts"
 export {
     Floating as SFloating
 }

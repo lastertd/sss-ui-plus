@@ -9,7 +9,6 @@ Popconfirm.install = function (Vue: App) {
 
 export default registerInstall(Popconfirm);
 export type SPopconfirmInstance = InstanceType<typeof Popconfirm>
-export * from "./src/popconfirm.ts"
 export {
     Popconfirm as SPopconfirm
 }

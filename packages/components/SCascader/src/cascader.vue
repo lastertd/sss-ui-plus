@@ -5,7 +5,7 @@ import {CascaderOptionsType, SCascaderEmits, SCascaderProps} from "./cascader.ts
 import {nextTick, ref, useSlots} from "vue";
 import SDropdown from "../../SDropdown/src/dropdown.vue";
 import SDropDownItem from "../../SDropDownItem/src/dropdownItem.vue";
-import SCascader from "../index.ts";
+import {SCascader} from "../index.ts";
 
 
 defineOptions({

@@ -9,7 +9,6 @@ Dialog.install = function (Vue:App) {
 }
 export default registerInstall(Dialog)
 export type SDialogInstance = InstanceType<typeof Dialog>
-export * from "./src/dialog.ts"
 export {
     Dialog as SDialog
 }

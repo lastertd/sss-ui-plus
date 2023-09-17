@@ -9,7 +9,6 @@ Divider.install = function (Vue:App) {
 
 export default registerInstall(Divider);
 export type SDividerInstance = InstanceType<typeof Divider>
-export * from "./src/divider.ts"
 export {
     Divider as SDivider
 }

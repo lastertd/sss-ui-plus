@@ -9,7 +9,6 @@ Tooltip.install = function (Vue: App) {
 
 export default registerInstall(Tooltip)
 export type STooltipInstance = InstanceType<typeof Tooltip>
-export * from "./src/tooltip.ts"
 export {
     Tooltip as STooltip
 }

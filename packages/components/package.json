@@ -1,8 +1,6 @@
 {
   "name": "@sss-ui-plus/components",
-  "private": false,
+  "private": true,
   "main": "index.ts",
-  "version": "1.0.0",
-  "dependencies": {
-  }
+  "version": "1.0.0"
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import "./link.less"
 import {SLinkProps} from "./link.ts";
-import {SIcon} from "@sss-ui-plus/components";
+import {SIcon} from "../../SIcon";
 import {ref} from "vue";
 
 defineOptions({

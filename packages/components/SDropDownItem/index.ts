@@ -9,7 +9,6 @@ DropdownItem.install = function (Vue:App) {
 
 export default registerInstall(DropdownItem);
 export type SDropdownItemInstance = InstanceType<typeof DropdownItem>
-export * from "./src/dropdownItem.ts"
 export {
     DropdownItem as SDropdownItem
 }

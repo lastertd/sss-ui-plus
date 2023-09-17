@@ -1,7 +1,7 @@
 import {PropType} from "vue";
 import "./msgBox.less"
 import {isString} from "@vue/shared";
-import {ElementSizes, MessageTriggerTypes, MessageTypes,Transition} from "../../../types/base.ts";
+import {ElementSizes, MessageTriggerTypes, MessageTypes,Transition} from "../../../typings/base.ts";
 
 
 export const SMsgBoxProps = {

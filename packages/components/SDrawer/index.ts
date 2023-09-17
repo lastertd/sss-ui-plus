@@ -10,7 +10,6 @@ Drawer.install = function (Vue:App) {
 
 export default registerInstall(Drawer);
 export type SDrawerInstance = InstanceType<typeof Drawer>
-export * from "./src/drawer.ts"
 export {
     Drawer as SDrawer
 }

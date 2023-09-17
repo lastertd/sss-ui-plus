@@ -1,8 +1,9 @@
 {
   "name": "@sss-ui-plus/utils",
-  "private": false,
+  "private": true,
   "license": "MIT",
   "main": "index.ts",
+  "sideEffects": false,
   "dependencies": {
     "vue": "^3.3.4",
     "@vueuse/core": "^10.2.1"

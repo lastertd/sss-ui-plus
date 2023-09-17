@@ -11,7 +11,6 @@ Link.install = function (Vue:App) {
 
 export default registerInstall(Link)
 export type SLinkInstance = InstanceType<typeof Link>
-export * from "./src/link.ts"
 export {
     Link as SLink
 }

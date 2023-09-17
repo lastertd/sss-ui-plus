@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/web-types",
   "framework": "vue",
   "name": "sss-ui-plus",
-  "version": "0.2.0-beta.17",
+  "version": "0.2.1",
   "js-types-syntax": "typescript",
   "description-markup": "markdown",
   "contributions": {
@@ -21,51 +21,51 @@
               "doc-url": "https://sssui.4everland.app/comps/basic/button/#button-props",
               "type": [
                 {
-                  "name": "`default`",
+                  "name": "default",
                   "source": {
-                    "symbol": "`default`"
+                    "symbol": "default"
                   }
                 },
                 {
-                  "name": "`primary`",
+                  "name": "primary",
                   "source": {
-                    "symbol": "`primary`"
+                    "symbol": "primary"
                   }
                 },
                 {
-                  "name": "`success`",
+                  "name": "success",
                   "source": {
-                    "symbol": "`success`"
+                    "symbol": "success"
                   }
                 },
                 {
-                  "name": "`info`",
+                  "name": "info",
                   "source": {
-                    "symbol": "`info`"
+                    "symbol": "info"
                   }
                 },
                 {
-                  "name": "`warning`",
+                  "name": "warning",
                   "source": {
-                    "symbol": "`warning`"
+                    "symbol": "warning"
                   }
                 },
                 {
-                  "name": "`danger`",
+                  "name": "danger",
                   "source": {
-                    "symbol": "`danger`"
+                    "symbol": "danger"
                   }
                 },
                 {
-                  "name": "`cyan`",
+                  "name": "cyan",
                   "source": {
-                    "symbol": "`cyan`"
+                    "symbol": "cyan"
                   }
                 },
                 {
-                  "name": "`dark`",
+                  "name": "dark",
                   "source": {
-                    "symbol": "`dark`"
+                    "symbol": "dark"
                   }
                 }
               ],
@@ -77,21 +77,21 @@
               "doc-url": "https://sssui.4everland.app/comps/basic/button/#button-props",
               "type": [
                 {
-                  "name": "`button`",
+                  "name": "button",
                   "source": {
-                    "symbol": "`button`"
+                    "symbol": "button"
                   }
                 },
                 {
-                  "name": "`submit`",
+                  "name": "submit",
                   "source": {
-                    "symbol": "`submit`"
+                    "symbol": "submit"
                   }
                 },
                 {
-                  "name": "`reset`",
+                  "name": "reset",
                   "source": {
-                    "symbol": "`reset`"
+                    "symbol": "reset"
                   }
                 }
               ],
@@ -103,21 +103,21 @@
               "doc-url": "https://sssui.4everland.app/comps/basic/button/#button-props",
               "type": [
                 {
-                  "name": "`small`",
+                  "name": "small",
                   "source": {
-                    "symbol": "`small`"
+                    "symbol": "small"
                   }
                 },
                 {
-                  "name": "`normal`",
+                  "name": "normal",
                   "source": {
-                    "symbol": "`normal`"
+                    "symbol": "normal"
                   }
                 },
                 {
-                  "name": "`large`",
+                  "name": "large",
                   "source": {
-                    "symbol": "`large`"
+                    "symbol": "large"
                   }
                 }
               ],
@@ -128,12 +128,7 @@
               "description": "圆角按钮",
               "doc-url": "https://sssui.4everland.app/comps/basic/button/#button-props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "false"
             },
@@ -142,12 +137,7 @@
               "description": "圆形按钮",
               "doc-url": "https://sssui.4everland.app/comps/basic/button/#button-props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "false"
             },
@@ -156,12 +146,7 @@
               "description": "禁用按钮",
               "doc-url": "https://sssui.4everland.app/comps/basic/button/#button-props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "false"
             },
@@ -170,12 +155,7 @@
               "description": "镂空按钮",
               "doc-url": "https://sssui.4everland.app/comps/basic/button/#button-props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "false"
             },
@@ -184,12 +164,7 @@
               "description": "幽灵按钮",
               "doc-url": "https://sssui.4everland.app/comps/basic/button/#button-props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "false"
             },
@@ -198,12 +173,7 @@
               "description": "加载中按钮",
               "doc-url": "https://sssui.4everland.app/comps/basic/button/#button-props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "false"
             },
@@ -212,12 +182,7 @@
               "description": "前缀图标",
               "doc-url": "https://sssui.4everland.app/comps/basic/button/#button-props",
               "type": [
-                {
-                  "name": "`String`",
-                  "source": {
-                    "symbol": "`String`"
-                  }
-                }
+                "String"
               ],
               "default": "---"
             },
@@ -226,12 +191,7 @@
               "description": "后缀图标",
               "doc-url": "https://sssui.4everland.app/comps/basic/button/#button-props",
               "type": [
-                {
-                  "name": "`String`",
-                  "source": {
-                    "symbol": "`String`"
-                  }
-                }
+                "String"
               ],
               "default": "---"
             }
@@ -250,12 +210,7 @@
               "description": "原生href",
               "doc-url": "https://sssui.4everland.app/comps/basic/link/#props",
               "type": [
-                {
-                  "name": "`String`",
-                  "source": {
-                    "symbol": "`String`"
-                  }
-                }
+                "String"
               ],
               "default": "---"
             },
@@ -265,9 +220,9 @@
               "doc-url": "https://sssui.4everland.app/comps/basic/link/#props",
               "type": [
                 {
-                  "name": "`default` `primary` `success` `info` `warning` `danger`",
+                  "name": "default primary success info warning danger",
                   "source": {
-                    "symbol": "`default` `primary` `success` `info` `warning` `danger`"
+                    "symbol": "default primary success info warning danger"
                   }
                 }
               ],
@@ -278,26 +233,16 @@
               "description": "禁用",
               "doc-url": "https://sssui.4everland.app/comps/basic/link/#props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "false"
             },
             {
               "name": "underline",
-              "description": "`hover`时是否有下划线",
+              "description": "hover时是否有下划线",
               "doc-url": "https://sssui.4everland.app/comps/basic/link/#props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "false"
             },
@@ -306,12 +251,7 @@
               "description": "前缀图标",
               "doc-url": "https://sssui.4everland.app/comps/basic/link/#props",
               "type": [
-                {
-                  "name": "`String`",
-                  "source": {
-                    "symbol": "`String`"
-                  }
-                }
+                "String"
               ],
               "default": "---"
             },
@@ -320,12 +260,7 @@
               "description": "后缀图标",
               "doc-url": "https://sssui.4everland.app/comps/basic/link/#props",
               "type": [
-                {
-                  "name": "`String`",
-                  "source": {
-                    "symbol": "`String`"
-                  }
-                }
+                "String"
               ],
               "default": "---"
             },
@@ -335,9 +270,9 @@
               "doc-url": "https://sssui.4everland.app/comps/basic/link/#props",
               "type": [
                 {
-                  "name": "`push` `replace` `newView`",
+                  "name": "push replace newView",
                   "source": {
-                    "symbol": "`push` `replace` `newView`"
+                    "symbol": "push replace newView"
                   }
                 }
               ],
@@ -401,29 +336,19 @@
           "props": [
             {
               "name": "showFoot",
-              "description": "展示`footer`",
+              "description": "展示footer",
               "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "false"
             },
             {
               "name": "showHead",
-              "description": "展示`header`",
+              "description": "展示header",
               "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "true"
             },
@@ -432,40 +357,25 @@
               "description": "展示遮罩",
               "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "true"
             },
             {
               "name": "cancelBtnText",
-              "description": "`取消按钮`的文本",
+              "description": "取消按钮的文本",
               "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
               "type": [
-                {
-                  "name": "`String`",
-                  "source": {
-                    "symbol": "`String`"
-                  }
-                }
+                "String"
               ],
               "default": "取消"
             },
             {
               "name": "confirmBtnText",
-              "description": "`确认按钮`的文本",
+              "description": "确认按钮的文本",
               "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
               "type": [
-                {
-                  "name": "`String`",
-                  "source": {
-                    "symbol": "`String`"
-                  }
-                }
+                "String"
               ],
               "default": "确认"
             },
@@ -474,26 +384,16 @@
               "description": "通过点击遮罩关闭对话框",
               "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "true"
             },
             {
               "name": "closeOnPressEscape",
-              "description": "通过按下`ESC`关闭对话框",
+              "description": "通过按下ESC关闭对话框",
               "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "true"
             },
@@ -502,26 +402,16 @@
               "description": "锁定浏览器滚动条",
               "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "true"
             },
             {
               "name": "appendToBody",
-              "description": "将对话框添加到`body`标签下，在嵌套对话框时，务必设置为true",
+              "description": "将对话框添加到body标签下，在嵌套对话框时，务必设置为true",
               "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "false"
             },
@@ -530,12 +420,7 @@
               "description": "可以拖拽",
               "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "false"
             },
@@ -544,12 +429,7 @@
               "description": "标题",
               "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
               "type": [
-                {
-                  "name": "`String`",
-                  "source": {
-                    "symbol": "`String`"
-                  }
-                }
+                "String"
               ],
               "default": "default title"
             },
@@ -558,26 +438,16 @@
               "description": "距离浏览器顶部的距离",
               "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
               "type": [
-                {
-                  "name": "`String`",
-                  "source": {
-                    "symbol": "`String`"
-                  }
-                }
+                "String"
               ],
-              "default": "15`vh`"
+              "default": "15vh"
             },
             {
               "name": "beforeClose",
-              "description": "关闭之前的回调，如果设置了这个属性，要手动调用`done()`函数才会关闭对话框",
+              "description": "关闭之前的回调，如果设置了这个属性，要手动调用done()函数才会关闭对话框",
               "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
               "type": [
-                {
-                  "name": "`(done:() => void) => void `",
-                  "source": {
-                    "symbol": "`(done:() => void) => void `"
-                  }
-                }
+                "(done:() => void) => void"
               ],
               "default": "---"
             }
@@ -593,29 +463,19 @@
           "props": [
             {
               "name": "showFoot",
-              "description": "展示`footer`",
+              "description": "展示footer",
               "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "false"
             },
             {
               "name": "showHead",
-              "description": "展示`header`",
+              "description": "展示header",
               "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "true"
             },
@@ -624,40 +484,25 @@
               "description": "展示遮罩",
               "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "true"
             },
             {
               "name": "cancelBtnText",
-              "description": "`取消按钮`的文本",
+              "description": "取消按钮的文本",
               "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
               "type": [
-                {
-                  "name": "`String`",
-                  "source": {
-                    "symbol": "`String`"
-                  }
-                }
+                "String"
               ],
               "default": "取消"
             },
             {
               "name": "confirmBtnText",
-              "description": "`确认按钮`的文本",
+              "description": "确认按钮的文本",
               "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
               "type": [
-                {
-                  "name": "`String`",
-                  "source": {
-                    "symbol": "`String`"
-                  }
-                }
+                "String"
               ],
               "default": "确认"
             },
@@ -666,26 +511,16 @@
               "description": "通过点击遮罩关闭对话框",
               "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "true"
             },
             {
               "name": "closeOnPressEscape",
-              "description": "通过按下`ESC`关闭对话框",
+              "description": "通过按下ESC关闭对话框",
               "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "true"
             },
@@ -694,26 +529,16 @@
               "description": "锁定浏览器滚动条",
               "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "true"
             },
             {
               "name": "appendToBody",
-              "description": "将对话框添加到`body`标签下，在嵌套对话框时，务必设置为true",
+              "description": "将对话框添加到body标签下，在嵌套对话框时，务必设置为true",
               "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "false"
             },
@@ -722,12 +547,7 @@
               "description": "可以拖拽",
               "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
               "type": [
-                {
-                  "name": "`Boolean`",
-                  "source": {
-                    "symbol": "`Boolean`"
-                  }
-                }
+                "Boolean"
               ],
               "default": "false"
             },
@@ -736,12 +556,7 @@
               "description": "标题",
               "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
               "type": [
-                {
-                  "name": "`String`",
-                  "source": {
-                    "symbol": "`String`"
-                  }
-                }
+                "String"
               ],
               "default": "default title"
             },
@@ -750,14 +565,9 @@
               "description": "距离浏览器顶部的距离",
               "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
               "type": [
-                {
-                  "name": "`String`",
-                  "source": {
-                    "symbol": "`String`"
-                  }
-                }
+                "String"
               ],
-              "default": "15`vh`"
+              "default": "15vh"
             },
             {
               "name": "postion",
@@ -765,9 +575,9 @@
               "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
               "type": [
                 {
-                  "name": "`top` `right` `bottom` `left`",
+                  "name": "top right bottom left",
                   "source": {
-                    "symbol": "`top` `right` `bottom` `left`"
+                    "symbol": "top right bottom left"
                   }
                 }
               ],
@@ -779,9 +589,9 @@
               "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
               "type": [
                 {
-                  "name": "`small` `normal` `large`",
+                  "name": "small normal large",
                   "source": {
-                    "symbol": "`small` `normal` `large`"
+                    "symbol": "small normal large"
                   }
                 }
               ],
@@ -789,15 +599,10 @@
             },
             {
               "name": "beforeClose",
-              "description": "关闭之前的回调，如果设置了这个属性，要手动调用`done()`函数才会关闭对话框",
+              "description": "关闭之前的回调，如果设置了这个属性，要手动调用done()函数才会关闭对话框",
               "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
               "type": [
-                {
-                  "name": "`(done:() => void) => void `",
-                  "source": {
-                    "symbol": "`(done:() => void) => void `"
-                  }
-                }
+                "(done:() => void) => void"
               ],
               "default": "---"
             }
@@ -831,13 +636,13 @@
             },
             {
               "name": "value",
-              "description": "`DropdownItem`的`select`回调的参数， `Dropdown`的`select`回调的第一参数",
+              "description": "DropdownItem的select回调的参数， Dropdown的select回调的第一参数",
               "doc-url": "https://sssui.4everland.app/comps/floating/dropdown/#props",
               "default": "---"
             },
             {
               "name": "closeOnClick",
-              "description": "是否点击此`DropdownItem`时关闭下拉框， 优先级比下拉框的同名选项高",
+              "description": "是否点击此DropdownItem时关闭下拉框， 优先级比下拉框的同名选项高",
               "doc-url": "https://sssui.4everland.app/comps/floating/dropdown/#props",
               "default": "true"
             },
@@ -857,17 +662,17 @@
               "name": "tag",
               "description": "组件的呈现类型",
               "doc-url": "https://sssui.4everland.app/comps/floating/dropdown/#props",
-              "default": "`div`"
+              "default": "div"
             },
             {
               "name": "href",
-              "description": "当`tag`为`s-link`时，需要跳转到的目标url",
+              "description": "当tag为s-link时，需要跳转到的目标url",
               "doc-url": "https://sssui.4everland.app/comps/floating/dropdown/#props",
               "default": "---"
             },
             {
               "name": "jumpMethod",
-              "description": "当`tag`为`s-link`时，跳转方式",
+              "description": "当tag为s-link时，跳转方式",
               "doc-url": "https://sssui.4everland.app/comps/floating/dropdown/#props",
               "default": "push"
             }
@@ -1085,13 +890,13 @@
             },
             {
               "name": "cancelBtnText",
-              "description": "`取消按钮`的文本",
+              "description": "取消按钮的文本",
               "doc-url": "https://sssui.4everland.app/comps/floating/popconfirm/#props",
               "default": "取消"
             },
             {
               "name": "confirmBtnType",
-              "description": "`确认按钮`的文本",
+              "description": "确认按钮的文本",
               "doc-url": "https://sssui.4everland.app/comps/floating/popconfirm/#props",
               "default": "确认"
             },
@@ -1133,13 +938,13 @@
               "name": "openDelay",
               "description": "浮动元素打开延时",
               "doc-url": "https://sssui.4everland.app/comps/floating/tooltip/#props",
-              "default": "50`ms`"
+              "default": "50ms"
             },
             {
               "name": "closeDelay",
               "description": "浮动元素关闭延时",
               "doc-url": "https://sssui.4everland.app/comps/floating/tooltip/#props",
-              "default": "200`ms`"
+              "default": "200ms"
             },
             {
               "name": "disabled",

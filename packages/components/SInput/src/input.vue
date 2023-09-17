@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import "./input.less"
 import {SInputEmits, SInputProps} from "./input.ts"
-import { SIcon} from "@sss-ui-plus/components";
+import {SIcon} from "../../SIcon";
 import {computed, onMounted, Ref, watch, ref} from "vue";
 
 

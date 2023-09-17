@@ -1,0 +1,7 @@
+{
+  "name": "@sss-ui-plus/typings",
+  "private": true,
+  "license": "MIT",
+  "main": "index.ts",
+  "sideEffects": false
+}

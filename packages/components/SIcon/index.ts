@@ -9,7 +9,6 @@ Icon.install = function (Vue:App) {
 
 
 export type SIconInstance = InstanceType<typeof Icon>
-export * from "./src/icon.ts"
 export {
     Icon as SIcon
 }

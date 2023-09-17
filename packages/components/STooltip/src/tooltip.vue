@@ -2,7 +2,7 @@
 <script setup lang="ts">
 import "./tooltip.less"
 import {STooltipEmits, STooltipProps} from "./tooltip.ts";
-import {SFloating} from "@sss-ui-plus/components";
+import {SFloating} from "../../SFloating";
 import {useSlots} from "vue";
 
 

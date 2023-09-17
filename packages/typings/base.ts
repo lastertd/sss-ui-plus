@@ -24,3 +24,5 @@ export type Expression = 'inline' | 'block' | 'inline-block';
 
 export type AnyFunction = (...args:any) => any
 
+export {}
+

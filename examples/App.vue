@@ -5,18 +5,17 @@
 	<s-partial ref="default">
 		<slot></slot>
 	</s-partial>
-	<s-button type="cyan" round >waring</s-button>
+	<s-button type="cyan" round  >waring</s-button>
 
 
 </template>
 
 <script setup lang="ts">
-import {notify, SPartial} from "@sss-ui-plus/components"
+import {SPartial} from "@sss-ui-plus/components"
 import {ref} from "@vue/runtime-core";
-import {Badge} from "@sss-ui-plus/utils";
-import {onMounted} from "vue";
+
 import {useBadge} from "@sss-ui-plus/hooks/useBadge";
-import SPlay from "./SPlay.vue";
+
 
 
 const f = ref(false);

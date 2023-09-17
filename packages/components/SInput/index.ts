@@ -10,7 +10,6 @@ Input.install = function (Vue:App) {
 
 export default registerInstall(Input)
 export type SInputInstance = InstanceType<typeof Input>
-export * from "./src/input.ts"
 export {
     Input as SInput
 }

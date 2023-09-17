@@ -1,7 +1,7 @@
 import {PropType} from "vue";
-import {Expression, FloatingTrigger, Transition} from "../../../types/base.ts";
+import {Expression, FloatingTrigger, Transition} from "../../../typings/base.ts";
 import {Placement} from "@floating-ui/vue";
-import {MessageTypes} from "../../../types/base.ts";
+import {MessageTypes} from "../../../typings/base.ts";
 
 
 export const SPopconfirmProps = {

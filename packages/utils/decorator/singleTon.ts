@@ -11,3 +11,5 @@ const singleTon = function <T extends AnyConstructor>(classType: T) {
 export {
     singleTon
 }
+
+export default singleTon

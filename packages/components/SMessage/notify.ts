@@ -1,7 +1,7 @@
 import {createApp} from "vue";
 import {IndexManager, delay, LayoutManager} from "@sss-ui-plus/utils";
 import {MessageTypes} from "@sss-ui-plus/typings";
-import {SMessageBoxInstance, SMessageBox} from "@sss-ui-plus/components";
+import {SMessageBoxInstance, SMessageBox} from "../SMessageBox";
 
 
 type positions = 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';

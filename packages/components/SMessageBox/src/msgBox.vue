@@ -1,12 +1,10 @@
-
-
 <script setup lang="ts">
 import "./msgBox.less"
-import {SIcon, SIconInstance} from "../../SIcon";
-import SButton from "../../SButton";
 import {SMsgBoxProps, SMsgBoxEmits} from "./msgBox.ts";
+import {SIcon, SIconInstance} from "../../SIcon";
+import {SButton} from "../../SButton";
 import {computed, nextTick, Ref, ref} from "vue";
-import {MessageTriggerTypes} from "@sss-ui-plus/typings/base.ts";
+import {MessageTriggerTypes} from "@sss-ui-plus/typings";
 import {useFlag, useDraggable} from "@sss-ui-plus/hooks";
 import {throttle, fnUnion} from "@sss-ui-plus/utils";
 
@@ -20,8 +18,7 @@ const props = defineProps({...SMsgBoxProps});
 const emits = defineEmits({...SMsgBoxEmits})
 
 
-
-const closeIcon:Ref<SIconInstance | null> = ref(null);
+const closeIcon: Ref<SIconInstance | null> = ref(null);
 const outer: Ref<HTMLElement | undefined> = ref(undefined);
 const head: Ref<HTMLElement | undefined> = ref(undefined);
 const drag: Ref<HTMLElement | undefined> = ref(undefined);
@@ -69,7 +66,6 @@ const onClose = throttle(function (trigger: MessageTriggerTypes) {
 }, 500);
 
 
-
 const onCancelBtnClick = throttle(function () {
 	hidden();
 	emits("cancel");
@@ -78,7 +74,7 @@ const onCancelBtnClick = throttle(function () {
 const onConfirmBtnClick = throttle(function () {
 	hidden();
 	emits('confirm');
-},  500);
+}, 500);
 
 
 const handleAfterLeave = function () {
@@ -120,7 +116,7 @@ defineExpose({
 			:style="`top:${props.top}`"
 
 		>
-			<s-icon :target="msgBoxIcon" style="padding-top: 5px"  class="sss-message-icon"></s-icon>
+			<s-icon :target="msgBoxIcon" style="padding-top: 5px" class="sss-message-icon"></s-icon>
 			<div class="sss-message">
 				<!--				message head-->
 				<div
@@ -128,7 +124,7 @@ defineExpose({
 					v-if="props.showHead"
 					class="sss-message-head"
 				>
-					<h3 >{{ props.title }}</h3>
+					<h3>{{ props.title }}</h3>
 					<s-icon
 						ref="closeIcon"
 						v-if="props.showClose"

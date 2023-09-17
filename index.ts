@@ -12,6 +12,7 @@ import installer from "@sss-ui-plus/components/installer.ts";
 export * from "./packages/components"
 export * from "@sss-ui-plus/hooks"
 export * from "@sss-ui-plus/utils"
+export * from "@sss-ui-plus/typings"
 
 
 

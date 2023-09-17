@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import "./dropdown.less"
-import {SDropdownEmits, SDropdownProps} from "./dropdown.ts"
-import { SFloating, SScrollbar} from "@sss-ui-plus/components";
+import {SDropdownEmits, SDropdownProps} from "./dropdown.ts";
+import {SFloating, SFloatingInstance} from "../../SFloating";
+import {SScrollbar} from "../../SScrollbar";
 import {provide, ref, useSlots} from "vue";
 
 
@@ -15,7 +16,7 @@ const props = defineProps({...SDropdownProps});
 const emits = defineEmits({...SDropdownEmits});
 const slots = useSlots();
 
-const floating = ref<InstanceType<typeof SFloating> | undefined>(undefined);
+const floating = ref<SFloatingInstance | null>(null);
 
 
 const open = () => floating.value!.open();

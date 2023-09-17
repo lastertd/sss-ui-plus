@@ -9,7 +9,6 @@ Cascader.install = function (Vue:App) {
 
 export default  registerInstall(Cascader)
 export type SCascaderInstance = InstanceType<typeof Cascader>
-export * from "./src/cascader.ts"
 export {
     Cascader as SCascader
 }

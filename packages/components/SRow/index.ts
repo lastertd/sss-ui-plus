@@ -8,7 +8,6 @@ Row.install = function (Vue: App) {
 
 export default registerInstall(Row);
 export type SRowInstance = InstanceType<typeof Row>
-export * from "./src/row.ts"
 export {
     Row as SRow
 }
