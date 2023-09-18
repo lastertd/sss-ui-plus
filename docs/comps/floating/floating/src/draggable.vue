@@ -15,7 +15,7 @@
 <script setup lang="ts">
 
 import {computed, ref} from "vue";
-import {useDraggable} from "sss-ui-plus/es/src/hooks/useDraggable";
+import {useDraggable} from "@sss-ui-plus/hooks"
 
 const reference = ref();
 
