@@ -43,7 +43,6 @@ export default defineConfig({
                 {
                     text: '表单组件',
                     items: [
-                        {text: 'Input 输入框', link: '/comps/form/input/'},
 
                     ]
                 },
