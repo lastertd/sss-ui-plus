@@ -1,5 +1,5 @@
 # Icon 图标
-test
+
 
 ::: tip
 图标来源于:[阿里妈妈iconfont](https://www.iconfont.cn/manage/index?spm=a313x.7781069.1998910419.23&manage_type=myprojects&projectId=4078839&keyword=&project_type=&page=)
@@ -18,6 +18,31 @@ src="./src/basic.vue"
 title="你也可以在元素class中加上 'iconfont'  'sss-${target}' 两个类名来使用图标"
 />
 
+
+
 ## 图标集合
 
 <icon-list/>
+
+
+
+## Icon API
+
+### Icon Props
+
+| 属性名    | 说明                          | 类型          | 默认值 |
+| --------- | ----------------------------- | ------------- | ------ |
+| target    | 目标                          | `String`      | ---    |
+| type      | 图标的类型                    | `i` / `label` | i      |
+| for       | 当`type`是`label`时 label for | `String`      | ---    |
+| color     | 图标的颜色                    | `String`      | ---    |
+| noPadding | 是否清除默认内边距            | `Boolean`     | false  |
+
+
+
+### Icon Slots
+
+| 名称    | 说明   |
+| ------- | ------ |
+| default | 默认槽 |
+

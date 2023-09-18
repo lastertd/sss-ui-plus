@@ -38,15 +38,15 @@ src="./src/vertical.vue"
 
 ## Divider API
 
-### Props
+### Divider Props
 
-| 属性名          | 说明                         | 可选值                          | 默认值     |
-| --------------- | ---------------------------- | ------------------------------- | ---------- |
-| direction       | 分割线的方向                 | `vertical` `horizontal`         | horizontal |
-| type            | 分割线的类型                 | `dashed` `solid`                | solid      |
-| contentPosition | 分割线的文案的位置           | `start` `center` `end` `String` | center     |
-| prefixIcon      | 分割线的文案的前缀图标       | `String`                        | ---        |
-| suffixIcon      | 分割线的文案的后缀图标       | `String`                        | ---        |
-| content         | 分割线的文案                 | `String`                        | ---        |
-| gap             | 分割线用于隔离的高度（宽度） | `Number`                        | 10         |
+| 属性名          | 说明                         | 可选值                             | 默认值     |
+| --------------- | ---------------------------- | ---------------------------------- | ---------- |
+| direction       | 分割线的方向                 | `vertical`/ `horizontal`           | horizontal |
+| type            | 分割线的类型                 | `dashed`/ `solid`                  | solid      |
+| contentPosition | 分割线的文案的位置           | `start`/ `center`/ `end`/ `String` | center     |
+| prefixIcon      | 分割线的文案的前缀图标       | `String`                           | ---        |
+| suffixIcon      | 分割线的文案的后缀图标       | `String`                           | ---        |
+| content         | 分割线的文案                 | `String`                           | ---        |
+| gap             | 分割线用于隔离的高度（宽度） | `Number`                           | 10         |
 

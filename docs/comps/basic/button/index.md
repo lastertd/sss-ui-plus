@@ -52,17 +52,23 @@ title="取值有 large normal small 三种"
 
 ### Button Props
 
-| 属性名        | 说明    | 类型                                                                             | 默认值     |
-|------------|-------|--------------------------------------------------------------------------------|---------|
-| type       | 类型    | `default` / `primary` / `success`/ `info` /`warning`/ `danger` /`cyan`/ `dark` | default |
-| nativeType | 原生类型  | `button`/ `submit` /`reset`                                                    | button  |
-| size       | 大小    | `small`/ `normal` /`large`                                                     | normal  |
-| round      | 圆角按钮  | `Boolean`                                                                      | false   |
-| circle     | 圆形按钮  | `Boolean`                                                                      | false   |
-| disabled   | 禁用按钮  | `Boolean`                                                                      | false   |
-| empty      | 镂空按钮  | `Boolean`                                                                      | false   |
-| ghost      | 幽灵按钮  | `Boolean`                                                                      | false   |
-| loading    | 加载中按钮 | `Boolean`                                                                      | false   |
-| prefixIcon | 前缀图标  | `String`                                                                       | ---     |
-| suffixIcon | 后缀图标  | `String`                                                                       | ---     |
+| 属性名     | 说明           | 类型                                                         | 默认值  |
+| ---------- | -------------- | ------------------------------------------------------------ | ------- |
+| type       | 按钮的类型     | `default` /  `primary`/ `success`/ `info` /`warning` /`danger` /`cyan` /`dark` | default |
+| nativeType | 原生类型       | `button`/ `submit` /`reset`                                  | button  |
+| size       | 大小           | `small`/ `normal` /`large`                                   | normal  |
+| round      | 是否是圆角按钮 | `Boolean`                                                    | false   |
+| circle     | 是否是圆形按钮 | `Boolean`                                                    | false   |
+| disabled   | 是否禁用按钮   | `Boolean`                                                    | false   |
+| empty      | 是否是镂空按钮 | `Boolean`                                                    | false   |
+| ghost      | 是否是幽灵按钮 | `Boolean`                                                    | false   |
+| loading    | 是否加载中按钮 | `Boolean`                                                    | false   |
+| prefixIcon | 按钮的前缀图标 | `String`                                                     | ---     |
+| suffixIcon | 按钮的后缀图标 | `String`                                                     | ---     |
+
+### Button Slots
+
+| 名称    | 说明   |
+| ------- | ------ |
+| default | 默认槽 |
 

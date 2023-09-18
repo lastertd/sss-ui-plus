@@ -51,13 +51,13 @@ src="./src/center.vue"
 
 ## Dropdown API
 
-### Props
+### Dropdown Props
 
 | 属性名              | 说明                                                         | 可选值                                                       | 默认值          |
 | ------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------- |
-| trigger             | 触发浮动元素显示的类型                                       | `hover` `click` `foucs` `clickToOpen` `unset`                | click           |
-| placement           | 浮动元素的定位                                               | `top` `left` `bottom` `right` (可添加start,end后缀) 比如`top-start` | bottom          |
-| transition          | 浮动元素出现/消失过渡                                        | 请参考（）                                                   | vertical-scroll |
+| trigger             | 触发浮动元素显示的类型                                       | `hover` /`click`/ `foucs` /`clickToOpen` /`unset`            | click           |
+| placement           | 浮动元素的定位                                               | `top` /`left`/ `bottom` /`right`/ `top-start` /`left-start`/ `bottom-start` /`right-start`/`top-end` /`left-end`/ `bottom-end` /`right-end`/ | bottom          |
+| transition          | 浮动元素出现/消失过渡                                        | `String`                                                     | vertical-scroll |
 | openDelay           | 浮动元素打开延时                                             | `Number`                                                     | 0               |
 | closeDelay          | 浮动元素关闭延时                                             | `Number`                                                     | 0               |
 | disabled            | 是否禁用浮动元素                                             | `Boolean`                                                    | false           |
@@ -67,7 +67,6 @@ src="./src/center.vue"
 | openOnMounted       | 是否在挂载时立即显示                                         | `Boolean`                                                    | false           |
 | teleported          | 是否瞬移到body元素下                                         | `Boolean`                                                    | true            |
 | showArrow           | 是否展示箭头                                                 | `Boolean`                                                    | true            |
-| expression          | 非解耦模式下reference元素默认会嵌套一层div，控制div的表现形式 | `block` `inline` `inline-block`                              | block           |
 | floatingClass       | floating元素默认会嵌套一层div，设置这层div的类名             | `String`                                                     | ---             |
 | reference           | 解耦模式下的引用元素                                         | `Ref<MaybeElement>`                                          | ---             |
 | quickTrack          | 是否开启快速跟踪，在解耦模式下若浮动元素跟不上引用元素的改变开启此项 | `Boolean`                                                    | false           |
@@ -81,9 +80,7 @@ src="./src/center.vue"
 | closeOnClickItem    | 是否在点击`DropdownItem`时关闭下拉框                         | `Boolean`                                                    | true            |
 | prefix              | 用作`select`的第二参数                                       | `String[]`                                                   | ---             |
 
-### Emits
-
-
+### Dropdown Events
 
 | 事件名 | 说明                         | 类型                                   |
 | ------ | ---------------------------- | -------------------------------------- |
@@ -93,18 +90,18 @@ src="./src/center.vue"
 | closed | 浮动元素关闭后的回调         | `() => void`                           |
 | select | `DropdownItem`被选中时的回调 | (val:string, prefix?:string[]) => void |
 
-### Slots
+### Dropdown Slots
 
-| 槽名      | 说明           |
+| 名称      | 说明           |
 | --------- | -------------- |
 | reference | 下拉框引用元素 |
 | default   | 下拉框浮动元素 |
 
 
 
-### Exposes
+### Dropdown Exposes
 
-| 变量名 | 说明               | 类型         |
+| 属性名 | 说明               | 类型         |
 | ------ | ------------------ | ------------ |
 | close  | 用于关闭浮动元素   | `() => void` |
 | open   | 用于打开浮动元素   | `() => void` |
@@ -115,27 +112,34 @@ src="./src/center.vue"
 
 ## DropdownItem API
 
-### Props
+### DropdownItem  Props
 
-| 属性名       | 说明                                                         | 可选值                     | 默认值 |
-| ------------ | ------------------------------------------------------------ | -------------------------- | ------ |
-| suffixIcon   | 后缀图标                                                     | `String`                   | ---    |
-| prefixIcon   | 前缀图标                                                     | `String`                   | ---    |
-| label        | 文本                                                         | `String`                   | ---    |
-| value        | `DropdownItem`的`select`回调的参数， `Dropdown`的`select`回调的第一参数 | `String`                   | ---    |
-| closeOnClick | 是否点击此`DropdownItem`时关闭下拉框， 优先级比下拉框的同名选项高 | `Boolean`                  | true   |
-| isActive     | 是否是活跃状态                                               | `Boolean`                  | false  |
-| disabled     | 是否是禁用状态                                               | `Boolean`                  | false  |
-| tag          | 组件的呈现类型                                               | `div` `s-link`             | `div`  |
-| href         | 当`tag`为`s-link`时，需要跳转到的目标url                     | `String`                   | ---    |
-| jumpMethod   | 当`tag`为`s-link`时，跳转方式                                | `push` `replace` `newView` | push   |
+| 属性名       | 说明                                                         | 可选值                       | 默认值 |
+| ------------ | ------------------------------------------------------------ | ---------------------------- | ------ |
+| suffixIcon   | 后缀图标                                                     | `String`                     | ---    |
+| prefixIcon   | 前缀图标                                                     | `String`                     | ---    |
+| label        | 文本                                                         | `String`                     | ---    |
+| value        | `DropdownItem`的`select`回调的参数， `Dropdown`的`select`回调的第一参数 | `String`                     | ---    |
+| closeOnClick | 是否点击此`DropdownItem`时关闭下拉框， 优先级比下拉框的同名选项高 | `Boolean`                    | true   |
+| isActive     | 是否是活跃状态                                               | `Boolean`                    | false  |
+| disabled     | 是否是禁用状态                                               | `Boolean`                    | false  |
+| tag          | 组件的呈现类型                                               | `div` `s-link`               | `div`  |
+| href         | 当`tag`为`s-link`时，需要跳转到的目标url                     | `String`                     | ---    |
+| jumpMethod   | 当`tag`为`s-link`时，跳转方式                                | `push`/ `replace` /`newView` | push   |
 
 
 
-### Emits
+### DropdownItem  Events
 
 | 事件名 | 说明         | 类型                     |
 | ------ | ------------ | ------------------------ |
 | select | 被选中时触发 | `(value:string) => void` |
 | click  | 被选中时触发 | `() => void`             |
 
+
+
+### DropdownItem Slots
+
+| 名称    | 说明   |
+| ------- | ------ |
+| default | 默认槽 |

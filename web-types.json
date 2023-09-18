@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/web-types",
   "framework": "vue",
   "name": "sss-ui-plus",
-  "version": "0.2.1",
+  "version": "0.2.2-beta-1",
   "js-types-syntax": "typescript",
   "description-markup": "markdown",
   "contributions": {
@@ -198,905 +198,191 @@
           ]
         },
         {
-          "name": "s-link-链接",
+          "name": "s-button-item",
           "source": {
-            "symbol": "SLink 链接"
+            "symbol": "SButtonItem"
           },
-          "description": "文字超链接",
-          "doc-url": "https://sssui.4everland.app/comps/basic/link/#link-链接",
+          "doc-url": "https://sssui.4everland.app/comps/basic/button/#buttonitem",
           "props": [
-            {
-              "name": "href",
-              "description": "原生href",
-              "doc-url": "https://sssui.4everland.app/comps/basic/link/#props",
-              "type": [
-                "String"
-              ],
-              "default": "---"
-            },
             {
               "name": "type",
               "description": "类型",
-              "doc-url": "https://sssui.4everland.app/comps/basic/link/#props",
+              "doc-url": "https://sssui.4everland.app/comps/basic/button/#buttonitem-props",
               "type": [
                 {
-                  "name": "default primary success info warning danger",
+                  "name": "default",
                   "source": {
-                    "symbol": "default primary success info warning danger"
+                    "symbol": "default"
+                  }
+                },
+                {
+                  "name": "primary",
+                  "source": {
+                    "symbol": "primary"
+                  }
+                },
+                {
+                  "name": "success",
+                  "source": {
+                    "symbol": "success"
+                  }
+                },
+                {
+                  "name": "info",
+                  "source": {
+                    "symbol": "info"
+                  }
+                },
+                {
+                  "name": "warning",
+                  "source": {
+                    "symbol": "warning"
+                  }
+                },
+                {
+                  "name": "danger",
+                  "source": {
+                    "symbol": "danger"
+                  }
+                },
+                {
+                  "name": "cyan",
+                  "source": {
+                    "symbol": "cyan"
+                  }
+                },
+                {
+                  "name": "dark",
+                  "source": {
+                    "symbol": "dark"
                   }
                 }
               ],
               "default": "default"
             },
             {
-              "name": "disabled",
-              "description": "禁用",
-              "doc-url": "https://sssui.4everland.app/comps/basic/link/#props",
-              "type": [
-                "Boolean"
-              ],
-              "default": "false"
-            },
-            {
-              "name": "underline",
-              "description": "hover时是否有下划线",
-              "doc-url": "https://sssui.4everland.app/comps/basic/link/#props",
-              "type": [
-                "Boolean"
-              ],
-              "default": "false"
-            },
-            {
-              "name": "prefixIcon",
-              "description": "前缀图标",
-              "doc-url": "https://sssui.4everland.app/comps/basic/link/#props",
-              "type": [
-                "String"
-              ],
-              "default": "---"
-            },
-            {
-              "name": "suffixIcon",
-              "description": "后缀图标",
-              "doc-url": "https://sssui.4everland.app/comps/basic/link/#props",
-              "type": [
-                "String"
-              ],
-              "default": "---"
-            },
-            {
-              "name": "jumpMethod",
-              "description": "跳转方式",
-              "doc-url": "https://sssui.4everland.app/comps/basic/link/#props",
+              "name": "nativeType",
+              "description": "原生类型",
+              "doc-url": "https://sssui.4everland.app/comps/basic/button/#buttonitem-props",
               "type": [
                 {
-                  "name": "push replace newView",
+                  "name": "button",
                   "source": {
-                    "symbol": "push replace newView"
+                    "symbol": "button"
+                  }
+                },
+                {
+                  "name": "submit",
+                  "source": {
+                    "symbol": "submit"
+                  }
+                },
+                {
+                  "name": "reset",
+                  "source": {
+                    "symbol": "reset"
                   }
                 }
               ],
-              "default": "push"
-            }
-          ]
-        },
-        {
-          "name": "s-scrollbar-滚动条",
-          "source": {
-            "symbol": "SScrollbar 滚动条"
-          },
-          "description": "",
-          "doc-url": "https://sssui.4everland.app/comps/basic/scrollbar/#scrollbar-滚动条",
-          "props": [
-            {
-              "name": "vertical",
-              "description": "是否显示垂直滚动条",
-              "doc-url": "https://sssui.4everland.app/comps/basic/scrollbar/#props",
-              "default": "true"
+              "default": "button"
             },
             {
-              "name": "horizontal",
-              "description": "水平滚动条",
-              "doc-url": "https://sssui.4everland.app/comps/basic/scrollbar/#props",
-              "default": "false"
-            },
-            {
-              "name": "noResize",
-              "description": "滚动视口大小是否不再改变，当视口大小不会改变时，添加此项可优化性能",
-              "doc-url": "https://sssui.4everland.app/comps/basic/scrollbar/#props",
-              "default": "false"
-            },
-            {
-              "name": "always",
-              "description": "是否一直显示",
-              "doc-url": "https://sssui.4everland.app/comps/basic/scrollbar/#props",
-              "default": "false"
-            },
-            {
-              "name": "isOutside",
-              "description": "是否显示在外部，设置此项，滚动条将会显示在视口外部",
-              "doc-url": "https://sssui.4everland.app/comps/basic/scrollbar/#props",
-              "default": "false"
-            },
-            {
-              "name": "quickJump",
-              "description": "是否在点击滚动条时，快速导航到对应位置",
-              "doc-url": "https://sssui.4everland.app/comps/basic/scrollbar/#props",
-              "default": "true"
-            }
-          ]
-        },
-        {
-          "name": "s-dialog-对话框",
-          "source": {
-            "symbol": "SDialog 对话框"
-          },
-          "description": "",
-          "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#dialog-对话框",
-          "props": [
-            {
-              "name": "showFoot",
-              "description": "展示footer",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
-              "type": [
-                "Boolean"
-              ],
-              "default": "false"
-            },
-            {
-              "name": "showHead",
-              "description": "展示header",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
-              "type": [
-                "Boolean"
-              ],
-              "default": "true"
-            },
-            {
-              "name": "showMark",
-              "description": "展示遮罩",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
-              "type": [
-                "Boolean"
-              ],
-              "default": "true"
-            },
-            {
-              "name": "cancelBtnText",
-              "description": "取消按钮的文本",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
-              "type": [
-                "String"
-              ],
-              "default": "取消"
-            },
-            {
-              "name": "confirmBtnText",
-              "description": "确认按钮的文本",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
-              "type": [
-                "String"
-              ],
-              "default": "确认"
-            },
-            {
-              "name": "closeOnClickMark",
-              "description": "通过点击遮罩关闭对话框",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
-              "type": [
-                "Boolean"
-              ],
-              "default": "true"
-            },
-            {
-              "name": "closeOnPressEscape",
-              "description": "通过按下ESC关闭对话框",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
-              "type": [
-                "Boolean"
-              ],
-              "default": "true"
-            },
-            {
-              "name": "lockScroll",
-              "description": "锁定浏览器滚动条",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
-              "type": [
-                "Boolean"
-              ],
-              "default": "true"
-            },
-            {
-              "name": "appendToBody",
-              "description": "将对话框添加到body标签下，在嵌套对话框时，务必设置为true",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
-              "type": [
-                "Boolean"
-              ],
-              "default": "false"
-            },
-            {
-              "name": "draggable",
-              "description": "可以拖拽",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
-              "type": [
-                "Boolean"
-              ],
-              "default": "false"
-            },
-            {
-              "name": "title",
-              "description": "标题",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
-              "type": [
-                "String"
-              ],
-              "default": "default title"
-            },
-            {
-              "name": "top",
-              "description": "距离浏览器顶部的距离",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
-              "type": [
-                "String"
-              ],
-              "default": "15vh"
-            },
-            {
-              "name": "beforeClose",
-              "description": "关闭之前的回调，如果设置了这个属性，要手动调用done()函数才会关闭对话框",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/dialog/#props",
-              "type": [
-                "(done:() => void) => void"
-              ],
-              "default": "---"
-            }
-          ]
-        },
-        {
-          "name": "s-drawer-抽屉",
-          "source": {
-            "symbol": "SDrawer 抽屉"
-          },
-          "description": "::: tip",
-          "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#drawer-抽屉",
-          "props": [
-            {
-              "name": "showFoot",
-              "description": "展示footer",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
-              "type": [
-                "Boolean"
-              ],
-              "default": "false"
-            },
-            {
-              "name": "showHead",
-              "description": "展示header",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
-              "type": [
-                "Boolean"
-              ],
-              "default": "true"
-            },
-            {
-              "name": "showMark",
-              "description": "展示遮罩",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
-              "type": [
-                "Boolean"
-              ],
-              "default": "true"
-            },
-            {
-              "name": "cancelBtnText",
-              "description": "取消按钮的文本",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
-              "type": [
-                "String"
-              ],
-              "default": "取消"
-            },
-            {
-              "name": "confirmBtnText",
-              "description": "确认按钮的文本",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
-              "type": [
-                "String"
-              ],
-              "default": "确认"
-            },
-            {
-              "name": "closeOnClickMark",
-              "description": "通过点击遮罩关闭对话框",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
-              "type": [
-                "Boolean"
-              ],
-              "default": "true"
-            },
-            {
-              "name": "closeOnPressEscape",
-              "description": "通过按下ESC关闭对话框",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
-              "type": [
-                "Boolean"
-              ],
-              "default": "true"
-            },
-            {
-              "name": "lockScroll",
-              "description": "锁定浏览器滚动条",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
-              "type": [
-                "Boolean"
-              ],
-              "default": "true"
-            },
-            {
-              "name": "appendToBody",
-              "description": "将对话框添加到body标签下，在嵌套对话框时，务必设置为true",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
-              "type": [
-                "Boolean"
-              ],
-              "default": "false"
-            },
-            {
-              "name": "draggable",
-              "description": "可以拖拽",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
-              "type": [
-                "Boolean"
-              ],
-              "default": "false"
-            },
-            {
-              "name": "title",
-              "description": "标题",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
-              "type": [
-                "String"
-              ],
-              "default": "default title"
-            },
-            {
-              "name": "top",
-              "description": "距离浏览器顶部的距离",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
-              "type": [
-                "String"
-              ],
-              "default": "15vh"
-            },
-            {
-              "name": "postion",
-              "description": "抽屉展示的位置",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
+              "name": "size",
+              "description": "大小",
+              "doc-url": "https://sssui.4everland.app/comps/basic/button/#buttonitem-props",
               "type": [
                 {
-                  "name": "top right bottom left",
+                  "name": "small",
                   "source": {
-                    "symbol": "top right bottom left"
+                    "symbol": "small"
                   }
-                }
-              ],
-              "default": "top"
-            },
-            {
-              "name": "btnSize",
-              "description": "尾部按钮的大小",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
-              "type": [
+                },
                 {
-                  "name": "small normal large",
+                  "name": "normal",
                   "source": {
-                    "symbol": "small normal large"
+                    "symbol": "normal"
+                  }
+                },
+                {
+                  "name": "large",
+                  "source": {
+                    "symbol": "large"
                   }
                 }
               ],
               "default": "normal"
             },
             {
-              "name": "beforeClose",
-              "description": "关闭之前的回调，如果设置了这个属性，要手动调用done()函数才会关闭对话框",
-              "doc-url": "https://sssui.4everland.app/comps/feedback/drawer/#props",
+              "name": "round",
+              "description": "圆角按钮",
+              "doc-url": "https://sssui.4everland.app/comps/basic/button/#buttonitem-props",
               "type": [
-                "(done:() => void) => void"
+                "Boolean"
               ],
-              "default": "---"
-            }
-          ]
-        },
-        {
-          "name": "s-dropdown-下拉框",
-          "source": {
-            "symbol": "SDropdown 下拉框"
-          },
-          "description": "将数据放入到下拉框。",
-          "doc-url": "https://sssui.4everland.app/comps/floating/dropdown/#dropdown-下拉框",
-          "props": [
+              "default": "false"
+            },
             {
-              "name": "suffixIcon",
-              "description": "后缀图标",
-              "doc-url": "https://sssui.4everland.app/comps/floating/dropdown/#props",
-              "default": "---"
+              "name": "circle",
+              "description": "圆形按钮",
+              "doc-url": "https://sssui.4everland.app/comps/basic/button/#buttonitem-props",
+              "type": [
+                "Boolean"
+              ],
+              "default": "false"
+            },
+            {
+              "name": "disabled",
+              "description": "禁用按钮",
+              "doc-url": "https://sssui.4everland.app/comps/basic/button/#buttonitem-props",
+              "type": [
+                "Boolean"
+              ],
+              "default": "false"
+            },
+            {
+              "name": "empty",
+              "description": "镂空按钮",
+              "doc-url": "https://sssui.4everland.app/comps/basic/button/#buttonitem-props",
+              "type": [
+                "Boolean"
+              ],
+              "default": "false"
+            },
+            {
+              "name": "ghost",
+              "description": "幽灵按钮",
+              "doc-url": "https://sssui.4everland.app/comps/basic/button/#buttonitem-props",
+              "type": [
+                "Boolean"
+              ],
+              "default": "false"
+            },
+            {
+              "name": "loading",
+              "description": "加载中按钮",
+              "doc-url": "https://sssui.4everland.app/comps/basic/button/#buttonitem-props",
+              "type": [
+                "Boolean"
+              ],
+              "default": "false"
             },
             {
               "name": "prefixIcon",
               "description": "前缀图标",
-              "doc-url": "https://sssui.4everland.app/comps/floating/dropdown/#props",
-              "default": "---"
-            },
-            {
-              "name": "label",
-              "description": "文本",
-              "doc-url": "https://sssui.4everland.app/comps/floating/dropdown/#props",
-              "default": "---"
-            },
-            {
-              "name": "value",
-              "description": "DropdownItem的select回调的参数， Dropdown的select回调的第一参数",
-              "doc-url": "https://sssui.4everland.app/comps/floating/dropdown/#props",
-              "default": "---"
-            },
-            {
-              "name": "closeOnClick",
-              "description": "是否点击此DropdownItem时关闭下拉框， 优先级比下拉框的同名选项高",
-              "doc-url": "https://sssui.4everland.app/comps/floating/dropdown/#props",
-              "default": "true"
-            },
-            {
-              "name": "isActive",
-              "description": "是否是活跃状态",
-              "doc-url": "https://sssui.4everland.app/comps/floating/dropdown/#props",
-              "default": "false"
-            },
-            {
-              "name": "disabled",
-              "description": "是否是禁用状态",
-              "doc-url": "https://sssui.4everland.app/comps/floating/dropdown/#props",
-              "default": "false"
-            },
-            {
-              "name": "tag",
-              "description": "组件的呈现类型",
-              "doc-url": "https://sssui.4everland.app/comps/floating/dropdown/#props",
-              "default": "div"
-            },
-            {
-              "name": "href",
-              "description": "当tag为s-link时，需要跳转到的目标url",
-              "doc-url": "https://sssui.4everland.app/comps/floating/dropdown/#props",
-              "default": "---"
-            },
-            {
-              "name": "jumpMethod",
-              "description": "当tag为s-link时，跳转方式",
-              "doc-url": "https://sssui.4everland.app/comps/floating/dropdown/#props",
-              "default": "push"
-            }
-          ]
-        },
-        {
-          "name": "s-floating-浮动",
-          "source": {
-            "symbol": "SFloating 浮动"
-          },
-          "description": "在页面中我们也许经常看见一些: 文本提示框、气泡确认框、下拉框...等各种看起来不像是文档流的元素。",
-          "doc-url": "https://sssui.4everland.app/comps/floating/floating/#floating-浮动",
-          "props": [
-            {
-              "name": "trigger",
-              "description": "触发浮动元素显示的类型",
-              "doc-url": "https://sssui.4everland.app/comps/floating/floating/#props",
-              "default": "click"
-            },
-            {
-              "name": "placement",
-              "description": "浮动元素的定位",
-              "doc-url": "https://sssui.4everland.app/comps/floating/floating/#props",
-              "default": "bottom"
-            },
-            {
-              "name": "transition",
-              "description": "浮动元素出现/消失过渡",
-              "doc-url": "https://sssui.4everland.app/comps/floating/floating/#props",
-              "default": "fade"
-            },
-            {
-              "name": "openDelay",
-              "description": "浮动元素打开延时",
-              "doc-url": "https://sssui.4everland.app/comps/floating/floating/#props",
-              "default": "0"
-            },
-            {
-              "name": "closeDelay",
-              "description": "浮动元素关闭延时",
-              "doc-url": "https://sssui.4everland.app/comps/floating/floating/#props",
-              "default": "0"
-            },
-            {
-              "name": "disabled",
-              "description": "是否禁用浮动元素",
-              "doc-url": "https://sssui.4everland.app/comps/floating/floating/#props",
-              "default": "false"
-            },
-            {
-              "name": "offset",
-              "description": "浮动元素的偏移量",
-              "doc-url": "https://sssui.4everland.app/comps/floating/floating/#props",
-              "default": "5"
-            },
-            {
-              "name": "theme",
-              "description": "浮动元素的颜色主题",
-              "doc-url": "https://sssui.4everland.app/comps/floating/floating/#props",
-              "default": "light"
-            },
-            {
-              "name": "closeOnClickBody",
-              "description": "是否在点击其他元素时关闭",
-              "doc-url": "https://sssui.4everland.app/comps/floating/floating/#props",
-              "default": "false"
-            },
-            {
-              "name": "openOnMounted",
-              "description": "是否在挂载时立即显示",
-              "doc-url": "https://sssui.4everland.app/comps/floating/floating/#props",
-              "default": "false"
-            },
-            {
-              "name": "teleported",
-              "description": "是否瞬移到body元素下",
-              "doc-url": "https://sssui.4everland.app/comps/floating/floating/#props",
-              "default": "true"
-            },
-            {
-              "name": "showArrow",
-              "description": "是否展示箭头",
-              "doc-url": "https://sssui.4everland.app/comps/floating/floating/#props",
-              "default": "false"
-            },
-            {
-              "name": "expression",
-              "description": "非解耦模式下reference元素默认会嵌套一层div，控制div的表现形式",
-              "doc-url": "https://sssui.4everland.app/comps/floating/floating/#props",
-              "default": "block"
-            },
-            {
-              "name": "floatingClass",
-              "description": "floating元素默认会嵌套一层div，设置这层div的类名",
-              "doc-url": "https://sssui.4everland.app/comps/floating/floating/#props",
-              "default": "---"
-            },
-            {
-              "name": "reference",
-              "description": "解耦模式下的引用元素",
-              "doc-url": "https://sssui.4everland.app/comps/floating/floating/#props",
-              "default": "---"
-            },
-            {
-              "name": "quickTrack",
-              "description": "是否开启快速跟踪，在解耦模式下若浮动元素跟不上引用元素的改变开启此项",
-              "doc-url": "https://sssui.4everland.app/comps/floating/floating/#props",
-              "default": "false"
-            }
-          ]
-        },
-        {
-          "name": "s-popconfirm-气泡确认框",
-          "source": {
-            "symbol": "SPopconfirm 气泡确认框"
-          },
-          "description": "当用于的某些操作需要确认时，比如点击按钮，可以用于代理一次按钮回调，让用于确认。",
-          "doc-url": "https://sssui.4everland.app/comps/floating/popconfirm/#popconfirm-气泡确认框",
-          "props": [
-            {
-              "name": "trigger",
-              "description": "触发浮动元素显示的类型",
-              "doc-url": "https://sssui.4everland.app/comps/floating/popconfirm/#props",
-              "default": "click"
-            },
-            {
-              "name": "placement",
-              "description": "浮动元素的定位",
-              "doc-url": "https://sssui.4everland.app/comps/floating/popconfirm/#props",
-              "default": "bottom"
-            },
-            {
-              "name": "transition",
-              "description": "浮动元素出现/消失过渡",
-              "doc-url": "https://sssui.4everland.app/comps/floating/popconfirm/#props",
-              "default": "fade"
-            },
-            {
-              "name": "openDelay",
-              "description": "浮动元素打开延时",
-              "doc-url": "https://sssui.4everland.app/comps/floating/popconfirm/#props",
-              "default": "0"
-            },
-            {
-              "name": "closeDelay",
-              "description": "浮动元素关闭延时",
-              "doc-url": "https://sssui.4everland.app/comps/floating/popconfirm/#props",
-              "default": "0"
-            },
-            {
-              "name": "disabled",
-              "description": "是否禁用浮动元素",
-              "doc-url": "https://sssui.4everland.app/comps/floating/popconfirm/#props",
-              "default": "false"
-            },
-            {
-              "name": "offset",
-              "description": "浮动元素的偏移量",
-              "doc-url": "https://sssui.4everland.app/comps/floating/popconfirm/#props",
-              "default": "5"
-            },
-            {
-              "name": "theme",
-              "description": "浮动元素的颜色主题",
-              "doc-url": "https://sssui.4everland.app/comps/floating/popconfirm/#props",
-              "default": "light"
-            },
-            {
-              "name": "closeOnClickBody",
-              "description": "是否在点击其他元素时关闭",
-              "doc-url": "https://sssui.4everland.app/comps/floating/popconfirm/#props",
-              "default": "false"
-            },
-            {
-              "name": "openOnMounted",
-              "description": "是否在挂载时立即显示",
-              "doc-url": "https://sssui.4everland.app/comps/floating/popconfirm/#props",
-              "default": "false"
-            },
-            {
-              "name": "teleported",
-              "description": "是否瞬移到body元素下",
-              "doc-url": "https://sssui.4everland.app/comps/floating/popconfirm/#props",
-              "default": "true"
-            },
-            {
-              "name": "showArrow",
-              "description": "是否展示箭头",
-              "doc-url": "https://sssui.4everland.app/comps/floating/popconfirm/#props",
-              "default": "false"
-            },
-            {
-              "name": "expression",
-              "description": "非解耦模式下reference元素默认会嵌套一层div，控制div的表现形式",
-              "doc-url": "https://sssui.4everland.app/comps/floating/popconfirm/#props",
-              "default": "block"
-            },
-            {
-              "name": "floatingClass",
-              "description": "floating元素默认会嵌套一层div，设置这层div的类名",
-              "doc-url": "https://sssui.4everland.app/comps/floating/popconfirm/#props",
-              "default": "---"
-            },
-            {
-              "name": "reference",
-              "description": "解耦模式下的引用元素",
-              "doc-url": "https://sssui.4everland.app/comps/floating/popconfirm/#props",
-              "default": "---"
-            },
-            {
-              "name": "quickTrack",
-              "description": "是否开启快速跟踪，在解耦模式下若浮动元素跟不上引用元素的改变开启此项",
-              "doc-url": "https://sssui.4everland.app/comps/floating/popconfirm/#props",
-              "default": "false"
-            },
-            {
-              "name": "cancelBtnText",
-              "description": "取消按钮的文本",
-              "doc-url": "https://sssui.4everland.app/comps/floating/popconfirm/#props",
-              "default": "取消"
-            },
-            {
-              "name": "confirmBtnType",
-              "description": "确认按钮的文本",
-              "doc-url": "https://sssui.4everland.app/comps/floating/popconfirm/#props",
-              "default": "确认"
-            },
-            {
-              "name": "type",
-              "description": "确认框的类型",
-              "doc-url": "https://sssui.4everland.app/comps/floating/popconfirm/#props",
-              "default": "---"
-            }
-          ]
-        },
-        {
-          "name": "s-tooltip-文本提示框",
-          "source": {
-            "symbol": "STooltip 文本提示框"
-          },
-          "description": "一般用在元素hover时展示提示信息",
-          "doc-url": "https://sssui.4everland.app/comps/floating/tooltip/#tooltip-文本提示框",
-          "props": [
-            {
-              "name": "trigger",
-              "description": "触发浮动元素显示的类型",
-              "doc-url": "https://sssui.4everland.app/comps/floating/tooltip/#props",
-              "default": "hover"
-            },
-            {
-              "name": "placement",
-              "description": "浮动元素的定位",
-              "doc-url": "https://sssui.4everland.app/comps/floating/tooltip/#props",
-              "default": "bottom"
-            },
-            {
-              "name": "transition",
-              "description": "浮动元素出现/消失过渡",
-              "doc-url": "https://sssui.4everland.app/comps/floating/tooltip/#props",
-              "default": "fade"
-            },
-            {
-              "name": "openDelay",
-              "description": "浮动元素打开延时",
-              "doc-url": "https://sssui.4everland.app/comps/floating/tooltip/#props",
-              "default": "50ms"
-            },
-            {
-              "name": "closeDelay",
-              "description": "浮动元素关闭延时",
-              "doc-url": "https://sssui.4everland.app/comps/floating/tooltip/#props",
-              "default": "200ms"
-            },
-            {
-              "name": "disabled",
-              "description": "是否禁用浮动元素",
-              "doc-url": "https://sssui.4everland.app/comps/floating/tooltip/#props",
-              "default": "false"
-            },
-            {
-              "name": "offset",
-              "description": "浮动元素的偏移量",
-              "doc-url": "https://sssui.4everland.app/comps/floating/tooltip/#props",
-              "default": "10"
-            },
-            {
-              "name": "theme",
-              "description": "浮动元素的颜色主题",
-              "doc-url": "https://sssui.4everland.app/comps/floating/tooltip/#props",
-              "default": "dark"
-            },
-            {
-              "name": "closeOnClickBody",
-              "description": "是否在点击其他元素时关闭",
-              "doc-url": "https://sssui.4everland.app/comps/floating/tooltip/#props",
-              "default": "false"
-            },
-            {
-              "name": "openOnMounted",
-              "description": "是否在挂载时立即显示",
-              "doc-url": "https://sssui.4everland.app/comps/floating/tooltip/#props",
-              "default": "false"
-            },
-            {
-              "name": "teleported",
-              "description": "是否瞬移到body元素下",
-              "doc-url": "https://sssui.4everland.app/comps/floating/tooltip/#props",
-              "default": "true"
-            },
-            {
-              "name": "showArrow",
-              "description": "是否显示箭头",
-              "doc-url": "https://sssui.4everland.app/comps/floating/tooltip/#props",
-              "default": "true"
-            },
-            {
-              "name": "expression",
-              "description": "非解耦模式下reference元素默认会嵌套一层div，控制div的表现形式",
-              "doc-url": "https://sssui.4everland.app/comps/floating/tooltip/#props",
-              "default": "block"
-            },
-            {
-              "name": "floatingClass",
-              "description": "floating元素默认会嵌套一层div，设置这层div的类名",
-              "doc-url": "https://sssui.4everland.app/comps/floating/tooltip/#props",
-              "default": "---"
-            },
-            {
-              "name": "reference",
-              "description": "解耦模式下的引用元素",
-              "doc-url": "https://sssui.4everland.app/comps/floating/tooltip/#props",
-              "default": "---"
-            },
-            {
-              "name": "quickTrack",
-              "description": "是否开启快速跟踪，在解耦模式下若浮动元素跟不上引用元素的改变开启此项",
-              "doc-url": "https://sssui.4everland.app/comps/floating/tooltip/#props",
-              "default": "false"
-            },
-            {
-              "name": "content",
-              "description": "提示框的文本",
-              "doc-url": "https://sssui.4everland.app/comps/floating/tooltip/#props",
-              "default": "---"
-            }
-          ]
-        },
-        {
-          "name": "s-divider-分割线",
-          "source": {
-            "symbol": "SDivider 分割线"
-          },
-          "description": "通常用于隔断元素",
-          "doc-url": "https://sssui.4everland.app/comps/other/divider/#divider-分割线",
-          "props": [
-            {
-              "name": "direction",
-              "description": "分割线的方向",
-              "doc-url": "https://sssui.4everland.app/comps/other/divider/#props",
-              "default": "horizontal"
-            },
-            {
-              "name": "type",
-              "description": "分割线的类型",
-              "doc-url": "https://sssui.4everland.app/comps/other/divider/#props",
-              "default": "solid"
-            },
-            {
-              "name": "contentPosition",
-              "description": "分割线的文案的位置",
-              "doc-url": "https://sssui.4everland.app/comps/other/divider/#props",
-              "default": "center"
-            },
-            {
-              "name": "prefixIcon",
-              "description": "分割线的文案的前缀图标",
-              "doc-url": "https://sssui.4everland.app/comps/other/divider/#props",
+              "doc-url": "https://sssui.4everland.app/comps/basic/button/#buttonitem-props",
+              "type": [
+                "String"
+              ],
               "default": "---"
             },
             {
               "name": "suffixIcon",
-              "description": "分割线的文案的后缀图标",
-              "doc-url": "https://sssui.4everland.app/comps/other/divider/#props",
+              "description": "后缀图标",
+              "doc-url": "https://sssui.4everland.app/comps/basic/button/#buttonitem-props",
+              "type": [
+                "String"
+              ],
               "default": "---"
-            },
-            {
-              "name": "content",
-              "description": "分割线的文案",
-              "doc-url": "https://sssui.4everland.app/comps/other/divider/#props",
-              "default": "---"
-            },
-            {
-              "name": "gap",
-              "description": "分割线用于隔离的高度（宽度）",
-              "doc-url": "https://sssui.4everland.app/comps/other/divider/#props",
-              "default": "10"
-            }
-          ]
-        },
-        {
-          "name": "s-skeleton-骨架屏",
-          "source": {
-            "symbol": "SSkeleton 骨架屏"
-          },
-          "description": "当页面数据未被加载完成时显示, 并不会过分区分骨架屏内部Item的类别，所有骨架屏Item都应该是一个普通的矩形盒子, 通过css样式来改变外观和布局",
-          "doc-url": "https://sssui.4everland.app/comps/other/skeleton/#skeleton-骨架屏",
-          "props": [
-            {
-              "name": "type",
-              "description": "元素的类型",
-              "doc-url": "https://sssui.4everland.app/comps/other/skeleton/#props",
-              "default": "rectangle"
-            },
-            {
-              "name": "isCircle",
-              "description": "是否是圆形",
-              "doc-url": "https://sssui.4everland.app/comps/other/skeleton/#props",
-              "default": "false"
-            },
-            {
-              "name": "isRound",
-              "description": "是否是圆角",
-              "doc-url": "https://sssui.4everland.app/comps/other/skeleton/#props",
-              "default": "false"
             }
           ]
         }

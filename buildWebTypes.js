@@ -4,8 +4,8 @@ import helper from "components-helper"
 
 helper({
     name: 'sss-ui-plus',
-    "version": "0.2.2",
-    entry: 'docs/comps/**/*.md',
+    "version": "0.2.2-beta-1",
+    entry: 'docs/comps/basic/button/*.md',
     outDir: '.',
     reComponentName,
     reDocUrl,
@@ -17,12 +17,14 @@ helper({
     propsName:'属性名',
     propsDescription:'说明',
     propsType:'类型',
-    propsDefault:'默认值'
+    propsDefault:'默认值',
+    separator:'/'
 
 
 })
 
 function reComponentName(title) {
+    console.log(title)
     return (
         's-' +
         title

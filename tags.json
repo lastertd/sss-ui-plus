@@ -15,167 +15,20 @@
     ],
     "description": "[Docs](https://sssui.4everland.app/comps/basic/button/#button)"
   },
-  "s-link-链接": {
-    "attributes": [
-      "href",
-      "type",
-      "disabled",
-      "underline",
-      "prefixIcon",
-      "suffixIcon",
-      "jumpMethod"
-    ],
-    "description": "文字超链接\n\n[Docs](https://sssui.4everland.app/comps/basic/link/#link-链接)"
-  },
-  "s-scrollbar-滚动条": {
-    "attributes": [
-      "vertical",
-      "horizontal",
-      "noResize",
-      "always",
-      "isOutside",
-      "quickJump"
-    ],
-    "description": "[Docs](https://sssui.4everland.app/comps/basic/scrollbar/#scrollbar-滚动条)"
-  },
-  "s-dialog-对话框": {
-    "attributes": [
-      "showFoot",
-      "showHead",
-      "showMark",
-      "cancelBtnText",
-      "confirmBtnText",
-      "closeOnClickMark",
-      "closeOnPressEscape",
-      "lockScroll",
-      "appendToBody",
-      "draggable",
-      "title",
-      "top",
-      "beforeClose"
-    ],
-    "description": "[Docs](https://sssui.4everland.app/comps/feedback/dialog/#dialog-对话框)"
-  },
-  "s-drawer-抽屉": {
-    "attributes": [
-      "showFoot",
-      "showHead",
-      "showMark",
-      "cancelBtnText",
-      "confirmBtnText",
-      "closeOnClickMark",
-      "closeOnPressEscape",
-      "lockScroll",
-      "appendToBody",
-      "draggable",
-      "title",
-      "top",
-      "postion",
-      "btnSize",
-      "beforeClose"
-    ],
-    "description": "::: tip\n\n[Docs](https://sssui.4everland.app/comps/feedback/drawer/#drawer-抽屉)"
-  },
-  "s-dropdown-下拉框": {
-    "attributes": [
-      "suffixIcon",
-      "prefixIcon",
-      "label",
-      "value",
-      "closeOnClick",
-      "isActive",
-      "disabled",
-      "tag",
-      "href",
-      "jumpMethod"
-    ],
-    "description": "将数据放入到下拉框。\n\n[Docs](https://sssui.4everland.app/comps/floating/dropdown/#dropdown-下拉框)"
-  },
-  "s-floating-浮动": {
-    "attributes": [
-      "trigger",
-      "placement",
-      "transition",
-      "openDelay",
-      "closeDelay",
-      "disabled",
-      "offset",
-      "theme",
-      "closeOnClickBody",
-      "openOnMounted",
-      "teleported",
-      "showArrow",
-      "expression",
-      "floatingClass",
-      "reference",
-      "quickTrack"
-    ],
-    "description": "在页面中我们也许经常看见一些: 文本提示框、气泡确认框、下拉框...等各种看起来不像是文档流的元素。\n\n[Docs](https://sssui.4everland.app/comps/floating/floating/#floating-浮动)"
-  },
-  "s-popconfirm-气泡确认框": {
-    "attributes": [
-      "trigger",
-      "placement",
-      "transition",
-      "openDelay",
-      "closeDelay",
-      "disabled",
-      "offset",
-      "theme",
-      "closeOnClickBody",
-      "openOnMounted",
-      "teleported",
-      "showArrow",
-      "expression",
-      "floatingClass",
-      "reference",
-      "quickTrack",
-      "cancelBtnText",
-      "confirmBtnType",
-      "type"
-    ],
-    "description": "当用于的某些操作需要确认时，比如点击按钮，可以用于代理一次按钮回调，让用于确认。\n\n[Docs](https://sssui.4everland.app/comps/floating/popconfirm/#popconfirm-气泡确认框)"
-  },
-  "s-tooltip-文本提示框": {
-    "attributes": [
-      "trigger",
-      "placement",
-      "transition",
-      "openDelay",
-      "closeDelay",
-      "disabled",
-      "offset",
-      "theme",
-      "closeOnClickBody",
-      "openOnMounted",
-      "teleported",
-      "showArrow",
-      "expression",
-      "floatingClass",
-      "reference",
-      "quickTrack",
-      "content"
-    ],
-    "description": "一般用在元素hover时展示提示信息\n\n[Docs](https://sssui.4everland.app/comps/floating/tooltip/#tooltip-文本提示框)"
-  },
-  "s-divider-分割线": {
-    "attributes": [
-      "direction",
-      "type",
-      "contentPosition",
-      "prefixIcon",
-      "suffixIcon",
-      "content",
-      "gap"
-    ],
-    "description": "通常用于隔断元素\n\n[Docs](https://sssui.4everland.app/comps/other/divider/#divider-分割线)"
-  },
-  "s-skeleton-骨架屏": {
+  "s-button-item": {
     "attributes": [
       "type",
-      "isCircle",
-      "isRound"
+      "nativeType",
+      "size",
+      "round",
+      "circle",
+      "disabled",
+      "empty",
+      "ghost",
+      "loading",
+      "prefixIcon",
+      "suffixIcon"
     ],
-    "description": "当页面数据未被加载完成时显示, 并不会过分区分骨架屏内部Item的类别，所有骨架屏Item都应该是一个普通的矩形盒子, 通过css样式来改变外观和布局\n\n[Docs](https://sssui.4everland.app/comps/other/skeleton/#skeleton-骨架屏)"
+    "description": "[Docs](https://sssui.4everland.app/comps/basic/button/#buttonitem)"
   }
 }

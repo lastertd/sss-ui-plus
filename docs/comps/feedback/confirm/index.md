@@ -70,17 +70,17 @@ src="./src/closeType.vue"
 
 ## Confirm API
 
-### attributes
+### Confirm Props
 
-| 属性名         | 说明             | 类型                                | 默认值        |
-| -------------- | ---------------- | ----------------------------------- | ------------- |
-| title          | 通知的标题       | `String`                            | default title |
-| text           | 通知的内容       | `String`                            | ---           |
-| type           | 类型             | `success` `info` `warning` `danger` | ---           |
-| top            | 距离顶部的偏移量 | `String`                            | ---           |
-| draggable      | 是否可以被拖拽   | `Boolean`                           | false         |
-| cancelBtnText  | `取消按钮`文本   | `String`                            | 取消          |
-| confirmBtnText | `确认按钮`文本   | `String`                            | 确认          |
-| showMark       | 是否展示遮罩层   | `Boolean`                           | true          |
-| icon           | 消息的图标       | `String`                            | ---           |
+| 属性名         | 说明             | 类型                                   | 默认值        |
+| -------------- | ---------------- | -------------------------------------- | ------------- |
+| title          | 通知的标题       | `String`                               | default title |
+| text           | 通知的内容       | `String`                               | ---           |
+| type           | 类型             | `success`/ `info`/ `warning` /`danger` | ---           |
+| top            | 距离顶部的偏移量 | `String`                               | ---           |
+| draggable      | 是否可以被拖拽   | `Boolean`                              | false         |
+| cancelBtnText  | `取消按钮`文本   | `String`                               | 取消          |
+| confirmBtnText | `确认按钮`文本   | `String`                               | 确认          |
+| showMark       | 是否展示遮罩层   | `Boolean`                              | true          |
+| icon           | 消息的图标       | `String`                               | ---           |
 

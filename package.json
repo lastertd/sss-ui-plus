@@ -6,7 +6,7 @@
   "style": "dist/index.css",
   "private": false,
   "sideEffects": false,
-  "version": "0.2.2",
+  "version": "0.2.2-beta-1",
   "type": "module",
   "author": {
     "name": "laster",
@@ -25,13 +25,12 @@
     "preview": "vite preview",
     "docs:dev": "vitepress dev ./docs/ --host 0.0.0.0",
     "docs:build": "vitepress build ./docs/",
-    "type:dev": "node buildWebTypes.js",
-    "type build": "vue-docgen-web-types"
+    "type:build": "node buildWebTypes.js"
   },
-  "web-types": " ./web-types.json",
+  "web-types": "web-types.json",
   "vetur": {
-    "tags": "./tags.json",
-    "attributes": " ./attributes.json"
+    "tags": "tags.json",
+    "attributes": "attributes.json"
   },
   "workspaces": [
     "packages/*",

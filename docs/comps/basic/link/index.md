@@ -45,14 +45,21 @@ title="附带图标，跳转目的更明确"
 
 ## Link API
 
-### props
+### Link Props
 
-| 属性名        | 说明             | 类型                                                      | 默认值     |
-|------------|----------------|---------------------------------------------------------|---------|
-| href       | 原生href         | `String`                                                | ---     |
-| type       | 类型             | `default` `primary` `success` `info` `warning` `danger` | default |
-| disabled   | 禁用             | `Boolean`                                               | false   |
-| underline  | `hover`时是否有下划线 | `Boolean`                                               | false   |
-| prefixIcon | 前缀图标           | `String`                                                | ---     |
-| suffixIcon | 后缀图标           | `String`                                                | ---     |
-| jumpMethod | 跳转方式           | `push` `replace` `newView`                              | push    |
+| 属性名     | 说明                    | 类型                                                         | 默认值  |
+| ---------- | ----------------------- | ------------------------------------------------------------ | ------- |
+| href       | 原生href                | `String`                                                     | ---     |
+| type       | 链接的类型              | `default`   /    `primary`/ `success`/ `info`/ `warning`/ `danger` | default |
+| disabled   | 是否禁用链接            | `Boolean`                                                    | false   |
+| underline  | 在`hover`时是否有下划线 | `Boolean`                                                    | false   |
+| prefixIcon | 链接的前缀图标          | `String`                                                     | ---     |
+| suffixIcon | 链接的后缀图标          | `String`                                                     | ---     |
+| jumpMethod | 触发链接后的跳转方式    | `push`/ `replace`/ `newView`                                 | push    |
+
+### Link Slots
+
+| 名称    | 说明   |
+| ------- | ------ |
+| default | 默认槽 |
+

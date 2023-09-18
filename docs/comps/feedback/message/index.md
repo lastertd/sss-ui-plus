@@ -51,14 +51,14 @@ title="默认是10px"
 
 ## Message API
 
-### attributes
+### Message Props
 
-| 属性名    | 说明                   | 类型                                | 默认值   |
-| --------- | ---------------------- | ----------------------------------- | -------- |
-| text      | 消息文本               | `String`                            | ---      |
-| type      | 类型                   | `success` `info` `warning` `danger` | ---      |
-| timeout   | 存活时间               | `Number`                            | 3000`ms` |
-| showClose | 是否展示`close`图标    | `Boolean`                           | false    |
-| offset    | 距离上一条消息的偏移量 | `Number`                            | 10`px`   |
-| icon      | 消息的图标             | `String`                            | ---      |
+| 属性名    | 说明                   | 类型                                   | 默认值   |
+| --------- | ---------------------- | -------------------------------------- | -------- |
+| text      | 消息文本               | `String`                               | ---      |
+| type      | 类型                   | `success`/ `info`/ `warning`/ `danger` | ---      |
+| timeout   | 存活时间               | `Number`                               | 3000`ms` |
+| showClose | 是否展示`close`图标    | `Boolean`                              | false    |
+| offset    | 距离上一条消息的偏移量 | `Number`                               | 10`px`   |
+| icon      | 消息的图标             | `String`                               | ---      |
 

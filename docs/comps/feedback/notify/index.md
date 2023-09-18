@@ -38,15 +38,15 @@ desc="老实说，我觉得有右上角就够了~"
 
 ## Notify API
 
-### attributes
+### Notify Props
 
-| 属性名    | 说明                   | 类型                                                | 默认值        |
-| --------- | ---------------------- | --------------------------------------------------- | ------------- |
-| title     | 通知的标题             | `String`                                            | default title |
-| text      | 通知的内容             | `String`                                            | ---           |
-| type      | 类型                   | `success` `info` `warning` `danger`                 | ---           |
-| placement | 方位                   | `top-right` `bottom-right` `bottom-left` `top-left` | `top-right`   |
-| timeout   | 存活时间               | `Number`                                            | 3000`ms`      |
-| offset    | 距离上一条消息的偏移量 | `Number`                                            | 10`px`        |
-| icon      | 消息的图标             | `String`                                            | ---           |
+| 属性名    | 说明                   | 类型                                                   | 默认值        |
+| --------- | ---------------------- | ------------------------------------------------------ | ------------- |
+| title     | 通知的标题             | `String`                                               | default title |
+| text      | 通知的内容             | `String`                                               | ---           |
+| type      | 类型                   | `success`/ `info/` `warning`/ `danger`                 | ---           |
+| placement | 方位                   | `top-right`/ `bottom-right`/ `bottom-left` /`top-left` | `top-right`   |
+| timeout   | 存活时间               | `Number`                                               | 3000`ms`      |
+| offset    | 距离上一条消息的偏移量 | `Number`                                               | 10`px`        |
+| icon      | 消息的图标             | `String`                                               | ---           |
 

@@ -2,7 +2,6 @@
 
 
 
-	<icon-list></icon-list>
 
 
 	<div>

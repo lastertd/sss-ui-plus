@@ -1,4 +1,5 @@
 import {defineConfig} from 'vitepress'
+import { fileURLToPath, URL } from 'node:url'
 
 import {applyPlugins} from '@ruabick/md-demo-plugins';
 
@@ -82,7 +83,15 @@ export default defineConfig({
         }
     },
     vite: {
-        plugins: []
+        plugins: [],
+        resolve:{
+            alias:[
+                {
+                    find:/^.*\/VPSidebar\.vue$/,
+                    replacement: fileURLToPath(new URL('./extendTheme/navBar.vue', import.meta.url))
+                }
+            ]
+        }
     }
 
 })

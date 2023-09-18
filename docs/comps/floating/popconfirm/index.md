@@ -25,13 +25,13 @@ src="./src/dir.vue"
 
 ## Popconfirm API
 
-### Props
+### Popconfirm Props
 
 | 属性名           | 说明                                                         | 可选值                                                       | 默认值 |
 | ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------ |
 | trigger          | 触发浮动元素显示的类型                                       | `hover` `click` `foucs` `clickToOpen` `unset`                | click  |
-| placement        | 浮动元素的定位                                               | `top` `left` `bottom` `right` (可添加start,end后缀) 比如`top-start` | bottom |
-| transition       | 浮动元素出现/消失过渡                                        | 请参考（）                                                   | fade   |
+| placement        | 浮动元素的定位                                               | `top` /`left`/ `bottom` /`right`/ `top-start` /`left-start`/ `bottom-start` /`right-start`/`top-end` /`left-end`/ `bottom-end` /`right-end`/ | bottom |
+| transition       | 浮动元素出现/消失过渡                                        | `String`                                                     | fade   |
 | openDelay        | 浮动元素打开延时                                             | `Number`                                                     | 0      |
 | closeDelay       | 浮动元素关闭延时                                             | `Number`                                                     | 0      |
 | disabled         | 是否禁用浮动元素                                             | `Boolean`                                                    | false  |
@@ -41,17 +41,14 @@ src="./src/dir.vue"
 | openOnMounted    | 是否在挂载时立即显示                                         | `Boolean`                                                    | false  |
 | teleported       | 是否瞬移到body元素下                                         | `Boolean`                                                    | true   |
 | showArrow        | 是否展示箭头                                                 | `Boolean`                                                    | false  |
-| expression       | 非解耦模式下reference元素默认会嵌套一层div，控制div的表现形式 | `block` `inline` `inline-block`                              | block  |
 | floatingClass    | floating元素默认会嵌套一层div，设置这层div的类名             | `String`                                                     | ---    |
 | reference        | 解耦模式下的引用元素                                         | `Ref<MaybeElement>`                                          | ---    |
 | quickTrack       | 是否开启快速跟踪，在解耦模式下若浮动元素跟不上引用元素的改变开启此项 | `Boolean`                                                    | false  |
 | cancelBtnText    | `取消按钮`的文本                                             | `String`                                                     | 取消   |
 | confirmBtnType   | `确认按钮`的文本                                             | `String`                                                     | 确认   |
-| type             | 确认框的类型                                                 | `success` `info` `warning` `danger`                          | ---    |
+| type             | 确认框的类型                                                 | `success`/ `info`/ `warning`/ `danger`                       | ---    |
 
-### Emits
-
-
+### Popconfirm  Events
 
 | 事件名  | 说明                     | 类型         |
 | ------- | ------------------------ | ------------ |
@@ -62,10 +59,9 @@ src="./src/dir.vue"
 | cancel  | 点击`取消按钮`之后的回调 | `() => void` |
 | confirm | 点击`确认按钮`之后的回调 | `() => void` |
 
-### Slots
+### Popconfirm Slots
 
-| 槽名    | 说明                     |
-| ------- | ------------------------ |
-| default | 需要展示气泡确认框的元素 |
-
+| 名称    | 说明   |
+| ------- | ------ |
+| default | 默认槽 |
 

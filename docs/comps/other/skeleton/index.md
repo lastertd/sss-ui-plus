@@ -41,7 +41,7 @@ src="./src/loading.vue"
 
 ## Skeleton API
 
-### Props
+### Skeleton Props
 
 | 属性名   | 说明                 | 可选值    | 默认值 |
 | -------- | -------------------- | --------- | ------ |
@@ -49,23 +49,23 @@ src="./src/loading.vue"
 | loading  | 是否处于加载中       | `Boolean` | true   |
 | throttle | 切换到真实UI时的延时 | `Number`  | 0      |
 
-### Slots
+### Skeleton Slots
 
-| 槽名     | 说明       |
+| 名称     | 说明       |
 | -------- | ---------- |
 | skeleton | 骨架屏元素 |
-| default  | 真实UI     |
+| default  | 真实元素   |
 
 
 
 
 ## SkeletonItem API
 
-### Props
+### SkeletonItem Props
 
-| 属性名   | 说明       | 可选值                          | 默认值    |
-| -------- | ---------- | ------------------------------- | --------- |
-| type     | 元素的类型 | `triangle` `rectangle`  `image` | rectangle |
-| isCircle | 是否是圆形 | `Boolean`                       | false     |
-| isRound  | 是否是圆角 | `Boolean`                       | false     |
+| 属性名   | 说明       | 可选值                             | 默认值    |
+| -------- | ---------- | ---------------------------------- | --------- |
+| type     | 元素的类型 | `triangle` 、`rectangle`/  `image` | rectangle |
+| isCircle | 是否是圆形 | `Boolean`                          | false     |
+| isRound  | 是否是圆角 | `Boolean`                          | false     |
 
