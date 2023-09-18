@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import "./button.less";
 import {SButtonProps, SButtonEmits} from "./button"
 import {SIcon} from "../../SIcon";
 
@@ -26,7 +25,7 @@ const handleClick = (evt: Event) => {
 <template>
 	<button
 		ref="container"
-		class="sss-button"
+		class="s-button"
 		@click="handleClick($event)"
 		:class="[
 			{
@@ -38,8 +37,8 @@ const handleClick = (evt: Event) => {
 				'is-ghost': props.ghost,
 
 			},
-            type? `sss-button-type-${props.type}`:'',
-            size? `sss-button-size-${props.size}`:'',
+            type? `s-button--${props.type}`:'',
+            size? `s-button--${props.size}`:'',
 		]"
 		:disabled="props.disabled || props.loading"
 		:type="props.nativeType"

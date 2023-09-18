@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import "./input.less"
 import {SInputEmits, SInputProps} from "./input"
+import {STooltip} from "../../STooltip";
 import {SIcon} from "../../SIcon";
 import {computed, onMounted, Ref, watch, ref} from "vue";
 
@@ -152,7 +152,7 @@ onMounted(() => {
 
 <template>
 	<div
-		class="sss-input"
+		class="s-input"
 		:class="[
 			{
 				'is-disabled':props.disabled
@@ -160,13 +160,13 @@ onMounted(() => {
 		]"
 	>
 		<!--		input prefixSlot-->
-		<div class="sss-input-prefixSlot" v-if="$slots.prefixSlot">
+		<div class="s-input__prefixSlot" v-if="$slots.prefixSlot">
 			<slot name="prefixSlot"></slot>
 		</div>
 
 		<!--		input prefix icon-->
 		<s-icon
-			class="sss-input-icon"
+			class="s-input__prefixIcon"
 			:target="props.prefixIcon"
 			:type="'label'"
 			:for="props.id"
@@ -176,7 +176,7 @@ onMounted(() => {
 
 		<input
 			ref="inner"
-			class="sss-input-inner"
+			class="s-input__inner"
 			:type="props.type"
 			:id="props.id"
 			:maxlength="props.maxLength"
@@ -196,7 +196,7 @@ onMounted(() => {
 
 		<!--		input suffix icon-->
 		<s-icon
-			class="sss-input-icon"
+			class="s-input-suffixIcon"
 			:target="props.suffixIcon"
 			:type="'label'"
 			:for="props.id"
@@ -206,16 +206,17 @@ onMounted(() => {
 		<!--		input word limit icon-->
 		<label
 			v-if="showWordLimit"
-			class="sss-input-limit"
+			class="s-input__limitIcon"
 			:data-overflow="modelValue.length > (props.maxLength as number)"
 		>
-			<s-icon target="warn" v-if="modelValue.length > (props.maxLength as number)"></s-icon>
+			<s-icon target="warning" v-if="modelValue.length > (props.maxLength as number)"></s-icon>
+
 			{{ modelValue.length }} / {{ props.maxLength }}
 		</label>
 
 		<s-icon
 			v-if="showCloseIcon"
-			class="sss-input-icon sss-input-icon-close"
+			class="s-input__closeIcon"
 			target="cricle-close"
 			@click="handleCloseIconClick"
 			tabindex="0"
@@ -224,7 +225,7 @@ onMounted(() => {
 		></s-icon>
 		<s-icon
 			v-if="showEyeIcon"
-			class="sss-input-icon sss-input-icon-eye"
+			class="s-input__eyeIcon"
 			target="eye"
 			@click="handleEyeIconClick"
 			tabindex="0"
@@ -234,14 +235,14 @@ onMounted(() => {
 
 
 		<!--		input suffixSlot-->
-		<div class="sss-input-suffixSlot" v-if="$slots.suffixSlot">
+		<div class="sss-input__suffixSlot" v-if="$slots.suffixSlot">
 			<slot name="suffixSlot"></slot>
 		</div>
 
 
 		<!--	input alert-->
 		<transition name="sss-transition-down-fade">
-			<label v-if="alertFlag" class="sss-input-alert" :for="id">
+			<label v-if="alertFlag" class="s-input__alert" :for="id">
 				<s-icon :target="alertIcon"></s-icon>
 				{{ alertText }}
 			</label>

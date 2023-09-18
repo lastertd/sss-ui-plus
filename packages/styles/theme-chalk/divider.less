@@ -1,0 +1,52 @@
+@import "../mixn/_index";
+
+.s-divider {
+    .useBorderBox();
+    position: relative;
+
+    &--solid {
+        border-top: 1px solid var(--sss-color-gray);
+        border-left: 1px solid var(--sss-color-gray);
+    }
+
+    &--dashed {
+        border-top: 1px dashed var(--sss-color-gray);
+        border-left: 1px dashed var(--sss-color-gray);
+    }
+
+    &--vertical {
+        margin: 0 10px;
+        height: 1em;
+        width: 0;
+        display: inline-flex;
+
+        & .s-divider__content {
+            transform: translateX(-50%);
+            flex-flow: column nowrap;
+            padding: 10px 0;
+
+        }
+    }
+
+    &--horizontal {
+        margin: 10px 0;
+        width: 100%;
+        height: 0;
+
+        & .s-divider__content {
+            transform: translateY(-50%);
+            padding: 0 10px;
+
+        }
+    }
+
+}
+
+
+.s-divider__content {
+    position: absolute;
+    .flex-row-center-center();
+    gap: 5px;
+    opacity: 1;
+    background-color: var(--sss-color-bg);
+}

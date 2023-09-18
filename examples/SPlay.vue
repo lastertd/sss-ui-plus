@@ -1,33 +1,13 @@
-<script lang="ts">
+<template>
+	<s-input placeholder="输入框必须绑定value" show-word-limit :max-length="5"
 
-import {defineComponent, h, VNode} from "vue";
+	></s-input>
+</template>
 
-/**
- * @description 取default slot中的第一个非（template slot）的组件节点
- */
-export default defineComponent({
-	setup(__, context) {
-		const slots = context.slots;
-		const attrs = context.attrs;
+<script setup lang="ts">
+import {ref} from "vue";
 
-		const VNodeList:VNode[] = slots.default && slots.default();
-
-		for (let i = 0; i < VNodeList.length; i++) {
-			const VNode = VNodeList[i];
-			console.log(VNode,"type: " ,VNode.type);
-		}
-
-		return () => {
-			return h('div', {...attrs}, [slots.default()])
-		}
-
-
-	},
-	name:'SPlay'
-
-
-})
+const value = ref<string>('12233122')
 </script>
-
 
 

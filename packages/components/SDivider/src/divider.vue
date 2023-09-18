@@ -1,13 +1,12 @@
 <script setup lang="ts">
-import "./divider.less"
 import {SDividerProps} from "./divider";
 import {onMounted, ref, useSlots} from "vue";
 import {unrefElement, MaybeElement} from "@vueuse/core";
 
 
 defineOptions({
-	name:'SDivider',
-	inheritAttrs:true
+	name: 'SDivider',
+	inheritAttrs: true
 })
 
 const props = defineProps({...SDividerProps});
@@ -60,19 +59,19 @@ onMounted(() => {
 <template>
 	<div
 		ref="divider"
-		class="sss-divider"
+		class="s-divider"
 		:class="[
-			`sss-divider-${props.type}`,
-			`sss-divider-${props.direction}`
+			`s-divider--${props.type}`,
+			`s-divider--${props.direction}`
 		]"
 	>
-		<span class="sss-divider-content" ref="content">
-			<s-icon :target="props.prefixIcon" style="padding: 0;"></s-icon>
+		<span class="s-divider__content" ref="content">
+			<s-icon :target="props.prefixIcon" no-padding></s-icon>
 			<template v-if="slots.default">
 				<slot></slot>
 			</template>
 			<template v-else>{{ props.content }}</template>
-			<s-icon :target="props.suffixIcon" style="padding: 0"></s-icon>
+			<s-icon :target="props.suffixIcon" no-padding></s-icon>
 		</span>
 	</div>
 </template>

@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import DefaultTheme from "vitepress/theme";
-import {useSidebar} from "vitepress/theme";
+import {STooltip} from "@sss-ui-plus/components";
 
 const {Layout} = DefaultTheme
 
-console.log(useSidebar())
 </script>
 
 <template>

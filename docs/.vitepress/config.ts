@@ -41,6 +41,13 @@ export default defineConfig({
                     ]
                 },
                 {
+                    text: '表单组件',
+                    items: [
+                        {text: 'Input 输入框', link: '/comps/form/input/'},
+
+                    ]
+                },
+                {
                     text: '反馈组件',
                     items: [
                         {text: 'Message 消息', link: '/comps/feedback/message/'},

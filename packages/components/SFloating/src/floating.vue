@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import "./floating.less"
 import {SFloatingProps, SFloatingEmits} from "./floating";
 import {useFloating, offset, flip, shift, autoUpdate, arrow} from "@floating-ui/vue";
 import {computed, onMounted, watch, ref, useSlots, onBeforeUnmount, Ref} from "vue";
@@ -211,7 +210,7 @@ defineExpose({
 			@afterLeave="emits('closed')"
 		>
 			<div v-if="flag "
-			     class="sss-floating-floating"
+			     class="s-floating"
 			     :data-placement="placement"
 			     :data-theme="props.theme"
 			     v-bind="$attrs"
@@ -219,7 +218,7 @@ defineExpose({
 			>
 
 				<slot></slot>
-				<div v-if="props.showArrow" ref="_arrow" class="sss-floating-arrow" :style="arrowStyle"></div>
+				<div v-if="props.showArrow" ref="_arrow" class="s-floating__arrow" :style="arrowStyle"></div>
 			</div>
 		</transition>
 	</div>

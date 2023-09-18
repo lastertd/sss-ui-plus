@@ -1,30 +1,31 @@
 <script setup lang="ts">
-import "./icon.less"
 import {SIconProps} from "./icon";
-import {onMounted, ref} from "vue";
+import {nextTick, onMounted, ref, watch} from "vue";
 
 defineOptions({
 	name: "SIcon",
 	inheritAttrs: false,
 })
 
-const icon = ref<HTMLElement | undefined>(undefined);
+const icon = ref<HTMLElement | null>(null);
 
 const props = defineProps({...SIconProps})
 
 
-onMounted(() => {
-	const el = icon.value!;
-
-	if (props.color) {
-		el.style.color = props.color;
-
+watch(() => props.target,(t) => {
+	if (!t){
+		return
 	}
-	if (props.noPadding) {
-		el.style.padding = '0';
-	}
+	nextTick().then(() => {
+		if (props.noPadding){
+			icon.value!.style.padding = '0'
+		}
+		if (props.color){
+			icon.value!.style.color = props.color;
+		}
+	})
+},{immediate:true})
 
-})
 
 
 </script>
@@ -35,7 +36,7 @@ onMounted(() => {
 		:is="props.type"
 		:for="props.for"
 		v-if="props.target"
-		class=" sss-icon iconfont"
+		class=" s-icon iconfont"
 		:class="[{
 			'is-rotating':props.rotating
 		},
