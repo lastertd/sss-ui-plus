@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import "./msgBox.less"
 import {SMsgBoxProps, SMsgBoxEmits} from "./msgBox";
 import {SIcon, SIconInstance} from "../../SIcon";
 import {SButton} from "../../SButton";
@@ -20,12 +19,8 @@ const emits = defineEmits({...SMsgBoxEmits})
 
 const closeIcon: Ref<SIconInstance | null> = ref(null);
 const outer: Ref<HTMLElement | undefined> = ref(undefined);
-const head: Ref<HTMLElement | undefined> = ref(undefined);
+const header: Ref<HTMLElement | undefined> = ref(undefined);
 const drag: Ref<HTMLElement | undefined> = ref(undefined);
-
-const f = computed(() => {
-	return props.draggable
-})
 
 
 const msgBoxIcon = computed(() => {
@@ -33,10 +28,13 @@ const msgBoxIcon = computed(() => {
 	return props.type
 })
 
-let {flag: visFlag, setTrue, setFalse: hidden, toggle} = useFlag(false);
-useDraggable(drag, head, f);
+let {flag: visFlag, setTrue, setFalse} = useFlag(false);
+useDraggable(drag, header, computed(() => {
+	return props.draggable
+}));
 
 
+// 打开消息框
 const open = fnUnion(setTrue, async () => {
 	emits("open");
 	if (props.draggable) drag.value!.appendChild(outer.value!);
@@ -49,48 +47,74 @@ const open = fnUnion(setTrue, async () => {
 
 });
 
-
-const onClose = throttle(function (trigger: MessageTriggerTypes) {
+// 关闭消息框
+const close = throttle(function (trigger: MessageTriggerTypes) {
 	const done = function () {
 		hidden();
 		emits('close', trigger);
 	}
 
 	if (!props.closeOnPressEscape && trigger === 'esc') return;
-	if (props.beforeClose) {
-		props.beforeClose(done);
-	} else {
-		done();
-	}
+
+	props.beforeClose ? props.beforeClose(done) : done();
 
 }, 500);
 
+// 前两者轮换
+const toggle = function () {
+	if (visFlag.value){
+		close('system');
+	}
+	else {
+		open();
+	}
+}
 
-const onCancelBtnClick = throttle(function () {
+const hidden = fnUnion(setFalse,() => {
+	emits('hidden');
+})
+
+
+// 取消消息框
+const cancel = throttle(function () {
 	hidden();
 	emits("cancel");
 }, 500);
 
-const onConfirmBtnClick = throttle(function () {
+// 确认消息框
+const confirm = throttle(function () {
 	hidden();
 	emits('confirm');
 }, 500);
 
 
-const handleAfterLeave = function () {
-	emits('closed');
-}
-
-const handleAfterEnter = function () {
-	emits('opened');
-}
-
-
 defineExpose({
-	open,
+
+	/**
+	 * @description func, 打开消息框, 会触发open事件
+	 */
+	open: open,
+	/**
+	 * @description func, 关闭消息框, 会触发close事件
+	 */
+	close: close,
+	/**
+	 * @description func, 关闭消息框, 无副作用
+	 */
 	hidden,
+	/**
+	 * @description func, 关闭/打开消息框, 会触发事件
+	 */
 	toggle,
-	close: onClose,
+	/**
+	 * @description func, 关闭消息框, 触发cancel事件
+	 */
+	cancel: cancel,
+	/**
+	 * @description func, 关闭消息框, 触发confirm事件
+	 */
+	confirm: confirm,
+
 })
 
 
@@ -98,81 +122,89 @@ defineExpose({
 
 <template>
 
-	<transition
-		:name="`sss-transition-${props.transition}`"
-		@afterEnter="handleAfterEnter"
-		@afterLeave="handleAfterLeave"
-	>
-		<div
-			ref="outer"
-			v-show="visFlag"
-			class="sss-message-box"
-			v-bind="$attrs"
-			tabindex="0"
-			@keydown.esc="onClose('esc')"
-			:class="[
-				`sss-message-type-${props.type || 'default'}`
-			]"
-			:style="`top:${props.top}`"
-
+		<transition
+			:name="`sss-transition-${props.transition}`"
+			@afterEnter="emits('opened')"
+			@afterLeave="emits('closed')"
 		>
-			<s-icon :target="msgBoxIcon" style="padding-top: 5px" class="sss-message-icon"></s-icon>
-			<div class="sss-message">
-				<!--				message head-->
-				<div
-					ref="head"
-					v-if="props.showHead"
-					class="sss-message-head"
-				>
-					<h3>{{ props.title }}</h3>
-					<s-icon
-						ref="closeIcon"
-						v-if="props.showClose"
-						target="close"
-						class="sss-message-head-icon"
-						tabindex="0"
-						@click="onClose('icon')"
-						style="padding: 4px"
-					></s-icon>
+			<div class="s-message-box" ref="outer" v-show="visFlag"
+			     v-bind="$attrs"
+			     tabindex="0"
+			     @keydown.esc="close('esc')"
+			     :class="[
+				`s-message-box--${props.type || 'default'}`
+			]"
+			     :style="`top:${props.top}`"
+
+			>
+				<s-icon :target="msgBoxIcon" class="s-message-box__icon"></s-icon>
+
+				<div class="s-message">
+
+					<div class="s-message__header" ref="header" v-if="!props.noHeader"
+
+					     :class="[
+						{
+							's-message__header--default':!$slots.header
+						}
+					]"
+					>
+						<template v-if="!$slots.header">
+							<h1 class="s-message__header__title">{{ props.title }}</h1>
+							<s-icon
+								ref="closeIcon"
+								v-if="props.showCloseIcon"
+								target="close"
+								class="s-message__header__icon"
+								tabindex="0"
+								@click="close('icon')"
+							></s-icon>
+						</template>
+						<slot name="header"/>
+					</div>
+
+
+					<div class="s-message__body" ref="body" v-if="!props.noBody">
+						<slot></slot>
+						<template v-if="props.text">
+							<div class="s-message__body__text">
+								{{ props.text }}
+							</div>
+						</template>
+					</div>
+
+					<div class="s-message__footer" ref="footer" v-if="!props.noFooter"
+					     :class="[
+						{
+							's-message__footer--default':!$slots.footer
+						}
+					]"
+					>
+						<template v-if="!$slots.footer">
+							<div class="s-message__footer--default">
+								<s-button
+									:size="props.btnSize" type="cyan" ghost
+									@click="cancel"
+								>{{ props.cancelBtnText }}
+								</s-button>
+								<s-button
+									:size="props.btnSize" type="primary"
+									@click="confirm"
+
+								>{{ props.confirmBtnText }}
+								</s-button>
+							</div>
+						</template>
+						<slot name="footer"/>
+					</div>
 
 				</div>
-				<!--				message body-->
-				<div
-					v-if="$slots.default || props.text"
-					class="sss-message-body"
-				>
-
-					<slot>
-						<p class="sss-message-text">{{ props.text }}</p>
-					</slot>
-
-				</div>
-
-
-				<!--				message foot-->
-				<div
-					v-if="props.showFoot"
-					class="sss-message-foot"
-				>
-					<s-button
-						:size="props.btnSize" class="clear-after" type="cyan" ghost
-						@click="onCancelBtnClick"
-					>{{ props.cancelBtnText }}
-					</s-button>
-					<s-button
-						:size="props.btnSize" class="clear-after" type="primary"
-						@click="onConfirmBtnClick"
-
-					>{{ props.confirmBtnText }}
-					</s-button>
-				</div>
-
 			</div>
-		</div>
-	</transition>
+		</transition>
+
 
 	<!--	draggable container-->
-	<div ref="drag" :style="`top:${props.top}`" v-if="props.draggable" class="sss-message-draggable-container">
+	<div ref="drag" :style="`top:${props.top}`" v-if="props.draggable" class="s-message-draggable-container">
 
 	</div>
 </template>

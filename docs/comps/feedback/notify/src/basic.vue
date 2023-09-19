@@ -23,7 +23,8 @@ const handleClick = () => {
 	else {
 		notify({
 			title:'什么时候星期四?',
-			text:'oh no 今天不是, 看来不适合发电😫😫'
+			text:'oh no 今天不是, 看来不适合发电😫😫',
+			timeout:0
 		})
 	}
 }

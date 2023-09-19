@@ -26,7 +26,7 @@ interface options {
      */
     offset: number,
 
-    showClose: Boolean,
+    showCloseIcon: Boolean,
 }
 
 // 管理notify的位移
@@ -40,7 +40,9 @@ export default async function (options: Partial<options>) {
         icon: options.icon,
         title: options.text,
         showHead: true,
-        showClose: options.showClose,
+        noFooter:true,
+        noBody:true,
+        showCloseIcon: options.showCloseIcon,
         transition: 'msg',
         onClose() {
 
@@ -82,7 +84,7 @@ export default async function (options: Partial<options>) {
 
 const initMountTo = function (el: HTMLElement, offset: number) {
     el.classList.add('pos-top-center');
-    el.classList.add('sss-message-msg-container')
+    el.classList.add('s-message-container')
     el.setAttribute('data-space', offset.toString());
     el.style.top = `${autoLayoutDown.nextPos()}px`;
     el.style.zIndex = new IndexManager().nextIndex().toString();

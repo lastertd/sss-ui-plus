@@ -54,17 +54,10 @@ export default defineConfig({
                         {text: 'Confirm 确认', link: '/comps/feedback/confirm/'},
                         {text: 'Dialog 对话框', link: '/comps/feedback/dialog/'},
                         {text: 'Drawer 抽屉', link: '/comps/feedback/drawer/'},
-
-                    ]
-                },
-                {
-                    text: '浮动组件',
-                    items: [
-                        {text: 'Floating 浮动', link: '/comps/floating/floating/'},
-                        {text: 'Tooltip 文本提示框', link: '/comps/floating/tooltip/'},
-                        {text: 'Popconfirm 气泡确认框', link: '/comps/floating/popconfirm/'},
-                        {text: 'Dropdown 下拉框', link: '/comps/floating/dropdown/'},
-
+                        {text: 'Floating 浮动', link: '/comps/feedback/floating/'},
+                        {text: 'Tooltip 文本提示框', link: '/comps/feedback/tooltip/'},
+                        {text: 'Popconfirm 气泡确认框', link: '/comps/feedback/popconfirm/'},
+                        {text: 'Dropdown 下拉框', link: '/comps/feedback/dropdown/'},
                     ]
                 },
                 {

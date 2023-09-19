@@ -1,0 +1,303 @@
+@import "../mixn/_index";
+
+
+.mixin_s-message-box__icon(@color) {
+    & .s-message-box__icon {
+        color: @color;
+    }
+}
+
+.s-message-box {
+    display: flex;
+    gap: 5px;
+    outline: none;
+    justify-content: space-between;
+    padding: 10px 10px 15px;
+    box-sizing: border-box;
+    font-size: var(--sss-font-size-default);
+
+    & * {
+        box-sizing: inherit;
+    }
+
+    background: var(--sss-color-bg);
+    border: solid 1px var(--sss-color-gray);
+    border-radius: 7px;
+    box-shadow: rgba(17, 17, 26, 0.05) 0 4px 16px, rgba(17, 17, 26, 0.05) 0 8px 32px;
+
+    &__icon {
+        padding-top: 5px;
+    }
+
+    &--success {
+        .mixin_s-message-box__icon(var(--sss-color-success));
+    }
+
+    &--info {
+        .mixin_s-message-box__icon(var(--sss-color-info));
+
+    }
+
+    &--warning {
+        .mixin_s-message-box__icon(var(--sss-color-warning));
+
+    }
+
+    &--danger {
+        .mixin_s-message-box__icon(var(--sss-color-danger));
+
+    }
+}
+
+
+.s-message-draggable-container {
+    position: fixed;
+
+    .s-message-box{
+        position: static !important;
+    }
+
+    .s-message__header {
+        cursor: move;
+        user-select: none;
+    }
+}
+
+
+.s-message {
+    flex: 1;
+
+    overflow: hidden;
+}
+
+.s-message__header {
+    &--default {
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center;
+        gap: 30px;
+
+
+    }
+
+    &__title {
+        margin: 0;
+        font-weight: bolder;
+        font-size: inherit;
+
+        .filter-overflow();
+
+    }
+
+    &__icon {
+        border-radius: 5px;
+        outline: none;
+        color: var(--sss-color-gray-dark);
+        padding: 5px;
+
+        &:hover,
+        &:focus {
+            background-color: var(--sss-color-gray-fade);
+        }
+    }
+}
+
+.s-message__body {
+    flex: 1;
+    font-size: inherit;
+
+    &__text {
+        .filter-overflow();
+    }
+
+}
+
+.s-message__footer {
+    &--default {
+        display: flex;
+        justify-content: flex-end;
+        gap: 5px;
+    }
+}
+
+
+.s-notify-container {
+    width: 300px;
+    transition: all .4s ease;
+    position: fixed;
+
+    //允许换行
+    .s-message__body__text {
+        word-wrap: break-word;
+        white-space: break-spaces;
+        padding-right: 25px;
+
+    }
+}
+
+.s-message-container {
+    position: fixed;
+    transition: all .4s ease;
+
+    .s-message-box {
+        border-radius: 5px;
+        padding: 5px 14px;
+        align-items: center;
+        box-shadow: none;
+
+
+    }
+
+    & * {
+        font-size: 13px !important;
+        font-weight: normal;
+    }
+
+    & .s-message-box__icon {
+
+    }
+
+    & .s-message__header__icon {
+        background-color: transparent;
+    }
+
+    & .s-message-box--success {
+        background-color: var(--sss-color-success-fade);
+        border-color: var(--sss-color-success-lighter);
+    }
+
+    & .s-message-box--info {
+        background-color: var(--sss-color-info-fade);
+        border-color: var(--sss-color-info-lighter);
+    }
+
+    & .s-message-box--warning {
+        background-color: var(--sss-color-warning-fade);
+        border-color: var(--sss-color-warning-lighter);
+    }
+
+    & .s-message-box--danger {
+        background-color: var(--sss-color-danger-fade);
+        border-color: var(--sss-color-danger-lighter);
+    }
+
+}
+
+.s-confirm-container {
+
+    //全屏展示
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+
+    //消息框居中
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    //控制大小
+    .s-message-box {
+        min-width: 280px;
+        max-width: 400px;
+    }
+
+    //修改为flex布局，只是为了增加间隙(
+    .s-message {
+        display: flex;
+        flex-flow: column nowrap;
+        gap: 10px;
+
+    }
+
+    //允许换行
+    .s-message__body__text {
+        word-wrap: break-word;
+        white-space: break-spaces;
+        padding-right: 25px;
+    }
+}
+
+
+//以下全是过渡
+
+
+/*notify用的(*/
+.sss-transition-notify-right-enter-active {
+    transform-origin: center right;
+
+    transition: all .3s ease !important;
+}
+
+.sss-transition-notify-right-leave-active {
+    transform-origin: center right;
+
+    transition: all .3s ease !important;
+}
+
+.sss-transition-notify-right-enter-from {
+    opacity: 0;
+    transform: translateX(100px) translateY(0) scale(0);
+}
+
+.sss-transition-notify-right-leave-to {
+    opacity: 0;
+    transform: translateY(0);
+}
+
+/*notify用的(*/
+.sss-transition-notify-left-enter-active {
+    transform-origin: center left;
+    transition: all .3s ease-out;
+}
+
+.sss-transition-notify-left-leave-active {
+    transform-origin: center left;
+
+    transition: all .3s ease-out;
+}
+
+.sss-transition-notify-left-enter-from {
+    opacity: 0;
+    transform: translateX(-100px) translateY(0) scale(0);
+}
+
+.sss-transition-notify-left-leave-to {
+    opacity: 0;
+    transform: translateY(0);
+}
+
+/*msg用的(*/
+.sss-transition-msg-leave-active,
+.sss-transition-msg-enter-active {
+    transition: all .3s ease-out;
+}
+
+.sss-transition-msg-enter-from {
+    opacity: 0;
+    transform: translateY(-10px)
+}
+
+.sss-transition-msg-leave-to {
+    opacity: 0;
+    transform: translateY(-100px)
+}
+
+
+/*confirm用的(*/
+.sss-transition-confirm-leave-active,
+.sss-transition-confirm-enter-active {
+    transition: all .3s ease-out;
+}
+
+.sss-transition-confirm-enter-from {
+    opacity: 0;
+    transform: translateY(-30px)
+}
+
+.sss-transition-confirm-leave-to {
+    opacity: 0;
+    transform: translateY(-40px)
+}

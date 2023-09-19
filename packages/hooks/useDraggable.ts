@@ -1,5 +1,5 @@
-import { onBeforeUnmount, onMounted, watchEffect } from 'vue'
-import type { ComputedRef, Ref } from 'vue'
+import {onBeforeUnmount, onMounted, ref, watchEffect} from 'vue'
+import type {ComputedRef, Ref} from 'vue'
 
 export const useDraggable = (
     targetRef: Ref<HTMLElement | undefined>,
@@ -10,11 +10,15 @@ export const useDraggable = (
         offsetX: 0,
         offsetY: 0,
     }
+    if (targetRef instanceof HTMLElement) {
+        targetRef = ref<HTMLElement | undefined>(targetRef)
+    }
+
 
     const onMousedown = (e: MouseEvent) => {
         const downX = e.clientX
         const downY = e.clientY
-        const { offsetX, offsetY } = transform
+        const {offsetX, offsetY} = transform
 
         const targetRect = targetRef.value!.getBoundingClientRect()
         const targetLeft = targetRect.left

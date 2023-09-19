@@ -27,7 +27,7 @@
     "docs:build": "vitepress build ./docs/",
     "type:build": "node buildWebTypes.js"
   },
-  "web-types": "web-types.json",
+  "web-types": " web-types.json",
   "vetur": {
     "tags": "tags.json",
     "attributes": "attributes.json"

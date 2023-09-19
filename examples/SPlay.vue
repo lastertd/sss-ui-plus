@@ -1,13 +1,71 @@
 <template>
-	<s-input placeholder="输入框必须绑定value" show-word-limit :max-length="5"
+	<s-row horizontal="space-around" :gap="10">
+		<s-button
+			empty
+			type="success"
+			@click="handleClick('success')"
+		>
+			success
+		</s-button>
+		<s-button
+			empty
+			type="info"
+			@click="handleClick('info')"
+		>
+			info
+		</s-button>
+		<s-button
+			empty
+			type="warning"
+			@click="handleClick('warning')"
+		>
+			warning
+		</s-button>
+		<s-button
+			empty
+			type="danger"
+			@click="handleClick('danger')"
+		>
+			danger
+		</s-button>
+	</s-row>
 
-	></s-input>
 </template>
 
 <script setup lang="ts">
-import {ref} from "vue";
+import {confirm} from "@sss-ui-plus/components";
 
-const value = ref<string>('12233122')
+const handleClick = (type:string) => {
+
+	if (type === 'success'){
+		confirm({
+			type:'success',
+			text:'success confirm.1111111111111111111111111111111111111111111111111122222222222'
+		})
+	}
+	else if (type === 'info') {
+		confirm({
+			type:'info',
+			text:'info confirm.'
+		})
+	}
+	else if (type === 'warning') {
+		confirm({
+			type:'warning',
+			text:'warning confirm.'
+		})
+	}
+	else if (type === 'danger') {
+		confirm({
+			type:'danger',
+			text:'danger confirm.'
+		})
+	}
+
+
+}
+
 </script>
+
 
 

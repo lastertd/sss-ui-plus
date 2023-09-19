@@ -108,9 +108,8 @@ export default async function (options: Partial<options>) {
         icon: options.icon,
         title: options.title,
         text: options.text,
-        showHead: true,
-        showBody: true,
-        showClose: true,
+        noFooter:true,
+        showCloseIcon: true,
         transition: (placement === "top-left" || placement === 'bottom-left') ? 'notify-left' : 'notify-right',
         onClose() {
             del(mountTo, placement);
@@ -169,7 +168,7 @@ const initMountTo = function (el: HTMLElement, placement: string, offset: number
         el.style.bottom = `${autoLayoutUp2.nextPos()}px`;
 
     }
-    el.classList.add('sss-message-notify-container')
+    el.classList.add('s-notify-container')
     el.style.zIndex = new IndexManager().nextIndex().toString();
 
 

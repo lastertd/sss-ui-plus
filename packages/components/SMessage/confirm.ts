@@ -38,9 +38,7 @@ export default function (options: Partial<options>) {
             title: options.title,
             text:options.text,
             draggable:options.draggable,
-            showHead: true,
-            showFoot: true,
-            showClose: true,
+            showCloseIcon: true,
             transition: 'confirm',
             confirmBtnText:options.confirmBtnText,
             cancelBtnText:options.cancelBtnText,
@@ -92,7 +90,7 @@ export default function (options: Partial<options>) {
 
 
 const initMountTo = function (el: HTMLElement) {
-    el.classList.add('sss-message-confirm-container')
+    el.classList.add('s-confirm-container')
     el.style.zIndex = new IndexManager().nextIndex().toString();
 
 

@@ -1,7 +1,6 @@
-import "./m.less"
-import message from "./message.ts";
-import notify from "./notify.ts";
-import confirm from "./confirm.ts";
+import message from "./message";
+import notify from "./notify";
+import confirm from "./confirm";
 
 export default {
     message,
