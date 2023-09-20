@@ -53,7 +53,7 @@
 .s-message-draggable-container {
     position: fixed;
 
-    .s-message-box{
+    .s-message-box {
         position: static !important;
     }
 
@@ -71,18 +71,18 @@
 }
 
 .s-message__header {
+
     &--default {
         display: flex;
         flex-flow: row nowrap;
         justify-content: space-between;
         align-items: center;
-        gap: 30px;
-
+        gap: 20px;
 
     }
 
     &__title {
-        margin: 0;
+        margin: 0 10px 0 0;
         font-weight: bolder;
         font-size: inherit;
 
@@ -221,83 +221,38 @@
 }
 
 
-//以下全是过渡
+.pos-top-right {
+    position: fixed;
+    top: 0;
+    right: 20px;
 
-
-/*notify用的(*/
-.sss-transition-notify-right-enter-active {
-    transform-origin: center right;
-
-    transition: all .3s ease !important;
 }
 
-.sss-transition-notify-right-leave-active {
-    transform-origin: center right;
-
-    transition: all .3s ease !important;
+.pos-top-left {
+    position: fixed;
+    top: 0;
+    left: 20px;
 }
 
-.sss-transition-notify-right-enter-from {
-    opacity: 0;
-    transform: translateX(100px) translateY(0) scale(0);
+.pos-bottom-right {
+    position: fixed;
+    right: 20px;
+    bottom: 0;
+
 }
 
-.sss-transition-notify-right-leave-to {
-    opacity: 0;
-    transform: translateY(0);
+.pos-bottom-left {
+    position: fixed;
+    left: 20px;
+    bottom: 0;
+
 }
 
-/*notify用的(*/
-.sss-transition-notify-left-enter-active {
-    transform-origin: center left;
-    transition: all .3s ease-out;
-}
-
-.sss-transition-notify-left-leave-active {
-    transform-origin: center left;
-
-    transition: all .3s ease-out;
-}
-
-.sss-transition-notify-left-enter-from {
-    opacity: 0;
-    transform: translateX(-100px) translateY(0) scale(0);
-}
-
-.sss-transition-notify-left-leave-to {
-    opacity: 0;
-    transform: translateY(0);
-}
-
-/*msg用的(*/
-.sss-transition-msg-leave-active,
-.sss-transition-msg-enter-active {
-    transition: all .3s ease-out;
-}
-
-.sss-transition-msg-enter-from {
-    opacity: 0;
-    transform: translateY(-10px)
-}
-
-.sss-transition-msg-leave-to {
-    opacity: 0;
-    transform: translateY(-100px)
+.pos-top-center {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 
-/*confirm用的(*/
-.sss-transition-confirm-leave-active,
-.sss-transition-confirm-enter-active {
-    transition: all .3s ease-out;
-}
-
-.sss-transition-confirm-enter-from {
-    opacity: 0;
-    transform: translateY(-30px)
-}
-
-.sss-transition-confirm-leave-to {
-    opacity: 0;
-    transform: translateY(-40px)
-}

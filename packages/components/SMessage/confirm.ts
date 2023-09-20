@@ -39,7 +39,7 @@ export default function (options: Partial<options>) {
             text:options.text,
             draggable:options.draggable,
             showCloseIcon: true,
-            transition: 'confirm',
+            transition: 's-transition-fadeDown',
             confirmBtnText:options.confirmBtnText,
             cancelBtnText:options.cancelBtnText,
             top:options.top,

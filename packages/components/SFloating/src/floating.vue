@@ -205,7 +205,7 @@ defineExpose({
 	<div ref="floating" :style="_floatingStyles" :class="props.floatingClass">
 
 		<transition
-			:name="`sss-transition-${props.transition}`"
+			:name="props.transition"
 			@afterEnter="emits('opened')"
 			@afterLeave="emits('closed')"
 		>

@@ -1,5 +1,5 @@
 import {PropType} from "vue";
-import {Expression, FloatingTrigger, Transition} from "@sss-ui-plus/typings";
+import {FloatingTrigger, Transition} from "@sss-ui-plus/typings";
 import {Placement} from "@floating-ui/vue";
 
 
@@ -15,49 +15,46 @@ export const STooltipProps = {
         type: String as PropType<Placement>,
         default: "bottom"
     },
-    transition:{
-        type:String as PropType<Transition>,
-        default:"fade"
+    transition: String as PropType<Transition>,
+    openDelay: {
+        type: Number,
+        default: 50
     },
-    openDelay:{
-        type:Number,
-        default:50
+    closeDelay: {
+        type: Number,
+        default: 200
     },
-    closeDelay:{
-        type:Number,
-        default:200
+    disabled: Boolean,
+    offset: {
+        type: Number,
+        default: 10,
     },
-    disabled:Boolean,
-    offset:{
-        type:Number,
-        default:10,
-    },
-    theme:{
+    theme: {
         type: String as PropType<'light' | 'dark'>,
-        default:'dark'
+        default: 'dark'
     },
-    closeOnClickBody:Boolean,
-    openOnMounted:Boolean,
-    teleported:{
-        type:Boolean,
-        default:true,
-    },
-    showArrow:{
+    closeOnClickBody: Boolean,
+    openOnMounted: Boolean,
+    teleported: {
         type: Boolean,
-        default:true
+        default: true,
     },
-    floatingClass:String,
-    reference:Object as PropType<any>,
-    quickTrack:Boolean,
+    showArrow: {
+        type: Boolean,
+        default: true
+    },
+    floatingClass: String,
+    reference: Object as PropType<any>,
+    quickTrack: Boolean,
 
-    content:String,
+    content: String,
 
 
 } as const
 
 export const STooltipEmits = {
-    open:() => true,
-    opened:() => true,
-    close:() => true,
+    open: () => true,
+    opened: () => true,
+    close: () => true,
     closed: () => true
 } as const

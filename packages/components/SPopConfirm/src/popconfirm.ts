@@ -17,7 +17,7 @@ export const SPopconfirmProps = {
     },
     transition:{
         type:String as PropType<Transition>,
-        default:"scale"
+        default:"s-transition-scale"
     },
     openDelay:{
         type:Number,
@@ -34,7 +34,6 @@ export const SPopconfirmProps = {
     },
     theme:{
         type: String as PropType<'light' | 'dark'>,
-        default:'light'
     },
     closeOnClickBody:Boolean,
     openOnMounted:Boolean,

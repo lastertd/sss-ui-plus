@@ -32,8 +32,8 @@ export const SMsgBoxProps = {
      * @description 消息框的过渡动画
      */
     transition: {
-        type: String as PropType<Transition>,
-        default: 'down-fade'
+        type:String as PropType<Transition>,
+        default:'s-transition-downFade'
     },
     /**
      * @description 是否可以通过按下ESC来关闭消息框
@@ -45,10 +45,7 @@ export const SMsgBoxProps = {
     /**
      * @description 消息框是否可以被拖动
      */
-    draggable: {
-        type: Boolean,
-        default: false,
-    },
+    draggable: Boolean,
     /**
      * @description 消息框距离浏览器视口顶部的距离
      */

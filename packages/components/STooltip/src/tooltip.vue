@@ -1,14 +1,12 @@
-
 <script setup lang="ts">
-import "./tooltip.less"
 import {STooltipEmits, STooltipProps} from "./tooltip";
 import {SFloating} from "../../SFloating";
 import {useSlots} from "vue";
 
 
 defineOptions({
-	name:"STooltip",
-	inheritAttrs:false
+	name: "STooltip",
+	inheritAttrs: false
 })
 
 const props = defineProps({...STooltipProps});
@@ -41,11 +39,11 @@ const slots = useSlots();
 		@close="emits('close')"
 		@closed="emits('closed')"
 
-		class="sss-tooltip"
+		class="s-tooltip"
 
 	>
 
-		<template #reference v-if="slots.default" >
+		<template #reference v-if="slots.default">
 			<slot></slot>
 		</template>
 
@@ -54,7 +52,7 @@ const slots = useSlots();
 				<slot name="content"></slot>
 			</template>
 			<template v-else>
-				{{props.content}}
+				{{ props.content }}
 			</template>
 		</template>
 	</s-floating>

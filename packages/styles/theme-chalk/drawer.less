@@ -1,0 +1,59 @@
+.s-drawer {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 0;
+
+}
+
+.s-drawer__inner {
+    min-height: 200px;
+    & .s-message {
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    &--top {
+        position: fixed;
+        top: 0;
+        bottom: unset;
+        width: 100vw;
+        height: 30vh;
+        border-radius: unset;
+        padding: 20px 30px;
+    }
+
+    &--right {
+        position: fixed;
+        right: 0;
+        left: unset;
+        width: 30vw;
+        height: 100vh;
+        border-radius: unset;
+        padding: 20px 30px;
+    }
+
+    &--bottom {
+        position: fixed;
+        bottom: 0;
+        top: unset;
+        width: 100vw;
+        height: 30vh;
+        border-radius: unset;
+        padding: 20px 30px;
+    }
+
+    &--left {
+        position: fixed;
+        left: 0;
+        right: unset;
+        width: 30vw;
+        height: 100vh;
+        border-radius: unset;
+        padding: 20px 30px;
+    }
+}
+

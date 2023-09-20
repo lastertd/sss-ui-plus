@@ -9,16 +9,9 @@
     border-radius: 4px;
     position: relative;
     white-space: nowrap;
+    background-color: var(--sss-color-bg);
 
 
-
-    &[data-theme="light"] {
-        color: var(--sss-color-black-light);
-        background-color: var(--sss-color-bg);
-        .s-floating__arrow:after{
-            background-color: var(--sss-color-bg);
-        }
-    }
     &[data-theme="dark"] {
         background-color: var(--sss-color-black-dark);
         color: var(--sss-color-default-dark-deep);
@@ -36,16 +29,11 @@
     width: 10px;
     position: absolute;
     z-index: 0;
-
-    &:after{
-        content: "";
-        display: block;
-        height: 10px;
-        width: 10px;
-        rotate: 45deg;
-        box-sizing: border-box;
-
-    }
+    content: "";
+    display: block;
+    rotate: 45deg;
+    box-sizing: border-box;
+    background-color: inherit;
 }
 
 .s-floating{
@@ -53,40 +41,32 @@
         transform-origin: center bottom;
         .s-floating__arrow{
             bottom: -5px;
-            &:after{
-                border-right: 1px solid var(--sss-color-gray);
-                border-bottom: 1px solid var(--sss-color-gray);
-            }
+            border-right: 1px solid var(--sss-color-gray);
+            border-bottom: 1px solid var(--sss-color-gray);
         }
     }
     &[data-placement^="bottom"]{
         transform-origin: center top;
         .s-floating__arrow{
             top: -5px;
-            &:after{
-                border-left: 1px solid var(--sss-color-gray);
-                border-top: 1px solid var(--sss-color-gray);
-            }
+            border-left: 1px solid var(--sss-color-gray);
+            border-top: 1px solid var(--sss-color-gray);
         }
     }
     &[data-placement^="left"]{
         transform-origin: right center;
         .s-floating__arrow{
             right: -5px;
-            &:after{
-                border-right: 1px solid var(--sss-color-gray);
-                border-top: 1px solid var(--sss-color-gray);
-            }
+            border-right: 1px solid var(--sss-color-gray);
+            border-top: 1px solid var(--sss-color-gray);
         }
     }
     &[data-placement^="right"]{
         transform-origin: left center;
         .s-floating__arrow{
             left: -5px;
-            &:after{
-                border-left: 1px solid var(--sss-color-gray);
-                border-bottom: 1px solid var(--sss-color-gray);
-            }
+            border-left: 1px solid var(--sss-color-gray);
+            border-bottom: 1px solid var(--sss-color-gray);
         }
 
     }

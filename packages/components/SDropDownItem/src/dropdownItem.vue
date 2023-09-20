@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import "./dropdownItem.less"
 import {SDropdownItemEmits, SDropdownItemProps} from "./dropdownItem"
 import {SIcon} from "../../SIcon";
-import {Ref, inject} from "vue";
+import {Ref, inject, warn} from "vue";
 
 defineOptions({
 	name: 'SDropdownItem',
@@ -14,12 +13,12 @@ const props = defineProps({...SDropdownItemProps});
 const emits = defineEmits({...SDropdownItemEmits});
 const inDropdown = inject('inDropdown') as Boolean | undefined;
 const isCenter = inject('isCenter') as Ref<Boolean | undefined>;
-const DropdownItemClick = inject('DropdownItemClick') as (val: string | undefined) => {};
+const DropdownItemClick = inject('DropdownItemClick') as (val: string | undefined) => void;
 const close = inject('DropdownClose') as () => {}
 
 
 if (inDropdown === undefined) {
-	throw SyntaxError('dropdown-item component should be within dropdown component')
+	warn('dropdown-item component should be within dropdown component');
 }
 
 const handleClick = () => {
@@ -39,7 +38,7 @@ const handleClick = () => {
 	<component
 		:is="props.tag"
 		v-if="props.label || $slots?.default"
-		class="sss-dropdown-item"
+		class="s-dropdown__item"
 		@click="handleClick"
 		:data-center="isCenter"
 		:href="props.href"

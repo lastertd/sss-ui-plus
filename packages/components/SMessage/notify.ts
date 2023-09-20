@@ -110,7 +110,7 @@ export default async function (options: Partial<options>) {
         text: options.text,
         noFooter:true,
         showCloseIcon: true,
-        transition: (placement === "top-left" || placement === 'bottom-left') ? 'notify-left' : 'notify-right',
+        transition: placement.includes('right')?'s-transition-fadeLeft--completely':'s-transition-fadeRight--completely',
         onClose() {
             del(mountTo, placement);
             delay(500).then(() => {

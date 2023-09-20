@@ -1,71 +1,47 @@
 <template>
-	<s-row horizontal="space-around" :gap="10">
-		<s-button
-			empty
-			type="success"
-			@click="handleClick('success')"
+	<s-row horizontal="center">
+		<s-dropdown
+
 		>
-			success
-		</s-button>
-		<s-button
-			empty
-			type="info"
-			@click="handleClick('info')"
-		>
-			info
-		</s-button>
-		<s-button
-			empty
-			type="warning"
-			@click="handleClick('warning')"
-		>
-			warning
-		</s-button>
-		<s-button
-			empty
-			type="danger"
-			@click="handleClick('danger')"
-		>
-			danger
-		</s-button>
+			<template #reference>
+				<s-button type="primary" ghost>导航项</s-button>
+			</template>
+			<s-dropdown-item
+				label="page111"
+				suffix-icon="edit"
+			></s-dropdown-item>
+			<s-dropdown-item
+				label="page1"
+				suffix-icon="edit"
+			></s-dropdown-item>
+			<s-dropdown-item
+				label="page2"
+				is-active
+				suffix-icon="edit"
+			></s-dropdown-item>
+			<s-dropdown-item
+				label="friend1"
+				disabled
+				suffix-icon="user2"
+			></s-dropdown-item>
+			<s-dropdown-item
+				label="friend2"
+				suffix-icon="user2"
+			></s-dropdown-item>
+		</s-dropdown>
 	</s-row>
 
 </template>
 
-<script setup lang="ts">
-import {confirm} from "@sss-ui-plus/components";
-
-const handleClick = (type:string) => {
-
-	if (type === 'success'){
-		confirm({
-			type:'success',
-			text:'success confirm.1111111111111111111111111111111111111111111111111122222222222'
-		})
-	}
-	else if (type === 'info') {
-		confirm({
-			type:'info',
-			text:'info confirm.'
-		})
-	}
-	else if (type === 'warning') {
-		confirm({
-			type:'warning',
-			text:'warning confirm.'
-		})
-	}
-	else if (type === 'danger') {
-		confirm({
-			type:'danger',
-			text:'danger confirm.'
-		})
-	}
-
-
+<style lang="less">
+.sss-dropdown-title{
+	margin: 5px 0 0 0;
+	font-weight: 1000;
+	font-size: 10px;
+	color: var(--sss-color-primary-light);
+	padding: 7px 16px;
+	text-align: left;
 }
-
+</style>
+<script setup lang="ts">
 </script>
-
-
-

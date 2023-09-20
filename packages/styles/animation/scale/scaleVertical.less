@@ -1,0 +1,65 @@
+
+/*垂直缩放 不指定中心*/
+.s-transition-scaleVertical-enter-active,
+.s-transition-scaleVertical-leave-active {
+    transform: scaleY(1);
+    opacity: 1;
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.72, 1),
+    opacity 300ms cubic-bezier(0.23, 1, 0.72, 1);
+}
+
+.s-transition-scaleVertical-leave-to,
+.s-transition-scaleVertical-enter-from {
+    transform: scaleY(0);
+    opacity: 0;
+}
+
+
+/*垂直缩放 center*/
+.s-transition-scaleVertical--center-enter-active,
+.s-transition-scaleVertical--center-leave-active {
+    transform: scaleY(1);
+    opacity: 1;
+    transform-origin: center center!important;
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.72, 1),
+    opacity 300ms cubic-bezier(0.23, 1, 0.72, 1);
+}
+
+.s-transition-scaleVertical--center-leave-to,
+.s-transition-scaleVertical--center-enter-from {
+    transform: scaleY(0);
+    opacity: 0;
+}
+
+/*垂直缩放 start*/
+.s-transition-scaleVertical--start-enter-active,
+.s-transition-scaleVertical--start-leave-active {
+    transform: scaleY(1);
+    opacity: 1;
+    transform-origin: center top!important;
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.72, 1),
+    opacity 300ms cubic-bezier(0.23, 1, 0.72, 1);
+}
+
+.s-transition-scaleVertical--start-leave-to,
+.s-transition-scaleVertical--start-enter-from {
+    transform: scaleY(0);
+    opacity: 0;
+}
+
+
+/*垂直缩放 end*/
+.s-transition-scaleVertical--end-enter-active,
+.s-transition-scaleVertical--end-leave-active {
+    transform: scaleY(1);
+    opacity: 1;
+    transform-origin: center bottom!important;
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.72, 1),
+    opacity 300ms cubic-bezier(0.23, 1, 0.72, 1);
+}
+
+.s-transition-scaleVertical--end-leave-to,
+.s-transition-scaleVertical--end-enter-from {
+    transform: scaleY(0);
+    opacity: 0;
+}

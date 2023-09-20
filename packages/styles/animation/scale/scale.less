@@ -1,0 +1,46 @@
+/*缩放  .75*/
+.s-transition-scale-enter-active,
+.s-transition-scale-leave-active {
+    transform: scale(1);
+    opacity: 1;
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.72, 1),
+    opacity 300ms cubic-bezier(0.23, 1, 0.72, 1);
+}
+
+.s-transition-scale-leave-to,
+.s-transition-scale-enter-from {
+    transform: scale(.75);
+    opacity: 0;
+}
+
+
+/*缩放 half*/
+.s-transition-scale--half-enter-active,
+.s-transition-scale--half-leave-active {
+    transform: scale(1);
+    opacity: 1;
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.72, 1),
+    opacity 300ms cubic-bezier(0.23, 1, 0.72, 1);
+}
+
+.s-transition-scale--half-leave-to,
+.s-transition-scale--half-enter-from {
+    transform: scale(.5);
+    opacity: 0;
+}
+
+
+/*缩放 completely*/
+.s-transition-scale--completely-enter-active,
+.s-transition-scale--completely-leave-active {
+    transform: scale(1);
+    opacity: 1;
+    transition: transform 300ms cubic-bezier(0.23, 1, 0.72, 1),
+    opacity 300ms cubic-bezier(0.23, 1, 0.72, 1);
+}
+
+.s-transition-scale--completely-leave-to,
+.s-transition-scale--completely-enter-from {
+    transform: scale(0);
+    opacity: 0;
+}

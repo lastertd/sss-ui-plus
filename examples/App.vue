@@ -3,12 +3,17 @@
 <s-play></s-play>
 
 	<s-button @click="handleClick">click me</s-button>
-	<s-dialog ref="dlg"  v-model="f" draggable show-close-icon append-to-body
-		@close="hanldeClose"
+	<s-drawer ref="dlg"
+	          v-model="f" position="left" show-close-icon append-to-body
+
 	>
 		<s-button  @click="hh">close</s-button>
 		<s-button  @click="tt">toggle</s-button>
-	</s-dialog>
+	</s-drawer>
+
+	<s-popconfirm content="are you sure111111111111111?"  type="info">
+		<s-input></s-input>
+	</s-popconfirm>
 
 
 	<div style="height: 1500px"></div>
@@ -32,9 +37,6 @@ const btn = ref();
 const dlg = ref<SDialogInstance>();
 const demo = ref();
 
-const hanldeClose = function (trigger){
-	console.log('close by',trigger);
-}
 
 const hh = function (){
 	dlg.value!.close();
@@ -72,6 +74,14 @@ body{
 }
 
 
+
+body{
+	color: var(--sss-color-cyan);
+	//background: var(--sss-color-black-dark);
+	//--sss-color-bg: var(--sss-color-black);
+	//--sss-color-gray: #413b3b;
+}
+
 #app {
 
 	display: flex;
@@ -79,7 +89,6 @@ body{
 	align-items: center;
 	gap: 10px;
 	padding-top: 50px;
-	color: var(--sss-color-black-light);
 }
 
 .demo {

@@ -48,7 +48,7 @@ const open = fnUnion(setTrue, async () => {
 });
 
 // 关闭消息框
-const close = throttle(function (trigger: MessageTriggerTypes) {
+const close = throttle(function (trigger: MessageTriggerTypes = 'system') {
 	const done = function () {
 		hidden();
 		emits('close', trigger);
@@ -123,7 +123,7 @@ defineExpose({
 <template>
 
 		<transition
-			:name="`sss-transition-${props.transition}`"
+			:name="props.transition"
 			@afterEnter="emits('opened')"
 			@afterLeave="emits('closed')"
 		>

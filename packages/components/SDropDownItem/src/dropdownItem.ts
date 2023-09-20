@@ -1,7 +1,7 @@
-import {isString} from "@vue/shared";
 import {PropType} from "vue";
 
 export const SDropdownItemProps = {
+    
     suffixIcon:String,
     prefixIcon:String,
     label:String,
@@ -14,8 +14,8 @@ export const SDropdownItemProps = {
     disabled:Boolean,
 
     tag:{
-        type:String as PropType<'div' | 's-link'>,
-        default:'div'
+        type:String as PropType<'span' | 's-link'>,
+        default:'span'
     },
     href:String,
     jumpMethod:{
@@ -25,6 +25,6 @@ export const SDropdownItemProps = {
 }
 
 export const SDropdownItemEmits = {
-    select:(value:string | undefined) => isString(value),
+    select:(value:string | undefined) => true,
     click:() => true
 }

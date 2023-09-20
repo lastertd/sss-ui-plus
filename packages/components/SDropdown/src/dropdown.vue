@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import "./dropdown.less"
 import {SDropdownEmits, SDropdownProps} from "./dropdown";
 import {SFloating, SFloatingInstance} from "../../SFloating";
 import {SScrollbar} from "../../SScrollbar";
@@ -48,7 +47,7 @@ defineExpose({
 <template>
 	<s-floating
 		ref="floating"
-		class="sss-dropdown"
+		class="s-dropdown"
 		:trigger="props.trigger"
 		:placement="props.placement"
 		:transition="props.transition"
@@ -56,16 +55,13 @@ defineExpose({
 		:close-delay="props.closeDelay"
 		:disabled="props.disabled"
 		:offset="props.offset"
-		:theme="props.theme"
 		:close-on-click-body="props.closeOnClickBody"
 		:open-on-mounted="props.openOnMounted"
 		:teleported="props.teleported"
 		:show-arrow="props.showArrow"
-		:expression="props.expression"
 		:floating-class="props.floatingClass"
 		:reference="props.reference"
 		:quick-track="props.quickTrack"
-		v-bind="$attrs"
 
 
 		@open="emits('open')"
@@ -73,27 +69,30 @@ defineExpose({
 		@close="emits('close')"
 		@closed="emits('closed')"
 
-		style="padding: 7px 0"
 
 	>
 		<template #reference v-if="slots.reference">
 			<slot name="reference"></slot>
 		</template>
 
+		<template #default>
+			<s-scrollbar
+				:vertical="props.scrollbarVertical"
+				:horizontal="props.scrollbarHorizontal"
+				:no-resize="props.scrollbarNoResize"
+				:always="props.scrollbarAlways"
+				:is-outside="props.scrollbarIsOutside"
+				:quick-jump="props.scrollbarQuickJump"
+				v-bind="$attrs"
 
-		<s-scrollbar
-			:vertical="props.scrollbarVertical"
-			:horizontal="props.scrollbarHorizontal"
-			:no-resize="props.scrollbarNoResize"
-			:always="props.scrollbarAlways"
-			:is-outside="props.scrollbarIsOutside"
-			:quick-jump="props.scrollbarQuickJump"
 
+			>
+				<!--				<ul>-->
+				<slot></slot>
+				<!--				</ul>-->
+			</s-scrollbar>
+		</template>
 
-
-		>
-			<slot></slot>
-		</s-scrollbar>
 
 	</s-floating>
 

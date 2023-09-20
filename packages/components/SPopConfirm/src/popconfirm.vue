@@ -1,14 +1,12 @@
-
 <script setup lang="ts">
-import "./popconfirm.less"
 import {SPopconfirmEmits, SPopconfirmProps} from "./popconfirm";
 import {SFloating} from "../../SFloating";
 import {SMessageBoxInstance, SMessageBox} from "../../SMessageBox";
-import {nextTick, ref,useSlots} from "vue";
+import {nextTick, ref, useSlots} from "vue";
 
 defineOptions({
-	name:'SPopconfirm',
-	inheritAttrs:false
+	name: 'SPopconfirm',
+	inheritAttrs: false
 })
 
 
@@ -19,7 +17,6 @@ const slots = useSlots();
 const msgBox = ref<SMessageBoxInstance | undefined>(undefined);
 
 const floating = ref<InstanceType<typeof SFloating> | undefined>(undefined);
-
 
 
 const handleOpen = () => {
@@ -53,10 +50,10 @@ const handleConfirm = () => {
 }
 
 
-
 </script>
 <template>
 	<s-floating
+		class="s-popconfirm"
 		ref="floating"
 		:trigger="props.trigger"
 		:placement="props.placement"
@@ -80,27 +77,26 @@ const handleConfirm = () => {
 		@close="emits('close')"
 		@closed="emits('closed')"
 
-		class="sss-popconfirm"
 
 	>
 		<template #reference v-if="slots.default">
-			<slot ></slot>
+			<slot></slot>
 		</template>
 
 		<template #default>
-			<SMessageBox class="sss-popconfirm-message-box"
-			        ref="msgBox"
-			        show-head
-			        show-foot
-			        :transition="props.transition"
-			        :type="props.type"
-			        :cancel-btn-text="props.cancelBtnText"
-			        :confirm-btn-text="props.confirmBtnType"
-			        :title="props.content"
+			<SMessageBox class="s-popconfirm__inner"
+			             ref="msgBox"
+			             show-head
+			             show-foot
+			             :transition="props.transition"
+			             :type="props.type"
+			             :cancel-btn-text="props.cancelBtnText"
+			             :confirm-btn-text="props.confirmBtnType"
+			             :title="props.content"
 
-			        @close="handleClose"
-			        @cancel="handleCancel"
-			        @confirm="handleConfirm"
+			             @close="handleClose"
+			             @cancel="handleCancel"
+			             @confirm="handleConfirm"
 			>
 			</SMessageBox>
 

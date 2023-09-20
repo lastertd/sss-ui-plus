@@ -1,0 +1,27 @@
+@import "../mixn/_index";
+
+.s-dropdown__item{
+
+    .useBorderBox();
+    .flex-row-start-center();
+    align-items: flex-end;
+    flex-flow: row nowrap;
+
+    position: relative;
+    padding: 8px 25px;
+    transition: all .1s ease;
+    cursor: default;
+    gap: 5px;
+
+    &:hover{
+        background-color: var(--sss-color-gray-deep-fade);
+    }
+    &[data-center="true"] {
+        justify-content: center;
+    }
+
+    &.is-active{
+        font-weight: 1000;
+        color: var(--sss-color-primary);
+    }
+}

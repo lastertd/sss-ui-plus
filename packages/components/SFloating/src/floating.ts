@@ -17,7 +17,7 @@ export const SFloatingProps = {
     },
     transition: {
         type: String as PropType<Transition>,
-        default: "fade"
+        default: "s-transition-fade"
     },
     openDelay: {
         type: Number,
@@ -34,7 +34,6 @@ export const SFloatingProps = {
     },
     theme: {
         type: String as PropType<'light' | 'dark'>,
-        default: 'light'
     },
     closeOnClickBody: Boolean,
     openOnMounted: Boolean,

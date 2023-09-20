@@ -50,6 +50,7 @@ const onClose = function (trigger: MessageTriggerTypes) {
 
 const onHidden = function () {
 	changedBySystem = false;
+	emits('hidden');
 	emits('update:modelValue', false);
 	if (props.showMark) hiddenMark();
 }
@@ -117,7 +118,7 @@ defineExpose({
 	/**
 	 * @description func, 关闭消息框, 会触发close事件
 	 */
-	close: () => msgBox.value!.close('system'),
+	close: (trigger:MessageTriggerTypes) => msgBox.value!.close(trigger),
 	/**
 	 * @description func, 关闭消息框, 无副作用
 	 */
@@ -129,11 +130,11 @@ defineExpose({
 	/**
 	 * @description func, 关闭消息框, 触发cancel事件
 	 */
-	// cancel: msgBox.value!.cancel,
-	// /**
-	//  * @description func, 关闭消息框, 触发confirm事件
-	//  */
-	// confirm: msgBox.value!.confirm,
+	cancel: () => msgBox.value!.cancel(),
+	/**
+	 * @description func, 关闭消息框, 触发confirm事件
+	 */
+	confirm: () => msgBox.value!.confirm(),
 
 
 })
@@ -150,7 +151,7 @@ defineExpose({
 		>
 			<SMessageBox
 				ref="msgBox"
-				:transition="props.transition || 'down-fade'"
+				:transition="props.transition || 's-transition-fadeDown'"
 				:title="props.title"
 				:no-header="props.noHeader"
 				:no-body="props.noBody"

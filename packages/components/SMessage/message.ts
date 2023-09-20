@@ -43,7 +43,7 @@ export default async function (options: Partial<options>) {
         noFooter:true,
         noBody:true,
         showCloseIcon: options.showCloseIcon,
-        transition: 'msg',
+        transition: 's-transition-messageOnly',
         onClose() {
 
             // 上一个节点聚焦

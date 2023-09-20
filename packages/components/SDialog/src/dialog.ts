@@ -7,14 +7,7 @@ export const SDialogProps = {
      * @description 对话框的类型
      */
     type: String as PropType<MessageTypes>,
-    /**
-     * @description 对话框图标
-     */
-    icon: String,
-    /**
-     * @description 对话框图标的颜色
-     */
-    iconColor: String,
+
     /**
      * @description 对话框消息头的标题
      */
@@ -25,10 +18,7 @@ export const SDialogProps = {
     /**
      * @description 对话框的过渡动画
      */
-    transition: {
-        type: String as PropType<Transition>,
-        default: 'down-fade'
-    },
+    transition: String as PropType<Transition>,
     /**
      * @description 是否可以通过按下ESC来关闭对话框
      */
@@ -39,10 +29,7 @@ export const SDialogProps = {
     /**
      * @description 对话框是否可以被拖动
      */
-    draggable: {
-        type: Boolean,
-        default: false,
-    },
+    draggable: Boolean,
     /**
      * @description 对话框距离浏览器视口顶部的距离
      */
@@ -68,24 +55,15 @@ export const SDialogProps = {
     /**
      * @description 消息尾中取消按钮的文本
      */
-    cancelBtnText: {
-        type: String,
-        default: '取消'
-    },
+    cancelBtnText: String,
     /**
      * @description 消息尾中确认按钮的文本
      */
-    confirmBtnText: {
-        type: String,
-        default: '确认',
-    },
+    confirmBtnText: String,
     /**
      * @description 消息尾中按钮的大小
      */
-    btnSize: {
-        type: String as PropType<ElementSizes>,
-        default: "small"
-    },
+    btnSize: String as PropType<ElementSizes>,
     /**
      * @description 对话框关闭事件前的回调函数，若设置此项, 需要手动调用done函数关闭对话框
      */
@@ -94,48 +72,45 @@ export const SDialogProps = {
     /**
      * @description 是否显示遮罩
      */
-    showMark:{
-        type:Boolean,
-        default:true,
+    showMark: {
+        type: Boolean,
+        default: true,
     },
     /**
      * @description 在显示遮罩的情况下, 是否可以通过点击遮罩关闭对话框
      */
-    closeOnClickMark:{
-        type:Boolean,
-        default:true,
+    closeOnClickMark: {
+        type: Boolean,
+        default: true,
     },
 
     /**
      * @description 对话框出现时, 是否禁止浏览器的滚动行为
      */
-    lockScroll:{
-        type:Boolean,
-        default:true,
+    lockScroll: {
+        type: Boolean,
+        default: true,
     },
     /**
      * @description 是否挂载到body元素下面, 在层级混乱时开启此项
      */
-    appendToBody:Boolean,
+    appendToBody: Boolean,
 
     /**
      * @description 对话框打开/关闭的绑定值
      */
-    modelValue:{
-        type:Boolean,
-        default:false,
-    },
-
+    modelValue: Boolean,
 
 
 } as const
 
 export const SDialogEmits = {
-    "update:modelValue": (_:Boolean) => true,
+    "update:modelValue": (_: Boolean) => true,
     open: () => true,
-    opened:() => true,
+    opened: () => true,
     close: (trigger: MessageTriggerTypes) => isString(trigger),
-    closed:() => true,
+    closed: () => true,
     cancel: () => true,
     confirm: () => true,
+    hidden: () => true
 }

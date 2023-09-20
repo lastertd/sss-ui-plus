@@ -231,14 +231,15 @@ useEventListener(document.body, 'mouseup', () => {
 
 <template>
 	<div class="sss-scrollbar"
-	     v-bind="$attrs"
 	     :data-always="props.always"
 	     :class="[{
 			 'is-active':active
 	     }]"
 
 	>
-		<div ref="warp" class="sss-scrollbar-warp">
+		<div ref="warp" class="sss-scrollbar-warp"
+		     v-bind="$attrs"
+		>
 			<slot></slot>
 		</div>
 		<div ref="barY" class="sss-scrollbar-bar is-vertical"
