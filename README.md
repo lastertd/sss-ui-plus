@@ -1,39 +1,39 @@
 # sss-ui-plus
 
-developing....💟
+## 相关链接
+
+- Github: [sss-ui-plus💟](https://github.com/lastertd/sss-ui-plus)
+- npm: [sss-ui-plus🧡](https://www.npmjs.com/package/sss-ui-plus)
+- Doc website: [sss-ui-plus✨](https://sssui.4everland.app/)
 
 
-plz use 
-> npm run dev 
+## 技术栈
 
-vu3 + typescript + less 
+- vue3
+- typescript
+- less
+- floating ui
 
 
-### 项目架构
-~~~
-sss-ui-plus
-├─ node_modules  //项目依赖包
-├─ examples    //项目测试文件夹
-│    ├─ App.vue
-│    └─ main.ts
-├─ packages    //组件存放处
-│    └─ base.ts
-├─ src     //项目需要用到的一些资源
-│    ├─ hooks   //hook函数
-│    ├─ styles  //全局样式variables.less, global.less, animation.less
-│    ├─ types  //自定义的类型，接口等
-│    └─ utils  //工具包，工具功能进行分类
-│           ├─ VNode   // 操作vnode的工具包
-│           ├─ decorator //函数装饰器
-│           └─ managers  //管理器
-├─ README.md
-├─ package-lock.json
-├─ package.json
-├─ index.html
-├─ tsconfig.json
-├─ tsconfig.node.json
-└─ vite.config.ts
+## 快速开始
+- 安装
+    > npm i sss-ui-plus -S
+- 使用: main.ts
+    ```
+  import { createApp } from 'vue'
+    import App from './App.vue'
+    import sui from "sss-ui-plus"
+    import "sss-ui-plus/dist/index.css"
+    
+    createApp(App)
+    .use(sui,{
+    zIndex:3000
+    })
+    .mount('#app')
+  ```
 
-~~~
+## 更多
+
+更详细内容请移步文档官网✨
 
 

@@ -1,8 +1,6 @@
 /*css引入 特别注意全局样式最先引入*/
-import "./packages/styles/animate.css"
-import "./packages/styles/variable.less"
+
 import "./packages/styles/global.less"
-import "./packages/styles/icons/iconfont.css"
 
 import {App} from "vue";
 import {IndexManager} from "@sss-ui-plus/utils";
