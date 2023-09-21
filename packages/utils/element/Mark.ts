@@ -1,6 +1,3 @@
-import {noop} from "@vueuse/core";
-
-
 export declare type MarkType = 'cover' | 'part';
 
 class Mark {
@@ -24,11 +21,11 @@ class Mark {
         this.flag = false;
 
         if (type === 'cover') {
-            this.element.classList.add('sss-mark-cover');
+            this.element.classList.add('s-mark--cover');
             this.element.style.zIndex = '-1';
 
         } else if (type === 'part') {
-            this.element.classList.add('sss-mark-part');
+            this.element.classList.add('s-mark--part');
 
         }
 

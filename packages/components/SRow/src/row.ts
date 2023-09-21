@@ -7,6 +7,7 @@ type Horizontal = 'center' | 'flex-start' | 'flex-end' | 'space-between' | 'spac
 
 
 export const SRowProps = {
+
     gap:{
         type:Number,
         default:0

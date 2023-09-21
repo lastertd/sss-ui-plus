@@ -35,28 +35,30 @@ const handleClick = () => {
 </script>
 
 <template>
-	<component
-		:is="props.tag"
-		v-if="props.label || $slots?.default"
-		class="s-dropdown__item"
-		@click="handleClick"
-		:data-center="isCenter"
-		:href="props.href"
-		:jumpMethod="props.jumpMethod"
-		v-bind="$attrs"
-
-
-		:class="[{
+	<li class="s-dropdown__item"
+	    v-bind="$attrs"
+	    :class="[{
 			'is-active':props.isActive,
 			'is-disabled':props.disabled
 		}]"
-
+	    @click="handleClick"
 
 	>
-		<s-icon :target="props.prefixIcon" style="padding: 0"></s-icon>
-		<span v-if="$slots?.default"><slot></slot></span>
-		<span v-else>{{ props.label }}</span>
-		<s-icon :target="props.suffixIcon" style="padding: 0"></s-icon>
-	</component>
+		<component
+			:is="props.tag"
+			v-if="props.label || $slots?.default"
+			:data-center="isCenter"
+			:href="props.href"
+			:jumpMethod="props.jumpMethod"
+
+
+		>
+			<s-icon :target="props.prefixIcon" style="padding: 0"></s-icon>
+			<span v-if="$slots?.default"><slot></slot></span>
+			<span v-else>{{ props.label }}</span>
+			<s-icon :target="props.suffixIcon" style="padding: 0"></s-icon>
+		</component>
+	</li>
+
 </template>
 

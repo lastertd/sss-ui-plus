@@ -105,12 +105,34 @@ export const SDialogProps = {
 } as const
 
 export const SDialogEmits = {
-    "update:modelValue": (_: Boolean) => true,
+    "update:modelValue": (_: boolean) => true,
+    /**
+     * @description 打开对话框时触发的事件
+     */
     open: () => true,
+    /**
+     * @description 打开对话框后触发的事件
+     */
     opened: () => true,
+    /**
+     * @description 关闭对话框时触发的事件
+     * @param trigger 触发器
+     */
     close: (trigger: MessageTriggerTypes) => isString(trigger),
+    /**
+     * @description 关闭对话框后触发的事件
+     */
     closed: () => true,
+    /**
+     * @description 取消对话框时触发的事件
+     */
     cancel: () => true,
+    /**
+     * @description 确认对话框时触发的事件
+     */
     confirm: () => true,
-    hidden: () => true
+    /**
+     * @description (关闭，取消，确认)对话框时触发的事件
+     */
+    hidden: () => true,
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import "./switch.less"
 import {SSwitchEmits, SSwitchProps} from "./switch";
 import {computed} from "vue";
+import switchTxt from "./switchTxt.vue"
 
 defineOptions({
 	name: 'SSwitch',
@@ -15,31 +15,22 @@ const text = computed(() => {
 	if (props.modelValue) {
 		return props.activeText;
 	} else {
-		return props.defaultText;
+		return props.inactiveText;
 	}
 })
 
-const icon = computed(() => {
-	if (props.modelValue) {
-		return props.activeIcon;
-	} else {
-		return props.defaultIcon;
-	}
-})
-
-
-const done = () => {
-	if (props.loading) return
-	if (props.modelValue) {
-		emits("update:modelValue", false);
-		emits("change", "default")
-	} else {
-		emits("update:modelValue", true);
-		emits("change", "active");
-	}
-}
 
 const handleClick = () => {
+	const done = () => {
+		if (props.loading) return
+		if (props.modelValue) {
+			emits("update:modelValue", false);
+			emits("change", "off")
+		} else {
+			emits("update:modelValue", true);
+			emits("change", "on");
+		}
+	}
 	if (props.beforeChange) {
 		props.beforeChange(done);
 	} else done();
@@ -51,57 +42,54 @@ const handleClick = () => {
 
 <template>
 	<div
-		class="sss-switch-container"
+		class="s-switch"
 		:class="[{
 			'is-checked':props.modelValue,
 			'is-disabled':props.disabled
 			},
 		]"
+		@click="handleClick"
 	>
-		<input type="radio">
+		<input class="s-switch__input" type="radio" placeholder="ヾ(≧▽≦*)o">
 
-		<div class="sss-switch-default-text "
-		     :class="[{'is-active':!props.modelValue}]"
-		     v-if="!props.inlineText"
+		<span class="s-switch__label s-switch__label--left"
+		      :class="[{'is-active':!props.modelValue}]"
+		      v-if="!props.inlineText"
 		>
-			<s-icon :target="props.defaultIcon" style="padding: 0 5px 0 0"></s-icon>
-			{{ props.defaultText }}
-		</div>
+			<s-icon class="s-switch__label__icon" :target="props.inactiveIcon"></s-icon>
+			{{ props.inactiveText }}
+		</span>
 
-		<div class="sss-switch is-round"
+		<div class="s-switch__inner is-round"
 		     v-bind="$attrs"
-		     @click="handleClick"
-
 		>
-
-
-			<span class="sss-switch-trigger is-round"
-
-			>
+			<span class="s-switch__trigger is-round">
 				<s-icon
-					v-if="props.loading"
-					class="sss-switch-trigger-icon"
-					target="loading"
-					rotating
-					style="padding: 0;font-size: 19px"
+					v-if="props.triggerIcon"
+					class="s-switch__trigger__icon"
+					:target="props.triggerIcon"
+					:rotating="props.rotating"
 				></s-icon>
 			</span>
-			<span class="sss-switch-text" v-if="props.inlineText">
-				<s-icon :target="icon" style="padding: 0 5px 0 0"></s-icon>
-				{{ text }}
-			</span>
+
+
+			<switch-txt
+				class="s-switch__text" v-if="props.inlineText"
+				:txt="text"
+				:active="props.modelValue"
+			></switch-txt>
 
 
 		</div>
 
-		<div class="sss-switch-active-text"
-		     :class="[{'is-active':props.modelValue}]"
-		     v-if="!props.inlineText"
+		<span class="s-switch__label s-switch__label--right"
+		      :class="[{'is-active':props.modelValue}]"
+		      v-if="!props.inlineText"
 		>
-			<s-icon :target="props.activeIcon" style="padding: 0 5px 0 0"></s-icon>
+			<s-icon class="s-switch__label__icon" :target="props.activeIcon"></s-icon>
 
 			{{ props.activeText }}
-		</div>
+		</span>
 
 	</div>
 </template>

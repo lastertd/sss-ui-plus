@@ -37,8 +37,17 @@ provide('DropdownClose', () => {
 
 
 defineExpose({
+	/**
+	 * @description 关闭下拉框
+	 */
 	close,
+	/**
+	 * @description 打开下拉框
+	 */
 	open,
+	/**
+	 * @description 打开/关闭下拉框轮循
+	 */
 	toggle,
 })
 
@@ -87,9 +96,9 @@ defineExpose({
 
 
 			>
-				<!--				<ul>-->
-				<slot></slot>
-				<!--				</ul>-->
+				<ul class="s-dropdown__inner">
+					<slot></slot>
+				</ul>
 			</s-scrollbar>
 		</template>
 

@@ -2,18 +2,27 @@
 
 <s-play></s-play>
 
-	<s-button @click="handleClick">click me</s-button>
-	<s-drawer ref="dlg"
-	          v-model="f" position="left" show-close-icon append-to-body
+	<s-badge :value="val" maxvalue="15"  type="info">
+		<s-button type="primary" @click="handleClick">click me</s-button>
+	</s-badge>
 
-	>
-		<s-button  @click="hh">close</s-button>
-		<s-button  @click="tt">toggle</s-button>
-	</s-drawer>
+
+	<s-divider content-position="start">hh</s-divider>
 
 	<s-popconfirm content="are you sure111111111111111?"  type="info">
 		<s-input></s-input>
 	</s-popconfirm>
+
+
+	<s-switch v-model="f"
+	          inactive-text="N"
+	          active-text="YYYYY"
+	          active-icon="medal"
+	          inactive-icon="user2"
+	          trigger-icon="loading"
+	></s-switch>
+
+
 
 
 	<div style="height: 1500px"></div>
@@ -47,10 +56,8 @@ const tt = function (){
 const handleClick = function () {
 	f.value = !f.value
 	val.value++;
-	dlg.value!.open();
 }
 
-const {setTxt} = useBadge(demo, 'primary', val);
 
 
 </script>
@@ -75,12 +82,7 @@ body{
 
 
 
-body{
-	color: var(--sss-color-cyan);
-	//background: var(--sss-color-black-dark);
-	//--sss-color-bg: var(--sss-color-black);
-	//--sss-color-gray: #413b3b;
-}
+
 
 #app {
 

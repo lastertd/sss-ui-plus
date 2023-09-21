@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {SIconProps} from "./icon";
-import {nextTick, onMounted, ref, watch} from "vue";
+import {nextTick, ref, watch} from "vue";
 
 defineOptions({
 	name: "SIcon",
@@ -33,7 +33,7 @@ watch(() => props.target,(t) => {
 <template>
 	<component
 		ref="icon"
-		:is="props.type"
+		:is="props.tag"
 		:for="props.for"
 		v-if="props.target"
 		class=" s-icon iconfont"

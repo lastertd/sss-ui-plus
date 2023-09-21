@@ -15,25 +15,53 @@
     color: var(--sss-color-white);
 
 
+    //没有内容显示为小圆点
     &:empty{
         padding: 3px;
     }
 
+    &--empty{
+        background: var(--sss-color-bg);
+        border-color: var(--sss-color-primary-light);
+        color: var(--sss-color-primary);
+    }
 
-    &__cyan {
+
+    &--cyan {
         background: var(--sss-color-cyan);
+        &.s-badge--empty{
+            background: var(--sss-color-bg);
+            border-color: var(--sss-color-cyan-light);
+            color: var(--sss-color-cyan);
+        }
+
     }
 
-    &__waring {
+    &--waring {
         background: var(--sss-color-warning);
+        &.s-badge--empty{
+            background: var(--sss-color-bg);
+            border-color: var(--sss-color-warning-light);
+            color: var(--sss-color-warning);
+        }
     }
 
-    &__danger {
+    &--danger {
         background: var(--sss-color-danger);
+        &.s-badge--empty{
+            background: var(--sss-color-bg);
+            border-color: var(--sss-color-danger-light);
+            color: var(--sss-color-danger);
+        }
     }
 
-    &__info {
+    &--info {
         background: var(--sss-color-info);
+        &.s-badge--empty{
+            background: var(--sss-color-bg);
+            border-color: var(--sss-color-info-light);
+            color: var(--sss-color-info);
+        }
     }
 
 }

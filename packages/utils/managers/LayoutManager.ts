@@ -1,6 +1,8 @@
 export type position = 'down' | 'up';
 
-
+/**
+ * @description 布局管理器, 放入其中的元素将会自动布局
+ */
 class LayoutManager{
     protected position:position
     protected appList: Array< HTMLElement >

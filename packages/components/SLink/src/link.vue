@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import "./link.less"
 import {SLinkProps} from "./link";
 import {SIcon} from "../../SIcon";
 import {ref} from "vue";
@@ -32,11 +31,11 @@ const handleClick = () => {
 <template>
 	<a
 		ref="a"
-		class="sss-link "
+		class="s-link "
 		:href="props.href"
 		v-bind="$attrs"
 		:class="[
-			`sss-link-type-${props.type}`,
+			`s-link--${props.type}`,
 			{
 				'has-underline':props.underline && !props.disabled,
 				'is-disabled':props.disabled
@@ -45,11 +44,11 @@ const handleClick = () => {
 		@click.prevent="handleClick"
 
 	>
-		<s-icon :target="props.prefixIcon" class="sss-link-prefix-icon"></s-icon>
+		<s-icon :target="props.prefixIcon" class="s-link__prefixIcon"></s-icon>
 		<span>
 			<slot></slot>
 		</span>
-		<s-icon :target="props.suffixIcon" class="sss-link-suffix-icon"></s-icon>
+		<s-icon :target="props.suffixIcon" class="s-link__suffixIcon"></s-icon>
 	</a>
 
 </template>

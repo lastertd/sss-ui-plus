@@ -4,13 +4,29 @@ import {Badge, BadgeType} from "@sss-ui-plus/utils";
 
 type targetType = Ref<HTMLElement | undefined | null | VueInstance> | HTMLElement;
 
-export const useBadge = function (target: targetType, badgeType?: BadgeType, value?: Ref<string | number> | ComputedRef<any>) {
+interface BadgeOptions {
+    value: Ref<string | number> | ComputedRef<any>
+    type?: BadgeType,
+    isEmpty?: boolean,
+}
 
-    const badge = new Badge(badgeType);
+/**
+ * @description 为某个元素使用badge
+ * @param target 目标元素
+ * @param options 配置选项
+ */
+export const useBadge = function (target: targetType, options: BadgeOptions) {
+    const {value, type, isEmpty} = options;
+    const badge = new Badge(type);
     let cleanup = noop;
 
-    const stop = watch(() => {
-        if (target instanceof HTMLElement){
+
+    if (isEmpty) {
+        badge.getElement().classList.add(`s-badge--empty`);
+    }
+
+    const targetWatcher = watch(() => {
+        if (target instanceof HTMLElement) {
             return target
         }
         if (!target.value) {
@@ -31,9 +47,9 @@ export const useBadge = function (target: targetType, badgeType?: BadgeType, val
         }
 
 
-    }, {immediate:true})
+    }, {immediate: true})
 
-    const stop2 = watch(() => {
+    const valueWatcher = watch(() => {
         return value?.value;
     }, (value) => {
         if (value === undefined || value === null) {
@@ -44,22 +60,34 @@ export const useBadge = function (target: targetType, badgeType?: BadgeType, val
 
 
     onUnmounted(() => {
-        stop();
         cleanup();
-        stop2();
+        targetWatcher();
+        valueWatcher();
     })
 
 
     // notice: 返回的函数写成匿名函数或者bind函数避免丢失上下文
     // egs: setTxt:badge.setTxt会丢失上下文
     return {
+        /**
+         * @description 停止使用badge
+         */
         stop: () => {
-            stop();
+            targetWatcher();
             cleanup();
-            stop2();
+            valueWatcher();
         },
+        /**
+         * @description 显示badge
+         */
         show: badge.show.bind(badge),
+        /**
+         * @description 隐藏badge
+         */
         hidden: badge.hidden.bind(badge),
+        /**
+         * @description 设置badge内部文本
+         */
         setTxt: badge.setTxt.bind(badge)
 
     }

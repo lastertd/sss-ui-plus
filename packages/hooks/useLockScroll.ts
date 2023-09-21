@@ -1,9 +1,16 @@
 
+// 全局计数器
 let count = 0;
+/**
+ * @description 使用禁止滚动
+ */
 export const useLockScroll = function () {
 
     const body = document.body;
 
+    /**
+     * @description 锁定滚动
+     */
     const lockScroll = function () {
 
         if (count === 0) {
@@ -15,6 +22,9 @@ export const useLockScroll = function () {
         }
         count++;
     }
+    /**
+     * @description 解锁滚动
+     */
     const unLockScroll = function () {
         count--;
         if (count <= 0) count = 0;

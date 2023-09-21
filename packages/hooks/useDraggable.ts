@@ -1,9 +1,15 @@
 import {onBeforeUnmount, onMounted, ref, watchEffect} from 'vue'
 import type {ComputedRef, Ref} from 'vue'
 
+/**
+ * @description 使用拖拽
+ * @param targetRef 目标元素
+ * @param triggerRef 触发器元素
+ * @param draggable 是否可以被拖拽
+ */
 export const useDraggable = (
     targetRef: Ref<HTMLElement | undefined>,
-    dragRef: Ref<HTMLElement | undefined>,
+    triggerRef: Ref<HTMLElement | undefined>,
     draggable: ComputedRef<boolean>
 ) => {
     let transform = {
@@ -61,14 +67,14 @@ export const useDraggable = (
     }
 
     const onDraggable = () => {
-        if (dragRef.value && targetRef.value) {
-            dragRef.value.addEventListener('mousedown', onMousedown)
+        if (triggerRef.value && targetRef.value) {
+            triggerRef.value.addEventListener('mousedown', onMousedown)
         }
     }
 
     const offDraggable = () => {
-        if (dragRef.value && targetRef.value) {
-            dragRef.value.removeEventListener('mousedown', onMousedown)
+        if (triggerRef.value && targetRef.value) {
+            triggerRef.value.removeEventListener('mousedown', onMousedown)
         }
     }
 

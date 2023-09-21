@@ -19,32 +19,32 @@ const sElementSize = ['normal', 'small', 'large'] as const;
 
 export const SButtonProps = {
     /**
-     * @description 按钮类型
+     * @description 按钮的类型
      */
     type: {
         type: String as PropType<(typeof sButtonTypes)[number]>,
         default: sButtonTypes[0],
     },
     /**
-     * @description 按钮原生类型
+     * @description 按钮的原生类型
      */
     nativeType: {
         type: String as PropType<(typeof sButtonNativeTypes)[number]>,
         default: sButtonNativeTypes[0],
     },
     /**
-     * @description 按钮大小
+     * @description 按钮的大小
      */
     size: {
         type: String as PropType<(typeof sElementSize)[number]>,
         default: sElementSize[0]
     },
     /**
-     * @description 是否是圆角
+     * @description 是否是圆角按钮
      */
     round: Boolean,
     /**
-     * @description 是否是圆形
+     * @description 是否是圆形按钮
      */
     circle: Boolean,
     /**
@@ -56,7 +56,7 @@ export const SButtonProps = {
      */
     empty: Boolean,
     /**
-     * 按钮是否是幽灵型
+     * @description 是否是幽灵型按钮
      */
     ghost: Boolean,
     /**
@@ -64,11 +64,11 @@ export const SButtonProps = {
      */
     loading: Boolean,
     /**
-     * @description 按钮前缀图标
+     * @description 按钮的前缀图标
      */
     prefixIcon: String,
     /**
-     * 按钮后缀图标
+     * @description 按钮的后缀图标
      */
     suffixIcon: String,
 
@@ -77,5 +77,9 @@ export const SButtonProps = {
 
 
 export const SButtonEmits = {
+    /**
+     * @description 点击按钮后触发的事件
+     * @param evt
+     */
     click: (evt: Event) => evt instanceof Event
 }

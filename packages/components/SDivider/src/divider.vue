@@ -10,12 +10,16 @@ defineOptions({
 })
 
 const props = defineProps({...SDividerProps});
-const content = ref<Element | undefined>(undefined);
+const content = ref<HTMLElement | undefined>(undefined);
 const divider = ref<MaybeElement>(undefined);
 const slots = useSlots();
 
+
+
+
+
 onMounted(() => {
-	const el = content.value as HTMLElement;
+	const el = unrefElement(content) as HTMLElement;
 
 
 	if (props.direction === 'horizontal') {
@@ -28,11 +32,11 @@ onMounted(() => {
 		if (props.contentPosition === 'end') {
 			el.style.right = '15px';
 		} else {
-			el.style.left = props.contentPosition;
+			el.style.left = props.contentPosition as string;
 		}
 
 		if (props.gap !== undefined) {
-			unrefElement(divider)!.style.margin = `${props.gap}px 0`
+			unrefElement(divider)!.style.margin = `${props.gap-0.5}px 0`
 		}
 
 	} else if (props.direction === 'vertical') {
@@ -45,11 +49,11 @@ onMounted(() => {
 		if (props.contentPosition === 'end') {
 			el.style.bottom = '15px';
 		} else {
-			el.style.top = props.contentPosition;
+			el.style.top = props.contentPosition as string;
 		}
 
 		if (props.gap !== undefined) {
-			unrefElement(divider)!.style.margin = `0 ${props.gap}px`
+			unrefElement(divider)!.style.margin = `0 ${props.gap-0.5}px`
 		}
 	}
 })

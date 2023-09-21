@@ -6,22 +6,43 @@ type positions = 'top' | 'right' | 'bottom' | 'left';
 
 export const SDrawerProps = {
     /**
-     * @description 对话框消息头的标题
+     * @description 对话框打开/关闭的绑定值
+     */
+    modelValue: {
+        type: Boolean,
+        default: false,
+    },
+    /**
+     * @description 抽屉的弹出方位
+     */
+    position: {
+        type: String as PropType<positions>,
+        default: 'top',
+    },
+    /**
+     * @description 抽屉的过渡动画, 默认适应position
+     */
+    transition: {
+        type: String as PropType<Transition>,
+    },
+    /**
+     * @description 抽屉消息头的标题
      */
     title: {
         type: String,
         default: 'default title'
     },
     /**
-     * @description 对话框的过渡动画
-     */
-    transition: {
-        type: String as PropType<Transition>,
-    },
-    /**
      * @description 是否可以通过按下ESC来关闭对话框
      */
     closeOnPressEscape: {
+        type: Boolean,
+        default: true,
+    },
+    /**
+     * @description 在显示遮罩的情况下, 是否可以通过点击遮罩关闭对话框
+     */
+    closeOnClickMark: {
         type: Boolean,
         default: true,
     },
@@ -74,13 +95,6 @@ export const SDrawerProps = {
         type: Boolean,
         default: true,
     },
-    /**
-     * @description 在显示遮罩的情况下, 是否可以通过点击遮罩关闭对话框
-     */
-    closeOnClickMark: {
-        type: Boolean,
-        default: true,
-    },
 
     /**
      * @description 对话框出现时, 是否禁止浏览器的滚动行为
@@ -94,29 +108,40 @@ export const SDrawerProps = {
      */
     appendToBody: Boolean,
 
-    /**
-     * @description 对话框打开/关闭的绑定值
-     */
-    modelValue: {
-        type: Boolean,
-        default: false,
-    },
 
-    position: {
-        type: String as PropType<positions>,
-        default: 'top',
-    },
 
 
 } as const
 
 export const SDrawerEmits = {
     "update:modelValue": (_: boolean) => true,
+    /**
+     * @description 打开抽屉时触发的事件
+     */
     open: () => true,
+    /**
+     * @description 打开抽屉后触发的事件
+     */
     opened: () => true,
+    /**
+     * @description 关闭抽屉时触发的事件
+     * @param trigger 触发器
+     */
     close: (trigger: MessageTriggerTypes) => isString(trigger),
+    /**
+     * @description 关闭抽屉后触发的事件
+     */
     closed: () => true,
+    /**
+     * @description 取消抽屉时触发的事件
+     */
     cancel: () => true,
+    /**
+     * @description 确认抽屉时触发的事件
+     */
     confirm: () => true,
+    /**
+     * @description (关闭，取消，确认)抽屉时触发的事件
+     */
     hidden: () => true,
 }

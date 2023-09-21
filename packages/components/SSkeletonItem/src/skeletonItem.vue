@@ -1,8 +1,12 @@
 <script setup lang="ts">
-import "./skeletonItem.less"
 import {SSkeletonItemProps} from "./skeletonItem";
-import {inject, Ref, ref} from "vue";
+import {inject, Ref, ref, warn} from "vue";
 import {MaybeHTMLElement} from "@sss-ui-plus/typings";
+
+defineOptions({
+	name: 'SSkeletonItem',
+	inheritAttrs: false
+})
 
 const props = defineProps({...SSkeletonItemProps});
 
@@ -12,7 +16,7 @@ const isWithinSkeleton = inject('isWithinSkeleton');
 const item = ref(undefined) as Ref<MaybeHTMLElement>
 
 if (isWithinSkeleton === undefined) {
-	throw SyntaxError('skeleton-item component should be within skeleton component')
+	warn('skeleton-item component should be within skeleton component');
 }
 
 </script>
@@ -20,14 +24,16 @@ if (isWithinSkeleton === undefined) {
 <template>
 	<div
 		ref="item"
-		class="sss-skeleton-item"
+		class="s-skeleton__item"
 		:class="[{
 			'is-circle':props.isCircle,
 			'is-round':props.isRound,
 			'animated':animated,
+			's-skeleton__item--image':props.type === 'image'
+
 		},
-		`sss-skeleton-item-image`
 		]"
+		v-bind="$attrs"
 	>
 		<svg v-if="props.type === 'image'" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
 			<path fill="currentColor"

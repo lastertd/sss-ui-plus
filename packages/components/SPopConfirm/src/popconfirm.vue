@@ -62,7 +62,6 @@ const handleConfirm = () => {
 		:close-delay="props.closeDelay"
 		:disabled="props.disabled"
 		:offset="props.offset"
-		:theme="props.theme"
 		:close-on-click-body="props.closeOnClickBody"
 		:open-on-mounted="props.openOnMounted"
 		:teleported="props.teleported"
@@ -86,12 +85,10 @@ const handleConfirm = () => {
 		<template #default>
 			<SMessageBox class="s-popconfirm__inner"
 			             ref="msgBox"
-			             show-head
-			             show-foot
 			             :transition="props.transition"
 			             :type="props.type"
 			             :cancel-btn-text="props.cancelBtnText"
-			             :confirm-btn-text="props.confirmBtnType"
+			             :confirm-btn-text="props.confirmBtnText"
 			             :title="props.content"
 
 			             @close="handleClose"

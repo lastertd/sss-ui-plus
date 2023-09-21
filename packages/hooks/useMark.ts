@@ -10,7 +10,7 @@ import {Mark, MarkType} from "@sss-ui-plus/utils"
 type targetType = Ref<HTMLElement | undefined | null> | HTMLElement
 
 /**
- * @description 在el中添加一个遮罩元素
+ * @description 使用遮罩
  * @param target 需要添加遮罩的元素, 可以是ref实例，也可以是一个html节点
  * @param markType  cover将会覆盖整个视口，part只会覆盖元素本身
  */

@@ -24,7 +24,6 @@ const slots = useSlots();
 		:close-delay="props.closeDelay"
 		:disabled="props.disabled"
 		:offset="props.offset"
-		:theme="props.theme"
 		:close-on-click-body="props.closeOnClickBody"
 		:open-on-mounted="props.openOnMounted"
 		:teleported="props.teleported"
@@ -40,6 +39,7 @@ const slots = useSlots();
 		@closed="emits('closed')"
 
 		class="s-tooltip"
+		:class="`s-tooltip--${props.theme}`"
 
 	>
 

@@ -141,6 +141,11 @@ export const SDropdownProps = {
 
 
 export const SDropdownEmits = {
+    /**
+     * @description 选中事件, 任意dropdownItem触发select事件都会触发此事件
+     * @param value dropdownItem的value
+     * @param prefix 暂时保留
+     */
     select: (value: string, prefix?: string[]) => true,
     open: () => true,
     opened: () => true,

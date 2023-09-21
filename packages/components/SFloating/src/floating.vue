@@ -124,13 +124,23 @@ if (props.quickTrack) {
 
 // 可以通过点击body关闭floating
 if (props.closeOnClickBody) {
-	useEventListener(document.body, 'click', (evt: Event) => {
+	let trigger:Element | null;
+	useEventListener(document.body,'mousedown',(evt:Event) => {
+		if (!flag.value) return;
+		evt.stopPropagation();
 
-		const target = evt.target as HTMLElement;
+		trigger = evt.target as Element;
+
+	})
+	useEventListener(document.body, 'mouseup', (evt: Event) => {
+		if (!flag.value) return;
+		evt.stopPropagation();
+
 		const floatingEl = unrefElement(floating) as HTMLElement;
 		const referenceEl = unrefElement(reference) as HTMLElement;
 
-		if (!(floatingEl.contains(target) || referenceEl.contains(target))) {
+
+		if (!(floatingEl.contains(trigger) || referenceEl.contains(trigger))) {
 			close();
 		}
 	});
@@ -166,7 +176,7 @@ if (props.trigger === 'focus') {
 
 onMounted(() => {
 	// 避免在加载文件时操作dom, ssr友好
-	import("./creatFloatingContainer.ts").then(() => {
+	import("./creatFloatingContainer").then(() => {
 		if (props.teleported) {
 			const container = document.body.querySelector('.___sss-floating-container') as HTMLDivElement;
 			container.appendChild(unrefElement(floating)!);
@@ -187,8 +197,17 @@ onBeforeUnmount(() => {
 
 
 defineExpose({
+	/**
+	 * @description 关闭floating元素
+	 */
 	close,
+	/**
+	 * @description 打开floating元素
+	 */
 	open,
+	/**
+	 * @description 打开/关闭floating元素轮循
+	 */
 	toggle,
 })
 
@@ -212,7 +231,6 @@ defineExpose({
 			<div v-if="flag "
 			     class="s-floating"
 			     :data-placement="placement"
-			     :data-theme="props.theme"
 			     v-bind="$attrs"
 
 			>

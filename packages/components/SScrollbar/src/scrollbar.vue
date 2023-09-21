@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import "./scrollbar.less"
 import {SScrollbarProps} from "./scrollbar";
 import {ref} from "vue";
 import {unrefElement, useEventListener, useResizeObserver, useMutationObserver} from "@vueuse/core";
@@ -17,7 +16,7 @@ const thumbY = ref<HTMLElement | undefined>(undefined);
 const barY = ref<HTMLElement | undefined>(undefined);
 const thumbX = ref<HTMLElement | undefined>(undefined);
 const barX = ref<HTMLElement | undefined>(undefined);
-const active = ref(false);
+const active = ref(0);
 
 let flag: 'thumbX' | 'thumbY';
 
@@ -204,7 +203,7 @@ useEventListener(thumbY, "mousedown", (evt: MouseEvent) => {
 	down.y = evt.clientY;
 	origin.y = unrefElement(warp)!.scrollTop;
 	flag = 'thumbY';
-	active.value = true;
+	active.value = 1;
 
 	unrefElement(document.body)!.addEventListener('mousemove', handleMove);
 })
@@ -212,7 +211,7 @@ useEventListener(thumbX, "mousedown", (evt: MouseEvent) => {
 	down.x = evt.clientX;
 	origin.x = unrefElement(warp)!.scrollLeft;
 	flag = 'thumbX';
-	active.value = true;
+	active.value = 2;
 
 
 	unrefElement(document.body)!.addEventListener('mousemove', handleMove);
@@ -220,7 +219,7 @@ useEventListener(thumbX, "mousedown", (evt: MouseEvent) => {
 
 
 useEventListener(document.body, 'mouseup', () => {
-	active.value = false;
+	active.value = 0;
 
 	unrefElement(document.body)!.removeEventListener('mousemove', handleMove);
 
@@ -230,30 +229,33 @@ useEventListener(document.body, 'mouseup', () => {
 </script>
 
 <template>
-	<div class="sss-scrollbar"
+	<div class="s-scrollbar"
 	     :data-always="props.always"
-	     :class="[{
-			 'is-active':active
-	     }]"
 
 	>
-		<div ref="warp" class="sss-scrollbar-warp"
+		<div ref="warp" class="s-scrollbar__warp"
 		     v-bind="$attrs"
 		>
 			<slot></slot>
 		</div>
-		<div ref="barY" class="sss-scrollbar-bar is-vertical"
+		<div ref="barY" class="s-scrollbar__bar is-vertical"
 		     v-show="props.vertical"
-		     :class="[{'is-outside':props.isOutside}]"
+		     :class="[{
+				 'is-outside':props.isOutside,
+	             'is-active':active === 1
+			 }]"
 		>
-			<div ref="thumbY" class="sss-scrollbar-thumb is-round" :style="thumbYStyle"></div>
+			<div ref="thumbY" class="s-scrollbar__bar__thumb is-round" :style="thumbYStyle"></div>
 		</div>
-		<div ref="barX" class="sss-scrollbar-bar is-horizontal "
+		<div ref="barX" class="s-scrollbar__bar is-horizontal "
 		     v-show="props.horizontal"
-		     :class="[{'is-outside':props.isOutside}]"
+		     :class="[{
+				 'is-outside':props.isOutside,
+	             'is-active':active === 2
+			 }]"
 
 		>
-			<div ref="thumbX" class="sss-scrollbar-thumb is-round" :style="thumbXStyle"></div>
+			<div ref="thumbX" class="s-scrollbar__bar__thumb is-round" :style="thumbXStyle"></div>
 		</div>
 	</div>
 

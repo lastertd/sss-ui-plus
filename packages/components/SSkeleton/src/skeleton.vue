@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import "./skeleton.less"
 import {SSkeletonProps} from "./skeleton";
 import {provide, ref, watch} from "vue";
 

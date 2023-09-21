@@ -26,7 +26,11 @@ const val = computed(() => {
 })
 
 
-const {hidden, show, setTxt, stop} = useBadge(target, props.type, val);
+const {hidden, show, setTxt, stop} = useBadge(target, {
+	value:val,
+	type:props.type,
+	isEmpty:props.empty
+});
 
 watch(() => props.hidden,(flag) => {
 	if (flag) hidden();
@@ -35,9 +39,21 @@ watch(() => props.hidden,(flag) => {
 
 
 defineExpose({
+	/**
+	 * @description 隐藏badge元素
+	 */
 	hidden,
+	/**
+	 * @description 展示badge元素
+	 */
 	show,
+	/**
+	 * @description 设置badge元素文本
+	 */
 	setTxt,
+	/**
+	 * @description 停止使用badge元素
+	 */
 	stop
 })
 
@@ -47,7 +63,14 @@ defineExpose({
 </script>
 
 <template>
-	<SPartial v-if="slot.default" ref="target" v-bind="$attrs">
+	<SPartial
+		v-if="slot.default"
+		ref="target"
+		v-bind="$attrs"
+		:class="{
+			's-badge--empty':props.empty
+		}"
+	>
 		<slot></slot>
 	</SPartial>
 
