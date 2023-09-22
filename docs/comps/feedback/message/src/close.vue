@@ -4,7 +4,7 @@
 			empty
 			@click="handleClick"
 		>
-			糟糕!想不到文案了!
+			showCloseIcon
 		</s-button>
 
 	</s-row>
@@ -18,7 +18,7 @@ const handleClick = () => {
 
 	message({
 		text:'具有close图标',
-		showClose:true
+		showCloseIcon:true
 	})
 
 

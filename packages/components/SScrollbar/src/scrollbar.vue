@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {SScrollbarProps} from "./scrollbar";
+import {SScrollbarEmits, SScrollbarProps} from "./scrollbar";
 import {ref} from "vue";
 import {unrefElement, useEventListener, useResizeObserver, useMutationObserver} from "@vueuse/core";
 
@@ -11,6 +11,7 @@ defineOptions({
 
 
 const props = defineProps({...SScrollbarProps});
+const emits = defineEmits({...SScrollbarEmits})
 const warp = ref<HTMLElement | undefined>(undefined);
 const thumbY = ref<HTMLElement | undefined>(undefined);
 const barY = ref<HTMLElement | undefined>(undefined);
@@ -18,20 +19,25 @@ const thumbX = ref<HTMLElement | undefined>(undefined);
 const barX = ref<HTMLElement | undefined>(undefined);
 const active = ref(0);
 
+
+
 let flag: 'thumbX' | 'thumbY';
 
 
+// 垂直滑块的大小， 位置
 const thumbYStyle = ref({
 	top: '0',
 	right: '0',
 	height: '0',
 });
+
+//水平滑块的大小，位置
 const thumbXStyle = ref({
 	bottom: '0',
 	left: '0',
 	width: '0',
 })
-// 记录偏移量
+// 记录滑块移动的偏移量
 const offset = {
 	x: 0,
 	y: 0
@@ -46,7 +52,7 @@ const move = {
 	x: 0,
 	y: 0
 };
-// 记录原本位置
+// 记录滑块原本位置
 const origin = {
 	x: 0,
 	y: 0
@@ -106,6 +112,8 @@ const handleClick = (evt: MouseEvent) => {
 
 // 计算滑块大小
 const computedThumbSize = () => {
+	if (props.native) return
+
 	const warpEl = unrefElement(warp) as HTMLElement;
 	const barYEl = unrefElement(barY) as HTMLElement;
 	const barXEl = unrefElement(barX) as HTMLElement;
@@ -145,8 +153,11 @@ const computedThumbSize = () => {
 }
 
 
-// 计算滑块高度
+// 计算滑块位置
 const computedThumbPos = () => {
+	if (props.native) return
+
+
 	const warpEl = unrefElement(warp) as HTMLElement;
 	const barYEl = unrefElement(barY) as HTMLElement;
 	const barXEl = unrefElement(barX) as HTMLElement;
@@ -167,8 +178,11 @@ const computedThumbPos = () => {
 
 }
 
+// 滑动
 useEventListener(warp, 'scroll', () => {
+	const el = unrefElement(warp) as HTMLElement
 	computedThumbPos();
+	emits('scroll', el.scrollLeft, el.scrollTop);
 })
 
 if (props.quickJump) {
@@ -226,19 +240,18 @@ useEventListener(document.body, 'mouseup', () => {
 })
 
 
+
 </script>
 
 <template>
 	<div class="s-scrollbar"
 	     :data-always="props.always"
-
-	>
-		<div ref="warp" class="s-scrollbar__warp"
-		     v-bind="$attrs"
-		>
+	     :data-native="props.native"
+	     v-bind="$attrs">
+		<div ref="warp" class="s-scrollbar__warp">
 			<slot></slot>
 		</div>
-		<div ref="barY" class="s-scrollbar__bar is-vertical"
+		<div v-if="!props.native" ref="barY" class="s-scrollbar__bar is-vertical"
 		     v-show="props.vertical"
 		     :class="[{
 				 'is-outside':props.isOutside,
@@ -247,7 +260,7 @@ useEventListener(document.body, 'mouseup', () => {
 		>
 			<div ref="thumbY" class="s-scrollbar__bar__thumb is-round" :style="thumbYStyle"></div>
 		</div>
-		<div ref="barX" class="s-scrollbar__bar is-horizontal "
+		<div v-if="!props.native" ref="barX" class="s-scrollbar__bar is-horizontal "
 		     v-show="props.horizontal"
 		     :class="[{
 				 'is-outside':props.isOutside,

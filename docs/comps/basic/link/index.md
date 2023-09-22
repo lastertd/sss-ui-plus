@@ -4,7 +4,7 @@
 
 ::: warning
 由于vitepress的默认样式影响，Link组件显示上可能有些问题。
-default原本偏蓝色才对😫
+default原本偏蓝而不是紫色
 
 
 :::
@@ -15,32 +15,31 @@ default原本偏蓝色才对😫
 
 <demo
 src="./src/basic.vue"
-title="不同类型的唯一区别就是皮肤颜色"
+title="类型的唯一区别就是颜色不同"
 />
 
 ## 禁用状态
 
+使用 `disabled` 指定链接的禁用状态
 <demo
 src="./src/disabled.vue"
-title="oh no 似乎不被允许"
 />
 
 ## 下划线
 
-使用 `underline` 使超链接`hover`时显示下划线
+链接在具有 `underline`时, 鼠标移动到链接上会具有下划线装饰
 
 <demo
 src="./src/underline.vue"
-title="附带下划线,体验上或许更好？"
 />
 
-## 图标
+## 图标链接
 
-可以使用 `prefix-icon` 和 `suffix-icon` 属性使超链接具有 `左` `右` 图标
+- `prefix-icon` 指定链接的前缀图标
+- `suffix-icon` 指定链接的后缀图标
 
 <demo
 src="./src/icon.vue"
-title="附带图标，跳转目的更明确"
 />
 
 ## Link API

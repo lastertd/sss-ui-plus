@@ -2,23 +2,24 @@
 
 ## 基础用法
 
-
 可以通过 `text` 指定要显示的文本
+
+和浏览器弹窗类型, 从顶部出现、默认存活3秒
 
 <demo
 src="./src/basic.vue"
-title="只是显示文本的话，也够用？"
+title="美化了原本的浏览器弹窗"
 />
-
 
 ## 不同状态
 
 可以通过 `type` 指定消息的类型
 
+用来显示「成功、提示、警告、错误」类的操作反馈。
+
 <demo
 src="./src/type.vue"
-title="取值类型有: success 、 info 、 warning 、 danger"
-desc="加上了背景颜色、图标"
+title="对应type取值为: success 、 info 、 warning 、 danger"
 />
 
 ## 存活时间
@@ -27,7 +28,7 @@ desc="加上了背景颜色、图标"
 
 <demo
 src="./src/time.vue"
-title="设置为0可以让消息不会自动关闭, 默认存在3秒"
+title="当timout设置为0时, 将不会自动关闭"
 />
 
 ## 关闭方式
@@ -36,8 +37,7 @@ title="设置为0可以让消息不会自动关闭, 默认存在3秒"
 
 <demo
 src="./src/close.vue"
-title="另外！消息在获取焦点后,是可以通过按下ESC关闭的."
-desc="上一段有触发到不会自动关闭的消息么👀？"
+title="另外, 消息在获取焦点后,是可以通过按下ESC关闭的."
 />
 
 ## 偏移量
@@ -53,12 +53,13 @@ title="默认是10px"
 
 ### Message Props
 
-| 属性名    | 说明                   | 类型                                   | 默认值   |
-| --------- | ---------------------- | -------------------------------------- | -------- |
-| text      | 消息文本               | `String`                               | ---      |
-| type      | 类型                   | `success`/ `info`/ `warning`/ `danger` | ---      |
-| timeout   | 存活时间               | `Number`                               | 3000`ms` |
-| showClose | 是否展示`close`图标    | `Boolean`                              | false    |
-| offset    | 距离上一条消息的偏移量 | `Number`                               | 10`px`   |
-| icon      | 消息的图标             | `String`                               | ---      |
+| 属性名           | 说明          | 类型                                     | 默认值      |
+|---------------|-------------|----------------------------------------|----------|
+| text          | 消息文本        | `String`                               | ---      |
+| type          | 类型          | `success`/ `info`/ `warning`/ `danger` | ---      |
+| timeout       | 存活时间        | `Number`                               | 3000`ms` |
+| showCloseIcon | 是否显示关闭图标    | `Boolean`                              | false    |
+| offset        | 距离上一条消息的偏移量 | `Number`                               | 10`px`   |
+| icon          | 自定义消息的图标    | `String`                               | ---      |
+| color         | 自定义消息的颜色    | `String`                               | ---      |
 

@@ -1,10 +1,10 @@
 import DefaultTheme from 'vitepress/theme';
 
 
-import "../../public/styles/global.less"
+import "./styles/index.less"
 
-
-import ui from "../../../index"
+import ui from "sss-ui-plus/es/index"
+import "sss-ui-plus/dist/index.css"
 
 
 import DemoBlock from '@ruabick/vitepress-demo-block';

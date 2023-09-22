@@ -19,6 +19,10 @@ export const SScrollbarProps = {
      */
     always: Boolean,
     /**
+     * @description 是否使用原生滚动条
+     */
+    native:Boolean,
+    /**
      * @description 滚动条是否显示在视口外面
      */
     isOutside: Boolean,
@@ -30,5 +34,7 @@ export const SScrollbarProps = {
         default: true,
     },
 
-
 }
+export const SScrollbarEmits = {
+    scroll:(scrollLeft:number, scrollTop:number) => true
+} as const

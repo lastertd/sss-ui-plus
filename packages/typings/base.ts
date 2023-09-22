@@ -24,6 +24,8 @@ export type Transition =
     | `s-transition-${scale}--${scaleModifier}`
     | `s-transition-scale`
     | `s-transition-scale--${fadeModifier}`
+    | `s-transition-collapse--vertical`
+    | `s-transition-collapse--horizontal`
     ;
 
 

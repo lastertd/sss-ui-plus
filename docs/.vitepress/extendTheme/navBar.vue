@@ -4,6 +4,7 @@ import {inBrowser} from 'vitepress'
 import {ref, watch} from 'vue'
 import {useSidebar} from "vitepress/theme";
 import VPSidebarItem from 'vitepress/dist/client/theme-default/components/VPSidebarItem.vue'
+import {SScrollbar} from "@sss-ui-plus/components";
 
 const {sidebarGroups, hasSidebar} = useSidebar()
 
@@ -116,8 +117,8 @@ watch(
 
 @media (min-width: 1440px) {
 	.side-container {
-		padding-left: max(32px, calc((100% - (var(--vp-layout-max-width) - 64px)) / 2));
-		width: calc((100% - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 32px);
+		padding-left: max(32px, calc((100vw - (var(--vp-layout-max-width) - 64px)) / 2));
+		width: calc((100vw - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 32px);
 	}
 }
 

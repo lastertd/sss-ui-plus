@@ -29,7 +29,13 @@
     "packages/**/*.tsx",
     "packages/**/*.vue",
     "index.ts",
-    "installer.ts"
+    "installer.ts",
+
+
+    "docs/**/*.ts",
+    "docs/**/*.d.ts",
+    "docs/**/*.tsx",
+    "docs/**/*.vue"
   ],
   "references": [
     {

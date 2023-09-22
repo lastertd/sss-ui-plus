@@ -1,16 +1,36 @@
 <template>
-	<s-row horizontal="flex-start" :gap="20">
-		<s-tooltip content="light theme">
-			<s-button type="primary" ghost>hover me</s-button>
-		</s-tooltip>
-		<s-tooltip content="dark theme" theme="light" placement="right">
-			<s-button type="primary" ghost>hover me</s-button>
-		</s-tooltip>
-
-	</s-row>
+	<s-button ghost type="primary" @click="handleClick">触发一个对话框</s-button>
+	<s-dialog
+		v-model="f"
+		title="header"
+		show-close-icon
+		:before-close="beforeClose"
+	>
+		wink🥰~
+	</s-dialog>
 </template>
 
+<script setup lang="ts">
+
+import {ref} from "vue";
+import {confirm} from "@sss-ui-plus/components";
 
 
+const f = ref<Boolean>(false);
 
+const handleClick = () => {
+	f.value = !f.value;
+}
 
+const beforeClose = (done:() => void ) => {
+	confirm({
+		type:'info',
+		title:'确认要关闭这个对话框么?'
+	}).then(() => {
+		done();
+	}).catch(e => {
+		// 	ERR
+	})
+}
+
+</script>

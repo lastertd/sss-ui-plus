@@ -3,7 +3,7 @@
 当用于的某些操作需要确认时，比如点击按钮，可以用于代理一次按钮回调，让用于确认。
 
 ::: tip
-Popconfirm是基于Floating组件 && MsgBox 组件开发的, 因此会有很多相似的API, 具体可参考[Floating 浮动](/comps/floating/floating/)
+Popconfirm是基于Floating组件 && MsgBox 组件开发的, 因此会有很多相似的API, 具体可参考[Floating 浮动](/comps/feedback/floating/)
 :::
 
 

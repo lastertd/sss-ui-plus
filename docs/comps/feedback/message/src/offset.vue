@@ -4,7 +4,7 @@
 			empty
 			@click="handleClick"
 		>
-			距离上一条消息30px
+			offset: 30px
 		</s-button>
 
 	</s-row>

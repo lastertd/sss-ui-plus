@@ -10,9 +10,13 @@ interface options {
      */
     type: MessageTypes,
     /**
-     * @description 消息的图标
+     * @description 自定义消息的图标
      */
     icon: string,
+    /**
+     * @description 自定义图标的颜色
+     */
+    color:string,
     /**
      * @description 消息的主体
      */
@@ -38,6 +42,7 @@ export default async function (options: Partial<options>) {
     const app: App<Element> = createApp(SMessageBox, {
         type: options.type,
         icon: options.icon,
+        iconColor: options.color,
         title: options.text,
         showHead: true,
         noFooter:true,

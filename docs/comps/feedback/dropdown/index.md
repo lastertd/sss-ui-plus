@@ -4,7 +4,7 @@
 
 
 ::: tip
-Popconfirm是基于Floating组件组件开发, 因此会有很多相似的API, 具体可参考[Floating 浮动](/comps/floating/floating/)
+Popconfirm是基于Floating组件组件开发, 因此会有很多相似的API, 具体可参考[Floating 浮动](/comps/feedback/floating/)
 :::
 
 

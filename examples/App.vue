@@ -9,7 +9,7 @@
 
 	<s-divider content-position="start">hh</s-divider>
 
-	<s-popconfirm content="are you sure111111111111111?"  type="info">
+	<s-popconfirm content="are you sure111111111111111?"  type="info" >
 		<s-input></s-input>
 	</s-popconfirm>
 

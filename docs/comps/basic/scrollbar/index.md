@@ -6,7 +6,7 @@
 
 <demo
 src="./src/basic.vue"
-title="早就看原生滚动条不顺眼了！（；´д｀）ゞ"
+title="你也可以通过添加native使用原生滚动条"
 />
 
 ## 横向滚动
@@ -24,7 +24,6 @@ src="./src/horizontal.vue"
 
 <demo
 src="./src/quickJump.vue"
-title="在滚动区域很长的时候挺好用的(*^_^*)"
 />
 
 
@@ -49,6 +48,15 @@ title="如果滚动区的大小不会改变, 可以设置noResize优化性能"
 | always     | 是否一直显示                                                 | `Boolean` | false  |
 | isOutside  | 是否显示在外部，设置此项，滚动条将会显示在视口外部           | `Boolean` | false  |
 | quickJump  | 是否在点击滚动条时，快速导航到对应位置                       | `Boolean` | true   |
+| native     | 是否使用原生滚动条                                           | `Boolean` | false  |
+
+### Scroll Events
+
+| 事件名 | 说明                             | 类型                                            |
+| ------ | -------------------------------- | ----------------------------------------------- |
+| scroll | 当触发滚动事件时，返回滚动的距离 | `(scrollLeft:number, scrollTop:number) => void` |
+
+
 
 ### Scroll Slots
 

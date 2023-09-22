@@ -1,9 +1,6 @@
 <template>
-	<s-button
-		empty
-		@click="handleClick"
-	>
-		click me ^_^
+	<s-button empty @click="handleClick">
+		点击送地狱火
 	</s-button>
 </template>
 
@@ -12,16 +9,13 @@ import {confirm,message} from "sss-ui-plus/es/index";
 
 
 const realHandleClick = () => {
-	message({
-		type:'success',
-		text:'成功执行按钮的回调函数!'
-	})
+	window.location.href = 'https://www.bilibili.com/video/BV1GJ411x7h7';
 }
 
 const handleClick = () => {
 	confirm({
-		title:'待确认',
-		text:"你点击了这个按钮, 是否执行这个按钮的回调函数?"
+		title:'待确认...',
+		text:"只差最后一步!点击确认"
 	}).then(() => {
 		realHandleClick();
 	}).catch(() => {

@@ -1,5 +1,5 @@
 <template>
-	<s-scrollbar style="height: 400px">
+	<s-scrollbar style="height: 400px" >
 		<div class="container">
 			<div class="item"
 			     v-for="(item,index) in dataList"

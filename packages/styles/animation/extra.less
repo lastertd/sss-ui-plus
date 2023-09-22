@@ -1,0 +1,26 @@
+.s-transition-collapse--vertical-leave-active,
+.s-transition-collapse--vertical-enter-active {
+    clip-path: inset(0);
+
+
+    transition: clip-path .3s cubic-bezier(0.23, 1, 0.72, 1);
+}
+
+.s-transition-collapse--vertical-enter-from,
+.s-transition-collapse--vertical-leave-to {
+    clip-path: inset(0 0 100% 0);
+}
+
+
+.s-transition-collapse--horizontal-leave-active,
+.s-transition-collapse--horizontal-enter-active {
+    clip-path: inset(0);
+
+
+    transition: clip-path .3s cubic-bezier(0.23, 1, 0.72, 1);
+}
+
+.s-transition-collapse--horizontal-enter-from,
+.s-transition-collapse--horizontal-leave-to {
+    clip-path: inset(0 100% 0 0);
+}

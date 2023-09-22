@@ -7,6 +7,29 @@
         }
     }
 
+    &[data-native="true"] {
+        .s-scrollbar__warp {
+            &::-webkit-scrollbar {
+                width: 6px;
+                display: unset;
+
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: var(--sss-color-gray-dark); /* 设置滚动条滑块的背景颜色 */
+                border-radius: 9999px;
+
+                &:hover,
+                &:active {
+                    background-color: var(--sss-color-gray-deep-dark); /* 设置滚动条滑块的背景颜色 */
+
+                }
+
+            }
+
+        }
+    }
+
     &:hover {
         .s-scrollbar__bar {
             opacity: 1;
@@ -25,6 +48,7 @@
         display: none;
 
     }
+
 
 }
 

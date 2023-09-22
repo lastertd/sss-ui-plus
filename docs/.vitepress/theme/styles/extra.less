@@ -1,0 +1,75 @@
+.transition-box{
+    height: 100px;
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+.transition-box__inner{
+    width: 200px;
+    height: 100px;
+    box-sizing: border-box;
+    background: var(--sss-color-primary);
+    border-radius: 7px;
+    border: solid 1px var(--sss-color-gray);
+    display: grid;
+    place-items: center;
+    color: var(--sss-color-white);
+    text-align: center;
+    user-select: none;
+
+}
+
+
+
+
+._box {
+    width: 400px;
+    height: 250px;
+    position: relative;
+    margin: 0 auto;
+}
+
+._top {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+}
+
+._top > *,
+._bottom > * {
+    margin: 0 20px;
+}
+
+._bottom {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 0;
+}
+
+._left {
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+}
+
+._right {
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+}
+
+._left > *,
+._right > * {
+    margin: 20px 0;
+}
+

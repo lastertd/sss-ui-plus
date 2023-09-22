@@ -1,0 +1,60 @@
+/* spacing */
+
+/* 设置表格的宽度为父元素的100% */
+table {
+    display: table !important;
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: auto;
+    line-height: 1.5rem;
+}
+
+thead {
+    display: table-header-group;
+    text-align: left;
+
+}
+
+tbody {
+    display: table-row-group;
+    text-align: left;
+
+    tr {
+        & > *:nth-child(2) {
+            color: var(--sss-color-gray-dark) !important;
+        }
+
+        & > *:first-child {
+            font-weight: 500;
+        }
+    }
+}
+
+tr {
+    border-top: none !important;
+    border-bottom: var(--sss-color-gray) 1px solid;
+    background-color: unset !important;
+
+}
+
+td, th {
+    min-width: 80px;
+    max-width: 250px;
+    padding: 10px 30px 10px 0 !important;
+    border: none !important;
+    background-color: unset !important;
+
+    & code {
+        color: var(--sss-color-cyan-dark) !important;
+        background-color: var(--sss-color-cyan-fade) !important;
+    }
+}
+
+.dark {
+    td, th {
+        & code {
+            color: var(--sss-color-gray) !important;
+            background-color: var(--sss-color-black) !important;
+        }
+    }
+}

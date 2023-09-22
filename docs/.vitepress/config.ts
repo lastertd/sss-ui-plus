@@ -27,6 +27,7 @@ export default defineConfig({
                     items: [
                         {text: '安装', link: '/guide/'},
                         {text: '快速开始', link: '/guide/start'},
+                        {text: '内置过渡动画', link: '/guide/transition/'},
                     ]
                 }
             ],

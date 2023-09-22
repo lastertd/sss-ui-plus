@@ -3,7 +3,7 @@
 		empty
 		@click="handleClick"
 	>
-		click me ^_^
+		和我聊天吧
 	</s-button>
 </template>
 

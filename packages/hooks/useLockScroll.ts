@@ -15,9 +15,10 @@ export const useLockScroll = function () {
 
         if (count === 0) {
             const a = body.offsetWidth;
-            document.body.style.overflowY = "hidden"
+            body.style.overflowY = "hidden"
             const b = body.offsetWidth;
-            document.body.style.marginRight = `${b - a}px`;
+
+            body.style.width = `calc(100% - ${b-a}px)`;
 
         }
         count++;
@@ -29,8 +30,9 @@ export const useLockScroll = function () {
         count--;
         if (count <= 0) count = 0;
         if (count === 0) {
-            document.body.style.overflowY = "auto"
-            document.body.style.marginRight = '0';
+            body.style.overflowY = "auto"
+            body.style.width = `100%`;
+
         }
     }
 
