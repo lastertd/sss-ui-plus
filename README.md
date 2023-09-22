@@ -26,9 +26,7 @@
     import "sss-ui-plus/dist/index.css"
     
     createApp(App)
-    .use(sui,{
-    zIndex:3000
-    })
+    .use(sui)
     .mount('#app')
   ```
 
