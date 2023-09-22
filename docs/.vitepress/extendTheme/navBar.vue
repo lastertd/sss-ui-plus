@@ -4,7 +4,7 @@ import {inBrowser} from 'vitepress'
 import {ref, watch} from 'vue'
 import {useSidebar} from "vitepress/theme";
 import VPSidebarItem from 'vitepress/dist/client/theme-default/components/VPSidebarItem.vue'
-import {SScrollbar} from "@sss-ui-plus/components";
+import {SScrollbar} from "sss-ui-plus/es/index";
 
 const {sidebarGroups, hasSidebar} = useSidebar()
 

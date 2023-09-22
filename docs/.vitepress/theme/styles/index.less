@@ -37,7 +37,9 @@
 
 }
 
-body {
+
+
+body,.VPSidebar {
 
     &::-webkit-scrollbar {
         width: 6px;
@@ -64,9 +66,16 @@ body {
 }
 
 @media (min-width: 1440px) {
+    .VPSidebar {
+        padding-left: max(32px, calc((100vw - (var(--vp-layout-max-width) - 64px)) / 2))!important;
+        width: calc((100vw - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 32px) !important;
+    }
+}
+@media (min-width: 1440px) {
     .VPNav {
         position: fixed !important;
     }
+
 }
 
 @media (min-width: 960px) {

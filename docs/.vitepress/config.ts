@@ -84,14 +84,14 @@ export default defineConfig({
     },
     vite: {
         plugins: [],
-        resolve:{
-            alias:[
-                {
-                    find:/^.*\/VPSidebar\.vue$/,
-                    replacement: fileURLToPath(new URL('./extendTheme/navBar.vue', import.meta.url))
-                }
-            ]
-        }
+        // resolve:{
+        //     alias:[
+        //         {
+        //             find:/^.*\/VPSidebar\.vue$/,
+        //             replacement: fileURLToPath(new URL('./extendTheme/navBar.vue', import.meta.url))
+        //         }
+        //     ]
+        // }
     }
 
 })
