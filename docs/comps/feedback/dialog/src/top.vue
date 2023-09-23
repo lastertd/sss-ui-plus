@@ -1,6 +1,9 @@
 <template>
-	<s-button ghost type="primary"  @click="f1 =!f1">top=10vh</s-button>
-	<s-button ghost type="primary" @click="f2 = !f2">top=unset</s-button>
+	<s-row :gap="10" horizontal="flex-start" >
+		<s-button @click="f1 =!f1">top = 10vh</s-button>
+		<s-button @click="f2 = !f2">top = unset</s-button>
+	</s-row>
+
 	<s-dialog
 		v-model="f1"
 		title="header"
@@ -25,9 +28,6 @@ import {ref} from "vue";
 
 const f1 = ref<Boolean>(false);
 const f2 = ref<Boolean>(false);
-
-
-
 
 
 </script>

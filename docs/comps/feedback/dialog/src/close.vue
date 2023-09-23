@@ -1,5 +1,5 @@
 <template>
-	<s-button ghost type="primary"  @click="f1 =!f1">不能通过点击遮罩和按下esc关闭</s-button>
+	<s-button @click="f1 =!f1">触发一个对话框</s-button>
 	<s-dialog
 		v-model="f1"
 		title="header"
@@ -18,9 +18,6 @@ import {ref} from "vue";
 
 
 const f1 = ref<Boolean>(false);
-
-
-
 
 
 </script>

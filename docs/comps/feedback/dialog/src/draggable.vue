@@ -1,12 +1,12 @@
 <template>
-	<s-button ghost type="primary"  @click="f1 =!f1">召唤一个可拖拽的对话框</s-button>
+	<s-button  @click="f1 =!f1">触发一个对话框</s-button>
 	<s-dialog
 		v-model="f1"
-		title="header"
+		title="试着拖动我吧"
 		:show-foot="true"
 		draggable
 	>
-		最近的一次位置将会被记录
+		body 区域
 	</s-dialog>
 
 </template>

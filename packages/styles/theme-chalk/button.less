@@ -19,7 +19,6 @@
     user-select: none;
 
     &--default{
-        color: var(--sss-color-black);
         &:hover,
         &:focus{
             background: var(--sss-color-gray-fade);
@@ -33,6 +32,11 @@
         &.is-empty{
             &:hover{
                 background:transparent;
+            }
+        }
+        &.is-ghost{
+            border: none;
+            &:active{
             }
         }
     }

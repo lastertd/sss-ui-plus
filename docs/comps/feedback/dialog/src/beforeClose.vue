@@ -3,6 +3,7 @@
 	<s-dialog
 		v-model="f"
 		title="header"
+		:before-close="beforeClose"
 	>
 		wink🥰~
 	</s-dialog>
@@ -11,6 +12,7 @@
 <script setup lang="ts">
 
 import {ref} from "vue";
+import {confirm} from "sss-ui-plus/es/index";
 
 
 const f = ref<Boolean>(false);
@@ -19,6 +21,16 @@ const handleClick = () => {
 	f.value = !f.value;
 }
 
+const beforeClose = (done:() => void ) => {
+	confirm({
+		type:'info',
+		title:'确认要关闭这个对话框么?'
+	}).then(() => {
+		done();
+	}).catch(e => {
+		// 	ERR
+	})
+}
 
 </script>
 
