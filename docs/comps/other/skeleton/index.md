@@ -63,9 +63,9 @@ src="./src/loading.vue"
 
 ### SkeletonItem Props
 
-| 属性名   | 说明       | 可选值                             | 默认值    |
-| -------- | ---------- | ---------------------------------- | --------- |
-| type     | 元素的类型 | `triangle` 、`rectangle`/  `image` | rectangle |
+| 属性名   | 说明       | 可选值                                | 默认值    |
+| -------- | ---------- |------------------------------------| --------- |
+| type     | 元素的类型 | `triangle` / `rectangle`/  `image` | rectangle |
 | isCircle | 是否是圆形 | `Boolean`                          | false     |
 | isRound  | 是否是圆角 | `Boolean`                          | false     |
 

@@ -4,7 +4,6 @@
 		type="info"
 		@cancel="handleCancel"
 		@confirm="handleConfirm"
-		expression="inline-block"
 		cancel-btn-text="cancel"
 		confirm-btn-type="confirm"
 

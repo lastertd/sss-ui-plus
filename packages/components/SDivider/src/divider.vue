@@ -74,7 +74,7 @@ onMounted(() => {
 			<template v-if="slots.default">
 				<slot></slot>
 			</template>
-			<template v-else>{{ props.content }}</template>
+			<template v-else>{{ props.text }}</template>
 			<s-icon :target="props.suffixIcon" no-padding></s-icon>
 		</span>
 	</div>

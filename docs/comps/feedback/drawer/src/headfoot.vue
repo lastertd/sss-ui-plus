@@ -1,28 +1,34 @@
 <template>
-	<s-row horizontal="flex-start" :gap="10">
-		<s-button ghost type="primary" @click="f1 = !f1">不携带头部</s-button>
-		<s-button ghost type="primary" @click="f2 = !f2">不携带尾部</s-button>
-	</s-row>
-
-	<s-drawer v-model="f1" :show-head="false" position="right" >
-
+	<s-button  @click="handleClick">触发一个抽屉</s-button>
+	<s-drawer
+		v-model="f"
+		ref="drawer"
+		title="修改默认标题"
+		:show-close-icon="false"
+	>
+		body 区域
+		<template #footer>
+			<s-button type="cyan" @click="handleClick2">点击确认</s-button>
+		</template>
 	</s-drawer>
-
-	<s-drawer v-model="f2" :show-foot="false" position="right" >
-
-	</s-drawer>
-
 </template>
 
 <script setup lang="ts">
-import {ref} from "vue"
+
+import {ref} from "vue";
+import {confirm, SDialogInstance} from "sss-ui-plus/es/index";
 
 
-const f1 = ref<Boolean>(false);
-const f2 = ref<Boolean>(false);
+const f = ref<Boolean>(false);
+const drawer = ref<SDialogInstance>(null);
 
+const handleClick = () => {
+	f.value = !f.value;
+}
 
-
+const handleClick2 = () => {
+	drawer.value.confirm();
+}
 
 
 </script>

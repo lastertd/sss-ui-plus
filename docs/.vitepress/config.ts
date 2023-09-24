@@ -10,7 +10,7 @@ export default defineConfig({
     lastUpdated: true,
     themeConfig: {
         siteTitle: "SSS-UI",
-        logo: 'favicon.ico',
+        logo: '/favicon.ico',
         nav: [
             {text: '指南', link: '/guide/', activeMatch: '/guide'},
             {text: '组件', link: '/comps/basic/button/index', activeMatch: '/comps'},
@@ -84,14 +84,18 @@ export default defineConfig({
     },
     vite: {
         plugins: [],
-        // resolve:{
-        //     alias:[
-        //         {
-        //             find:/^.*\/VPSidebar\.vue$/,
-        //             replacement: fileURLToPath(new URL('./extendTheme/navBar.vue', import.meta.url))
-        //         }
-        //     ]
-        // }
+        resolve:{
+            alias:[
+                {
+                    find:/^.*\/VPSidebar\.vue$/,
+                    replacement: fileURLToPath(new URL('./extendTheme/sideBar.vue', import.meta.url))
+                },
+                {
+                    find:/^.*\/VPNav\.vue$/,
+                    replacement: fileURLToPath(new URL('./extendTheme/navBar.vue', import.meta.url))
+                },
+            ]
+        }
     }
 
 })

@@ -21,11 +21,14 @@ tbody {
 
     tr {
         & > *:nth-child(2) {
-            color: var(--sss-color-gray-dark) !important;
+            //color: var(--sss-color-gray-deep-dark) !important;
         }
 
         & > *:first-child {
             font-weight: 500;
+        }
+        & > *:last-child{
+            color: var(--sss-color-gray-deep-dark);
         }
     }
 }
@@ -47,14 +50,5 @@ td, th {
     & code {
         color: var(--sss-color-cyan-dark) !important;
         background-color: var(--sss-color-cyan-fade) !important;
-    }
-}
-
-.dark {
-    td, th {
-        & code {
-            color: var(--sss-color-gray) !important;
-            background-color: var(--sss-color-black) !important;
-        }
     }
 }

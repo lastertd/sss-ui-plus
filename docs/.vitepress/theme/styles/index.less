@@ -1,6 +1,7 @@
 @import "extra";
 @import "table";
 @import "dark";
+@import "cover";
 
 [class^="s-"] {
     desc: "这里是为了避免vite样式影响而设置的样式，请忽略此项";
@@ -40,63 +41,7 @@
 
 
 
-body,.VPSidebar {
 
-    &::-webkit-scrollbar {
-        width: 6px;
-
-    }
-
-    &::-webkit-scrollbar-thumb {
-        background-color: var(--sss-color-gray-dark); /* 设置滚动条滑块的背景颜色 */
-        border-radius: 9999px;
-
-        &:hover,
-        &:active {
-            background-color: var(--sss-color-gray-deep-dark); /* 设置滚动条滑块的背景颜色 */
-
-        }
-
-    }
-
-    &::-webkit-scrollbar-button {
-        display: none;
-    }
-
-
-}
-
-@media (min-width: 1440px) {
-    .VPSidebar {
-        padding-left: max(32px, calc((100vw - (var(--vp-layout-max-width) - 64px)) / 2))!important;
-        width: calc((100vw - (var(--vp-layout-max-width) - 64px)) / 2 + var(--vp-sidebar-width) - 32px) !important;
-    }
-}
-@media (min-width: 1440px) {
-    .VPNav {
-        position: fixed !important;
-    }
-
-}
-
-@media (min-width: 960px) {
-    .VPNav {
-        position: sticky !important;
-    }
-}
-
-
-
-
-
-
-:root {
-    --vp-c-brand: var(--sss-color-primary);
-    --vp-c-brand-light: var(--sss-color-primary-light);
-    --vp-c-brand-lighter: lighten(#db5b6c, 20%);
-    --vp-c-brand-dark: var(--sss-color-primary-dark);
-    --vp-c-brand-darker: darken(#db5b6c, 10%);
-}
 
 
 

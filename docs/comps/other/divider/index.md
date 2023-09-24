@@ -12,7 +12,7 @@ src="./src/basic.vue"
 
 有时候在分割线的位置上，需要设置一些文案
 
-通过`content`属性，或者`default`槽设置文案
+通过`text`属性，或者`default`槽设置文案， 若两者同时设置, slot.default优先级高于props.text
 
 通过`contentPostion`设置文本位置, 除了`center` `start` `end` 之外还能设置百分比偏移量
 
@@ -47,6 +47,12 @@ src="./src/vertical.vue"
 | contentPosition | 分割线的文案的位置           | `start`/ `center`/ `end`/ `String` | center     |
 | prefixIcon      | 分割线的文案的前缀图标       | `String`                           | ---        |
 | suffixIcon      | 分割线的文案的后缀图标       | `String`                           | ---        |
-| content         | 分割线的文案                 | `String`                           | ---        |
+| text            | 分割线的文案                 | `String`                           | ---        |
 | gap             | 分割线用于隔离的高度（宽度） | `Number`                           | 10         |
+
+### Divider Slots
+
+| 名称    | 说明   |
+| ------- | ------ |
+| default | 默认槽 |
 

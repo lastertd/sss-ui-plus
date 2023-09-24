@@ -7,7 +7,7 @@
 	</s-row>
 
 	<s-drawer :position="placement" v-model="f" title="drawer title">
-		在这里，你可以放任何你需要的元素！
+		body 区域
 	</s-drawer>
 
 </template>

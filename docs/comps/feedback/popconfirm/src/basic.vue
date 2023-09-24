@@ -4,7 +4,6 @@
 		type="info"
 		@cancel="handleCancel"
 		@confirm="handleConfirm"
-		expression="inline-block"
 	>
 		<s-button type="primary" ghost>click me</s-button>
 	</s-popconfirm>

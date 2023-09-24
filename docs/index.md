@@ -8,7 +8,7 @@ hero:
   text: 适用于VUE3的组件库
   tagline: 轻量,简约
   image:
-    src: /styles/icon.svg
+    src: icon.svg
     alt: website logo
   actions:
     - theme: brand

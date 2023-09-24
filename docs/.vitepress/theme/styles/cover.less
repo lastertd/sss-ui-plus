@@ -1,0 +1,136 @@
+//修改默认颜色
+:root {
+    //--vp-c-brand-1: var(--sss-color-primary-light);
+    //--vp-button-brand-bg: var(--sss-color-primary-dark);
+    //--vp-c-brand-light: var(--sss-color-primary-light);
+    //--vp-c-brand-lighter: lighten(#db5b6c, 20%);
+    //--vp-c-brand-dark: var(--sss-color-primary-dark);
+    //--vp-c-brand-darker: darken(#db5b6c, 10%);
+}
+
+
+//修改主页面标题颜色
+.VPHero {
+    .clip {
+        color: var(--sss-color-primary);
+        -webkit-text-fill-color: var(--sss-color-primary-light);
+
+    }
+}
+
+//修改默认滚动条样式
+body {
+
+    &::-webkit-scrollbar {
+        width: 6px;
+
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--sss-color-gray-dark); /* 设置滚动条滑块的背景颜色 */
+        border-radius: 9999px;
+
+        &:hover,
+        &:active {
+            background-color: var(--sss-color-gray-deep-dark); /* 设置滚动条滑块的背景颜色 */
+
+        }
+
+    }
+
+    &::-webkit-scrollbar-button {
+        display: none;
+    }
+
+
+}
+
+
+//修改头部定位
+@media (min-width: 1440px) {
+    .VPNav {
+        position: fixed !important;
+    }
+
+}
+
+@media (min-width: 960px) {
+    .VPNav {
+        position: sticky !important;
+    }
+}
+
+
+//修改侧边栏子项左边距
+#VPSidebarNav {
+    .group {
+        border: none;
+
+        .items {
+            padding-left: 20px;
+        }
+    }
+}
+
+.VPNav {
+    border-bottom: solid 1px var(--sss-color-gray) !important;
+
+    .curtain {
+        display: none;
+    }
+
+    background: transparent !important;
+
+
+}
+
+.VPNavBar {
+    border-bottom: none!important;
+
+    .container {
+        border-bottom: none !important;
+        background-image: radial-gradient(transparent 1px, var(--sss-color-bg) 1px);
+        backdrop-filter: saturate(50%) blur(4px);
+        -webkit-backdrop-filter: saturate(50%) blur(4px);
+        background-size: 4px 4px;
+    }
+
+    .title {
+        border-bottom: none !important;
+    }
+
+    .content {
+        & * {
+            background: inherit !important;
+        }
+    }
+
+
+}
+
+.VPDoc{
+    .content{
+        padding: 0;
+    }
+    .content-container{
+        margin: 0;
+        max-width: unset!important;
+        padding-right: 32px;
+        padding-left: 16px;
+    }
+}
+
+.VPNavBar {
+    //border-bottom: none!important;
+    //border-bottom: solid 1px black !important;
+    //background: black!important;
+    //background-color: var(--vp-nav-bg-color)!important;
+}
+
+.VPNavBarTitle {
+    //border-bottom: none!important;
+}
+
+
+
+

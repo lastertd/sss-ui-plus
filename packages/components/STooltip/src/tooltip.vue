@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {STooltipEmits, STooltipProps} from "./tooltip";
-import {SFloating} from "../../SFloating";
-import {useSlots} from "vue";
+import {SFloating, SFloatingInstance} from "../../SFloating";
+import {ref, useSlots} from "vue";
 
 
 defineOptions({
@@ -12,11 +12,20 @@ defineOptions({
 const props = defineProps({...STooltipProps});
 const emits = defineEmits({...STooltipEmits})
 const slots = useSlots();
+const floating = ref<SFloatingInstance | null>(null);
+
+
+defineExpose({
+	close:() => floating.value!.close(),
+	open:() => floating.value!.open(),
+	toggle:() => floating.value!.toggle()
+})
 
 
 </script>
 <template>
 	<s-floating
+		ref="floating"
 		:trigger="props.trigger"
 		:placement="props.placement"
 		:transition="props.transition"

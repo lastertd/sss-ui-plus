@@ -1,14 +1,26 @@
 <template>
-	<s-row horizontal="flex-start" :gap="30">
-		<div
-			ref="reference"
-			style="height: 50px;border: solid 1px gray;border-radius: 5px;line-height: 50px;padding: 0 20px"
-		>试试拖拽我吧</div>
-	</s-row>
+	<s-floating trigger="hover" :close-delay="300" >
+		<template #reference>
+			<div
+				ref="reference"
+				style="display: inline-block; border: solid 1px gray;border-radius: 5px;line-height: 50px;padding: 0 20px"
+			>试试拖拽我吧
+			</div>
 
+		</template>
+		未开启快速跟踪
+	</s-floating>
 
-	<s-floating :reference="reference" trigger="hover" :close-delay="300" quick-track>
-		死皮赖脸粘着你👻
+	<s-floating trigger="hover" :close-delay="300" quick-track>
+		<template #reference>
+			<div
+				ref="reference2"
+				style="display: inline-block; border: solid 1px gray;border-radius: 5px;line-height: 50px;padding: 0 20px"
+			>试试拖拽我吧
+			</div>
+
+		</template>
+		开启了快速跟踪
 	</s-floating>
 </template>
 
@@ -18,12 +30,14 @@ import {computed, ref} from "vue";
 import {useDraggable} from "@sss-ui-plus/hooks"
 
 const reference = ref();
+const reference2 = ref();
 
 const f = computed(() => {
 	return true;
 })
 
 useDraggable(reference, reference, f);
+useDraggable(reference2, reference2, f);
 
 </script>
 

@@ -90,6 +90,8 @@ const handleConfirm = () => {
 			             :cancel-btn-text="props.cancelBtnText"
 			             :confirm-btn-text="props.confirmBtnText"
 			             :title="props.content"
+			             :icon="props.icon"
+			             :icon-color="props.iconColor"
 
 			             @close="handleClose"
 			             @cancel="handleCancel"

@@ -61,7 +61,10 @@ export const SDrawerProps = {
     /**
      * @description 是否显示消息头中的关闭图标
      */
-    showCloseIcon: Boolean,
+    showCloseIcon: {
+        type:Boolean,
+        default:true,
+    },
     /**
      * @description 消息尾中取消按钮的文本
      */

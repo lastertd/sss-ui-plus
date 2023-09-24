@@ -35,7 +35,7 @@
 		<s-button type="success" circle prefix-icon="option"></s-button>
 		<s-button type="info" circle prefix-icon="user2"></s-button>
 		<s-button type="danger" circle prefix-icon="close"></s-button>
-		<s-button type="warning" circle prefix-icon="editor"></s-button>
+		<s-button type="warning" circle prefix-icon="edit"></s-button>
 		<s-button type="cyan" circle prefix-icon="upload"></s-button>
 	</s-row>
 

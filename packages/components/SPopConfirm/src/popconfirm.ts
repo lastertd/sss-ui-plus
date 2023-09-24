@@ -106,6 +106,14 @@ export const SPopconfirmProps = {
         type: String,
         default: '确认'
     },
+    /**
+     * @description 自定义气泡确认框图标
+     */
+    icon: String,
+    /**
+     * @description 自定义图标颜色
+     */
+    iconColor: String
 
 
 } as const

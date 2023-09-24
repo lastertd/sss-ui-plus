@@ -1,75 +1,93 @@
 # Drawer 抽屉
 
-
-
-::: tip
-
-几乎拥有和[Dialog 对话框](/comps/feedback/dialog/)一样的API, 
-
-:::
+是的, Drawer几乎和[Dialog](/comps/feedback/dialog/)一模一样！他们都拓展自messageBox组件, 和Dialog只有视觉上的差异。
+当需要渲染一些很长的文档或者表单时, Drawer或许更加合适。
 
 ## 基础用法
 
-通过 `position` 属性设置抽屉的弹出位置
+使用 `position` 可以指定Drawer的弹出位置: [`left`、 `top`、 `right`、 `bottom`]
 
-通过 `v-model`绑定一个 `Boolean` 变量, 控制抽屉的展示
-
+使用 `v-model`绑定一个 `Boolean` 变量, 当绑定值为true时会呼出Drawer。默认Drawer占据30%浏览器 宽度/高度，请通过自定义类来控制默认样式。
 
 <demo
 src="./src/basic.vue"
 title="在drawer,你可以放任何你想的元素"
 />
 
-## 头部 & 尾部
+## 自定义header、footer
 
-通过 `show-head` 控制是否展示header
+如果不满意header、footer的内容，则可以通过:
 
-通过 `show-foot` 控制是否展示footer
+- `title`: 设置对话框的标题
+- `showCloseIcon`: 设置对话框是否显示关闭图标
+- `cancelBtnText`: 设置对话框尾部的取消按钮文本内容
+- `confirmBtnText`: 设置对话框尾部的确认按钮文本内容
+- `btnSize`: 设置对话框尾部的按钮的大小
+
+如果不满意它们的布局, 那也可以通过传入对应slot覆盖它们
 
 <demo
 src="./src/headfoot.vue"
-title="如果你不需要的话"
 />
 
-
-
+::: tip
+更多API介绍请前往[Dialog](/comps/feedback/dialog/), 也可以对照下方API自己尝试🥳
+:::
 
 ## Drawer API
 
 ### Drawer Props
 
-| 属性名             | 说明                                                         | 类型                             | 默认值        |
-| ------------------ | ------------------------------------------------------------ | -------------------------------- | ------------- |
-| showFoot           | 展示`footer`                                                 | `Boolean`                        | false         |
-| showHead           | 展示`header`                                                 | `Boolean`                        | true          |
-| showMark           | 展示遮罩                                                     | `Boolean`                        | true          |
-| cancelBtnText      | `取消按钮`的文本                                             | `String`                         | 取消          |
-| confirmBtnText     | `确认按钮`的文本                                             | `String`                         | 确认          |
-| closeOnClickMark   | 通过点击遮罩关闭对话框                                       | `Boolean`                        | true          |
-| closeOnPressEscape | 通过按下`ESC`关闭对话框                                      | `Boolean`                        | true          |
-| lockScroll         | 锁定浏览器滚动条                                             | `Boolean`                        | true          |
-| appendToBody       | 将对话框添加到`body`标签下，在嵌套对话框时，务必设置为true   | `Boolean`                        | false         |
-| draggable          | 可以拖拽                                                     | `Boolean`                        | false         |
-| title              | 标题                                                         | `String`                         | default title |
-| top                | 距离浏览器顶部的距离                                         | `String`                         | 15`vh`        |
-| postion            | 抽屉展示的位置                                               | `top`/ `right` /`bottom` /`left` | top           |
-| btnSize            | 尾部按钮的大小                                               | `small`/ `normal` /`large`       | normal        |
-| beforeClose        | 关闭之前的回调，如果设置了这个属性，要手动调用`done()`函数才会关闭对话框 | `(done:() => void) => void `     | ---           |
+| 属性名             | 说明                                                         | 类型                                 | 默认值        |
+| ------------------ | ------------------------------------------------------------ | ------------------------------------ | ------------- |
+| modelValue         | 抽屉打开/关闭的绑定值                                        | `Boolean`                            | ---           |
+| position           | 抽屉的弹出方位                                               | `left` / `top`  / `right` / `bottom` | top           |
+| title              | 抽屉消息头的标题                                             | `String`                             | default title |
+| showCloseIcon      | 是否显示消息头中的关闭图标                                   | `Boolean`                            | true          |
+| cancelBtnText      | 消息尾中取消按钮的文本                                       | `String`                             | ---           |
+| confirmBtnText     | 消息尾中确认按钮的文本                                       | `String`                             | ---           |
+| btnSize            | 消息尾中按钮的大小                                           | `small` / `normal` / `large`         | normal        |
+| noHeader           | 是否去除消息头                                               | `Boolean`                            | false         |
+| noBody             | 是否去除消息体                                               | `Boolean`                            | false         |
+| noFooter           | 是否去除消息尾                                               | `Boolean`                            | false         |
+| transition         | 抽屉的过渡动画                                               | [内置过渡](/guide/transition/)       | ---           |
+| beforeClose        | 抽屉关闭事件前的回调函数，若设置此项, 需要手动调用done函数关闭对话框 | `(done: () => void) => void`         | ---           |
+| showMark           | 是否显示遮罩                                                 | `Boolean`                            | true          |
+| closeOnPressEscape | 是否可以通过按下ESC来关闭抽屉                                | `Boolean`                            | true          |
+| closeOnClickMark   | 在显示遮罩的情况下, 是否可以通过点击遮罩关闭抽屉             | `Boolean`                            | true          |
+| lockScroll         | 抽屉出现时, 是否禁止浏览器的滚动行为                         | `Boolean`                            | true          |
+| appendToBody       | 是否挂载到body元素下面, 在层级混乱时开启此项                 | `Boolean`                            | false         |
 
 ### Drawer Events
 
-| 事件名  | 说明                 | 类型                       |
-| ------- | -------------------- | -------------------------- |
-| open    | `Dialog`打开的回调   | `() => void`               |
-| opened  | 打开之后的回调       | `() => void`               |
-| close   | 关闭的回调           | `(trigger:String) => void` |
-| closed  | 关闭后的回调         | `() => void`               |
-| cancel  | 点击`取消按钮`的回调 | `() => void`               |
-| confirm | 点击`确认按钮`的回调 | `() => void`               |
+| 事件名  | 说明                               | 类型                                    |
+| ------- | ---------------------------------- | --------------------------------------- |
+| open    | 打开抽屉时触发的事件               | `() => void`                            |
+| opened  | 打开抽屉后触发的事件               | `() => void`                            |
+| close   | 关闭抽屉时触发的事件               | `(trigger:MessageTriggerTypes) => void` |
+| closed  | 关闭抽屉后触发的事件               | `() => void`                            |
+| cancel  | 取消抽屉时触发的事件               | `() => void`                            |
+| confirm | 确认抽屉时触发的事件               | `() => void`                            |
+| hidden  | (关闭，取消，确认)抽屉时触发的事件 | `() => void`                            |
+
+### Drawer Exposes
+
+| 名称    | 说明                      | 类型                                   |
+| ------- | ------------------------- | -------------------------------------- |
+| open    | 打开抽屉, 会触发open事件  | `() => void`                           |
+| close   | 关闭抽屉, 会触发close事件 | `(trigger:MessageTriggerTypes) =>void` |
+| hidden  | 关闭抽屉, 无副作用        | `() => void`                           |
+| toggle  | 闭/打开抽屉, 无副作用     | `() => void`                           |
+| cancel  | 关闭抽屉, 触发cancel事件  | `() => void`                           |
+| confirm | 关闭抽屉, 触发confirm事件 | `() => void`                           |
+
+
 
 ### Drawer Slots
 
-| 名称    | 说明   |
-| ------- | ------ |
-| default | 默认槽 |
+| 名称    | 说明     |
+| ------- | -------- |
+| default | 抽屉body |
+| header  | 抽屉头部 |
+| footer  | 抽屉尾部 |
 

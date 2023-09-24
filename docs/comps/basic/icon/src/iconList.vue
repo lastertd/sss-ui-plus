@@ -4,8 +4,9 @@
 			class="icon-item"
 			v-for="item in data" :key="item"
 			@click="handleClick(item)"
+
 		>
-			<s-icon :target="item" class="icon-icon"></s-icon>
+			<s-icon :target="item" :rotating="item === 'loading'" class="icon-icon"></s-icon>
 			{{item}}
 		</div>
 
@@ -16,51 +17,50 @@
 import {message} from "sss-ui-plus/es/index";
 
 const data = [
-	'eye',
-	'other',
-	'chart-line',
-	'store',
-	'user',
-	'user-fill',
-	'user2',
-	'user-group',
-	'controll',
-	'comps',
-	'time-fill',
-	'tag-fill',
-	'time',
-	'star',
-	'star2',
-	'star-fill',
-	'minus',
-	'plus',
-	'triangle-left',
-	'triangle-right',
-	'triangle-top',
-	'triangle-bottom',
-	'triangle-line-left',
-	'triangle-line-up',
-	'triangle-line-right',
-	'home',
-	'medal',
-	'option',
-	'title',
-	'email',
-	'upload',
-	'upload-2',
-	'delete',
-	'editor',
-	'menu',
-	'file-md',
-	'dongtai',
-	'logout',
-	'cricle-close',
-	'close',
 	'success',
 	'danger',
 	'warning',
 	'info',
-	'loading',
+
+	"minus",
+	'plus',
+
+	"tg-top-1",
+	"tg-top-2",
+	"tg-top-3",
+	"tg-right-1",
+	"tg-right-2",
+	"tg-right-3",
+	"tg-bottom-1",
+	"tg-bottom-2",
+	"tg-bottom-3",
+	"tg-left-1",
+	"tg-left-2",
+	"tg-left-3",
+
+	"image",
+	"email",
+	"logout",
+	"delete",
+	"edit",
+	"user",
+	"user-fill",
+	"user2",
+	"loading",
+	"eye",
+	"other",
+	"tag-fill",
+	"time",
+	"star",
+	"star-fill",
+	"home",
+	"medal",
+	"option",
+	"upload",
+	"dongtai",
+	"close",
+	"cricle-close",
+
 ]
 
 const handleClick = (target:string) => {
@@ -99,9 +99,9 @@ const handleClick = (target:string) => {
 	font-size: 15px;
 	color: var(--sss-color-black-light);
 	.icon-icon{
-		font-size: 20px;
+		font-size: 23px!important;
 		color: var(--sss-color-black-light);
-
+		margin-bottom: 10px;
 
 	}
 

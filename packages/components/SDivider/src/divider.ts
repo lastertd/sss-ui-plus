@@ -24,7 +24,7 @@ export const SDividerProps = {
     /**
      * @description 分割线的文本
      */
-    content:String,
+    text:String,
 
     /**
      * @description 分割线文本所处的位置. 此项不具备响应式，请确保该值不会被改变
