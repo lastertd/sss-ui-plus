@@ -1,1 +1,0 @@
-import{d}from"./IndexManager.c5ac2cf3.js";import"./framework.8f554d97.js";(function(){const n=document.createElement("div"),t=document.body,e=new d;n.classList.add("___sss-floating-container"),n.style.zIndex=e.nextIndex().toString(),t.appendChild(n)})();
