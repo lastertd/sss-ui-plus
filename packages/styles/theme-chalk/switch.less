@@ -3,6 +3,8 @@
 .s-switch {
     user-select: none;
     height: 20px;
+    font-size: 15px;
+
     .useBorderBox();
     .flex-row-center-center();
 
@@ -23,6 +25,70 @@
 
     }
 
+    &:active {
+        .s-switch__trigger {
+            width: 20px;
+
+        }
+    }
+
+    &--small {
+        height: 16px;
+        font-size: 12px;
+        .s-switch__inner{
+            min-width: 32px;
+        }
+        .s-switch__trigger {
+            width: 12px;
+            height: 12px;
+        }
+        &:active{
+            .s-switch__trigger{
+                width: 16px;
+            }
+        }
+        &.is-checked{
+            .s-switch__trigger{
+                transform: translateX(-130%);
+
+            }
+            .s-switch__text {
+                padding: 0 16px 0 7px;
+                text-align: start;
+            }
+        }
+    }
+
+    &--large {
+        height: 24px;
+        font-size: 17px;
+
+        .s-switch__inner{
+            min-width: 50px;
+        }
+        .s-switch__trigger {
+            width: 20px;
+            height: 20px;
+        }
+        &:active{
+            .s-switch__trigger{
+                width: 25px;
+            }
+        }
+        &.is-checked{
+            .s-switch__trigger{
+                transform: translateX(-120%);
+
+
+            }
+            .s-switch__text {
+                padding: 0 20px 0 7px;
+                text-align: start;
+            }
+        }
+    }
+
+
     &__input {
         width: 0;
         height: 0;
@@ -39,24 +105,25 @@
 
 
     &--left {
-        &.is-active{
+        &.is-active {
             color: var(--sss-color-primary);
         }
     }
 
     &--right {
-        &.is-active{
+        &.is-active {
             color: var(--sss-color-primary);
         }
     }
-    &__icon{
+
+    &__icon {
         padding: 0;
     }
 }
 
 .s-switch__inner {
     height: 100%;
-    min-width: 37px;
+    min-width: 40px;
     flex: 1;
     background: var(--sss-color-gray);
     position: relative;
@@ -65,12 +132,6 @@
     transition: background-color .5s ease;
 
 
-    &:active {
-        .s-switch__trigger {
-            width: 20px;
-
-        }
-    }
 }
 
 
@@ -99,7 +160,6 @@
 .s-switch__text {
     flex: 1;
     color: var(--sss-color-white);
-    font-size: var(--sss-font-size-small);
     text-align: end;
     padding: 0 7px 0 20px;
 

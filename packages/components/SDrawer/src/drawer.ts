@@ -1,6 +1,6 @@
 import {PropType} from "vue";
 import {isString} from "@vue/shared";
-import {ElementSizes, MessageTriggerTypes, MessageTypes, Transition} from "@sss-ui-plus/typings";
+import {ElementSizes, MessageTriggerTypes, ElementTypes, Transition} from "@sss-ui-plus/typings";
 
 type positions = 'top' | 'right' | 'bottom' | 'left';
 

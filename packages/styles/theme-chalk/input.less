@@ -1,33 +1,5 @@
 @import "../mixn/_index";
 
-.mixin-icon {
-    flex-shrink: 0;
-    border-radius: inherit;
-    color: var(--sss-color-gray-dark);
-    display: inline-flex;
-
-}
-.mixin-slot{
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-
-
-    border-top-left-radius: inherit;
-    border-bottom-left-radius: inherit;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border: none;
-    border-right: inherit;
-    background-color: var(--sss-color-primary-fade);
-
-
-    & > * {
-        height: 100%;
-        border-radius: inherit;
-        border: none;
-    }
-}
 
 .s-input {
     display: inline-flex;
@@ -37,30 +9,23 @@
 
     position: relative;
 
-    width: 300px;
-    min-height: 35px;
-    line-height: 35px;
+    width: 100%;
 
+    height: var(--sss-component-height);
+    font-size: var(--sss-font-size-default);
 
-    .useBorderBox();
-    .useBorderGray();
-    .useBorderRadius5px();
+    .useBorderDft();
+    .useBorderRadius(5);
     background-color: transparent;
 
 
     user-select: none;
-    font-size: inherit;
     transition: all .3s;
 
-    & * { //继承
-        color: var(--sss-color-black);
-        font-size: inherit;
-        line-height: inherit;
-    }
 
     &:focus-within {
         border: solid 1px var(--sss-color-primary);
-        box-shadow: 0 0 5px 0 var(--sss-color-primary);
+        box-shadow: 0 0 5px 0 var(--sss-color-primary-light);
     }
 
     &:hover {
@@ -71,38 +36,60 @@
         }
     }
 
-
-    &__inner {
-        border: none;
-        border-radius: inherit;
-        background: inherit;
-
-        display: inline-block;
-        min-width: 100px;
-        flex: 1;
-        line-height: inherit;
-
-        padding: 0 5px;
+    &--small {
+        font-size: var(--sss-font-size-small);
+        height: var(--sss-component-height-small);
 
 
-        &:focus {
-            outline: none;
-        }
+    }
 
-        &::placeholder {
-            color: var(--sss-color-gray);
-        }
-
-        &[type="password"]::-ms-reveal {
-            display: none !important;
-
-        }
+    &--large {
+        height: var(--sss-component-height-large);
     }
 
 
-    &__limitIcon {
-        .mixin-icon();
+}
 
+.s-input__inner {
+    border: none;
+    border-radius: inherit;
+    background: inherit;
+
+    height: 100%;
+
+    display: inline-block;
+    min-width: 100px;
+    flex: 1;
+    font-size: inherit;
+
+    padding: 0 7px;
+
+
+    &:focus {
+        outline: none;
+    }
+
+    &::placeholder {
+        color: var(--sss-color-gray);
+    }
+
+    &[type="password"]::-ms-reveal {
+        display: none !important;
+
+    }
+}
+
+.s-input__icon {
+    flex-shrink: 0;
+    border-radius: inherit;
+    color: var(--sss-color-gray-dark);
+    display: inline-flex;
+
+    &--prefix {
+
+    }
+
+    &--limit {
         &[data-overflow = 'true'] {
             color: red;
         }
@@ -120,30 +107,33 @@
         align-items: center;
     }
 
+}
 
-    &__prefixIcon {
-        .mixin-icon();
-    }
+.s-input__slot {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
 
-    &__sufixIcon {
-        .mixin-icon();
+    min-height: 100%;
+    padding: 0 15px;
 
-    }
 
-    &__closeIcon {
-        .mixin-icon();
-    }
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border: none;
+    border-right: inherit;
+    background-color: var(--sss-color-primary-fade);
 
-    &__eyeIcon {
-        .mixin-icon();
-    }
 
-    &__prefixSlot {
-        .mixin-slot();
-    }
+    //& > * {
+    //    height: 100%;
+    //    border-radius: inherit;
+    //    border: none;
+    //}
 
-    &__suffixSlot {
-        .mixin-slot();
+    &--suffix {
         border: none;
         border-left: inherit;
         border-top-left-radius: 0;
@@ -151,21 +141,6 @@
         border-top-right-radius: inherit;
         border-bottom-right-radius: inherit;
     }
-
-    &__alert {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        color: red;
-        font-size: 13px;
-
-        & * {
-            color: inherit;
-            font-size: inherit;
-        }
-    }
-
-
 }
 
 

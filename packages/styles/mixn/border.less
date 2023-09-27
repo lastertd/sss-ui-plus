@@ -1,34 +1,29 @@
-.useBorderBox {
+.useBorderBox() {
     box-sizing: border-box;
     & * {
         box-sizing: border-box;
     }
 }
-.useBorderRadius3px {
-    border-radius: 3px;
-}
-.useBorderRadius5px {
-    border-radius: 5px;
-}
-.useBorderRadius7px {
-    border-radius: 7px;
-}
-.useBorderRadiusInfinite {
-    border-radius: 9999999px;
-}
-.useBorderRadiusCircle {
-    border-radius: 50%;
+
+
+//设置元素的边界曲率
+.useBorderRadius(@num, @unit:px) {
+    border-radius: ~"@{num}@{unit}";
+
 }
 
-.useBorderGray {
+
+
+.useBorderGray() {
     border: 1px solid var(--sss-color-gray);
 }
-.useBorderGrayLighter{
-    border: 1px solid var(--sss-color-gray-fade);
-}
-.useBorderGrayDarker{
-    border: 1px solid var(--sss-color-gray-dark);
-}
-.useBGAuto{
+
+//默认边框, 灰色边框、怪异盒子、背景色
+.useBorderDft(){
+    border: 1px solid var(--sss-color-gray);
     background-color: var(--sss-color-bg);
+    box-sizing: border-box;
+    & * {
+        box-sizing: border-box;
+    }
 }

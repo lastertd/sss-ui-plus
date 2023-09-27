@@ -1,7 +1,7 @@
-export type MessageTypes = 'success' | 'info' | 'warning' | 'danger';
 
 export type MessageTriggerTypes = 'system' | 'esc' | 'mark' | 'icon';
 
+export type ElementTypes = 'success' | 'info' | 'warning' | 'danger';
 export type ElementSizes = 'small' | 'normal' | 'large';
 
 export type FloatingTrigger = 'hover' | 'click' | 'focus' | 'clickToOpen' | 'unset';

@@ -1,14 +1,14 @@
 import {PropType} from "vue";
 import "./msgBox.less"
 import {isString} from "@vue/shared";
-import {ElementSizes, MessageTriggerTypes, MessageTypes, Transition} from "@sss-ui-plus/typings";
+import {ElementSizes, MessageTriggerTypes, ElementTypes, Transition} from "@sss-ui-plus/typings";
 
 
 export const SMsgBoxProps = {
     /**
      * @description 消息框的类型
      */
-    type: String as PropType<MessageTypes>,
+    type: String as PropType<ElementTypes>,
     /**
      * @description 消息框图标
      */

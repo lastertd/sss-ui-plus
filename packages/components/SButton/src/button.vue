@@ -1,6 +1,27 @@
+<template>
+	<button
+		ref="container"
+		:class="buttonKls"
+		:disabled="props.disabled || props.loading"
+		:type="props.nativeType"
+
+		@click="handleClick($event)"
+
+
+	>
+		<s-icon :target="props.prefixIcon"></s-icon>
+		<slot></slot>
+		<s-icon :target="props.suffixIcon"></s-icon>
+
+	</button>
+</template>
+
+
 <script setup lang="ts">
 import {SButtonProps, SButtonEmits} from "./button"
 import {SIcon} from "../../SIcon";
+import {computed} from "vue";
+import {useNS} from "@sss-ui-plus/hooks/useNS";
 
 
 defineOptions({
@@ -11,6 +32,23 @@ defineOptions({
 
 const props = defineProps({...SButtonProps})
 const emits = defineEmits({...SButtonEmits})
+const buttonNS = useNS('button');
+
+
+const buttonKls = computed(() => {
+	return [
+		buttonNS.namespace,
+		buttonNS.m(props.type),
+		buttonNS.m(props.size),
+		buttonNS.m(props.theme),
+		buttonNS.is(props.status),
+		buttonNS.is(props.disabled, 'disabled'),
+		buttonNS.is(props.loading, 'loading'),
+
+	]
+
+
+})
 
 
 const handleClick = (evt: Event) => {
@@ -18,35 +56,5 @@ const handleClick = (evt: Event) => {
 }
 
 
-
-
 </script>
 
-<template>
-	<button
-		ref="container"
-		class="s-button"
-		@click="handleClick($event)"
-		:class="[
-			{
-				'is-round': props.round,
-				'is-circle': props.circle,
-				'is-disabled': props.disabled,
-				'is-loading': props.loading,
-				'is-empty': props.empty,
-				'is-ghost': props.ghost,
-
-			},
-            type? `s-button--${props.type}`:'',
-            size? `s-button--${props.size}`:'',
-		]"
-		:disabled="props.disabled || props.loading"
-		:type="props.nativeType"
-
-	>
-		<s-icon :target="props.prefixIcon"   :vertical-padding="0"></s-icon>
-		<slot></slot>
-		<s-icon :target="props.suffixIcon" :vertical-padding="0"></s-icon>
-
-	</button>
-</template>

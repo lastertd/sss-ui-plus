@@ -1,30 +1,25 @@
 import {PropType} from "vue";
+import {ElementSizes, ElementTypes} from "@sss-ui-plus/typings";
 
 
-const sButtonTypes = [
-    'default',
-    'primary',
-    'success',
-    'warning',
-    'info',
-    'danger',
-    'cyan',
-    'dark'
-] as const;
+type buttonTypes = ElementTypes | 'primary' | 'cyan';
+
 
 
 const sButtonNativeTypes = ['button', 'submit', 'reset'] as const;
-const sElementSize = ['normal', 'small', 'large'] as const;
 
 
 export const SButtonProps = {
     /**
      * @description 按钮的类型
      */
-    type: {
-        type: String as PropType<(typeof sButtonTypes)[number]>,
-        default: sButtonTypes[0],
-    },
+    type: String as PropType<buttonTypes>,
+    /**
+     * @description 按钮的大小
+     */
+    size: String as PropType<ElementSizes>,
+    theme:String as PropType<'ghost' | 'fantasy'>,
+    status:String as PropType<'round' | 'circle'>,
     /**
      * @description 按钮的原生类型
      */
@@ -32,13 +27,7 @@ export const SButtonProps = {
         type: String as PropType<(typeof sButtonNativeTypes)[number]>,
         default: sButtonNativeTypes[0],
     },
-    /**
-     * @description 按钮的大小
-     */
-    size: {
-        type: String as PropType<(typeof sElementSize)[number]>,
-        default: sElementSize[0]
-    },
+
     /**
      * @description 是否是圆角按钮
      */

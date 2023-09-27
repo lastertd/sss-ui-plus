@@ -1,5 +1,5 @@
 import {PropType} from "vue";
-import {FloatingTrigger, Transition, MessageTypes} from "@sss-ui-plus/typings";
+import {FloatingTrigger, Transition, ElementTypes} from "@sss-ui-plus/typings";
 import {Placement} from "@floating-ui/vue";
 
 
@@ -91,7 +91,7 @@ export const SPopconfirmProps = {
     /**
      * @description 气泡确认框的类型
      */
-    type: String as PropType<MessageTypes>,
+    type: String as PropType<ElementTypes>,
     /**
      * @description 气泡确认框取消按钮的文本
      */

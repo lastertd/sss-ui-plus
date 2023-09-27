@@ -1,5 +1,5 @@
 import {PropType} from "vue";
-import {FloatingTrigger, MessageTypes, Transition} from "@sss-ui-plus/typings";
+import {FloatingTrigger, ElementTypes, Transition} from "@sss-ui-plus/typings";
 import {Placement} from "@floating-ui/vue";
 
 
@@ -52,7 +52,7 @@ export const SCascaderProps = {
         type: Boolean,
         default: true
     },
-    type: String as PropType<MessageTypes>,
+    type: String as PropType<ElementTypes>,
     cancelBtnText: {
         type: String,
         default: '取消'

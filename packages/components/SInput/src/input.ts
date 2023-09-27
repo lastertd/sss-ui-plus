@@ -1,5 +1,6 @@
 import {PropType} from "vue";
 import {isString} from "@vue/shared"
+import {ElementSizes} from "@sss-ui-plus/typings";
 
 const SInputTypes = [
     'text',
@@ -18,9 +19,9 @@ export const SInputProps = {
     /**
      * @description 输入框的绑定值
      */
-    modelValue: {
-        type: String || Number || null || undefined,
-
+    modelValue: [String , Number] as PropType<string | number>,
+    size:{
+        type:String as PropType<ElementSizes>,
     },
     /**
      * @description test
@@ -29,11 +30,11 @@ export const SInputProps = {
     /**
      * @description 输入框绑定值的最大长度
      */
-    maxLength: Number,
+    maxLength: [Number, String] as PropType<number | string>,
     /**
      * @description 输入框绑定值的最小长度
      */
-    minLength: Number,
+    minLength: [Number, String] as PropType<number | string>,
     /**
      * @description id
      */
@@ -73,7 +74,7 @@ export const SInputProps = {
     /**
      * @description 输入框绑定值的校验函数
      */
-    checkFunc: Function as PropType<(value: string, alert: (alertText: string, alertIcon?: string) => void) => void>
+    checkFunc: Function as PropType<(value: string, alert?: (alertText?: string, alertIcon?: string) => void) => boolean>
 
 } as const
 
@@ -88,7 +89,12 @@ export const SInputEmits = {
      * @description 输入框输入时触发的事件
      * @param value
      */
-    input: (value: String) => isString(value),
+    input: (value: string ) => isString(value),
+    /**
+     * @description 绑定值发生变化
+     * @param value
+     */
+    change: (value: string ) => isString(value),
     /**
      * @description 输入框失去焦点后触发的事件
      * @param evt

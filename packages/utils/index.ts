@@ -8,6 +8,7 @@ export * from "./decorator/throttle"
 // element
 export * from "./element/Mark"
 export * from "./element/Badge"
+export * from "./element/Alert"
 
 
 // manager

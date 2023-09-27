@@ -1,0 +1,29 @@
+.s-alert{
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    color: red;
+    font-size: 13px;
+    transition: all .3s ease;
+    line-height: 1.2em!important;
+
+
+    opacity: 0;
+    user-select: none;
+    transform: translateY(-15px);
+
+
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    & > *:first-child{
+        margin-right: 5px;
+    }
+
+    & * {
+        color: inherit;
+        font-size: inherit;
+    }
+}

@@ -17,6 +17,11 @@ import SCascader from "./SCascader";
 import SSkeleton from "./SSkeleton";
 import SSkeletonItem from "./SSkeletonItem";
 import SBadge from "./SBadge";
+import STag from "./STag"
+import STimeline from "./STimeline"
+import STimelineItem from "./STimelineItem"
+import SProgress from "./Sprogress";
+
 import {App} from "vue";
 
 const comps =  {
@@ -38,7 +43,12 @@ const comps =  {
     SCascader,
     SSkeleton,
     SSkeletonItem,
-    SBadge
+    SBadge,
+    STag,
+    STimeline,
+    STimelineItem,
+    SProgress,
+
 
 }
 

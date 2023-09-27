@@ -7,7 +7,7 @@ type targetType = Ref<HTMLElement | undefined | null | VueInstance> | HTMLElemen
 interface BadgeOptions {
     value: Ref<string | number> | ComputedRef<any>
     type?: BadgeType,
-    isEmpty?: boolean,
+    theme?: Ref<string[]>
 }
 
 /**
@@ -16,14 +16,19 @@ interface BadgeOptions {
  * @param options 配置选项
  */
 export const useBadge = function (target: targetType, options: BadgeOptions) {
-    const {value, type, isEmpty} = options;
+    const {value, type, theme} = options;
     const badge = new Badge(type);
     let cleanup = noop;
 
 
-    if (isEmpty) {
-        badge.getElement().classList.add(`s-badge--empty`);
-    }
+    const themeWatcher = watch(() => theme?.value, (klsList) => {
+        badge.getElement().classList.remove('s-badge--light')
+        badge.getElement().classList.remove('s-badge--dark');
+
+        klsList?.forEach((kls) => badge.getElement().classList.add(kls));
+
+    }, {immediate: true});
+
 
     const targetWatcher = watch(() => {
         if (target instanceof HTMLElement) {
@@ -59,10 +64,15 @@ export const useBadge = function (target: targetType, options: BadgeOptions) {
     }, {immediate: true})
 
 
-    onUnmounted(() => {
+    const stop = () => {
         cleanup();
+        themeWatcher();
         targetWatcher();
         valueWatcher();
+    }
+
+    onUnmounted(() => {
+        stop();
     })
 
 
@@ -72,11 +82,7 @@ export const useBadge = function (target: targetType, options: BadgeOptions) {
         /**
          * @description 停止使用badge
          */
-        stop: () => {
-            targetWatcher();
-            cleanup();
-            valueWatcher();
-        },
+        stop,
         /**
          * @description 显示badge
          */

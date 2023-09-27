@@ -1,3 +1,23 @@
+<template>
+	<div
+		ref="divider"
+		class="s-divider"
+		:class="[
+			`s-divider--${props.type}`,
+			`s-divider--${props.direction}`
+		]"
+	>
+		<span class="s-divider__content" ref="content">
+			<s-icon :target="props.prefixIcon" no-padding></s-icon>
+			<template v-if="slots.default">
+				<slot></slot>
+			</template>
+			<template v-else>{{ props.text }}</template>
+			<s-icon :target="props.suffixIcon" no-padding></s-icon>
+		</span>
+	</div>
+</template>
+
 <script setup lang="ts">
 import {SDividerProps} from "./divider";
 import {onMounted, ref, useSlots} from "vue";
@@ -13,9 +33,6 @@ const props = defineProps({...SDividerProps});
 const content = ref<HTMLElement | undefined>(undefined);
 const divider = ref<MaybeElement>(undefined);
 const slots = useSlots();
-
-
-
 
 
 onMounted(() => {
@@ -36,7 +53,7 @@ onMounted(() => {
 		}
 
 		if (props.gap !== undefined) {
-			unrefElement(divider)!.style.margin = `${props.gap-0.5}px 0`
+			unrefElement(divider)!.style.margin = `${props.gap - 0.5}px 0`
 		}
 
 	} else if (props.direction === 'vertical') {
@@ -53,29 +70,11 @@ onMounted(() => {
 		}
 
 		if (props.gap !== undefined) {
-			unrefElement(divider)!.style.margin = `0 ${props.gap-0.5}px`
+			unrefElement(divider)!.style.margin = `0 ${props.gap - 0.5}px`
 		}
 	}
 })
 
 </script>
 
-<template>
-	<div
-		ref="divider"
-		class="s-divider"
-		:class="[
-			`s-divider--${props.type}`,
-			`s-divider--${props.direction}`
-		]"
-	>
-		<span class="s-divider__content" ref="content">
-			<s-icon :target="props.prefixIcon" no-padding></s-icon>
-			<template v-if="slots.default">
-				<slot></slot>
-			</template>
-			<template v-else>{{ props.text }}</template>
-			<s-icon :target="props.suffixIcon" no-padding></s-icon>
-		</span>
-	</div>
-</template>
+

@@ -1,290 +1,367 @@
 @import "../mixn/_index";
 
+
+@colors: #ff0000, #00ff00, #0000ff;
+
+
 .s-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    vertical-align: center;
 
-    gap: 4px;
-    padding: 8px 15px;
+    @types: primary, success, info, warning, danger, cyan;
+    @sizes: {
+        small: .useSizeSmall();
+        normal: .useSizeDft();
+        large: .useSizeLarge();
+    }
+    @theme: ghost, fantasy;
+    @status: round, circle;
 
-    .useBorderBox();
-    .useBorderRadius5px();
-    .useBorderGray();
-    background: transparent;
 
+    .useIFlexRCC(4);
+    .useBorderDft();
+    .useSizeDft();
+    .useBorderRadius(5);
 
     transition: all .15s;
     user-select: none;
 
-    &--default{
+    each(@sizes, {
+        &--@{key} {
+            @value();
+        }
+    })
+
+
+    each(@types, {
+        &--@{value} {
+            color: var(--sss-color-white);
+            background-color: .getCssColorVar(@value)[@res];
+
+            &:hover,
+            &:focus {
+                background-color: .getCssColorVar(~"@{value}-light")[ @res ];
+            }
+
+            &:active {
+                background-color: .getCssColorVar(~"@{value}-dark")[@res];
+            }
+
+            //&.s--ghost{
+            //    border: none;
+            //    color: .getCssColorVar(@value)[@res];
+            //}
+        }
+    })
+
+    &--primary1 {
+        &.is-empty {
+            color: var(--sss-color-primary);
+            background-color: var(--sss-color-primary-fade);
+            border-color: var(--sss-color-primary-lighter);
+
+            &:hover,
+            &:focus {
+                color: var(--sss-color-white);
+                background-color: var(--sss-color-primary);
+            }
+
+            &:active {
+                color: var(--sss-color-white);
+                background-color: var(--sss-color-primary-dark);
+            }
+        }
+
+        &.is-ghost {
+            border: none;
+            color: var(--sss-color-primary);
+            background-color: transparent;
+
+            &:hover,
+            &:focus {
+                color: var(--sss-color-primary-light);
+                background-color: var(--sss-color-primary-fade);
+            }
+
+            &:active {
+                color: var(--sss-color-primary-dark);
+            }
+        }
+    }
+
+
+    &--default {
         &:hover,
-        &:focus{
+        &:focus {
             background: var(--sss-color-gray-fade);
             color: var(--sss-color-primary);
         }
+
         &:active {
             color: var(--sss-color-primary);
             border-color: var(--sss-color-primary);
         }
 
-        &.is-empty{
-            &:hover{
-                background:transparent;
+        &.is-empty {
+            &:hover {
+                background: transparent;
             }
-        }
-        &.is-ghost{
-            border: none;
-            &:active{
-            }
-        }
-    }
-    &--primary{
-        color: var(--sss-color-white);
-        background-color: var(--sss-color-primary);
-        &:hover,
-        &:focus{
-            background-color: var(--sss-color-primary-light);
-        }
-        &:active {
-            background-color: var(--sss-color-primary-dark);
         }
 
-        &.is-empty{
-            color: var(--sss-color-primary);
-            background-color: var(--sss-color-primary-fade);
-            border-color: var(--sss-color-primary-lighter);
-            &:hover,
-            &:focus{
-                color: var(--sss-color-white);
-                background-color: var(--sss-color-primary);
-            }
-            &:active{
-                color: var(--sss-color-white);
-                background-color: var(--sss-color-primary-dark);
-            }
-        }
-        &.is-ghost{
+        &.is-ghost {
             border: none;
-            color: var(--sss-color-primary);
-            background-color: transparent;
-            &:hover,
-            &:focus{
-                color: var(--sss-color-primary-light);
-                background-color: var(--sss-color-primary-fade);
-            }
-            &:active{
-                color: var(--sss-color-primary-dark);
+
+            &:active {
             }
         }
     }
-    &--success{
+
+
+    &--success {
         color: var(--sss-color-white);
         background-color: var(--sss-color-success);
+
         &:hover,
-        &:focus{
+        &:focus {
             background-color: var(--sss-color-success-light);
         }
+
         &:active {
             background-color: var(--sss-color-success-dark);
         }
 
-        &.is-empty{
+        &.is-empty {
             color: var(--sss-color-success);
             background-color: var(--sss-color-success-fade);
             border-color: var(--sss-color-success-lighter);
+
             &:hover,
-            &:focus{
+            &:focus {
                 color: var(--sss-color-white);
                 background-color: var(--sss-color-success);
             }
-            &:active{
+
+            &:active {
                 color: var(--sss-color-white);
                 background-color: var(--sss-color-success-dark);
             }
         }
-        &.is-ghost{
+
+        &.is-ghost {
             border: none;
             color: var(--sss-color-success);
             background-color: transparent;
+
             &:hover,
-            &:focus{
+            &:focus {
                 color: var(--sss-color-success-light);
                 background-color: var(--sss-color-success-fade);
             }
-            &:active{
+
+            &:active {
                 color: var(--sss-color-success-dark);
             }
         }
     }
-    &--info{
+
+    &--info {
         color: var(--sss-color-white);
         background-color: var(--sss-color-info);
+
         &:hover,
-        &:focus{
+        &:focus {
             background-color: var(--sss-color-info-light);
         }
+
         &:active {
             background-color: var(--sss-color-info-dark);
         }
 
-        &.is-empty{
+        &.is-empty {
             color: var(--sss-color-info);
             background-color: var(--sss-color-info-fade);
             border-color: var(--sss-color-info-lighter);
+
             &:hover,
-            &:focus{
+            &:focus {
                 color: var(--sss-color-white);
                 background-color: var(--sss-color-info);
             }
-            &:active{
+
+            &:active {
                 color: var(--sss-color-white);
                 background-color: var(--sss-color-info-dark);
             }
         }
-        &.is-ghost{
+
+        &.is-ghost {
             border: none;
             color: var(--sss-color-info);
             background-color: transparent;
+
             &:hover,
-            &:focus{
+            &:focus {
                 color: var(--sss-color-info-light);
                 background-color: var(--sss-color-info-fade);
             }
-            &:active{
+
+            &:active {
                 color: var(--sss-color-info-dark);
             }
         }
     }
-    &--warning{
+
+    &--warning {
         color: var(--sss-color-white);
         background-color: var(--sss-color-warning);
+
         &:hover,
-        &:focus{
+        &:focus {
             background-color: var(--sss-color-warning-light);
         }
+
         &:active {
             background-color: var(--sss-color-warning-dark);
         }
 
-        &.is-empty{
+        &.is-empty {
             color: var(--sss-color-warning);
             background-color: var(--sss-color-warning-fade);
             border-color: var(--sss-color-warning-lighter);
+
             &:hover,
-            &:focus{
+            &:focus {
                 color: var(--sss-color-white);
                 background-color: var(--sss-color-warning);
             }
-            &:active{
+
+            &:active {
                 color: var(--sss-color-white);
                 background-color: var(--sss-color-warning-dark);
             }
         }
-        &.is-ghost{
+
+        &.is-ghost {
             border: none;
             color: var(--sss-color-warning);
             background-color: transparent;
+
             &:hover,
-            &:focus{
+            &:focus {
                 color: var(--sss-color-warning-light);
                 background-color: var(--sss-color-warning-fade);
             }
-            &:active{
+
+            &:active {
                 color: var(--sss-color-warning-dark);
             }
         }
     }
-    &--danger{
+
+    &--danger {
         color: var(--sss-color-white);
         background-color: var(--sss-color-danger);
+
         &:hover,
-        &:focus{
+        &:focus {
             background-color: var(--sss-color-danger-light);
         }
+
         &:active {
             background-color: var(--sss-color-danger-dark);
         }
 
-        &.is-empty{
+        &.is-empty {
             color: var(--sss-color-danger);
             background-color: var(--sss-color-danger-fade);
             border-color: var(--sss-color-danger-lighter);
+
             &:hover,
-            &:focus{
+            &:focus {
                 color: var(--sss-color-white);
                 background-color: var(--sss-color-danger);
             }
-            &:active{
+
+            &:active {
                 color: var(--sss-color-white);
                 background-color: var(--sss-color-danger-dark);
             }
         }
-        &.is-ghost{
+
+        &.is-ghost {
             border: none;
             color: var(--sss-color-danger);
             background-color: transparent;
+
             &:hover,
-            &:focus{
+            &:focus {
                 color: var(--sss-color-danger-light);
                 background-color: var(--sss-color-danger-fade);
             }
-            &:active{
+
+            &:active {
                 color: var(--sss-color-danger-dark);
             }
         }
     }
-    &--cyan{
+
+    &--cyan {
         color: var(--sss-color-white);
         background-color: var(--sss-color-cyan);
+
         &:hover,
-        &:focus{
+        &:focus {
             background-color: var(--sss-color-cyan-light);
         }
+
         &:active {
             background-color: var(--sss-color-cyan-dark);
         }
 
-        &.is-empty{
+        &.is-empty {
             color: var(--sss-color-cyan);
             background-color: var(--sss-color-cyan-fade);
             border-color: var(--sss-color-cyan-lighter);
+
             &:hover,
-            &:focus{
+            &:focus {
                 color: var(--sss-color-white);
                 background-color: var(--sss-color-cyan);
             }
-            &:active{
+
+            &:active {
                 color: var(--sss-color-white);
                 background-color: var(--sss-color-cyan-dark);
             }
         }
-        &.is-ghost{
+
+        &.is-ghost {
             border: none;
             color: var(--sss-color-cyan);
             background-color: transparent;
+
             &:hover,
-            &:focus{
+            &:focus {
                 color: var(--sss-color-cyan-light);
                 background-color: var(--sss-color-cyan-fade);
             }
-            &:active{
+
+            &:active {
                 color: var(--sss-color-cyan-dark);
             }
         }
     }
 
 
-    &--large{
-        padding: 12px 20px;
-    }
-
-    &--small{
-        font-size: var(--sss-font-size-small);
-        padding: 5px 11px;
-
-    }
+    //&--large {
+    //    padding: 12px 20px;
+    //    height: var(--sss-component-height-large);
+    //}
+    //
+    //&--small {
+    //    font-size: var(--sss-font-size-small);
+    //    padding: 5px 11px;
+    //    height: var(--sss-component-height-small);
+    //
+    //}
 
 }
 

@@ -7,3 +7,5 @@ export * from "./useLockScroll"
 export * from "./useMark"
 
 export * from "./useBadge"
+
+export * from "./useAlert"

@@ -20,6 +20,11 @@ export * from "./SSkeletonItem"
 export * from "./SSwitch"
 export * from "./STooltip"
 
+export * from "./SBadge"
+export * from "./STag"
+export * from "./STimeline"
+export * from "./STimelineItem"
+export * from "./Sprogress"
 
 export * from "./SMessage"
 

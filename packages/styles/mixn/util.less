@@ -1,0 +1,14 @@
+
+
+@variablePrefix:sss;
+@res:unset;
+
+
+
+.union(@var1, @var2){
+    @res:~"@{var1}-@{var2}"
+}
+
+.getCssColorVar(@type){
+    @res:~"var(--@{variablePrefix}-color-@{type})"
+}

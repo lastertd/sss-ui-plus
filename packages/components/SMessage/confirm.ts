@@ -1,13 +1,13 @@
 import {App, createApp} from "vue";
 import {IndexManager, Mark} from "@sss-ui-plus/utils";
-import {MessageTriggerTypes, MessageTypes} from "@sss-ui-plus/typings";
+import {MessageTriggerTypes, ElementTypes} from "@sss-ui-plus/typings";
 import {SMessageBoxInstance, SMessageBox} from "../SMessageBox";
 
 interface options {
     /**
      * @description 消息的类型
      */
-    type: MessageTypes,
+    type: ElementTypes,
     /**
      * @description 自定义消息的图标
      */

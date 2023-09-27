@@ -1,70 +1,122 @@
 <template>
 
-<s-play></s-play>
-
-	<s-badge :value="val" maxvalue="15"  type="info">
-		<s-button type="primary" @click="handleClick">click me</s-button>
-	</s-badge>
+	<s-button @click="handleClick" size="normal">click me</s-button>
 
 
-	<s-divider content-position="start">hh</s-divider>
-
-	<s-popconfirm content="are you sure111111111111111?"  type="info" >
-		<s-input></s-input>
-	</s-popconfirm>
-
-
-	<s-switch v-model="f"
-	          inactive-text="N"
-	          active-text="YYYYY"
-	          active-icon="medal"
-	          inactive-icon="user2"
-	          trigger-icon="loading"
-	></s-switch>
+	<div style="display: flex;gap: 10px">
+		<s-tag closable size="small" @click="handleClick" status="round">hello</s-tag>
+		<s-tag type="primary">hello</s-tag>
+		<s-tag type="success" size="large">hello</s-tag>
+		<s-tag closable type="info" theme="light">hello</s-tag>
+		<s-tag closable type="warning" theme="light">hello</s-tag>
+		<s-tag closable type="danger" theme="light">hello</s-tag>
+	</div>
 
 
+	<s-timeline size="large" direction="horizontal">
+		<s-timeline-item time="2023-09-26-12:13:14" type="success" theme="empty" icon="medal">
+			hello
+
+		</s-timeline-item>
+		<s-timeline-item time="2023/2323" theme="empty" icon="medal">
+			hello
+		</s-timeline-item>
+		<s-timeline-item time="2023/2323" type="info">
+			hello
+		</s-timeline-item>
+		<s-timeline-item time="2023/2323" theme="empty" type="info">
+			success
+			<br>
+			success!
+		</s-timeline-item>
+	</s-timeline>
+
+	<br>
+	<s-progress :percentage="p" :color="foo" text-status="inside"  style="height: 15px" ></s-progress>
+	<br>
+	<s-progress :percentage="p" type="warning"  text-status="outside"  ></s-progress>
 
 
-	<div style="height: 1500px"></div>
+	<br>
+	<s-button type="primary"  theme="ghost" >click me</s-button>
+	<s-button type="primary"  size="small" theme="ghost" >click me</s-button>
+
+
+
+
+
+
 
 
 </template>
 
 <script setup lang="ts">
-import { SPartial} from "@sss-ui-plus/components"
-import {SDialogInstance} from "@sss-ui-plus/components/SDialog"
-import {ref} from "@vue/runtime-core";
-
-import {useBadge} from "@sss-ui-plus/hooks/useBadge";
-import SPlay from "./SPlay.vue";
 
 
+import {onMounted, ref} from "vue";
+import {Alert} from "@sss-ui-plus/utils";
+import {unrefElement} from "@vueuse/core";
+import useAlert from "@sss-ui-plus/hooks/useAlert";
+import {SIconInstance} from "@sss-ui-plus/components";
 
-const f = ref(false);
-const val = ref<number>(3)
-const btn = ref();
-const dlg = ref<SDialogInstance>();
-const demo = ref();
+
+const div = ref<HTMLElement | null>(null);
+const val = ref<string | null>(null);
+const ipt = ref<SIconInstance | null>(null);
+const f = ref(false)
 
 
-const hh = function (){
-	dlg.value!.close();
+
+const p = ref(20);
+
+setInterval(() => {
+	p.value += 2;
+	if (p.value>100) p.value = 0;
+},300)
+
+
+const handleClick = () => {
+	console.log('1')
 }
-const tt = function (){
-	dlg.value!.toggle();
-}
-const handleClick = function () {
-	f.value = !f.value
-	val.value++;
-}
 
+const foo = (num:number) => {
+	if (num>80){
+		return 'var(--sss-color-primary)'
+	}else if (num>60){
+		return 'var(--sss-color-info)'
+
+	}else if (num>40){
+		return 'var(--sss-color-warning)'
+
+	}else if (num>20){
+		return 'var(--sss-color-danger)'
+
+	}else {
+		return 'var(--sss-color-cyan)'
+
+	}
+}
 
 
 </script>
 
-
 <style lang="less">
-body{
+@import "../packages/styles/mixn/_index";
+
+.test {
+	width: 80vw;
+	height: 30px;
+	.useBorderGray();
+	.useBorderRadius(@infinite);
+	background-color: var(--sss-color-primary-lighter);
+	.useBGScanningLine(var(--sss-color-primary-lighter), .5s);
+	padding: 10px;
+}
+
+body {
+	//line-height: 1.5em;
+
+	//background-color: rebeccapurple;
 	&::-webkit-scrollbar {
 		width: 6px;
 	}
@@ -81,16 +133,14 @@ body{
 }
 
 
-
-
-
 #app {
 
 	display: flex;
 	flex-flow: column nowrap;
 	align-items: center;
-	gap: 10px;
+	//gap: 10px;
 	padding-top: 50px;
+	font-size: 15px;
 }
 
 .demo {

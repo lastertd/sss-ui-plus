@@ -1,51 +1,11 @@
-<script setup lang="ts">
-import {SSwitchEmits, SSwitchProps} from "./switch";
-import {computed} from "vue";
-import switchTxt from "./switchTxt.vue"
-
-defineOptions({
-	name: 'SSwitch',
-	inheritAttrs: false
-})
-
-const props = defineProps({...SSwitchProps});
-const emits = defineEmits({...SSwitchEmits})
-
-const text = computed(() => {
-	if (props.modelValue) {
-		return props.activeText;
-	} else {
-		return props.inactiveText;
-	}
-})
-
-
-const handleClick = () => {
-	const done = () => {
-		if (props.loading) return
-		if (props.modelValue) {
-			emits("update:modelValue", false);
-			emits("change", "off")
-		} else {
-			emits("update:modelValue", true);
-			emits("change", "on");
-		}
-	}
-	if (props.beforeChange) {
-		props.beforeChange(done);
-	} else done();
-}
-
-
-</script>
-
-
 <template>
 	<div
 		class="s-switch"
 		:class="[{
 			'is-checked':props.modelValue,
-			'is-disabled':props.disabled
+			'is-disabled':props.disabled,
+			's-switch--small':props.size ==='small',
+			's-switch--large':props.size === 'large'
 			},
 		]"
 		@click="handleClick"
@@ -93,3 +53,46 @@ const handleClick = () => {
 
 	</div>
 </template>
+<script setup lang="ts">
+import {SSwitchEmits, SSwitchProps} from "./switch";
+import {computed} from "vue";
+import switchTxt from "./switchTxt.vue"
+
+defineOptions({
+	name: 'SSwitch',
+	inheritAttrs: false
+})
+
+const props = defineProps({...SSwitchProps});
+const emits = defineEmits({...SSwitchEmits})
+
+const text = computed(() => {
+	if (props.modelValue) {
+		return props.activeText;
+	} else {
+		return props.inactiveText;
+	}
+})
+
+
+const handleClick = () => {
+	const done = () => {
+		if (props.loading) return
+		if (props.modelValue) {
+			emits("update:modelValue", false);
+			emits("change", "off")
+		} else {
+			emits("update:modelValue", true);
+			emits("change", "on");
+		}
+	}
+	if (props.beforeChange) {
+		props.beforeChange(done);
+	} else done();
+}
+
+
+</script>
+
+
+

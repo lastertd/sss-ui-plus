@@ -18,6 +18,12 @@ declare module '@vue/runtime-core' {
         SCascader: typeof import('../components')['SCascader'],
         SSkeleton: typeof import('../components')['SSkeleton'],
         SSkeletonItem: typeof import('../components')['SSkeletonItem'],
+        SBadge: typeof import('../components')['SBadge'],
+        STag: typeof import('../components')['STag'],
+        STimeline: typeof import('../components')['STimeline'],
+        STimelineItem: typeof import('../components')['STimelineItem'],
+        SProgress: typeof import('../components')['SProgress'],
+
 
 
     }
