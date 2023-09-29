@@ -1,5 +1,5 @@
 @variablePrefix: sss;
-@componentPrefix:s;
+@componentPrefix: s;
 
 .d(@b, @r:{}) {
     .@{b} {
@@ -34,16 +34,15 @@
     }
 }
 
-.is(@s, @r:{}){
-    &.is-@{s}{
+.is(@s, @r:{}) {
+    &.is-@{s} {
         @r();
     }
 }
 
 
-
 .b(@b, @r:{}) {
-    &-@{b}{
+    &-@{b} {
         @r();
     }
 }
@@ -61,20 +60,33 @@
 }
 
 
-.bm(@b, @m, @r:{}){
+.bm(@b, @m, @r:{}) {
     &-@{b}--@{m} {
         @r();
     }
 }
 
-.be(@b, @e, @r:{}){
-    &-@{b}__@{e}{
+.be(@b, @e, @r:{}) {
+    &-@{b}__@{e} {
         @r();
     }
 }
 
-.em(@e, @m, @r:{}){
+.em(@e, @m, @r:{}) {
     &__@{e}--@{m} {
         @r();
+    }
+}
+
+
+.mIs(@modifier, @status, @rules:{}) {
+    &--@{modifier}.is-@{status} {
+        @rules();
+    }
+}
+
+.mWith(@modifier, @a, @rules:{}) {
+    &--@{modifier}.@{a} {
+        @rules();
     }
 }

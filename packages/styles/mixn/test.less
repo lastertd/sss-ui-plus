@@ -1,0 +1,13 @@
+@import "../mixn/util";
+
+
+@sizeSet: large, small;
+
+ {
+    each(@sizeSet, .(@rule, @key) {
+        .m(@key, {
+            test: 123;
+        });
+
+    });
+}
