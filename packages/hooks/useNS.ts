@@ -11,16 +11,22 @@ interface IS{
 
 export const useNS = function (name: string) {
     const namespace = `${defaultNS}-${name}`;
-    const e = (block?: string) => {
-        return block ? `${namespace}__${block}` : '';
+
+    const b = (block?:string) => {
+        return block ? `${namespace}-${block}` : '';
+
     }
+    const e = (element?: string) => {
+        return element ? `${namespace}__${element}` : '';
+    }
+
 
     const m = (modifier?: string) => {
         return modifier ? `${namespace}--${modifier}` : '';
     }
 
     const em = (block?: string, modifier?: string) => {
-        return block && modifier ? `${namespace}__${block}__${modifier}` : '';
+        return block && modifier ? `${namespace}__${block}--${modifier}` : '';
     }
 
     const is:IS = (status?: boolean | string, s?: string) => {
@@ -40,6 +46,7 @@ export const useNS = function (name: string) {
 
     return {
         namespace,
+        b,
         e,
         m,
         em,

@@ -1,52 +1,95 @@
 @import "../mixn/_index";
 
-.s-divider {
-    .useBorderBox();
-    position: relative;
+@plugin "../plugin/index";
 
-    &--solid {
-        border-top: 1px solid var(--sss-color-gray);
-        border-left: 1px solid var(--sss-color-gray);
-    }
 
-    &--dashed {
-        border-top: 1px dashed var(--sss-color-gray);
-        border-left: 1px dashed var(--sss-color-gray);
-    }
+& {
+    @ns: @{componentPrefix}-divider;
+    @status: dashed, solid;
+    @placements: start, center, end;
 
-    &--vertical {
+
+    @dir: vertical, horizontal;
+
+
+    //variable
+    .d(b(@ns), {
+        --sss-divider-gap: 10px;
+        --sss-divider-placement: center;
+    });
+
+    //base
+    .d(b(@ns), {
+        .useBorderBox();
+        .useIFlexRCC();
+        position: relative;
+
+        margin: var(--sss-divider-gap) 0;
+        width: 100%;
+        height: 1px;
+        font-size: var(--sss-font-size-small);
+
+
+        .include(be(@ns, content), {
+            padding: 0 10px;
+
+        });
+
+
+    });
+
+    //status
+    each(@status, .(@type) {
+        .d(bm(@ns, @type), {
+            border-top: 1px @type var(--sss-color-gray);
+            border-left: 1px @type var(--sss-color-gray);
+        });
+    });
+
+
+    //placement
+    each(@placements, .(@v) {
+        .d(bm(@ns, @v), {
+            & when (@v = start) {
+                .include(be(@ns, content), {
+                    left: 15px;
+                })
+            }
+            & when (@v = end) {
+                .include(be(@ns, content), {
+                    right: 15px;
+                })
+            }
+
+        });
+    });
+
+
+    //direction vertical
+    .d(bm(@ns, vertical), {
         margin: 0 10px;
         height: 1em;
         width: 0;
         display: inline-flex;
 
-        & .s-divider__content {
-            transform: translateX(-50%);
-            flex-flow: column nowrap;
-            padding: 10px 0;
 
-        }
-    }
+        .include(be(@ns, content), {
+            padding: 0;
+        });
+    });
 
-    &--horizontal {
-        margin: 10px 0;
-        width: 100%;
-        height: 1px;
 
-        & .s-divider__content {
-            transform: translateY(-50%);
-            padding: 0 10px;
+    //content element
+    .d(be(@ns, content), {
+        position: absolute;
+        .useIFlexRCC(5);
+        opacity: 1;
+        background-color: var(--sss-color-bg);
+        left: var(--sss-divider-placement);
+    });
 
-        }
-    }
 
 }
 
 
-.s-divider__content {
-    position: absolute;
-    .flex-row-center-center();
-    gap: 5px;
-    opacity: 1;
-    background-color: var(--sss-color-bg);
-}
+

@@ -1,27 +1,25 @@
 <template>
 	<div
 		ref="divider"
-		class="s-divider"
-		:class="[
-			`s-divider--${props.type}`,
-			`s-divider--${props.direction}`
-		]"
+		:class="dividerKls"
+		:style="dividerSdl"
 	>
-		<span class="s-divider__content" ref="content">
-			<s-icon :target="props.prefixIcon" no-padding></s-icon>
+		<span :class="dividerNS.e('content')" ref="content">
+			<s-icon :target="props.prefixIcon"></s-icon>
 			<template v-if="slots.default">
 				<slot></slot>
 			</template>
 			<template v-else>{{ props.text }}</template>
-			<s-icon :target="props.suffixIcon" no-padding></s-icon>
+			<s-icon :target="props.suffixIcon"></s-icon>
 		</span>
 	</div>
 </template>
 
 <script setup lang="ts">
 import {SDividerProps} from "./divider";
-import {onMounted, ref, useSlots} from "vue";
+import {computed, onMounted, ref, useSlots} from "vue";
 import {unrefElement, MaybeElement} from "@vueuse/core";
+import {useNS} from "@sss-ui-plus/hooks/useNS";
 
 
 defineOptions({
@@ -33,47 +31,28 @@ const props = defineProps({...SDividerProps});
 const content = ref<HTMLElement | undefined>(undefined);
 const divider = ref<MaybeElement>(undefined);
 const slots = useSlots();
+const dividerNS = useNS('divider');
 
 
-onMounted(() => {
-	const el = unrefElement(content) as HTMLElement;
+const dividerKls = computed(() => {
+	return [
+		dividerNS.namespace,
+		dividerNS.m(props.status),
+		dividerNS.m(props.direction),
+		dividerNS.m(props.placement)
 
+	]
 
-	if (props.direction === 'horizontal') {
-		if (props.contentPosition === 'start') {
-			el.style.left = '15px';
-		} else if (props.contentPosition === 'center') {
-			el.style.left = '50%';
-			el.style.transform = 'translate(-50%,-50%)';
-		}
-		if (props.contentPosition === 'end') {
-			el.style.right = '15px';
-		} else {
-			el.style.left = props.contentPosition as string;
-		}
+})
 
-		if (props.gap !== undefined) {
-			unrefElement(divider)!.style.margin = `${props.gap - 0.5}px 0`
-		}
+const dividerSdl = computed(() => {
+	return {
+		'--sss-divider-gap': props.gap ? `${props.gap}px` : '15px',
+		'--sss-divider-placement': props.placement,
 
-	} else if (props.direction === 'vertical') {
-		if (props.contentPosition === 'start') {
-			el.style.top = '15px';
-		} else if (props.contentPosition === 'center') {
-			el.style.top = '50%';
-			el.style.transform = 'translate(-50%,-50%)';
-		}
-		if (props.contentPosition === 'end') {
-			el.style.bottom = '15px';
-		} else {
-			el.style.top = props.contentPosition as string;
-		}
-
-		if (props.gap !== undefined) {
-			unrefElement(divider)!.style.margin = `0 ${props.gap - 0.5}px`
-		}
 	}
 })
+
 
 </script>
 

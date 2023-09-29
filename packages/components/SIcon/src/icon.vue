@@ -1,16 +1,11 @@
 <template>
 	<component
 		ref="icon"
+		v-if="props.target"
+		:class="iconKls"
+		:style="iconSdl"
 		:is="props.tag"
 		:for="props.for"
-		v-if="props.target"
-		class=" s-icon iconfont"
-		:class="[{
-			'is-rotating':props.rotating
-		},
-			`sss-${target}`
-
-		]"
 		v-bind="$attrs"
 	></component>
 
@@ -19,31 +14,36 @@
 
 <script setup lang="ts">
 import {SIconProps} from "./icon";
-import {nextTick, ref, watch} from "vue";
+import {computed, ref} from "vue";
+import {useNS} from "@sss-ui-plus/hooks/useNS";
 
 defineOptions({
 	name: "SIcon",
 	inheritAttrs: false,
 })
 
+
+const props = defineProps({...SIconProps});
 const icon = ref<HTMLElement | null>(null);
+const iconNS = useNS('icon');
 
-const props = defineProps({...SIconProps})
+const iconKls = computed(() => {
+	return [
+		iconNS.namespace,
+		iconNS.is(props.rotating, 'rotating'),
+		"iconfont",
+		`sss-${props.target}`
+	]
+})
+const iconSdl = computed(() => {
+	return{
+		'--sss-icon-color': props.color ? `${props.color}` : 'inherit',
 
-
-watch(() => props.target, (t) => {
-	if (!t) {
-		return
 	}
-	nextTick().then(() => {
-		if (props.noPadding) {
-			icon.value!.style.padding = '0'
-		}
-		if (props.color) {
-			icon.value!.style.color = props.color;
-		}
-	})
-}, {immediate: true})
+})
+
+
+
 
 
 </script>

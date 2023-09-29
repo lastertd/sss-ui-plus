@@ -1,367 +1,243 @@
 @import "../mixn/_index";
 
-
-@colors: #ff0000, #00ff00, #0000ff;
-
-
-.s-button {
-
-    @types: primary, success, info, warning, danger, cyan;
-    @sizes: {
-        small: .useSizeSmall();
-        normal: .useSizeDft();
-        large: .useSizeLarge();
-    }
-    @theme: ghost, fantasy;
-    @status: round, circle;
+@plugin "../plugin/index";
 
 
-    .useIFlexRCC(4);
-    .useBorderDft();
-    .useSizeDft();
-    .useBorderRadius(5);
-
-    transition: all .15s;
-    user-select: none;
-
-    each(@sizes, {
-        &--@{key} {
-            @value();
-        }
-    })
-
-
-    each(@types, {
-        &--@{value} {
-            color: var(--sss-color-white);
-            background-color: .getCssColorVar(@value)[@res];
-
-            &:hover,
-            &:focus {
-                background-color: .getCssColorVar(~"@{value}-light")[ @res ];
-            }
-
-            &:active {
-                background-color: .getCssColorVar(~"@{value}-dark")[@res];
-            }
-
-            //&.s--ghost{
-            //    border: none;
-            //    color: .getCssColorVar(@value)[@res];
-            //}
-        }
-    })
-
-    &--primary1 {
-        &.is-empty {
-            color: var(--sss-color-primary);
-            background-color: var(--sss-color-primary-fade);
-            border-color: var(--sss-color-primary-lighter);
-
-            &:hover,
-            &:focus {
-                color: var(--sss-color-white);
-                background-color: var(--sss-color-primary);
-            }
-
-            &:active {
-                color: var(--sss-color-white);
-                background-color: var(--sss-color-primary-dark);
-            }
-        }
-
-        &.is-ghost {
-            border: none;
-            color: var(--sss-color-primary);
-            background-color: transparent;
-
-            &:hover,
-            &:focus {
-                color: var(--sss-color-primary-light);
-                background-color: var(--sss-color-primary-fade);
-            }
-
-            &:active {
-                color: var(--sss-color-primary-dark);
-            }
-        }
+& {
+    @ns: @{componentPrefix}-button;
+    @typeList: primary, success, info, warning, danger, cyan;
+    @sizeSet: {
+        small: .useSizeSmall(0);
+        normal: .useSizeDft(0);
+        large: .useSizeLarge(0);
     }
 
+    @themeList: ghost, fantasy, empty;
 
-    &--default {
+
+    .d(@ns, {
+        .useIFlexRCC(4);
+        .useBorderDft();
+        .useSizeDft(0);
+        .useBorderRadius(5);
+
+        transition: all .15s;
+        user-select: none;
+
+        color: var(--sss-color-black);
+        background-color: var(--sss-color-bg);
+        border-color: var(--sss-color-gray);
+
         &:hover,
         &:focus {
-            background: var(--sss-color-gray-fade);
+            background-color: var(--sss-color-gray-fade);
             color: var(--sss-color-primary);
         }
-
         &:active {
-            color: var(--sss-color-primary);
             border-color: var(--sss-color-primary);
         }
 
-        &.is-empty {
-            &:hover {
-                background: transparent;
-            }
+        //disabled & loading
+        each(disabled loading, .(@status) {
+            .is(@status, {
+                &,
+                &:hover,
+                &:focus,
+                &:active {
+                    color: var(--sss-color-black);
+                    background-color: var(--sss-color-bg);
+                    border-color: var(--sss-color-gray);
+                }
+            });
+
+        })
+    });
+
+
+    //ghost theme default
+    .d(bm(@ns, ghost), {
+        border-color: transparent;
+        background-color: transparent;
+        color: var(--sss-color-black-light);
+        &:hover,
+        &:focus {
+            color: var(--sss-color-black-light);
+            background-color: var(--sss-color-gray-fade);
+
+        }
+        &:active {
+            border-color: transparent;
+            color: var(--sss-color-black-dark);
+
+
         }
 
-        &.is-ghost {
-            border: none;
+        //disabled & loading
+        each(disabled loading, .(@status) {
+            .is(@status, {
+                &,
+                &:hover,
+                &:focus,
+                &:active {
+                    border-color: transparent;
+                    background-color: transparent;
+                    color: var(--sss-color-black-light);
+                }
+            });
 
-            &:active {
-            }
-        }
-    }
+        })
+    });
 
-
-    &--success {
-        color: var(--sss-color-white);
-        background-color: var(--sss-color-success);
+    //empty theme default
+    .d(bm(@ns, empty), {
+        background-color: var(--sss-color-bg);
 
         &:hover,
         &:focus {
-            background-color: var(--sss-color-success-light);
+            color: var(--sss-color-black);
+            background-color: var(--sss-color-bg);
         }
-
         &:active {
-            background-color: var(--sss-color-success-dark);
+            border-color: var(--sss-color-gray-dark)
         }
+    });
 
-        &.is-empty {
-            color: var(--sss-color-success);
-            background-color: var(--sss-color-success-fade);
-            border-color: var(--sss-color-success-lighter);
+
+    each(@typeList, .(@type) {
+
+        .d(bm(@ns, @type), {
+
+            color: getClrVar(white);
+            background-color: getClrVar(@type);
 
             &:hover,
             &:focus {
-                color: var(--sss-color-white);
-                background-color: var(--sss-color-success);
+                color: getClrVar(white);
+                background-color: getClrVar(@type, light);
             }
 
             &:active {
-                color: var(--sss-color-white);
-                background-color: var(--sss-color-success-dark);
+                background-color: getClrVar(@type, dark);
             }
-        }
 
-        &.is-ghost {
-            border: none;
-            color: var(--sss-color-success);
+            //disabled & loading
+            each(disabled loading, .(@status) {
+                .is(@status, {
+                    &,
+                    &:hover,
+                    &:focus,
+                    &:active {
+                        color: var(--sss-color-white);
+                        background-color: getClrVar(@type);
+                        border-color: var(--sss-color-gray);
+                    }
+                });
+
+            })
+
+
+        });
+
+
+        //ghost theme
+        .with(bm(@ns, @type), bm(@ns, ghost), {
+            border-color: transparent;
+            color: getClrVar(@type);
             background-color: transparent;
 
             &:hover,
             &:focus {
-                color: var(--sss-color-success-light);
-                background-color: var(--sss-color-success-fade);
+                color: getClrVar(@type, light);
+                background-color: getClrVar(@type, fade);
             }
 
             &:active {
-                color: var(--sss-color-success-dark);
+                color: getClrVar(@type, dark);
             }
-        }
-    }
+            //disabled & loading
+            each(disabled loading, .(@status) {
+                .is(@status, {
+                    &,
+                    &:hover,
+                    &:focus,
+                    &:active {
+                        color: getClrVar(@type, light);
+                        background-color: getClrVar(@type, fade);
+                        border-color: transparent;
+                    }
+                });
 
-    &--info {
-        color: var(--sss-color-white);
-        background-color: var(--sss-color-info);
+            })
+        });
 
-        &:hover,
-        &:focus {
-            background-color: var(--sss-color-info-light);
-        }
+        //empty theme
+        .with(bm(@ns, @type), bm(@ns, empty), {
+            background-color: var(--sss-color-bg);
+            color: getClrVar(@type);
+            border-color: var(--sss-color-gray);
+            &:active {
+                border-color: getClrVar(@type, dark);
+            }
+            //disabled & loading
+            each(disabled loading, .(@status) {
+                .is(@status, {
+                    &,
+                    &:hover,
+                    &:focus,
+                    &:active {
+                        background-color: var(--sss-color-bg);
+                        color: getClrVar(@type);
+                        border-color: var(--sss-color-gray);
+                    }
+                });
 
-        &:active {
-            background-color: var(--sss-color-info-dark);
-        }
+            })
+        });
 
-        &.is-empty {
-            color: var(--sss-color-info);
-            background-color: var(--sss-color-info-fade);
-            border-color: var(--sss-color-info-lighter);
+        //fantasy theme
+        .with(bm(@ns, @type), bm(@ns, fantasy), {
+            color: getClrVar(@type);
+            background-color: getClrVar(@type, fade);
+            border-color: getClrVar(@type, lighter);
 
             &:hover,
             &:focus {
                 color: var(--sss-color-white);
-                background-color: var(--sss-color-info);
+                background-color: getClrVar(@type);
             }
 
             &:active {
-                color: var(--sss-color-white);
-                background-color: var(--sss-color-info-dark);
-            }
-        }
-
-        &.is-ghost {
-            border: none;
-            color: var(--sss-color-info);
-            background-color: transparent;
-
-            &:hover,
-            &:focus {
-                color: var(--sss-color-info-light);
-                background-color: var(--sss-color-info-fade);
+                background-color: getClrVar(@type, dark);
             }
 
-            &:active {
-                color: var(--sss-color-info-dark);
-            }
-        }
-    }
+            //disabled & loading
+            each(disabled loading, .(@status) {
+                .is(@status, {
+                    &,
+                    &:hover,
+                    &:focus,
+                    &:active {
+                        color: getClrVar(@type);
+                        background-color: getClrVar(@type, fade);
+                        border-color: getClrVar(@type, lighter);
+                    }
+                });
 
-    &--warning {
-        color: var(--sss-color-white);
-        background-color: var(--sss-color-warning);
-
-        &:hover,
-        &:focus {
-            background-color: var(--sss-color-warning-light);
-        }
-
-        &:active {
-            background-color: var(--sss-color-warning-dark);
-        }
-
-        &.is-empty {
-            color: var(--sss-color-warning);
-            background-color: var(--sss-color-warning-fade);
-            border-color: var(--sss-color-warning-lighter);
-
-            &:hover,
-            &:focus {
-                color: var(--sss-color-white);
-                background-color: var(--sss-color-warning);
-            }
-
-            &:active {
-                color: var(--sss-color-white);
-                background-color: var(--sss-color-warning-dark);
-            }
-        }
-
-        &.is-ghost {
-            border: none;
-            color: var(--sss-color-warning);
-            background-color: transparent;
-
-            &:hover,
-            &:focus {
-                color: var(--sss-color-warning-light);
-                background-color: var(--sss-color-warning-fade);
-            }
-
-            &:active {
-                color: var(--sss-color-warning-dark);
-            }
-        }
-    }
-
-    &--danger {
-        color: var(--sss-color-white);
-        background-color: var(--sss-color-danger);
-
-        &:hover,
-        &:focus {
-            background-color: var(--sss-color-danger-light);
-        }
-
-        &:active {
-            background-color: var(--sss-color-danger-dark);
-        }
-
-        &.is-empty {
-            color: var(--sss-color-danger);
-            background-color: var(--sss-color-danger-fade);
-            border-color: var(--sss-color-danger-lighter);
-
-            &:hover,
-            &:focus {
-                color: var(--sss-color-white);
-                background-color: var(--sss-color-danger);
-            }
-
-            &:active {
-                color: var(--sss-color-white);
-                background-color: var(--sss-color-danger-dark);
-            }
-        }
-
-        &.is-ghost {
-            border: none;
-            color: var(--sss-color-danger);
-            background-color: transparent;
-
-            &:hover,
-            &:focus {
-                color: var(--sss-color-danger-light);
-                background-color: var(--sss-color-danger-fade);
-            }
-
-            &:active {
-                color: var(--sss-color-danger-dark);
-            }
-        }
-    }
-
-    &--cyan {
-        color: var(--sss-color-white);
-        background-color: var(--sss-color-cyan);
-
-        &:hover,
-        &:focus {
-            background-color: var(--sss-color-cyan-light);
-        }
-
-        &:active {
-            background-color: var(--sss-color-cyan-dark);
-        }
-
-        &.is-empty {
-            color: var(--sss-color-cyan);
-            background-color: var(--sss-color-cyan-fade);
-            border-color: var(--sss-color-cyan-lighter);
-
-            &:hover,
-            &:focus {
-                color: var(--sss-color-white);
-                background-color: var(--sss-color-cyan);
-            }
-
-            &:active {
-                color: var(--sss-color-white);
-                background-color: var(--sss-color-cyan-dark);
-            }
-        }
-
-        &.is-ghost {
-            border: none;
-            color: var(--sss-color-cyan);
-            background-color: transparent;
-
-            &:hover,
-            &:focus {
-                color: var(--sss-color-cyan-light);
-                background-color: var(--sss-color-cyan-fade);
-            }
-
-            &:active {
-                color: var(--sss-color-cyan-dark);
-            }
-        }
-    }
+            })
+        });
+    });
 
 
-    //&--large {
-    //    padding: 12px 20px;
-    //    height: var(--sss-component-height-large);
-    //}
-    //
-    //&--small {
-    //    font-size: var(--sss-font-size-small);
-    //    padding: 5px 11px;
-    //    height: var(--sss-component-height-small);
-    //
-    //}
+    each(@sizeSet, {
+        @size: @key;
+        @r: @value;
+        .d(bm(@ns, @size), {
+            @r();
+        })
+    });
+
 
 }
+
+
 

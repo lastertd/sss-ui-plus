@@ -12,7 +12,7 @@ export const SInputProps = {
     /**
      * @description 输入框类型
      */
-    type: {
+    nativeType: {
         type: String as PropType<(typeof SInputTypes)[number]>,
         default: SInputTypes[0],
     },

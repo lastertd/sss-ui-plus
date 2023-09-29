@@ -30,8 +30,4 @@ export const SIconProps = {
      * @description 图标的颜色
      */
     color: String,
-    /**
-     * @description 图标是否没有padding 默认有左右5px的padding值
-     */
-    noPadding:Boolean
 }

@@ -1,83 +1,87 @@
 <template>
-	<div class="s-input" ref="container"
-	     :class="[
-			{
-				'is-disabled':props.disabled,
-				's-input--small':props.size === 'small',
-				's-input--large':props.size === 'large'
-			},
-
-
-		]"
+	<div ref="container"
+	     :class="inputCls"
 	     v-bind="$attrs"
 	>
 		<!--		input prefixSlot-->
-		<div class="s-input__slot s-input__slot--prefix" v-if="$slots.prefixSlot">
+		<div v-if="$slots.prefixSlot"
+		     :class="[inputNS.e('slot'), inputNS.em('slot', 'prefix')]"
+		>
 			<slot name="prefixSlot"></slot>
 		</div>
 
-		<!--		input prefix icon-->
-		<s-icon class="s-input__icon s-input__icon--prefix"
-		        :target="props.prefixIcon"
-		        :type="'label'"
-		        :for="props.id"
-		        @mousedown.prevent
-		></s-icon>
+		<div :class="inputNS.e('wrapper')" ref="wrapper">
+			<!--		input prefix icon-->
+			<s-icon :class="[inputNS.e('icon'), inputNS.em('icon', 'prefix')]"
+			        :target="props.prefixIcon"
+			        tag="label"
+			        :for="props.id"
+			        @mousedown.prevent
+			></s-icon>
 
 
-		<input class="s-input__inner" ref="inner"
-		       :type="props.type"
-		       :id="props.id"
-		       :maxlength="props.maxLength"
-		       :minlength="props.minLength"
-		       :placeholder="props.placeholder"
-		       :disabled="props.disabled"
-		       :readonly="props.readonly"
-		       :autofocus="props.autofocus"
-		       v-bind="$attrs"
-		       @input="handleInput"
-		       @focus="handleFocus"
-		       @blur="handleBlur"
-		       @compositionstart="handleCompositionStart"
-		       @compositionend="handleCompositionEnd"
-		>
+			<input ref="inner" :class="inputNS.e('inner')"
+			       :type="props.nativeType"
+			       :id="props.id"
+			       :maxlength="props.maxLength"
+			       :minlength="props.minLength"
+			       :placeholder="props.placeholder"
+			       :disabled="props.disabled"
+			       :readonly="props.readonly"
+			       :autofocus="props.autofocus"
+			       @input="handleInput"
+			       @focus="handleFocus"
+			       @blur="handleBlur"
+			       @compositionstart="handleCompositionStart"
+			       @compositionend="handleCompositionEnd"
+			>
 
-		<!--		input suffix icon-->
-		<s-icon class="s-input__icon s-input__icon--suffix"
-		        :target="props.suffixIcon"
-		        :type="'label'"
-		        :for="props.id"
-		        @mousedown.prevent
-		></s-icon>
+			<!--		input suffix icon-->
+			<s-icon :class="[inputNS.e('icon'), inputNS.em('icon', 'suffix')]"
+			        :target="props.suffixIcon"
+			        :tag="'label'"
+			        :for="props.id"
+			        @mousedown.prevent
+			></s-icon>
 
-		<!--		input word limit icon-->
-		<label class="s-input__icon s-input__icon--limit" v-if="showWordLimit"
+			<!--		input word limit icon-->
+			<label :class="[inputNS.e('icon'), inputNS.em('icon', 'limit')]" v-if="showWordLimit"
 
-		       :data-overflow="getValueLength() > (props.maxLength as number)"
-		>
-			<s-icon target="warning" v-if="getValueLength() > (props.maxLength as number)"></s-icon>
+			       :data-overflow="getValueLength() > (props.maxLength as number)"
+			>
 
-			{{ getValueLength() }} / {{ props.maxLength }}
-		</label>
 
-		<s-icon class="s-input__icon s-input__icon--clear" v-if="showCloseIcon"
-		        target="cricle-close"
-		        @click="onClear"
-		        tabindex="0"
-		        @mousedown.prevent
 
-		></s-icon>
-		<s-icon class="s-input__icon s-input__icon--switch" v-if="showEyeIcon"
-		        target="eye"
-		        @click="handleEyeIconClick"
-		        tabindex="0"
-		        @mousedown.prevent
+				<s-icon target="warning" test="21212" v-if="getValueLength() > (props.maxLength as number)"></s-icon>
 
-		></s-icon>
+				{{ getValueLength() }}/{{ props.maxLength }}
+			</label>
+
+			<s-icon v-if="showCloseIcon"
+			        :class="[inputNS.e('icon'), inputNS.em('icon', 'clear')]"
+			        target="cricle-close"
+			        @click="onClear"
+			        tabindex="0"
+			        @mousedown.prevent
+
+			></s-icon>
+
+			<s-icon v-if="showEyeIcon"
+			        :class="[inputNS.e('icon'), inputNS.em('icon', 'switch')]"
+			        target="eye"
+			        @click="handleEyeIconClick"
+			        tabindex="0"
+			        @mousedown.prevent
+
+			></s-icon>
+		</div>
+
+
 
 
 		<!--		input suffixSlot-->
-		<div class="s-input__slot s-input__slot--suffix" v-if="$slots.suffixSlot">
+		<div v-if="$slots.suffixSlot"
+		     :class="[inputNS.e('slot'), inputNS.em('slot', 'suffix')]">
 			<slot name="suffixSlot"></slot>
 		</div>
 
@@ -93,6 +97,7 @@ import {computed, onMounted, Ref, watch, ref} from "vue";
 import useAlert from "@sss-ui-plus/hooks/useAlert";
 import {unrefElement} from "@vueuse/core";
 import {delay} from "@sss-ui-plus/utils";
+import {useNS} from "@sss-ui-plus/hooks/useNS";
 
 
 defineOptions({
@@ -103,9 +108,19 @@ defineOptions({
 
 const props = defineProps({...SInputProps});
 const emits = defineEmits({...SInputEmits});
+const inputNS = useNS('input');
 
 const container = ref<HTMLElement | null>(null);
 const inner: Ref<HTMLInputElement | undefined> = ref(undefined);
+const wrapper = ref<HTMLElement | null>(null);
+
+const inputCls = computed(() => {
+	return [
+		inputNS.namespace,
+		inputNS.m(props.size),
+		inputNS.is(props.disabled, 'disabled')
+	]
+})
 
 
 const {
@@ -114,7 +129,7 @@ const {
 	show: alertShow,
 	hidden: alertHidden,
 	toggle: alertToggle
-} = useAlert(container);
+} = useAlert(wrapper);
 
 // 标志是否正在组合中文
 const composing: Ref<Boolean> = ref(false);
@@ -134,7 +149,7 @@ const showEyeIcon = computed((): Boolean => {
 	if (props.modelValue == undefined || props.modelValue === '')
 		return false
 
-	return props.showPassword && props.type === 'password' && !props.disabled
+	return props.showPassword && props.nativeType === 'password' && !props.disabled
 })
 
 const showCloseIcon = computed((): Boolean => {

@@ -1,4 +1,4 @@
-.flex-row-center-center {
+.flex-row-center-center() {
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
@@ -6,12 +6,12 @@
     align-content: center;
 }
 
-.flex-row-start-center {
+.flex-row-start-center() {
     .flex-row-center-center();
     justify-content: flex-start;
 }
 
-.filter-overflow {
+.filter-overflow() {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -38,30 +38,26 @@
 }
 
 
-.useSizeLarge {
+.useSizeLarge(@a:12, @b:19.5, @u:px) {
     height: var(--sss-component-height-large);
     font-size: 16px;
-    padding: 12px 19.5px;
-
+    padding: ~"@{a}@{u} @{b}@{u}";
 }
 
-.useSizeDft {
-    height: var(--sss-component-height);
+.useSizeDft(@a:9, @b:14.5, @u:px) {
+    min-height: var(--sss-component-height);
     font-size: 15px;
-    padding: 9px 14.5px;
+    padding: ~"@{a}@{u} @{b}@{u}";
 }
 
-
-.useSizeSmall {
-    height: var(--sss-component-height-small);
+.useSizeSmall(@a:6, @b:9.5, @u:px) {
+    min-height: var(--sss-component-height-small);
     font-size: var(--sss-font-size-small);
-    padding: 6px 9.5px;
-
+    padding: ~"@{a}@{u} @{b}@{u}";
 }
 
-.useSizeMini {
-    height: var(--sss-component-height-mini);
+.useSizeMini(@a:5, @b:8, @u:px) {
+    min-height: var(--sss-component-height-mini);
     font-size: var(--sss-font-size-small);
-    padding: 5px 8px;
-
+    padding: ~"@{a}@{u} @{b}@{u}";
 }

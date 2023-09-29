@@ -1,45 +1,32 @@
 <template>
 
-	<s-button @click="handleClick" size="normal">click me</s-button>
+	<s-button  type="primary" theme="ghost"  disabled  >click me</s-button>
 
 
-	<div style="display: flex;gap: 10px">
-		<s-tag closable size="small" @click="handleClick" status="round">hello</s-tag>
-		<s-tag type="primary">hello</s-tag>
-		<s-tag type="success" size="large">hello</s-tag>
-		<s-tag closable type="info" theme="light">hello</s-tag>
-		<s-tag closable type="warning" theme="light">hello</s-tag>
-		<s-tag closable type="danger" theme="light">hello</s-tag>
-	</div>
 
-
-	<s-timeline size="large" direction="horizontal">
-		<s-timeline-item time="2023-09-26-12:13:14" type="success" theme="empty" icon="medal">
-			hello
-
-		</s-timeline-item>
-		<s-timeline-item time="2023/2323" theme="empty" icon="medal">
-			hello
-		</s-timeline-item>
-		<s-timeline-item time="2023/2323" type="info">
-			hello
-		</s-timeline-item>
-		<s-timeline-item time="2023/2323" theme="empty" type="info">
-			success
-			<br>
-			success!
-		</s-timeline-item>
-	</s-timeline>
 
 	<br>
 	<s-progress :percentage="p" :color="foo" text-status="inside"  style="height: 15px" ></s-progress>
-	<br>
+
+	<s-divider direction="horizontal" prefix-icon="edit">hell</s-divider>
+
 	<s-progress :percentage="p" type="warning"  text-status="outside"  ></s-progress>
 
-
 	<br>
-	<s-button type="primary"  theme="ghost" >click me</s-button>
-	<s-button type="primary"  size="small" theme="ghost" >click me</s-button>
+	<br>
+	<br>
+
+	<s-tooltip trigger="hover" show-arrow  content="hello world! world!">
+		<template #reference>
+		</template>
+		<template #default>
+			<s-button>click me</s-button>
+
+		</template>
+	</s-tooltip>
+
+
+
 
 
 
@@ -58,10 +45,12 @@ import {Alert} from "@sss-ui-plus/utils";
 import {unrefElement} from "@vueuse/core";
 import useAlert from "@sss-ui-plus/hooks/useAlert";
 import {SIconInstance} from "@sss-ui-plus/components";
+import {message} from "sss-ui-plus";
+import Divider from "@sss-ui-plus/components/SDivider/src/divider.vue";
 
 
 const div = ref<HTMLElement | null>(null);
-const val = ref<string | null>(null);
+const val = ref<string | null>('212342342354');
 const ipt = ref<SIconInstance | null>(null);
 const f = ref(false)
 
@@ -76,7 +65,9 @@ setInterval(() => {
 
 
 const handleClick = () => {
-	console.log('1')
+	message({
+		text:'123'
+	})
 }
 
 const foo = (num:number) => {
@@ -114,7 +105,6 @@ const foo = (num:number) => {
 }
 
 body {
-	//line-height: 1.5em;
 
 	//background-color: rebeccapurple;
 	&::-webkit-scrollbar {

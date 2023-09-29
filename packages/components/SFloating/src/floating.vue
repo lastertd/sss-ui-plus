@@ -1,3 +1,35 @@
+
+<template>
+
+	<SPartial v-if="slots.reference" ref="reference">
+		<slot name="reference"></slot>
+	</SPartial>
+
+
+	<div ref="floating"  :style="_floatingStyles" :class="[props.floatingClass]">
+
+		<transition
+			:name="props.transition"
+			@afterEnter="emits('opened')"
+			@afterLeave="emits('closed')"
+		>
+			<div v-if="flag "
+			     :class="floatingNS.namespace"
+			     :data-placement="placement"
+			     v-bind="$attrs"
+
+			>
+
+				<slot></slot>
+				<div v-if="props.showArrow" ref="_arrow" class="s-floating__arrow" :style="arrowStyle"></div>
+			</div>
+		</transition>
+	</div>
+
+
+</template>
+
+
 <script setup lang="ts">
 import {SFloatingProps, SFloatingEmits} from "./floating";
 import {useFloating, offset, flip, shift, autoUpdate, arrow} from "@floating-ui/vue";
@@ -6,6 +38,7 @@ import {unrefElement, useEventListener, useMutationObserver} from "@vueuse/core"
 import {useFlag} from "@sss-ui-plus/hooks";
 import {IndexManager} from "@sss-ui-plus/utils";
 import {SPartial} from "../../abstract"
+import {useNS} from "@sss-ui-plus/hooks/useNS";
 
 
 defineOptions({
@@ -17,6 +50,8 @@ const props = defineProps({...SFloatingProps});
 const emits = defineEmits({...SFloatingEmits});
 const slots = useSlots();
 const indexManager = new IndexManager();
+const floatingNS = useNS('floating');
+
 
 
 // slot.reference优先级高于props.reference
@@ -213,34 +248,4 @@ defineExpose({
 
 
 </script>
-
-<template>
-
-	<SPartial v-if="slots.reference" ref="reference">
-		<slot name="reference"></slot>
-	</SPartial>
-
-
-	<div ref="floating" :style="_floatingStyles" :class="props.floatingClass">
-
-		<transition
-			:name="props.transition"
-			@afterEnter="emits('opened')"
-			@afterLeave="emits('closed')"
-		>
-			<div v-if="flag "
-			     class="s-floating"
-			     :data-placement="placement"
-			     v-bind="$attrs"
-
-			>
-
-				<slot></slot>
-				<div v-if="props.showArrow" ref="_arrow" class="s-floating__arrow" :style="arrowStyle"></div>
-			</div>
-		</transition>
-	</div>
-
-
-</template>
 

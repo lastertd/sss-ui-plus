@@ -1,14 +1,80 @@
+@variablePrefix: sss;
+@componentPrefix:s;
 
+.d(@b, @r:{}) {
+    .@{b} {
+        @r();
 
-@variablePrefix:sss;
-@res:unset;
-
-
-
-.union(@var1, @var2){
-    @res:~"@{var1}-@{var2}"
+    }
 }
 
-.getCssColorVar(@type){
-    @res:~"var(--@{variablePrefix}-color-@{type})"
+
+.with(@v, @r:{}) {
+    &.@{v} {
+        @r();
+    }
+}
+
+.with(@f, @v, @r:{}) {
+    .@{f}.@{v} {
+        @r();
+    }
+}
+
+
+.include(@v, @r:{}) {
+    & .@{v} {
+        @r();
+    }
+}
+
+.include(@f, @v, @r:{}) {
+    .@{f} .@{v} {
+        @r();
+    }
+}
+
+.is(@s, @r:{}){
+    &.is-@{s}{
+        @r();
+    }
+}
+
+
+
+.b(@b, @r:{}) {
+    &-@{b}{
+        @r();
+    }
+}
+
+.e(@e, @r:{}) {
+    &__@{e} {
+        @r();
+    }
+}
+
+.m(@m, @r:{}) {
+    &--@{m} {
+        @r();
+    }
+}
+
+
+.bm(@b, @m, @r:{}){
+    &-@{b}--@{m} {
+        @r();
+    }
+}
+
+.be(@b, @e, @r:{}){
+    &-@{b}__@{e}{
+        @r();
+    }
+}
+
+.em(@e, @m, @r:{}){
+    &__@{e}--@{m} {
+        @r();
+    }
 }

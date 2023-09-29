@@ -11,14 +11,20 @@ const sButtonNativeTypes = ['button', 'submit', 'reset'] as const;
 
 export const SButtonProps = {
     /**
-     * @description 按钮的类型
+     * @description 按钮的类型, 主要控制颜色
      */
     type: String as PropType<buttonTypes>,
     /**
      * @description 按钮的大小
      */
     size: String as PropType<ElementSizes>,
-    theme:String as PropType<'ghost' | 'fantasy'>,
+    /**
+     * @description 按钮的主题, 主要控制交互上的表现
+     */
+    theme:String as PropType<'ghost' | 'fantasy' | 'empty'>,
+    /**
+     * @description 按钮的状态, 主要控制外观
+     */
     status:String as PropType<'round' | 'circle'>,
     /**
      * @description 按钮的原生类型
@@ -28,28 +34,13 @@ export const SButtonProps = {
         default: sButtonNativeTypes[0],
     },
 
-    /**
-     * @description 是否是圆角按钮
-     */
-    round: Boolean,
-    /**
-     * @description 是否是圆形按钮
-     */
-    circle: Boolean,
+
     /**
      * @description 是否禁用按钮
      */
     disabled: Boolean,
     /**
-     * @description 是否是镂空按钮
-     */
-    empty: Boolean,
-    /**
-     * @description 是否是幽灵型按钮
-     */
-    ghost: Boolean,
-    /**
-     * @description 是否加载中按钮
+     * @description 按钮是否处于加载状态中
      */
     loading: Boolean,
     /**

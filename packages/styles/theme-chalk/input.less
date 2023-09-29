@@ -1,147 +1,152 @@
 @import "../mixn/_index";
 
-
-.s-input {
-    display: inline-flex;
-    flex-flow: row nowrap;
-    justify-content: center;
-    align-items: center;
-
-    position: relative;
-
-    width: 100%;
-
-    height: var(--sss-component-height);
-    font-size: var(--sss-font-size-default);
-
-    .useBorderDft();
-    .useBorderRadius(5);
-    background-color: transparent;
+@plugin "../plugin/index";
 
 
-    user-select: none;
-    transition: all .3s;
+& {
+    @ns: @{componentPrefix}-input;
+    @sizes: small, large;
 
 
-    &:focus-within {
-        border: solid 1px var(--sss-color-primary);
-        box-shadow: 0 0 5px 0 var(--sss-color-primary-light);
-    }
-
-    &:hover {
-        border: solid 1px var(--sss-color-gray-dark);
-
-        .sss-input-icon-close {
-            display: inline-block;
-        }
-    }
-
-    &--small {
-        font-size: var(--sss-font-size-small);
-        height: var(--sss-component-height-small);
 
 
-    }
-
-    &--large {
-        height: var(--sss-component-height-large);
-    }
-
-
-}
-
-.s-input__inner {
-    border: none;
-    border-radius: inherit;
-    background: inherit;
-
-    height: 100%;
-
-    display: inline-block;
-    min-width: 100px;
-    flex: 1;
-    font-size: inherit;
-
-    padding: 0 7px;
+    //block base
+    .d(@ns, {
+        .useIFlexRCC(0);
+        align-items: stretch; //子元素撑满高度
 
 
-    &:focus {
-        outline: none;
-    }
+        .useBorderRadius(5);
+        .useBorderDft();
+        .useSizeDft(0, 0);
 
-    &::placeholder {
-        color: var(--sss-color-gray);
-    }
 
-    &[type="password"]::-ms-reveal {
-        display: none !important;
+        user-select: none;
 
-    }
-}
 
-.s-input__icon {
-    flex-shrink: 0;
-    border-radius: inherit;
-    color: var(--sss-color-gray-dark);
-    display: inline-flex;
-
-    &--prefix {
-
-    }
-
-    &--limit {
-        &[data-overflow = 'true'] {
-            color: red;
+        width: 100%;
+        transition: all .3s;
+        &:focus-within {
+            border: solid 1px var(--sss-color-primary);
+            box-shadow: 0 0 5px 0 var(--sss-color-primary-light);
         }
 
-        & * {
-            color: inherit;
-            padding: 0 3px 0 0;
+        &:hover {
+            border: solid 1px var(--sss-color-gray-dark);
+
+            .sss-input-icon-close {
+                display: inline-block;
+            }
         }
 
-        background-color: transparent;
-        padding: 0 5px;
-        font-size: 10px;
-        line-height: 30px;
-        vertical-align: center;
-        align-items: center;
-    }
 
-}
+    });
 
-.s-input__slot {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
+    //element wrapper
+    .d(be(@ns, wrapper), {
+        .useIFlexRCC(7);
+        align-items: stretch;
 
-    min-height: 100%;
-    padding: 0 15px;
+        width: 100%;
+        padding: 0 7px;
 
 
-    border-top-left-radius: inherit;
-    border-bottom-left-radius: inherit;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border: none;
-    border-right: inherit;
-    background-color: var(--sss-color-primary-fade);
+    });
 
 
-    //& > * {
-    //    height: 100%;
-    //    border-radius: inherit;
-    //    border: none;
-    //}
 
-    &--suffix {
+
+    //element inner
+    .d(be(@ns, inner), {
+        flex: 1;
+
         border: none;
-        border-left: inherit;
-        border-top-left-radius: 0;
-        border-bottom-left-radius: 0;
-        border-top-right-radius: inherit;
-        border-bottom-right-radius: inherit;
-    }
+        background: transparent;
+        border-radius: inherit;
+
+        min-width: 100px;
+        font-size: inherit;
+        padding: 0;
+
+
+        &:focus {
+            outline: none;
+        }
+
+        &::placeholder {
+            color: var(--sss-color-gray);
+        }
+
+        &[type="password"]::-ms-reveal {
+            display: none !important;
+
+        }
+    });
+
+    //element icon
+    .d(be(@ns, icon), {
+        flex: 0;
+        color: var(--sss-color-gray-dark);
+        height: 100%;
+
+        &--limit {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            gap: 3px;
+            font-size: var(--sss-font-size-small);
+
+            &[data-overflow = 'true'] {
+                color: red;
+            }
+
+        }
+
+    });
+
+    .d(be(@ns, slot), {
+        display: flex;
+        align-items: center;
+
+        padding: 0 15px;
+        background-color: var(--sss-color-gray-deep-fade);
+
+        border-top-left-radius: inherit;
+        border-bottom-left-radius: inherit;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right: inherit;
+
+        .m(suffix, {
+            border-right: unset;
+            border-left: inherit;
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+            border-top-right-radius: inherit;
+            border-bottom-right-radius: inherit;
+        });
+
+
+    });
+
+
+
+    //modifier size
+    each(@sizes, .(@size) {
+        .d(bm(@ns, @size), {
+            & when (@size = small) {
+                .useSizeSmall(0, 0);
+            }
+            & when (@size = large) {
+                .useSizeLarge(0, 0);
+            }
+        })
+    });
+
 }
+
+
+
 
 
 

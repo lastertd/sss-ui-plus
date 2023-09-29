@@ -9,9 +9,10 @@
 
 
 	>
-		<s-icon :target="props.prefixIcon"></s-icon>
+		<s-icon v-if="loading" target="loading" rotating></s-icon>
+		<s-icon v-if="!props.loading" :target="props.prefixIcon"></s-icon>
 		<slot></slot>
-		<s-icon :target="props.suffixIcon"></s-icon>
+		<s-icon v-if="!props.loading" :target="props.suffixIcon"></s-icon>
 
 	</button>
 </template>
