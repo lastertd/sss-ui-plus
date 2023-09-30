@@ -19,10 +19,11 @@
 }
 
 //默认边框, 灰色边框、怪异盒子、背景色
-.useBorderDft(){
+.useBorderDft(@num:0){
     border: 1px solid var(--sss-color-gray);
     background-color: var(--sss-color-bg);
     box-sizing: border-box;
+    border-radius: ~"@{num}px";
     & * {
         box-sizing: border-box;
     }

@@ -1,13 +1,16 @@
 @import "../mixn/util";
 
 
-@sizeSet: large, small;
-
- {
-    each(@sizeSet, .(@rule, @key) {
-        .m(@key, {
-            test: 123;
+& {
+    .d(test, {
+        height: 10px;
+        .d(element, {
+            height: 20px;
+            .m(hh, {
+                height: 30px;
+            })
         });
-
-    });
+    })
 }
+
+
