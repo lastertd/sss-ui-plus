@@ -25,8 +25,15 @@ export const useNS = function (name: string) {
         return modifier ? `${namespace}--${modifier}` : '';
     }
 
-    const em = (block?: string, modifier?: string) => {
-        return block && modifier ? `${namespace}__${block}--${modifier}` : '';
+    const be = (block:string, element:string) => {
+        return block && element ? `${namespace}-${block}__${element}` : '';
+    }
+    const bm = (block:string, modifier:string) => {
+        return block && modifier ? `${namespace}-${block}--${modifier}` : '';
+    }
+
+    const em = (element?: string, modifier?: string) => {
+        return element && modifier ? `${namespace}__${element}--${modifier}` : '';
     }
 
     const is:IS = (status?: boolean | string, s?: string) => {
@@ -44,11 +51,16 @@ export const useNS = function (name: string) {
 
 
 
+
+
+
     return {
         namespace,
         b,
         e,
         m,
+        be,
+        bm,
         em,
         is
     }

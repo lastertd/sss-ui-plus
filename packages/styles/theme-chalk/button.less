@@ -13,8 +13,23 @@
     }
 
     @themeList: ghost, fantasy, empty;
+    @notAllowed: disabled, loading;
+
+    //mixin of notAllowed
+    .notAllowedMixin(@color, @bg, @br) {
+        &,
+        &:hover,
+        &:focus,
+        &:active {
+            color: @color;
+            background-color: @bg;
+            border-color: @br;
+        }
+
+    }
 
 
+    //base
     .d(@ns, {
         .useIFlexRCC(4);
         .useBorderDft();
@@ -37,203 +52,166 @@
             border-color: var(--sss-color-primary);
         }
 
-        //disabled & loading
-        each(disabled loading, .(@status) {
-            .is(@status, {
-                &,
-                &:hover,
-                &:focus,
-                &:active {
-                    color: var(--sss-color-black);
-                    background-color: var(--sss-color-bg);
-                    border-color: var(--sss-color-gray);
-                }
-            });
-
-        })
     });
 
-
-    //ghost theme default
-    .d(bm(@ns, ghost), {
-        border-color: transparent;
-        background-color: transparent;
-        color: var(--sss-color-black-light);
-        &:hover,
-        &:focus {
-            color: var(--sss-color-black-light);
-            background-color: var(--sss-color-gray-fade);
-
-        }
-        &:active {
-            border-color: transparent;
-            color: var(--sss-color-black-dark);
-
-
-        }
-
-        //disabled & loading
-        each(disabled loading, .(@status) {
-            .is(@status, {
-                &,
-                &:hover,
-                &:focus,
-                &:active {
-                    border-color: transparent;
-                    background-color: transparent;
-                    color: var(--sss-color-black-light);
-                }
-            });
-
-        })
-    });
-
-    //empty theme default
-    .d(bm(@ns, empty), {
-        background-color: var(--sss-color-bg);
-
-        &:hover,
-        &:focus {
-            color: var(--sss-color-black);
-            background-color: var(--sss-color-bg);
-        }
-        &:active {
-            border-color: var(--sss-color-gray-dark)
-        }
-    });
-
-
-    each(@typeList, .(@type) {
-
-        .d(bm(@ns, @type), {
-
-            color: getClrVar(white);
-            background-color: getClrVar(@type);
-
-            &:hover,
-            &:focus {
+    //types
+    .d(@ns, {
+        each(@typeList, .(@type) {
+            .m(@type, {
                 color: getClrVar(white);
-                background-color: getClrVar(@type, light);
-            }
-
-            &:active {
-                background-color: getClrVar(@type, dark);
-            }
-
-            //disabled & loading
-            each(disabled loading, .(@status) {
-                .is(@status, {
-                    &,
-                    &:hover,
-                    &:focus,
-                    &:active {
-                        color: var(--sss-color-white);
-                        background-color: getClrVar(@type);
-                        border-color: var(--sss-color-gray);
-                    }
-                });
-
-            })
-
-
-        });
-
-
-        //ghost theme
-        .with(bm(@ns, @type), bm(@ns, ghost), {
-            border-color: transparent;
-            color: getClrVar(@type);
-            background-color: transparent;
-
-            &:hover,
-            &:focus {
-                color: getClrVar(@type, light);
-                background-color: getClrVar(@type, fade);
-            }
-
-            &:active {
-                color: getClrVar(@type, dark);
-            }
-            //disabled & loading
-            each(disabled loading, .(@status) {
-                .is(@status, {
-                    &,
-                    &:hover,
-                    &:focus,
-                    &:active {
-                        color: getClrVar(@type, light);
-                        background-color: getClrVar(@type, fade);
-                        border-color: transparent;
-                    }
-                });
-
-            })
-        });
-
-        //empty theme
-        .with(bm(@ns, @type), bm(@ns, empty), {
-            background-color: var(--sss-color-bg);
-            color: getClrVar(@type);
-            border-color: var(--sss-color-gray);
-            &:active {
-                border-color: getClrVar(@type, dark);
-            }
-            //disabled & loading
-            each(disabled loading, .(@status) {
-                .is(@status, {
-                    &,
-                    &:hover,
-                    &:focus,
-                    &:active {
-                        background-color: var(--sss-color-bg);
-                        color: getClrVar(@type);
-                        border-color: var(--sss-color-gray);
-                    }
-                });
-
-            })
-        });
-
-        //fantasy theme
-        .with(bm(@ns, @type), bm(@ns, fantasy), {
-            color: getClrVar(@type);
-            background-color: getClrVar(@type, fade);
-            border-color: getClrVar(@type, lighter);
-
-            &:hover,
-            &:focus {
-                color: var(--sss-color-white);
                 background-color: getClrVar(@type);
-            }
 
-            &:active {
-                background-color: getClrVar(@type, dark);
-            }
+                &:hover,
+                &:focus {
+                    color: getClrVar(white);
+                    background-color: getClrVar(@type, light);
+                }
 
-            //disabled & loading
-            each(disabled loading, .(@status) {
-                .is(@status, {
-                    &,
-                    &:hover,
-                    &:focus,
-                    &:active {
-                        color: getClrVar(@type);
-                        background-color: getClrVar(@type, fade);
-                        border-color: getClrVar(@type, lighter);
-                    }
-                });
-
+                &:active {
+                    background-color: getClrVar(@type, dark);
+                }
             })
-        });
+
+        })
     });
 
 
-    each(@sizeSet, {
-        @size: @key;
-        @r: @value;
-        .d(bm(@ns, @size), {
-            @r();
+    //themes
+    .d(@ns, {
+        //ghost
+        .m(ghost, {
+            border-color: transparent;
+            background-color: transparent;
+            color: var(--sss-color-black-light);
+            &:hover,
+            &:focus {
+                color: var(--sss-color-black-light);
+                background-color: var(--sss-color-gray-fade);
+
+            }
+            &:active {
+                border-color: transparent;
+                color: var(--sss-color-black-dark);
+            }
+        });
+        each(@typeList, .(@type) {
+            .mWith(@type, bm(@ns, ghost), {
+                border-color: transparent;
+                color: getClrVar(@type);
+                background-color: transparent;
+
+                &:hover,
+                &:focus {
+                    color: getClrVar(@type, light);
+                    background-color: getClrVar(@type, fade);
+                }
+
+                &:active {
+                    color: getClrVar(@type, dark);
+                }
+            });
         })
+
+        //empty
+        .m(empty, {
+            background-color: var(--sss-color-bg);
+
+            &:hover,
+            &:focus {
+                color: var(--sss-color-black);
+                background-color: var(--sss-color-bg);
+            }
+            &:active {
+                border-color: var(--sss-color-gray-dark)
+            }
+        });
+        each(@typeList, .(@type) {
+            .mWith(@type, bm(@ns, empty), {
+                background-color: var(--sss-color-bg);
+                color: getClrVar(@type);
+                border-color: var(--sss-color-gray);
+                &:active {
+                    border-color: getClrVar(@type, dark);
+                }
+            });
+        })
+
+
+        //fantasy
+        .m(fantasy, {
+            //    unset
+        });
+        each(@typeList, .(@type) {
+            .mWith(@type, bm(@ns, fantasy), {
+                color: getClrVar(@type);
+                background-color: getClrVar(@type, fade);
+                border-color: getClrVar(@type, lighter);
+
+                &:hover,
+                &:focus {
+                    color: var(--sss-color-white);
+                    background-color: getClrVar(@type);
+                }
+
+                &:active {
+                    background-color: getClrVar(@type, dark);
+                }
+            });
+        })
+    });
+
+    //disabled & loading
+    .d(@ns, {
+        each(@notAllowed, .(@status) {
+            .is(@status, {
+                .notAllowedMixin(var(--sss-color-black), var(--sss-color-bg), var(--sss-color-gray));
+            });
+
+            each(@typeList, .(@type) {
+                .mIs(@type, @status, {
+                    .notAllowedMixin(var(--sss-color-white), getClrVar(@type), var(--sss-color-gray));
+                });
+                .mWith(@type, bm(@ns, empty), {
+                    .is(@status, {
+                        .notAllowedMixin(getClrVar(@type), var(--sss-color-bg), var(--sss-color-gray));
+                    })
+                });
+                .mWith(@type, bm(@ns, ghost), {
+                    .is(@status, {
+                        .notAllowedMixin(getClrVar(@type), var(--sss-color-bg), transparent);
+
+                    })
+                });
+                .mWith(@type, bm(@ns, fantasy), {
+                    .is(@status, {
+                        .notAllowedMixin(getClrVar(@type), getClrVar(@type, fade), var(--sss-color-gray));
+
+
+                    })
+                });
+
+            });
+
+
+            .m(ghost, {
+                .is(@status, {
+                    .notAllowedMixin(unset, var(--sss-color-bg), transparent);
+                })
+            });
+
+
+        });
+
+    });
+
+
+    .d(@ns, {
+        each(@sizeSet, .(@rule, @key) {
+            .m(@key, {
+                @rule();
+            });
+
+        });
     });
 
 

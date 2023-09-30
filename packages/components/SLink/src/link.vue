@@ -1,7 +1,26 @@
+<template>
+	<a
+		ref="a"
+		:class="linkKls"
+		:href="props.href"
+		v-bind="$attrs"
+		@click.prevent="handleClick"
+
+	>
+		<s-icon :target="props.prefixIcon" :class="linkNS.e('icon')" ></s-icon>
+		<span :class="linkNS.e('inner')">
+			<slot></slot>
+		</span>
+		<s-icon :target="props.suffixIcon" :class="linkNS.e('icon')"></s-icon>
+	</a>
+
+</template>
+
 <script setup lang="ts">
 import {SLinkProps} from "./link";
 import {SIcon} from "../../SIcon";
-import {ref} from "vue";
+import {computed, ref} from "vue";
+import {useNS} from "@sss-ui-plus/hooks/useNS";
 
 defineOptions({
 	name: 'SLink',
@@ -11,6 +30,17 @@ defineOptions({
 
 const props = defineProps({...SLinkProps});
 const a = ref<Element | undefined>(undefined);
+const linkNS = useNS('link');
+
+const linkKls = computed(() => {
+	return [
+		linkNS.namespace,
+		linkNS.m(props.type),
+		linkNS.is(props.disabled, 'disabled'),
+		linkNS.is(props.underline, 'underline'),
+
+	]
+})
 
 
 const handleClick = () => {
@@ -28,27 +58,4 @@ const handleClick = () => {
 </script>
 
 
-<template>
-	<a
-		ref="a"
-		class="s-link "
-		:href="props.href"
-		v-bind="$attrs"
-		:class="[
-			`s-link--${props.type}`,
-			{
-				'has-underline':props.underline && !props.disabled,
-				'is-disabled':props.disabled
-			}
-		]"
-		@click.prevent="handleClick"
 
-	>
-		<s-icon :target="props.prefixIcon" class="s-link__prefixIcon"></s-icon>
-		<span>
-			<slot></slot>
-		</span>
-		<s-icon :target="props.suffixIcon" class="s-link__suffixIcon"></s-icon>
-	</a>
-
-</template>

@@ -1,7 +1,5 @@
 <template>
 
-	<s-button  type="primary" theme="ghost"  disabled  >click me</s-button>
-
 
 
 
@@ -13,17 +11,11 @@
 	<s-progress :percentage="p" type="warning"  text-status="outside"  ></s-progress>
 
 	<br>
-	<br>
-	<br>
 
-	<s-tooltip trigger="hover" show-arrow  content="hello world! world!">
-		<template #reference>
-		</template>
-		<template #default>
-			<s-button>click me</s-button>
 
-		</template>
-	</s-tooltip>
+	<s-button  type="cyan"  theme="fantasy" disabled> click me</s-button>
+	<s-button  type="primary"  theme="fantasy" > click me</s-button>
+
 
 
 
