@@ -1,13 +1,6 @@
 @variablePrefix: sss;
 @componentPrefix: s;
 
-.d(@b, @r:{}) {
-    .@{b} {
-        @r();
-
-    }
-}
-
 
 .with(@v, @r:{}) {
     &.@{v} {
@@ -15,11 +8,7 @@
     }
 }
 
-.with(@f, @v, @r:{}) {
-    .@{f}.@{v} {
-        @r();
-    }
-}
+
 
 .is(@s, @r:{}) {
     &.is-@{s} {
@@ -28,22 +17,63 @@
 }
 
 
-.b(@b, @r:{}) {
-    &-@{b} {
-        @r();
+.d(@b, @r:{}, @ns:never) {
+    & when (@ns = never) {
+        .@{b} {
+            @r();
+
+        }
     }
+    & when not (@ns = never) {
+        .@{ns}-@{b} {
+            @r();
+        }
+    }
+
 }
 
-.e(@e, @r:{}) {
-    &__@{e} {
-        @r();
+
+.b(@b, @r:{}, @ns:never) {
+    & when not (@ns = never) {
+        .@{ns}-@{b} {
+            @r();
+        }
     }
+    & when (@ns = never) {
+        &-@{b} {
+            @r();
+        }
+    }
+
 }
 
-.m(@m, @r:{}) {
-    &--@{m} {
-        @r();
+.e(@e, @r:{}, @ns:never) {
+    & when not (@ns = never) {
+        .@{ns}__@{e} {
+            @r();
+        }
     }
+    & when (@ns = never) {
+        &__@{e} {
+            @r();
+        }
+    }
+
+}
+
+
+.m(@m, @r:{}, @ns:never) {
+    & when not (@ns = never) {
+        .@{ns}--@{m} {
+            @r();
+        }
+    }
+    & when (@ns = never) {
+        &--@{m} {
+            @r();
+        }
+    }
+
 }
 
 
