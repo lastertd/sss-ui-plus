@@ -15,7 +15,7 @@ export const SBadgeProps = {
     /**
      * @description 徽章的主题
      */
-    theme:String as PropType<'empty'>,
+    variant:String as PropType<'empty' | 'fantasy'>,
     /**
      * @description 当value为number类型时, 可显示的最大value值
      */

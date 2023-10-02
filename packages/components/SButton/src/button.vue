@@ -4,7 +4,6 @@
 		:class="buttonKls"
 		:disabled="props.disabled || props.loading"
 		:type="props.nativeType"
-
 		@click="handleClick($event)"
 
 
@@ -41,7 +40,7 @@ const buttonKls = computed(() => {
 		buttonNS.namespace,
 		buttonNS.m(props.type),
 		buttonNS.m(props.size),
-		buttonNS.m(props.theme),
+		buttonNS.m(props.variant),
 		buttonNS.is(props.status),
 		buttonNS.is(props.disabled, 'disabled'),
 		buttonNS.is(props.loading, 'loading'),

@@ -11,6 +11,7 @@ export default defineConfig({
     themeConfig: {
         siteTitle: "SSS-UI",
         logo: '/favicon.ico',
+        outline:[2,6],
         nav: [
             {text: '指南', link: '/guide/', activeMatch: '/guide'},
             {text: '组件', link: '/comps/basic/button/index', activeMatch: '/comps'},
@@ -73,7 +74,7 @@ export default defineConfig({
         },
         footer: {
             message: 'Released under the MIT License.',
-            copyright: 'Copyright © 2023-present Laster CN'
+            copyright: 'Copyright © 2023-present SSS UI plus'
         }
 
     },

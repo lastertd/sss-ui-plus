@@ -91,7 +91,7 @@ export const STooltipProps = {
     /**
      * @description 文本提示框的主题
      */
-    theme: {
+    variant: {
         type: String as PropType<'light' | 'dark'>,
         default: 'dark'
     },

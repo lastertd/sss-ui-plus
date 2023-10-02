@@ -8,10 +8,11 @@ export const SProgressProps = {
         type: Number,
         required: true,
     },
-    theme: String as PropType<'line'>,
+    variant: String as PropType<'line' >,
     type: String as PropType<ElementTypes>,
     textStatus:String as PropType<'inside' | 'outside'>,
     color: [String, Function] as PropType<string | ((percentage: number) => string) >,
+    icon:String
 
 
 

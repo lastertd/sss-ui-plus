@@ -30,7 +30,7 @@
         font-size: var(--sss-font-size-small);
 
 
-        .include(be(@ns, content), {
+        .d(be(@ns, content), {
             padding: 0 10px;
 
         });
@@ -51,12 +51,12 @@
     each(@placements, .(@v) {
         .d(bm(@ns, @v), {
             & when (@v = start) {
-                .include(be(@ns, content), {
+                .d(be(@ns, content), {
                     left: 15px;
                 })
             }
             & when (@v = end) {
-                .include(be(@ns, content), {
+                .d(be(@ns, content), {
                     right: 15px;
                 })
             }
@@ -73,7 +73,7 @@
         display: inline-flex;
 
 
-        .include(be(@ns, content), {
+        .d(be(@ns, content), {
             padding: 0;
         });
     });

@@ -29,7 +29,7 @@
     .d(@ns, {
         &[data-placement^="top"] {
             transform-origin: center bottom;
-            .include(be(@ns, arrow), {
+            .d(be(@ns, arrow), {
                 bottom: -5px;
                 border-right: 1px solid var(--sss-color-gray);
                 border-bottom: 1px solid var(--sss-color-gray);
@@ -37,7 +37,7 @@
         }
         &[data-placement^="bottom"] {
             transform-origin: center top;
-            .include(be(@ns, arrow), {
+            .d(be(@ns, arrow), {
                 top: -5px;
                 border-left: 1px solid var(--sss-color-gray);
                 border-top: 1px solid var(--sss-color-gray);
@@ -46,7 +46,7 @@
         }
         &[data-placement^="left"] {
             transform-origin: right center;
-            .include(be(@ns, arrow), {
+            .d(be(@ns, arrow), {
                 right: -5px;
                 border-right: 1px solid var(--sss-color-gray);
                 border-top: 1px solid var(--sss-color-gray);
@@ -55,7 +55,7 @@
         }
         &[data-placement^="right"] {
             transform-origin: left center;
-            .include(be(@ns, arrow), {
+            .d(be(@ns, arrow), {
                 left: -5px;
                 border-left: 1px solid var(--sss-color-gray);
                 border-bottom: 1px solid var(--sss-color-gray);
@@ -66,7 +66,9 @@
 
 
 .___sss-floating-container {
-    position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
+    height: 0;
+    width: 0;
 }

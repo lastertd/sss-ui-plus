@@ -6,7 +6,7 @@
   "style": "dist/index.css",
   "private": false,
   "sideEffects": false,
-  "version": "0.2.2-beta-6",
+  "version": "0.2.3",
   "type": "module",
   "author": {
     "name": "laster",

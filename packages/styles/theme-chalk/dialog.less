@@ -1,24 +1,47 @@
-.s-message-dialog{
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
+@import "../mixn/_index";
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+& {
+    @ns: @{componentPrefix}-dialog;
+
+
+    //base
+    .d(@ns, {
+
+        //全屏
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        .useFlexRCC();
+
+
+        //part
+        .is(part, {
+            position: absolute;
+            .s-message-draggable-container{
+                position: absolute;
+                z-index: 30;
+            }
+        })
+    });
+
+    .d(be(@ns, inner), {
+        min-width: 400px;
+        min-height: 250px;
+        width: 30vw;
+        position: absolute;
+        z-index: 30;
+
+        .s-message {
+            display: flex;
+            flex-flow: column nowrap;
+            justify-content: space-between;
+            gap: 7px;
+        }
+    });
 
 }
-.s-message-dialog__inner{
-    min-width: 280px;
-    min-height: 200px;
-    position: fixed;
-    width: 30vw;
-    .s-message{
-        display: flex;
-        flex-flow: column nowrap;
-        justify-content: space-between;
-        gap: 7px;
-    }
-}
+
+

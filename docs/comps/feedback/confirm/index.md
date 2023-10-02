@@ -3,9 +3,9 @@
 属于全局弹出框的一种, 在即将执行的主要操作之前, 让用户确认一次
 
 ::: tip
-和 [Message 消息](/comps/feedback/message/)一样，都是基于`messageBox`开发的, 因此会有许多相似的属性.
+和 Message一样，都是基于`messageBox`开发的, 因此会有许多相似的属性.
 
-相似的某些属性使用可以查看上述文档
+相似的某些属性使用可以查看[Message 消息](/comps/feedback/message/)
 
 :::
 
@@ -34,11 +34,10 @@ src="./src/type.vue"
 
 ## 偏移量
 
-可以通过 `top` 属性控制确认框距离顶部的距离
+可以通过 `top` 属性控制确认框距离顶部的距离, 默认情况下，Confirm处于视口正中心。
 
 <demo
 src="./src/offset.vue"
-title="默认处于视口正中心"
 />
 
 ## 自定义按钮文本
@@ -79,3 +78,9 @@ src="./src/closeType.vue"
 | icon           | 自定义消息的图标 | `String`                               | ---           |
 | color          | 自定义图标的颜色 | `String`                               | ---           |
 
+## 源代码
+<SRep aim="SMessage"></SRep>
+
+## 贡献者
+
+<SMember></SMember>

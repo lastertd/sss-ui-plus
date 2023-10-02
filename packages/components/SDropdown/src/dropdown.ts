@@ -89,41 +89,20 @@ export const SDropdownProps = {
 
     /*以下是scrollbar属性*/
     /**
-     * 当下拉框可以滚动时, 是否显示垂直滚动条
-     */
-    scrollbarVertical: {
-        type: Boolean,
-        default: true,
-    },
-    /**
-     * @description 当下拉框可以滚动时， 是否显示水平滚动条
-     */
-    scrollbarHorizontal: Boolean,
-    /**
      * @description 下拉框的大小是否不会再改变, 开启此项优化部分性能
      */
     scrollbarNoResize: Boolean,
     /**
-     * @description 当下拉框可以滚动时， 是否一直显示滚动条
-     */
-    scrollbarAlways: Boolean,
-    /**
      * @description 滚动条定位在元素外面
      */
     scrollbarIsOutside: Boolean,
-    /**
-     * @description 在点击滚动条时, 是否跳转到对应位置
-     */
-    scrollbarQuickJump: {
-        type: Boolean,
-        default: true,
-    },
 
     /*以下是dropdown属性*/
     /**
      * @description 所有item内元素居中显示
      */
     center: Boolean,
+    activeColor:String,
     /**
      * @description 是否在点击任意Item后关闭下拉框
      */

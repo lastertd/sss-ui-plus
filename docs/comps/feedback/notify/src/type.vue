@@ -1,15 +1,15 @@
 <template>
-	<s-row horizontal="space-around" :gap="10">
-		<s-button empty type="success" @click="handleClick('success')">
+	<s-row justify-content="flex-start" :gap="20">
+		<s-button variant="empty" type="success" @click="handleClick('success')">
 			success
 		</s-button>
-		<s-button empty type="info" @click="handleClick('info')">
+		<s-button variant="empty" type="info" @click="handleClick('info')">
 			info
 		</s-button>
-		<s-button empty type="warning" @click="handleClick('warning')">
+		<s-button variant="empty" type="warning" @click="handleClick('warning')">
 			warning
 		</s-button>
-		<s-button empty type="danger" @click="handleClick('danger')">
+		<s-button variant="empty" type="danger" @click="handleClick('danger')">
 			danger
 		</s-button>
 	</s-row>
@@ -18,34 +18,16 @@
 
 <script setup lang="ts">
 import {notify} from "sss-ui-plus/es/index";
+import {ElementTypes} from "@sss-ui-plus/typings";
 
-const handleClick = (type: string) => {
+const handleClick = (type: ElementTypes) => {
 
-	if (type === 'success') {
-		notify({
-			type: 'success',
-			title:'success',
-			text: 'success notify.'
-		})
-	} else if (type === 'info') {
-		notify({
-			type: 'info',
-			title:'info',
-			text: 'info notify.'
-		})
-	} else if (type === 'warning') {
-		notify({
-			type: 'warning',
-			title:'warning',
-			text: 'warning notify.'
-		})
-	} else if (type === 'danger') {
-		notify({
-			type: 'danger',
-			title:'danger',
-			text: 'danger notify.'
-		})
-	}
+	notify({
+		type:type,
+		title:`${type} notify`,
+		text:`${type} content.`
+	})
+
 
 
 }

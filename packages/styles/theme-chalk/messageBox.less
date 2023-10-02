@@ -1,229 +1,212 @@
 @import "../mixn/_index";
 
 
-.mixin_s-message-box__icon(@color) {
-    & .s-message-box__icon {
-        color: @color;
-    }
-}
-
-.s-message-box {
-    display: flex;
-    gap: 5px;
-    outline: none;
-    justify-content: space-between;
-    padding: 10px 10px 15px;
-    box-sizing: border-box;
-    font-size: var(--sss-font-size-default);
-
-    & * {
-        box-sizing: inherit;
-    }
-
-    background: var(--sss-color-bg);
-    border: solid 1px var(--sss-color-gray);
-    border-radius: 7px;
-    box-shadow: rgba(17, 17, 26, 0.05) 0 4px 16px, rgba(17, 17, 26, 0.05) 0 8px 32px;
-
-    &__icon {
-
-    }
-
-    &--success {
-        .mixin_s-message-box__icon(var(--sss-color-success));
-    }
-
-    &--info {
-        .mixin_s-message-box__icon(var(--sss-color-info));
-
-    }
-
-    &--warning {
-        .mixin_s-message-box__icon(var(--sss-color-warning));
-
-    }
-
-    &--danger {
-        .mixin_s-message-box__icon(var(--sss-color-danger));
-
-    }
-}
 
 
-.s-message-draggable-container {
-    position: fixed;
-
-    .s-message-box {
-        position: static !important;
-    }
-
-    .s-message__header {
-        cursor: move;
-        user-select: none;
-    }
-}
+// message box
+& {
+    @ns: @{componentPrefix}-message-box;
+    @types: success, info, warning, danger;
 
 
-.s-message {
-    flex: 1;
+    //base
+    .d(@ns, {
+        .useFlexRCC(5);
+        align-items: stretch;
 
-    overflow: hidden;
-}
+        .useBorderDft(3);
+        box-shadow: rgba(17, 17, 26, 0.05) 0 4px 16px, rgba(17, 17, 26, 0.05) 0 8px 32px;
 
-.s-message__header {
 
-    &--default {
-        display: flex;
-        flex-flow: row nowrap;
-        justify-content: space-between;
-        align-items: center;
-        gap: 20px;
-
-    }
-
-    &__title {
-        margin: 0 10px 0 0;
-        font-weight: bolder;
-        font-size: inherit;
-
-        .filter-overflow();
-
-    }
-
-    &__icon {
-        border-radius: 5px;
         outline: none;
-        color: var(--sss-color-gray-dark);
-        padding: 5px;
+        padding: 10px 10px 15px;
+        font-size: var(--sss-font-size-default);
+    });
 
-        &:hover,
-        &:focus {
-            background-color: var(--sss-color-gray-fade);
+    //icon
+    .d(be(@ns, icon), {
+        height: 1.55em;
+    });
+}
+
+
+//message
+& {
+    @ns: @{componentPrefix}-message;
+    .d(@ns, {
+        flex: 1;
+        overflow: hidden;
+    });
+
+    //element header;
+    .d(be(@ns, header), {
+        .m(default, {
+            .useFlexRCC(20);
+            justify-content: space-between;
+        });
+
+        .e(title, {
+            margin: 0 10px 0 0;
+            font-weight: bolder;
+            font-size: inherit;
+
+            .filter-overflow();
+        });
+
+        .e(icon, {
+            border-radius: 5px;
+            outline: none;
+            color: var(--sss-color-gray-dark);
+            padding: 5px;
+
+            &:hover,
+            &:focus {
+                background-color: var(--sss-color-gray-fade);
+            }
+        });
+
+
+    });
+
+    //element body
+    .d(be(@ns, body), {
+        flex: 1;
+        font-size: inherit;
+        .e(text, {
+            .filter-overflow();
+
+        });
+    });
+
+    //element footer
+    .d(be(@ns, footer), {
+        .m(default, {
+            display: flex;
+            justify-content: flex-end;
+            gap: 5px;
+        })
+    });
+
+}
+
+
+//message-draggable-container
+& {
+    @ns: @{componentPrefix}-message-draggable-container;
+    @box: @{componentPrefix}-message-box;
+
+
+    .d(@ns, {
+        position: fixed;
+        .d(@box, {
+            position: static !important;
+        });
+
+        .d(s-message__header, {
+            cursor: move;
+            user-select: none;
+        });
+    });
+
+
+}
+
+
+//message-container
+& {
+    @ns: @{componentPrefix}-message-container;
+    @types: success, info, warning, danger;
+
+    .d(@ns, {
+        position: fixed;
+        transition: all .4s ease;
+
+        & * {
+            font-size: 12px !important;
+            font-weight: normal;
         }
-    }
+        .s-message-box {
+            padding: 5px 10px;
+            align-items: center;
+            box-shadow: none;
+
+            each(@types, .(@type) {
+                .m(@type, {
+                    background-color: getClrVar(@type, fade);
+                    border-color: getClrVar(@type, lighter);
+                })
+            })
+        }
+        .d(be(s-message, header), {
+            .useFlexRCC(5);
+            .e(title, {
+                margin: 0;
+            });
+            .e(icon, {
+                background-color: transparent;
+            })
+        });
+
+    });
 }
 
-.s-message__body {
-    flex: 1;
-    font-size: inherit;
+//notify-container
+& {
+    @ns: @{componentPrefix}-notify-container;
 
-    &__text {
-        .filter-overflow();
-    }
+    .d(@ns, {
+        width: 300px;
+        transition: all .4s ease;
+        position: fixed;
+    });
 
-}
-
-.s-message__footer {
-    &--default {
-        display: flex;
-        justify-content: flex-end;
-        gap: 5px;
-    }
-}
-
-
-.s-notify-container {
-    width: 300px;
-    transition: all .4s ease;
-    position: fixed;
-
-    //允许换行
-    .s-message__body__text {
+    .s-message__message__text {
         word-wrap: break-word;
         white-space: break-spaces;
         padding-right: 25px;
+    }
 
-    }
-    .s-message-box__icon{
-        line-height: 2.3em!important;
-    }
 }
 
-.s-message-container {
-    position: fixed;
-    transition: all .4s ease;
+//confirm-container
+& {
+    @ns: @{componentPrefix}-confirm-container;
+    .d(@ns, {
 
-    .s-message-box {
-        border-radius: 5px;
-        padding: 5px 14px;
+        //全屏展示
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+
+        //消息框居中
+        display: flex;
+        justify-content: center;
         align-items: center;
-        box-shadow: none;
 
+        //控制大小
+        .s-message-box {
+            min-width: 280px;
+            max-width: 400px;
+            position: absolute;
+        }
 
-    }
+        //修改为flex布局，只是为了增加间隙(
+        .s-message {
+            display: flex;
+            flex-flow: column nowrap;
+            gap: 10px;
 
-    & * {
-        font-size: 13px !important;
-        font-weight: normal;
-    }
+        }
 
-    & .s-message-box__icon {
-
-    }
-
-    & .s-message__header__icon {
-        background-color: transparent;
-    }
-
-    & .s-message-box--success {
-        background-color: var(--sss-color-success-fade);
-        border-color: var(--sss-color-success-lighter);
-    }
-
-    & .s-message-box--info {
-        background-color: var(--sss-color-info-fade);
-        border-color: var(--sss-color-info-lighter);
-    }
-
-    & .s-message-box--warning {
-        background-color: var(--sss-color-warning-fade);
-        border-color: var(--sss-color-warning-lighter);
-    }
-
-    & .s-message-box--danger {
-        background-color: var(--sss-color-danger-fade);
-        border-color: var(--sss-color-danger-lighter);
-    }
-
-}
-
-.s-confirm-container {
-
-    //全屏展示
-    position: fixed;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-
-    //消息框居中
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    //控制大小
-    .s-message-box {
-        min-width: 280px;
-        max-width: 400px;
-    }
-
-    //修改为flex布局，只是为了增加间隙(
-    .s-message {
-        display: flex;
-        flex-flow: column nowrap;
-        gap: 10px;
-
-    }
-
-    //允许换行
-    .s-message__body__text {
-        word-wrap: break-word;
-        white-space: break-spaces;
-        padding-right: 25px;
-    }
-    .s-message-box__icon{
-        line-height: 2.3em!important;
-    }
+        //允许换行
+        .s-message__body__text {
+            word-wrap: break-word;
+            white-space: break-spaces;
+            padding-right: 25px;
+        }
+    })
 }
 
 

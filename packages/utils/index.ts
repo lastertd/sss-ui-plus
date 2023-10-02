@@ -21,6 +21,7 @@ export * from "./vn/registerInstall"
 // other
 export * from "./delay"
 export * from "./fnUnion"
+export * from './types'
 
 
 

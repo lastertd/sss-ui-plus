@@ -26,6 +26,8 @@ const init = function (options?:Partial<SuiOptions>) {
 
 }
 
+
+
 export default function (Vue:App, options?:Partial<SuiOptions>){
     init(options);
     installer(Vue);

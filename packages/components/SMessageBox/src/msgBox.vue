@@ -1,10 +1,90 @@
+<template>
+
+	<transition
+		:name="props.transition"
+		@afterEnter="emits('opened')"
+		@afterLeave="emits('closed')"
+	>
+		<div v-show="visFlag" ref="outer"
+		     :class="msgBoxCls"
+		     :style="`top:${props.top}`"
+		     v-bind="$attrs"
+		     tabindex="0"
+		     @keydown.esc="close('esc')"
+		>
+			<s-icon :target="msgBoxIcon" :color="msgIconColor" :class="msgBoxNS.e('icon')"></s-icon>
+
+			<div :class="msgNS.namespace">
+
+				<div v-if="!props.noHeader" ref="header"
+				     :class="[
+						msgNS.e('header'),
+						msgNS.em('header', 'default', !$slots.header),
+
+					]"
+
+
+				>
+					<template v-if="!$slots.header">
+						<h1 :class="msgNS.ee('header', 'title')">{{ props.title }}</h1>
+						<s-icon v-if="props.showCloseIcon" ref="closeIcon"
+						        :class="msgNS.ee('header', 'icon')"
+						        target="close"
+						        tabindex="0"
+						        @click="close('icon')"
+						></s-icon>
+					</template>
+					<slot name="header"/>
+				</div>
+
+
+				<div v-if="!props.noBody" ref="body"
+				     :class="msgNS.e('body')"
+				>
+					<slot></slot>
+					<template v-if="props.text">
+						<div :class="msgNS.bb('message', 'text')">
+							{{ props.text }}
+						</div>
+					</template>
+				</div>
+
+				<div ref="footer" v-if="!props.noFooter"
+				     :class="[
+						 msgNS.e('footer'),
+						 msgNS.em('footer', 'default', !$slots.footer),
+					]"
+				>
+					<template v-if="!$slots.footer">
+						<div :class="msgNS.em('footer', 'default')">
+							<s-button :size="props.btnSize" type="cyan" variant="ghost" @click="cancel">
+								{{ props.cancelBtnText }}
+							</s-button>
+							<s-button :size="props.btnSize" type="primary" @click="confirm">{{ props.confirmBtnText }}
+							</s-button>
+						</div>
+					</template>
+					<slot name="footer"/>
+				</div>
+
+			</div>
+		</div>
+	</transition>
+
+
+	<!--	draggable container-->
+	<div ref="drag" :style="`top:${props.top}`" v-if="props.draggable" class="s-message-draggable-container">
+
+	</div>
+</template>
+
 <script setup lang="ts">
 import {SMsgBoxProps, SMsgBoxEmits} from "./msgBox";
 import {SIcon, SIconInstance} from "../../SIcon";
 import {SButton} from "../../SButton";
 import {computed, nextTick, Ref, ref} from "vue";
 import {MessageTriggerTypes} from "@sss-ui-plus/typings";
-import {useFlag, useDraggable} from "@sss-ui-plus/hooks";
+import {useFlag, useDraggable, useNS} from "@sss-ui-plus/hooks";
 import {throttle, fnUnion} from "@sss-ui-plus/utils";
 
 
@@ -21,11 +101,35 @@ const closeIcon: Ref<SIconInstance | null> = ref(null);
 const outer: Ref<HTMLElement | undefined> = ref(undefined);
 const header: Ref<HTMLElement | undefined> = ref(undefined);
 const drag: Ref<HTMLElement | undefined> = ref(undefined);
+const msgBoxNS = useNS('message-box');
+const msgNS = useNS('message');
+
+const msgBoxCls = computed(() => {
+	return [
+		msgBoxNS.namespace,
+		msgBoxNS.m(props.type)
+
+	]
+})
+
 
 
 const msgBoxIcon = computed(() => {
 	if (props.icon) return props.icon
 	return props.type
+})
+const msgIconColor = computed(() => {
+	if (props.iconColor) return props.iconColor;
+	switch (props.type) {
+		case 'success':
+			return 'var(--sss-color-success)';
+		case 'info':
+			return 'var(--sss-color-info)';
+		case 'warning':
+			return 'var(--sss-color-warning)';
+		case 'danger':
+			return 'var(--sss-color-danger)';
+	}
 })
 
 let {flag: visFlag, setTrue, setFalse} = useFlag(false);
@@ -62,15 +166,14 @@ const close = throttle(function (trigger: MessageTriggerTypes = 'system') {
 
 // 前两者轮换
 const toggle = function () {
-	if (visFlag.value){
+	if (visFlag.value) {
 		close('system');
-	}
-	else {
+	} else {
 		open();
 	}
 }
 
-const hidden = fnUnion(setFalse,() => {
+const hidden = fnUnion(setFalse, () => {
 	emits('hidden');
 })
 
@@ -120,93 +223,6 @@ defineExpose({
 
 </script>
 
-<template>
 
-		<transition
-			:name="props.transition"
-			@afterEnter="emits('opened')"
-			@afterLeave="emits('closed')"
-		>
-			<div class="s-message-box" ref="outer" v-show="visFlag"
-			     v-bind="$attrs"
-			     tabindex="0"
-			     @keydown.esc="close('esc')"
-			     :class="[
-				`s-message-box--${props.type || 'default'}`
-			]"
-			     :style="`top:${props.top}`"
-
-			>
-				<s-icon :target="msgBoxIcon" class="s-message-box__icon"></s-icon>
-
-				<div class="s-message">
-
-					<div class="s-message__header" ref="header" v-if="!props.noHeader"
-
-					     :class="[
-						{
-							's-message__header--default':!$slots.header
-						}
-					]"
-					>
-						<template v-if="!$slots.header">
-							<h1 class="s-message__header__title">{{ props.title }}</h1>
-							<s-icon
-								ref="closeIcon"
-								v-if="props.showCloseIcon"
-								target="close"
-								class="s-message__header__icon"
-								tabindex="0"
-								@click="close('icon')"
-							></s-icon>
-						</template>
-						<slot name="header"/>
-					</div>
-
-
-					<div class="s-message__body" ref="body" v-if="!props.noBody">
-						<slot></slot>
-						<template v-if="props.text">
-							<div class="s-message__body__text">
-								{{ props.text }}
-							</div>
-						</template>
-					</div>
-
-					<div class="s-message__footer" ref="footer" v-if="!props.noFooter"
-					     :class="[
-						{
-							's-message__footer--default':!$slots.footer
-						}
-					]"
-					>
-						<template v-if="!$slots.footer">
-							<div class="s-message__footer--default">
-								<s-button
-									:size="props.btnSize" type="cyan" ghost
-									@click="cancel"
-								>{{ props.cancelBtnText }}
-								</s-button>
-								<s-button
-									:size="props.btnSize" type="primary"
-									@click="confirm"
-
-								>{{ props.confirmBtnText }}
-								</s-button>
-							</div>
-						</template>
-						<slot name="footer"/>
-					</div>
-
-				</div>
-			</div>
-		</transition>
-
-
-	<!--	draggable container-->
-	<div ref="drag" :style="`top:${props.top}`" v-if="props.draggable" class="s-message-draggable-container">
-
-	</div>
-</template>
 
 

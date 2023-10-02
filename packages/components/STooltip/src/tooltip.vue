@@ -1,31 +1,7 @@
-<script setup lang="ts">
-import {STooltipEmits, STooltipProps} from "./tooltip";
-import {SFloating, SFloatingInstance} from "../../SFloating";
-import {ref, useSlots} from "vue";
-
-
-defineOptions({
-	name: "STooltip",
-	inheritAttrs: false
-})
-
-const props = defineProps({...STooltipProps});
-const emits = defineEmits({...STooltipEmits})
-const slots = useSlots();
-const floating = ref<SFloatingInstance | null>(null);
-
-
-defineExpose({
-	close:() => floating.value!.close(),
-	open:() => floating.value!.open(),
-	toggle:() => floating.value!.toggle()
-})
-
-
-</script>
 <template>
 	<s-floating
 		ref="floating"
+		:class="tooltipKls"
 		:trigger="props.trigger"
 		:placement="props.placement"
 		:transition="props.transition"
@@ -47,8 +23,6 @@ defineExpose({
 		@close="emits('close')"
 		@closed="emits('closed')"
 
-		class="s-tooltip"
-		:class="`s-tooltip--${props.theme}`"
 
 	>
 
@@ -66,3 +40,39 @@ defineExpose({
 		</template>
 	</s-floating>
 </template>
+
+<script setup lang="ts">
+import {STooltipEmits, STooltipProps} from "./tooltip";
+import {SFloating, SFloatingInstance} from "../../SFloating";
+import {computed, ref, useSlots} from "vue";
+import {useNS} from "@sss-ui-plus/hooks";
+
+
+defineOptions({
+	name: "STooltip",
+	inheritAttrs: false
+})
+
+const props = defineProps({...STooltipProps});
+const emits = defineEmits({...STooltipEmits})
+const slots = useSlots();
+const tipNS = useNS('tooltip');
+
+const tooltipKls = computed(() => {
+	return[
+		tipNS.namespace,
+		tipNS.m(props.variant),
+	]
+})
+
+const floating = ref<SFloatingInstance | null>(null);
+
+
+defineExpose({
+	close:() => floating.value!.close(),
+	open:() => floating.value!.open(),
+	toggle:() => floating.value!.toggle()
+})
+
+
+</script>

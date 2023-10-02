@@ -1,6 +1,6 @@
 <template>
-	<s-row horizontal="flex-start" :gap="10">
-		<s-link type="default" underline >default</s-link>
+	<s-row justify-content="flex-start" :gap="20">
+		<s-link  underline >default</s-link>
 		<s-link type="primary" underline>primary</s-link>
 		<s-link type="success" underline>success</s-link>
 		<s-link type="info" underline>info</s-link>

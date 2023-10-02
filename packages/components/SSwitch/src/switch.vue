@@ -1,40 +1,48 @@
 <template>
 	<div
-		class="s-switch"
-		:class="[{
-			'is-checked':props.modelValue,
-			'is-disabled':props.disabled,
-			's-switch--small':props.size ==='small',
-			's-switch--large':props.size === 'large'
-			},
-		]"
+		:class="switchKls"
+		:style="switchSdl"
 		@click="handleClick"
 	>
-		<input class="s-switch__input" type="radio" placeholder="ヾ(≧▽≦*)o">
+		<input :class="switchNS.e('input')" type="radio" placeholder="ヾ(≧▽≦*)o">
 
-		<span class="s-switch__label s-switch__label--left"
-		      :class="[{'is-active':!props.modelValue}]"
-		      v-if="!props.inlineText"
+		<span
+			v-if="props.textStatus !== 'inside'"
+			:class="[
+				switchNS.e('label'),
+				switchNS.em('label', 'left'),
+				switchNS.is('active', !props.modelValue)
+			]"
 		>
-			<s-icon class="s-switch__label__icon" :target="props.inactiveIcon"></s-icon>
+			<s-icon :target="props.inactiveIcon"></s-icon>
 			{{ props.inactiveText }}
 		</span>
 
-		<div class="s-switch__inner is-round"
-		     v-bind="$attrs"
+		<div
+			:class="[
+				 switchNS.e('inner'),
+				 switchNS.is('round')
+		     ]"
+			v-bind="$attrs"
+
 		>
-			<span class="s-switch__trigger is-round">
+			<span :class="[
+					 switchNS.e('trigger'),
+					 switchNS.is('round')
+				   ]"
+			>
 				<s-icon
-					v-if="props.triggerIcon"
+					v-if="props.triggerIcon && !props.loading"
 					class="s-switch__trigger__icon"
 					:target="props.triggerIcon"
-					:rotating="props.rotating"
 				></s-icon>
+				<s-icon v-if="props.loading" target="loading" rotating></s-icon>
 			</span>
 
 
 			<switch-txt
-				class="s-switch__text" v-if="props.inlineText"
+				v-if="props.textStatus === 'inside'"
+				:class="switchNS.e('text')"
 				:txt="text"
 				:active="props.modelValue"
 			></switch-txt>
@@ -42,11 +50,16 @@
 
 		</div>
 
-		<span class="s-switch__label s-switch__label--right"
-		      :class="[{'is-active':props.modelValue}]"
-		      v-if="!props.inlineText"
+		<span
+			v-if="props.textStatus !== 'inside'"
+			:class="[
+				switchNS.e('label'),
+				switchNS.em('label', 'right'),
+				switchNS.is('active', props.modelValue)
+			]"
+
 		>
-			<s-icon class="s-switch__label__icon" :target="props.activeIcon"></s-icon>
+			<s-icon :target="props.activeIcon"></s-icon>
 
 			{{ props.activeText }}
 		</span>
@@ -57,6 +70,7 @@
 import {SSwitchEmits, SSwitchProps} from "./switch";
 import {computed} from "vue";
 import switchTxt from "./switchTxt.vue"
+import {useNS} from "@sss-ui-plus/hooks";
 
 defineOptions({
 	name: 'SSwitch',
@@ -64,7 +78,25 @@ defineOptions({
 })
 
 const props = defineProps({...SSwitchProps});
-const emits = defineEmits({...SSwitchEmits})
+const emits = defineEmits({...SSwitchEmits});
+const switchNS = useNS('switch');
+
+const switchKls = computed(() => {
+	return [
+		switchNS.namespace,
+		switchNS.is('checked', props.modelValue),
+		switchNS.is('disabled', props.disabled),
+		switchNS.is('loading', props.loading),
+		switchNS.m(props.size),
+	]
+})
+
+const switchSdl = computed(() => {
+	const color = props.color? props.color: props.type?  `var(--sss-color-${props.type})` : 'var(--sss-color-primary)';
+	return {
+		'--sss-switch-color': color
+	}
+})
 
 const text = computed(() => {
 	if (props.modelValue) {
@@ -77,7 +109,7 @@ const text = computed(() => {
 
 const handleClick = () => {
 	const done = () => {
-		if (props.loading) return
+		if (props.loading || props.disabled) return
 		if (props.modelValue) {
 			emits("update:modelValue", false);
 			emits("change", "off")

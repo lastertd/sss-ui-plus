@@ -1,16 +1,16 @@
 <template>
-	<div class="s-progress" ref="progress" :class="ProgressKls" :style="ProgressSdl">
-		<div class="s-progress__bar">
-			<div class="s-progress__thumb" :style="thumbSdl">
-				<span class="s-progress__text s-progress__text--inside"
+	<div ref="progress" :class="ProgressKls" :style="ProgressSdl">
+		<div :class="progressNS.e('bar')">
+			<div :class="progressNS.e('thumb')">
+				<span :class="[progressNS.e('text'), progressNS.em('text', 'inside')]"
 				      v-if="props.textStatus === 'inside'"
 				>{{ props.percentage }}%</span>
 			</div>
 		</div>
-		<span class="s-progress__text s-progress__text--outside"
+		<span :class="[progressNS.e('text'), progressNS.em('text', 'outside')]"
 		      v-if="props.textStatus === 'outside'"
 		>{{ props.percentage }}%</span>
-		<s-icon class="s-progress__icon" :target="icon"></s-icon>
+		<s-icon :class="progressNS.e('icon')" :target="props.icon??props.type"></s-icon>
 	</div>
 </template>
 
@@ -18,6 +18,7 @@
 
 import {SProgressProps} from "./progress";
 import {computed, ref} from "vue";
+import {useNS} from "@sss-ui-plus/hooks";
 
 defineOptions({
 	name: "SProgress",
@@ -26,23 +27,26 @@ defineOptions({
 
 const props = defineProps({...SProgressProps});
 const progress = ref<HTMLElement | null>(null);
+const progressNS = useNS('progress');
 
 
 const ProgressKls = computed(() => {
-	const type = props.type ? `s-progress--${props.type}` : '';
-	const theme = props.theme ? `s-progress--${props.theme}` : '';
-
 	return [
-		type,
-		theme,
+		progressNS.namespace,
+		progressNS.m(props.type),
+		progressNS.m(props.variant)
 	]
 
 })
 
 const ProgressSdl = computed(() => {
 	const variable = {
-		'--sss-progress-thumb-color': 'var(--sss-color-cyan)'
+		'--sss-progress-thumb-color': 'var(--sss-color-cyan)',
+		'--sss-progress-thumb-width': '10%'
+	}
 
+	if (props.percentage) {
+		variable["--sss-progress-thumb-width"] = `${props.percentage}%`
 	}
 
 	switch (props.type) {
@@ -71,17 +75,7 @@ const ProgressSdl = computed(() => {
 	return variable;
 })
 
-const thumbSdl = computed(() => {
-	const width = props.percentage
 
-
-	return {
-		width: `${width}%`
-	}
-})
-const icon = computed(() => {
-	return props.type ?? '';
-})
 
 </script>
 

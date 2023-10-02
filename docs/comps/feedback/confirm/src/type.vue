@@ -1,28 +1,28 @@
 <template>
-	<s-row horizontal="space-around" :gap="10">
+	<s-row justify-content="flex-start" :gap="20">
 		<s-button
-			empty
+			variant="empty"
 			type="success"
 			@click="handleClick('success')"
 		>
 			success
 		</s-button>
 		<s-button
-			empty
+			variant="empty"
 			type="info"
 			@click="handleClick('info')"
 		>
 			info
 		</s-button>
 		<s-button
-			empty
+			variant="empty"
 			type="warning"
 			@click="handleClick('warning')"
 		>
 			warning
 		</s-button>
 		<s-button
-			empty
+			variant="empty"
 			type="danger"
 			@click="handleClick('danger')"
 		>

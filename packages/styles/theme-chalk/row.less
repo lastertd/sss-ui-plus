@@ -1,4 +1,28 @@
-.s-row{
-    display: flex;
-    margin-bottom: 20px;
+@import "../mixn/_index";
+
+& {
+    @ns: @{componentPrefix}-row;
+
+    //var
+    .d(@ns, {
+        --sss-row-gap: unset;
+        --sss-row-justify-content: unset;
+        --sss-row-align-item: unset;
+        --sss-row-wrap: unset;
+    });
+
+    //base
+    .d(@ns, {
+        display: flex;
+        margin-bottom: 20px;
+        align-items: var(--sss-row-align-item);
+        justify-content: var(--sss-row-justify-content);
+        gap: var(--sss-row-gap);
+        flex-wrap: var(--sss-row-wrap);
+    });
+
+}
+
+.s-row {
+
 }

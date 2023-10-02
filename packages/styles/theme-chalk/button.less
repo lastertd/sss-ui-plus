@@ -39,14 +39,13 @@
         transition: all .15s;
         user-select: none;
 
-        color: var(--sss-color-black);
-        background-color: var(--sss-color-bg);
-        border-color: var(--sss-color-gray);
 
         &:hover,
         &:focus {
-            background-color: var(--sss-color-gray-fade);
             color: var(--sss-color-primary);
+        }
+        &:hover{
+            background-color: var(--sss-color-gray-fade);
         }
         &:active {
             border-color: var(--sss-color-primary);
@@ -139,7 +138,10 @@
 
         //fantasy
         .m(fantasy, {
-            //    unset
+            &:hover,
+            &:focus{
+                background-color: var(--sss-color-gray-fade);
+            }
         });
         each(@typeList, .(@type) {
             .mWith(@type, bm(@ns, fantasy), {

@@ -1,67 +1,127 @@
 @import "../mixn/_index";
 
-.s-badge {
-    position: absolute;
-    right: 0;
-    top: 0;
-    transform: translate(50%, -50%);
-    font-size: 10px;
-    padding: 0px 7px;
+& {
+    @ns:@{componentPrefix}-badge;
+    @types: primary, info, warning, danger, cyan;
+    @variant: empty, fantasy;
 
-    background: var(--sss-color-primary);
-    .useBorderRadius(@infinite);
-    .useBorderBox();
-    border: solid 1px var(--sss-color-bg);
-    color: var(--sss-color-white);
+    //base
+    .d(@ns, {
+        .useBorderRadius(@infinite);
+        .useBorderBox();
 
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: translate(50%, -50%);
+        font-size: var(--sss-font-size-small);
+        padding: 0 7px;
 
-    //没有内容显示为小圆点
-    &:empty{
-        padding: 3px;
-    }
+        background: var(--sss-color-primary);
+        border: solid 1px var(--sss-color-bg);
+        color: var(--sss-color-white);
 
-    &--empty{
-        background: var(--sss-color-bg);
-        border-color: var(--sss-color-primary-light);
-        color: var(--sss-color-primary);
-    }
-
-
-    &--cyan {
-        background: var(--sss-color-cyan);
-        &.s-badge--empty{
-            background: var(--sss-color-bg);
-            border-color: var(--sss-color-cyan-light);
-            color: var(--sss-color-cyan);
+        //没有内容显示为小圆点
+        &:empty{
+            padding: 3px;
         }
+    });
 
-    }
+    //modifier types
+    .d(@ns, {
+        each(@types, .(@type){
+           .m(@type, {
+               background: getClrVar(@type);
 
-    &--waring {
-        background: var(--sss-color-warning);
-        &.s-badge--empty{
-            background: var(--sss-color-bg);
-            border-color: var(--sss-color-warning-light);
-            color: var(--sss-color-warning);
-        }
-    }
+           })
+        });
+    });
 
-    &--danger {
-        background: var(--sss-color-danger);
-        &.s-badge--empty{
-            background: var(--sss-color-bg);
-            border-color: var(--sss-color-danger-light);
-            color: var(--sss-color-danger);
-        }
-    }
+    //modifier variant empty
+    .d(@ns, {
+        each(@types, .(@type){
+            .m(@type, {
+                .with(bm(@ns, empty), {
+                    background: var(--sss-color-bg);
+                    border-color: getClrVar(@type, light);
+                    color: getClrVar(@type);
+                });
 
-    &--info {
-        background: var(--sss-color-info);
-        &.s-badge--empty{
-            background: var(--sss-color-bg);
-            border-color: var(--sss-color-info-light);
-            color: var(--sss-color-info);
-        }
-    }
+            })
+        });
+    });
+
+    //modifier variant fantasy
+    .d(@ns, {
+        each(@types, .(@type){
+            .m(@type, {
+                .with(bm(@ns, fantasy), {
+                    background: getClrVar(@type, fade);
+                    border-color: getClrVar(@type, light);
+                    color: getClrVar(@type);
+                });
+
+            })
+        });
+    });
+
+    //point
+    .d(@ns, {
+        each(@types, .(@type){
+            &:empty{
+                background-color: getClrVar(@type)!important;
+            }
+        });
+    });
 
 }
+
+//.s-badge {
+//
+//
+//
+//
+//
+//    &--empty{
+//        background: var(--sss-color-bg);
+//        border-color: var(--sss-color-primary-light);
+//        color: var(--sss-color-primary);
+//    }
+//
+//
+//    &--cyan {
+//        background: var(--sss-color-cyan);
+//        &.s-badge--empty{
+//
+//        }
+//
+//    }
+//
+//    &--waring {
+//        background: var(--sss-color-warning);
+//        &.s-badge--empty{
+//            background: var(--sss-color-bg);
+//            border-color: var(--sss-color-warning-light);
+//            color: var(--sss-color-warning);
+//        }
+//    }
+//
+//    &--danger {
+//        background: var(--sss-color-danger);
+//        &.s-badge--empty{
+//            background: var(--sss-color-bg);
+//            border-color: var(--sss-color-danger-light);
+//            color: var(--sss-color-danger);
+//        }
+//    }
+//
+//    &--info {
+//        background: var(--sss-color-info);
+//        &.s-badge--empty{
+//            background: var(--sss-color-bg);
+//            border-color: var(--sss-color-info-light);
+//            color: var(--sss-color-info);
+//        }
+//    }
+//
+//}

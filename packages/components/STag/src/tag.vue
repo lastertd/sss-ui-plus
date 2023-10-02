@@ -1,15 +1,16 @@
 <template>
 	<transition name="s-transition-scaleHorizontal" appear>
-		<div class="s-tag"
-		     :class="tagKls"
+		<div :class="tagKls"
 		     @click="emits('click',$event)"
 		>
-		<span class="s-tag__content">
+		<span :class="tagNS.e('content')">
 			<slot/>
 		</span>
-			<s-icon class="s-tag__icon" v-if="props.closable"
-			        target="close"
-			        @click.stop="emits('close', $event)"
+			<s-icon
+				v-if="props.closable"
+				:class="tagNS.e('icon')"
+				target="close"
+				@click.stop="emits('close', $event)"
 			></s-icon>
 		</div>
 	</transition>
@@ -19,6 +20,7 @@
 <script setup lang="ts">
 import {STagEmits, STagProps} from "./tag";
 import {computed} from "vue";
+import {useNS} from "@sss-ui-plus/hooks";
 
 defineOptions({
 	name: "STag",
@@ -28,18 +30,15 @@ defineOptions({
 
 const props = defineProps({...STagProps});
 const emits = defineEmits({...STagEmits});
+const tagNS = useNS('tag');
+
 const tagKls = computed(() => {
-	const type = props.type ? `s-tag--${props.type}` : '';
-	const size = props.size ? `s-tag--${props.size}` : '';
-	const theme = props.theme ? `s-tag--${props.theme}` : '';
-	const status = props.status ? `is-${props.status}` : '';
-
-
 	return [
-		type,
-		size,
-		theme,
-		status
+		tagNS.namespace,
+		tagNS.m(props.type),
+		tagNS.m(props.size),
+		tagNS.m(props.variant),
+		tagNS.is(props.status),
 	]
 })
 

@@ -1,5 +1,5 @@
 <template>
-	<s-row horizontal="flex-start" :gap="30">
+	<s-row justify-content="flex-start" :gap="30">
 		<s-button
 			v-for="i in 3"
 			:key="i"

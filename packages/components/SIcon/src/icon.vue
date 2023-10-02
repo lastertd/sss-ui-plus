@@ -36,6 +36,7 @@ const iconKls = computed(() => {
 	]
 })
 const iconSdl = computed(() => {
+
 	return{
 		'--sss-icon-color': props.color ? `${props.color}` : 'inherit',
 

@@ -87,7 +87,7 @@ export const SPopconfirmProps = {
     /**
      * @description 气泡确认框显示的文本
      */
-    content: String,
+    text: String,
     /**
      * @description 气泡确认框的类型
      */

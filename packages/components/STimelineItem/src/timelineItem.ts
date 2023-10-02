@@ -21,7 +21,7 @@ export const STimelineItemProps = {
     /**
      * @description 时间线子项的主题
      */
-    theme:String as PropType<'empty | default'>,
+    variant:String as PropType<'empty' | 'default'>,
     /**
      * @description 时间线子项的 '时间'
      */

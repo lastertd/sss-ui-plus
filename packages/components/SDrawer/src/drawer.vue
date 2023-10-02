@@ -1,3 +1,55 @@
+<template>
+	<teleport to="body" :disabled="!props.appendToBody">
+		<div v-show="visible" ref="container"
+		     :class="drawerKls"
+
+		>
+			<SMessageBox
+				ref="msgBox"
+				:class="[drawerNS.e('inner')]"
+				:transition="props.transition ||defaultTransition"
+				:title="props.title"
+				:no-header="props.noHeader"
+				:no-body="props.noBody"
+				:no-footer="props.noFooter"
+				:show-close-icon="props.showCloseIcon"
+				:cancel-btn-text="props.cancelBtnText"
+				:confirm-btn-text="props.confirmBtnText"
+				:btn-size="props.btnSize"
+				:close-on-press-escape="props.closeOnPressEscape"
+				:before-close="props.beforeClose"
+				@cancel="onCancel"
+				@confirm="onConfirm"
+				@open="onOpen"
+				@opened="opened"
+				@close="onClose"
+				@closed="closed"
+				@hidden="onHidden"
+				v-bind="$attrs"
+
+
+			>
+				<template #header v-if="$slots.header">
+					<slot name="header"/>
+				</template>
+
+
+				<template #default>
+					<slot></slot>
+				</template>
+
+				<template #footer v-if="$slots.footer">
+					<slot name="footer"/>
+				</template>
+
+			</SMessageBox>
+
+		</div>
+	</teleport>
+
+</template>
+
+
 <script setup lang="ts">
 import {SDrawerProps, SDrawerEmits} from "./drawer"
 import {SMessageBox, SMessageBoxInstance} from "../../SMessageBox";
@@ -5,7 +57,7 @@ import {nextTick, onMounted, Ref, watch, ref, computed} from "vue";
 import {unrefElement, useEventListener} from "@vueuse/core";
 import {IndexManager} from "@sss-ui-plus/utils";
 import {MessageTriggerTypes} from "@sss-ui-plus/typings";
-import {useLockScroll, useMark} from "@sss-ui-plus/hooks";
+import {useLockScroll, useMark, useNS} from "@sss-ui-plus/hooks";
 
 
 defineOptions({
@@ -15,25 +67,32 @@ defineOptions({
 
 const props = defineProps({...SDrawerProps});
 const emits = defineEmits({...SDrawerEmits})
-const indexManager = new IndexManager();
-
-
 const msgBox: Ref<SMessageBoxInstance | null> = ref(null);
 const container: Ref<HTMLElement | null> = ref(null);
+const drawerNS = useNS('drawer');
+
+
+const drawerKls = computed(() => {
+	return [
+		drawerNS.namespace,
+		drawerNS.m(props.position),
+		drawerNS.is(props.part, 'part'),
+	]
+})
+
+const indexManager = new IndexManager();
 const visible: Ref<Boolean> = ref(props.modelValue);
-
-
 // 标志modelValue是外部修改还是事件提交导致的修改
 let changedBySystem = true;
 
 
 const {lockScroll, unLockScroll} = useLockScroll();
-const {mark, hiddenMark, showMark} = useMark(container, 'cover');
+const {mark, hiddenMark, showMark} = useMark(container, props.part? 'part':'cover');
 
 
 // 默认过渡通过position计算
 const defaultTransition = computed(() => {
-	switch (props.position){
+	switch (props.position) {
 		case 'top':
 			return 's-transition-fadeDown--completely'
 		case 'right':
@@ -53,8 +112,8 @@ const onOpen = function () {
 	emits("update:modelValue", true);
 	emits('open');
 	unrefElement(container)!.style.zIndex = indexManager.nextIndex().toString();
-	if (props.lockScroll) lockScroll();
-	if (props.showMark) showMark();
+	if (props.lockScroll && !props.part) lockScroll();
+	if (props.modal) showMark();
 
 }
 
@@ -71,7 +130,7 @@ const onHidden = function () {
 	changedBySystem = false;
 	emits('hidden');
 	emits('update:modelValue', false);
-	if (props.showMark) hiddenMark();
+	if (props.modal) hiddenMark();
 }
 
 const onCancel = function () {
@@ -90,7 +149,7 @@ const opened = function () {
 }
 
 const closed = function () {
-	if (props.lockScroll) unLockScroll();
+	if (props.lockScroll && !props.part) unLockScroll();
 	visible.value = false;
 	emits("closed");
 
@@ -122,7 +181,7 @@ onMounted(() => {
 })
 
 // 是否点击遮罩关闭元素
-if (props.closeOnClickMark && props.showMark) {
+if (props.closeOnClickMark && props.modal) {
 	useEventListener(mark, 'click', () => {
 		msgBox.value!.close("mark")
 	})
@@ -159,52 +218,3 @@ defineExpose({
 })
 
 </script>
-
-<template>
-	<teleport to="body" :disabled="props.appendToBody">
-		<div class="s-drawer" ref="container" v-show="visible">
-			<SMessageBox class="s-drawer__inner" ref="msgBox"
-			             :class="[
-							`s-drawer__inner--${props.position}`
-						]"
-			             :transition="props.transition ||defaultTransition"
-			             :title="props.title"
-			             :no-header="props.noHeader"
-			             :no-body="props.noBody"
-			             :no-footer="props.noFooter"
-			             :show-close-icon="props.showCloseIcon"
-			             :cancel-btn-text="props.cancelBtnText"
-			             :confirm-btn-text="props.confirmBtnText"
-			             :btn-size="props.btnSize"
-			             :close-on-press-escape="props.closeOnPressEscape"
-			             :before-close="props.beforeClose"
-			             v-bind="$attrs"
-			             @cancel="onCancel"
-			             @confirm="onConfirm"
-			             @open="onOpen"
-			             @opened="opened"
-			             @close="onClose"
-			             @closed="closed"
-			             @hidden="onHidden"
-
-
-			>
-				<template #header v-if="$slots.header">
-					<slot name="header"/>
-				</template>
-
-
-				<template #default>
-					<slot></slot>
-				</template>
-
-				<template #footer v-if="$slots.footer">
-					<slot name="footer"/>
-				</template>
-
-			</SMessageBox>
-
-		</div>
-	</teleport>
-
-</template>

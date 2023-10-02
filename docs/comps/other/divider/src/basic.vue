@@ -1,9 +1,4 @@
 <template>
-
-
-
-
-
 	<div>
 		为天地立心
 		<s-divider></s-divider>

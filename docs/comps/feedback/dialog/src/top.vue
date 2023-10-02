@@ -1,5 +1,5 @@
 <template>
-	<s-row :gap="10" horizontal="flex-start" >
+	<s-row :gap="20" justify-content="flex-start" >
 		<s-button @click="f1 =!f1">top = 10vh</s-button>
 		<s-button @click="f2 = !f2">top = unset</s-button>
 	</s-row>

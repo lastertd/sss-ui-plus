@@ -8,6 +8,9 @@
     //--vp-c-brand-darker: darken(#db5b6c, 10%);
 }
 
+h2{
+    border-top: none!important;
+}
 
 //修改主页面标题颜色
 .VPHero {
@@ -17,6 +20,7 @@
 
     }
 }
+
 
 //修改默认滚动条样式
 body {
@@ -109,14 +113,15 @@ body {
 }
 
 .VPDoc{
-    .content{
-        padding: 0;
+    & .container .content .content-container{
     }
     .content-container{
         margin: 0;
+        padding: 0;
+
         max-width: unset!important;
-        padding-right: 32px;
-        padding-left: 16px;
+        //padding-right: 32px;
+        //padding-left: 16px;
     }
 }
 

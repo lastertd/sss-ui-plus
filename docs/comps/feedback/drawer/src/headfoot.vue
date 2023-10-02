@@ -5,6 +5,7 @@
 		ref="drawer"
 		title="修改默认标题"
 		:show-close-icon="false"
+		position="right"
 	>
 		body 区域
 		<template #footer>

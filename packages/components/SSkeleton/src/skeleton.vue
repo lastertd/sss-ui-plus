@@ -1,3 +1,13 @@
+<template>
+	<template v-if="_loading">
+		<slot name="skeleton"></slot>
+	</template>
+
+	<template v-else>
+		<slot></slot>
+	</template>
+</template>
+
 <script setup lang="ts">
 import {SSkeletonProps} from "./skeleton";
 import {provide, ref, watch} from "vue";
@@ -32,12 +42,4 @@ watch(() => props.loading, () => {
 
 </script>
 
-<template>
-	<template v-if="_loading">
-		<slot name="skeleton"></slot>
-	</template>
 
-	<template v-else>
-		<slot></slot>
-	</template>
-</template>

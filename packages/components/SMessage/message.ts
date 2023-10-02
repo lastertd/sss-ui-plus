@@ -44,7 +44,6 @@ export default async function (options: Partial<options>) {
         icon: options.icon,
         iconColor: options.color,
         title: options.text,
-        showHead: true,
         noFooter:true,
         noBody:true,
         showCloseIcon: options.showCloseIcon,

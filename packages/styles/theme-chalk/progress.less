@@ -1,51 +1,71 @@
 @import "../mixn/_index";
 
-.s-progress{
-    .useBorderBox();
-    .useFlexRCC();
 
-    gap: 1em;
-    min-width: 400px;
-    height: 10px;
-    font-size: var(--sss-font-size-small);
+& {
+    @ns: @{componentPrefix}-progress;
 
-    --sss-progress-thumb-color:unset;
+    //variable
+    .d(@ns, {
+        --sss-progress-thumb-color: unset;
+        --sss-progress-thumb-width: unset;
+    });
 
 
+    //base
+    .d(@ns, {
+        .useBorderBox();
+        .useFlexRCC(3);
+
+        min-width: 400px;
+        height: 10px;
+        font-size: var(--sss-font-size-small);
+    });
+
+
+    //ele bar
+    .d(be(@ns, bar), {
+        flex: 1;
+        .useBorderRadius(@infinite);
+
+        height: 100%;
+        width: 100%;
+        background-color: var(--sss-color-gray-fade);
+    });
+
+
+    //ele thumb
+    .d(be(@ns, thumb), {
+        .useBorderRadius(@infinite);
+        .usePulse(var(--sss-progress-thumb-color), 2s, 90deg);
+        transition: all .3s linear;
+        position: relative;
+
+        height: 100%;
+        background-color: var(--sss-progress-thumb-color);
+        width: var(--sss-progress-thumb-width);
+    });
+
+
+    //ele text
+    .d(be(@ns, text), {
+        white-space: nowrap;
+        overflow: hidden;
+        min-width: 2.6em;
+        .m(inside, {
+            min-width: unset;
+            position: absolute;
+            right: 5px;
+            top: calc(50%);
+            transform: translateY(-50%);
+            color: var(--sss-color-white);
+        });
+    });
+
+
+    //ele icon
+    .d(be(@ns, icon), {
+        color: var(--sss-progress-thumb-color);
+        font-size: 15px;
+    });
 }
 
-.s-progress__bar{
-    flex: 1;
-    .useBorderRadius(@infinite);
-
-    height: 100%;
-    width: 100%;
-    background-color: var(--sss-color-gray-fade);
-}
-.s-progress__thumb{
-    .useBorderRadius(@infinite);
-    .usePulse(var(--sss-progress-thumb-color),2s, 90deg);
-    transition: all .3s linear;
-    position: relative;
-
-    height: 100%;
-    width: 10%;
-    background-color: var(--sss-progress-thumb-color);
-}
-.s-progress__text{
-    white-space: nowrap;
-    overflow: hidden;
-    min-width: 3em;
-    &--inside{
-        min-width: unset;
-        position: absolute;
-        right: 5px;
-        top: calc(50%);
-        transform: translateY(-50%);
-        color: var(--sss-color-white);
-    }
-}
-.s-progress__icon{
-    color: var(--sss-progress-thumb-color);
-    font-size: 15px;
-}

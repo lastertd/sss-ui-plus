@@ -1,13 +1,13 @@
-import {ComputedRef, onUnmounted, Ref, watch} from "vue";
+import {ComputedRef, onUnmounted, Ref, watch, watchEffect} from "vue";
 import {noop, unrefElement, VueInstance} from "@vueuse/core";
-import {Badge, BadgeType} from "@sss-ui-plus/utils";
+import {Badge, BadgeType ,BadgeVariant} from "@sss-ui-plus/utils";
 
 type targetType = Ref<HTMLElement | undefined | null | VueInstance> | HTMLElement;
 
 interface BadgeOptions {
     value: Ref<string | number> | ComputedRef<any>
-    type?: BadgeType,
-    theme?: Ref<string[]>
+    type?: Ref<BadgeType | undefined>,
+    variant?: Ref<BadgeVariant | undefined>
 }
 
 /**
@@ -16,18 +16,16 @@ interface BadgeOptions {
  * @param options 配置选项
  */
 export const useBadge = function (target: targetType, options: BadgeOptions) {
-    const {value, type, theme} = options;
-    const badge = new Badge(type);
+    const {value, type, variant} = options;
+    const badge = new Badge();
     let cleanup = noop;
 
 
-    const themeWatcher = watch(() => theme?.value, (klsList) => {
-        badge.getElement().classList.remove('s-badge--light')
-        badge.getElement().classList.remove('s-badge--dark');
+    const watchEffect1 = watchEffect(() => {
 
-        klsList?.forEach((kls) => badge.getElement().classList.add(kls));
-
-    }, {immediate: true});
+        type?.value && badge.tp(type.value);
+        variant?.value && badge.exp(variant.value);
+    })
 
 
     const targetWatcher = watch(() => {
@@ -66,7 +64,7 @@ export const useBadge = function (target: targetType, options: BadgeOptions) {
 
     const stop = () => {
         cleanup();
-        themeWatcher();
+        watchEffect1();
         targetWatcher();
         valueWatcher();
     }

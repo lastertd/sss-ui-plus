@@ -11,57 +11,66 @@ import del from "rollup-plugin-delete"
 import {terser} from "rollup-plugin-terser";
 
 // https://vitejs.dev/config/
+
+
+const plugins = [
+    dts({
+        outDir: ['es', "lib"],
+        tsConfigFilePath: resolve(__dirname, "tsconfig.json"),
+        compilerOptions: {
+            baseUrl: ".",
+            paths: {
+                "@sss-ui-plus/typings": ["./packages/typings"],
+                "@sss-ui-plus/utils": ["./packages/utils"],
+                "@sss-ui-plus/hooks": ["./packages/hooks"],
+                "@sss-ui-plus/components": ["./packages/components"],
+                "@sss-ui-plus/styles": ["./packages/styles"],
+            }
+        }
+    }),
+    postcss({
+        extract: 'index.css',
+        plugins: [
+            autoprefixer(),
+            cssnano()
+        ],
+
+
+    }),
+
+    terser({
+        format: {
+            comments: 'all', // 保留至少包含 "@license" 或 "@preserve" 的注释
+        },
+    }),
+    copy({
+        targets: [
+            {src: 'es/*.css', dest: 'dist'},
+        ],
+        verbose: true,
+        hook: 'generateBundle'
+
+    }),
+    del({
+        targets: [
+            // 设置删除规则，删除原来位置的 CSS 文件
+            'es/*.css',
+            'lib/*.css',
+            'dist/style.css',
+        ],
+        hook: 'closeBundle', // 在 writeBundle 钩子时执行删除操作
+    }),
+]
+
+
 export default defineConfig({
     plugins: [
 
         vue(),
         DefineOptions(),
-        // dts({
-        //     outDir: ['es', "lib"],
-        //     tsConfigFilePath: resolve(__dirname, "tsconfig.json"),
-        //     compilerOptions: {
-        //         baseUrl: ".",
-        //         paths: {
-        //             "@sss-ui-plus/typings": ["./packages/typings"],
-        //             "@sss-ui-plus/utils": ["./packages/utils"],
-        //             "@sss-ui-plus/hooks": ["./packages/hooks"],
-        //             "@sss-ui-plus/components": ["./packages/components"],
-        //             "@sss-ui-plus/styles": ["./packages/styles"],
-        //         }
-        //     }
-        // }),
-        // postcss({
-        //     extract: 'index.css',
-        //     plugins: [
-        //         autoprefixer(),
-        //         cssnano()
-        //     ],
-        //
-        //
-        // }),
-        //
-        // terser({
-        //     format: {
-        //         comments: 'all', // 保留至少包含 "@license" 或 "@preserve" 的注释
-        //     },
-        // }),
-        // copy({
-        //     targets: [
-        //         {src: 'es/*.css', dest: 'dist'},
-        //     ],
-        //     verbose: true,
-        //     hook: 'generateBundle'
-        //
-        // }),
-        // del({
-        //     targets: [
-        //         // 设置删除规则，删除原来位置的 CSS 文件
-        //         'es/*.css',
-        //         'lib/*.css',
-        //         'dist/style.css',
-        //     ],
-        //     hook: 'closeBundle', // 在 writeBundle 钩子时执行删除操作
-        // }),
+        // 打包模式下启用
+        // ...plugins
+
     ],
 
 

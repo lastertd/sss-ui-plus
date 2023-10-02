@@ -6,9 +6,11 @@
 		@confirm="handleConfirm"
 		cancel-btn-text="cancel"
 		confirm-btn-type="confirm"
+		icon="edit"
+		icon-color="blue"
 
 	>
-		<s-button type="primary" ghost>click me</s-button>
+		<s-button>click me</s-button>
 	</s-popconfirm>
 </template>
 

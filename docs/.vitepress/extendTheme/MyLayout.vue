@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import DefaultTheme from "vitepress/theme";
 import {STooltip} from "@sss-ui-plus/components";
+import SFooter from "./SFooter.vue";
 
 const {Layout} = DefaultTheme
 
@@ -27,6 +28,9 @@ const {Layout} = DefaultTheme
 				</s-tooltip>
 
 			</div>
+		</template>
+		<template #doc-bottom>
+			<s-footer></s-footer>
 		</template>
 	</Layout>
 

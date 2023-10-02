@@ -1,5 +1,5 @@
 <template>
-	<s-button empty @click="handleClick">
+	<s-button variant="empty" @click="handleClick">
 		点击送地狱火
 	</s-button>
 </template>

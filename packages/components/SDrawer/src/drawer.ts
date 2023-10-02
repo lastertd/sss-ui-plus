@@ -94,7 +94,7 @@ export const SDrawerProps = {
     /**
      * @description 是否显示遮罩
      */
-    showMark: {
+    modal: {
         type: Boolean,
         default: true,
     },
@@ -110,6 +110,7 @@ export const SDrawerProps = {
      * @description 是否挂载到body元素下面, 在层级混乱时开启此项
      */
     appendToBody: Boolean,
+    part:Boolean
 
 
 

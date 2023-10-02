@@ -1,7 +1,54 @@
+<template>
+	<div :class="scrollbarNS.namespace"
+	     :data-always="props.always"
+	     :data-native="props.native"
+	     v-bind="$attrs"
+
+	>
+		<div ref="warp"
+		     :class="scrollbarNS.e('wrapper')"
+		>
+			<slot></slot>
+		</div>
+		<div v-if="!props.native" ref="barY"
+		     :class="[
+				 scrollbarNS.e('bar'),
+				 scrollbarNS.is('vertical'),
+				 scrollbarNS.is(props.isOutside, 'outside'),
+				 scrollbarNS.is(active === 1, 'active')
+			 ]"
+		>
+			<div ref="thumbY"
+			     :class="[scrollbarNS.e( 'thumb'),scrollbarNS.is('round') ]"
+			     :style="thumbYStyle">
+
+			</div>
+		</div>
+		<div v-if="!props.native" ref="barX"
+		     :class="[
+				 scrollbarNS.e('bar'),
+				 scrollbarNS.is('horizontal'),
+				 scrollbarNS.is(props.isOutside, 'outside'),
+				 scrollbarNS.is(active === 2, 'active')
+			 ]"
+
+		>
+			<div ref="thumbX"
+			     :class="[scrollbarNS.e( 'thumb'),scrollbarNS.is('round') ]"
+			     :style="thumbXStyle">
+			</div>
+		</div>
+	</div>
+
+
+</template>
+
+
 <script setup lang="ts">
 import {SScrollbarEmits, SScrollbarProps} from "./scrollbar";
-import {ref} from "vue";
+import {onMounted, ref} from "vue";
 import {unrefElement, useEventListener, useResizeObserver, useMutationObserver} from "@vueuse/core";
+import {useNS} from "@sss-ui-plus/hooks";
 
 
 defineOptions({
@@ -12,13 +59,15 @@ defineOptions({
 
 const props = defineProps({...SScrollbarProps});
 const emits = defineEmits({...SScrollbarEmits})
+const scrollbarNS = useNS('scrollbar');
+
+
 const warp = ref<HTMLElement | undefined>(undefined);
 const thumbY = ref<HTMLElement | undefined>(undefined);
 const barY = ref<HTMLElement | undefined>(undefined);
 const thumbX = ref<HTMLElement | undefined>(undefined);
 const barX = ref<HTMLElement | undefined>(undefined);
 const active = ref(0);
-
 
 
 let flag: 'thumbX' | 'thumbY';
@@ -104,9 +153,15 @@ const handleClick = (evt: MouseEvent) => {
 
 
 	if (flag === 'thumbY') {
-		unrefElement(warp)!.scrollTop = warpHeight * offset.y / barHeight;
+		unrefElement(warp)!.scrollTo({
+			top: warpHeight * offset.y / barHeight,
+			behavior: 'smooth'
+		})
 	} else if (flag === 'thumbX') {
-		unrefElement(warp)!.scrollLeft = warpWidth * offset.x / barWidth;
+		unrefElement(warp)!.scrollTo({
+			left: warpWidth * offset.x / barWidth,
+			behavior: 'smooth'
+		})
 	}
 }
 
@@ -240,37 +295,4 @@ useEventListener(document.body, 'mouseup', () => {
 })
 
 
-
 </script>
-
-<template>
-	<div class="s-scrollbar"
-	     :data-always="props.always"
-	     :data-native="props.native"
-	     v-bind="$attrs">
-		<div ref="warp" class="s-scrollbar__warp">
-			<slot></slot>
-		</div>
-		<div v-if="!props.native" ref="barY" class="s-scrollbar__bar is-vertical"
-		     v-show="props.vertical"
-		     :class="[{
-				 'is-outside':props.isOutside,
-	             'is-active':active === 1
-			 }]"
-		>
-			<div ref="thumbY" class="s-scrollbar__bar__thumb is-round" :style="thumbYStyle"></div>
-		</div>
-		<div v-if="!props.native" ref="barX" class="s-scrollbar__bar is-horizontal "
-		     v-show="props.horizontal"
-		     :class="[{
-				 'is-outside':props.isOutside,
-	             'is-active':active === 2
-			 }]"
-
-		>
-			<div ref="thumbX" class="s-scrollbar__bar__thumb is-round" :style="thumbXStyle"></div>
-		</div>
-	</div>
-
-
-</template>

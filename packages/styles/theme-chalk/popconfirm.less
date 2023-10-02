@@ -1,23 +1,20 @@
-.s-popconfirm {
-    min-width: 200px;
-    padding: 0;
-    border: solid 1px var(--sss-color-gray);
-    white-space: unset;
+@import "../mixn/_index";
 
+
+& {
+    @ns: @{componentPrefix}-popconfirm;
+    .d(@ns, {
+        min-width: 200px;
+        padding: 0;
+        white-space: unset;
+    });
+    .d(be(@ns, inner), {
+        background-color: inherit;
+        border: none;
+        .d(s-message__header, {
+            margin-bottom: 10px;
+
+        })
+    });
 }
 
-.s-popconfirm__inner{
-    width: 100%;
-    background-color: inherit;
-    border: none;
-
-
-
-    .s-message__header{
-        margin-bottom: 10px;
-    }
-    .s-message-box__icon{
-        line-height: 2.3em!important;
-    }
-
-}

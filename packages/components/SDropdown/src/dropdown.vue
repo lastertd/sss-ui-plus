@@ -1,8 +1,60 @@
+<template>
+	<s-floating
+		ref="floating"
+		:class="dropdownNS.namespace"
+		:style="dropdownSdl"
+		:trigger="props.trigger"
+		:placement="props.placement"
+		:transition="props.transition"
+		:open-delay="props.openDelay"
+		:close-delay="props.closeDelay"
+		:disabled="props.disabled"
+		:offset="props.offset"
+		:close-on-click-body="props.closeOnClickBody"
+		:open-on-mounted="props.openOnMounted"
+		:teleported="props.teleported"
+		:show-arrow="props.showArrow"
+		:floating-class="props.floatingClass"
+		:reference="props.reference"
+		:quick-track="props.quickTrack"
+
+
+		@open="emits('open')"
+		@opened="emits('opened')"
+		@close="emits('close')"
+		@closed="emits('closed')"
+
+
+	>
+		<template #reference v-if="slots.reference">
+			<slot name="reference"></slot>
+		</template>
+
+		<template #default>
+			<s-scrollbar
+				:no-resize="props.scrollbarNoResize"
+				:is-outside="props.scrollbarIsOutside"
+				v-bind="$attrs"
+
+
+			>
+				<ul :class="dropdownNS.e('inner')">
+					<slot></slot>
+				</ul>
+			</s-scrollbar>
+		</template>
+
+
+	</s-floating>
+
+</template>
+
 <script setup lang="ts">
 import {SDropdownEmits, SDropdownProps} from "./dropdown";
 import {SFloating, SFloatingInstance} from "../../SFloating";
 import {SScrollbar} from "../../SScrollbar";
-import {provide, ref, useSlots} from "vue";
+import {computed, provide, ref, useSlots} from "vue";
+import {useNS} from "@sss-ui-plus/hooks";
 
 
 defineOptions({
@@ -14,6 +66,15 @@ defineOptions({
 const props = defineProps({...SDropdownProps});
 const emits = defineEmits({...SDropdownEmits});
 const slots = useSlots();
+const dropdownNS = useNS('dropdown');
+
+const dropdownSdl = computed(() => {
+	return {
+		'--sss-dropdown-active-color':props.activeColor?? 'var(--sss-color-primary)',
+		'--sss-dropdown-play':props.center? 'center' :'start',
+
+	}
+})
 
 const floating = ref<SFloatingInstance | null>(null);
 
@@ -53,58 +114,5 @@ defineExpose({
 
 </script>
 
-<template>
-	<s-floating
-		ref="floating"
-		class="s-dropdown"
-		:trigger="props.trigger"
-		:placement="props.placement"
-		:transition="props.transition"
-		:open-delay="props.openDelay"
-		:close-delay="props.closeDelay"
-		:disabled="props.disabled"
-		:offset="props.offset"
-		:close-on-click-body="props.closeOnClickBody"
-		:open-on-mounted="props.openOnMounted"
-		:teleported="props.teleported"
-		:show-arrow="props.showArrow"
-		:floating-class="props.floatingClass"
-		:reference="props.reference"
-		:quick-track="props.quickTrack"
-
-
-		@open="emits('open')"
-		@opened="emits('opened')"
-		@close="emits('close')"
-		@closed="emits('closed')"
-
-
-	>
-		<template #reference v-if="slots.reference">
-			<slot name="reference"></slot>
-		</template>
-
-		<template #default>
-			<s-scrollbar
-				:vertical="props.scrollbarVertical"
-				:horizontal="props.scrollbarHorizontal"
-				:no-resize="props.scrollbarNoResize"
-				:always="props.scrollbarAlways"
-				:is-outside="props.scrollbarIsOutside"
-				:quick-jump="props.scrollbarQuickJump"
-				v-bind="$attrs"
-
-
-			>
-				<ul class="s-dropdown__inner">
-					<slot></slot>
-				</ul>
-			</s-scrollbar>
-		</template>
-
-
-	</s-floating>
-
-</template>
 
 

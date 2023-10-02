@@ -1,15 +1,6 @@
+import {isNumber} from "@sss-ui-plus/utils";
+
 export const SScrollbarProps = {
-    /**
-     * @description 是否显示垂直滚动条
-     */
-    vertical: {
-        type: Boolean,
-        default: true,
-    },
-    /**
-     * @description 是否显示水平滚动条
-     */
-    horizontal: Boolean,
     /**
      * @description 视口大小是否不再改变
      */
@@ -36,5 +27,5 @@ export const SScrollbarProps = {
 
 }
 export const SScrollbarEmits = {
-    scroll:(scrollLeft:number, scrollTop:number) => true
+    scroll:(scrollLeft:number, scrollTop:number) => isNumber(scrollLeft) && isNumber(scrollTop)
 } as const

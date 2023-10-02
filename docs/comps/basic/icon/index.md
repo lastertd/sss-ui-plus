@@ -41,3 +41,9 @@ title="你也可以在元素class中加上 'iconfont'  'sss-${target}' 两个类
 |---------|-----|
 | default | 默认槽 |
 
+## 源代码
+<SRep aim="SIcon"></SRep>
+
+## 贡献者
+
+<SMember></SMember>

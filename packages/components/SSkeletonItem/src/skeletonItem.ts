@@ -4,16 +4,16 @@ export const SSkeletonItemProps = {
     /**
      * @description 骨架屏子项的类型
      */
-    type:{
+    variant:{
         type:String as PropType<'triangle' | 'rectangle' | 'image'>,
         default:'rectangle',
     },
     /**
      * @description 是否是圆形
      */
-    isCircle:Boolean,
+    circle:Boolean,
     /**
      * @description 是否是圆角
      */
-    isRound:Boolean,
+    round:Boolean,
 }

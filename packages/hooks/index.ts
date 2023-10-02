@@ -9,3 +9,5 @@ export * from "./useMark"
 export * from "./useBadge"
 
 export * from "./useAlert"
+
+export * from "./useNS"

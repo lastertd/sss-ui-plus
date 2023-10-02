@@ -28,7 +28,7 @@ export const SDropdownItemProps = {
     /**
      * @description 下拉框子项是否是活跃状态
      */
-    isActive:Boolean,
+    active:Boolean,
     /**
      * @description 下拉框子项是否是禁用状态
      */

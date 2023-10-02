@@ -1,10 +1,10 @@
 <template>
 	<div>
-		<s-divider type="dashed"></s-divider>
+		<s-divider status="dashed"></s-divider>
 		醉后不知天在水
-		<s-divider type="solid"></s-divider>
+		<s-divider status="solid"></s-divider>
 		满船清梦压星河
-		<s-divider type="dashed"></s-divider>
+		<s-divider status="dashed"></s-divider>
 
 	</div>
 </template>

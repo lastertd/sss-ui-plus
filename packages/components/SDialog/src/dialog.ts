@@ -1,6 +1,6 @@
 import {PropType} from "vue";
 import {isString} from "@vue/shared";
-import {ElementSizes, MessageTriggerTypes, ElementTypes, Transition} from "@sss-ui-plus/typings";
+import {ElementSizes, MessageTriggerTypes, Transition} from "@sss-ui-plus/typings";
 
 export const SDialogProps = {
 
@@ -69,7 +69,7 @@ export const SDialogProps = {
     /**
      * @description 是否显示遮罩
      */
-    showMark: {
+    modal: {
         type: Boolean,
         default: true,
     },
@@ -103,6 +103,7 @@ export const SDialogProps = {
      * @description 对话框打开/关闭的绑定值
      */
     modelValue: Boolean,
+    part:Boolean,
 
 
 } as const

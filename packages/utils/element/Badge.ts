@@ -1,21 +1,28 @@
+import {useNS} from "@sss-ui-plus/hooks";
+
 export declare type BadgeType = 'primary' | 'waring' | 'danger' | 'info' | 'cyan';
+export declare type BadgeVariant = 'empty' | 'fantasy';
 
 class Badge {
     protected element: HTMLElement
-    protected parent: HTMLElement | null
+    protected parent: HTMLElement | undefined
     protected type: string
+    protected variant: string | undefined
+    protected ns: ReturnType<typeof useNS>
     static keyframes: Keyframe[] = [
         {transform: 'scale(.7) translate(50%,-50%)'},
         {}
     ]
 
-    constructor(type: BadgeType = 'primary') {
+    constructor(type?: BadgeType, variant?: BadgeVariant) {
         this.element = document.createElement('span');
-        this.element.classList.add('s-badge');
-        this.element.classList.add(`s-badge--${type}`);
+        this.ns = useNS('badge');
         this.type = type;
 
-        this.parent = null;
+        this.element.classList.add(this.ns.namespace);
+        type && this.tp(type);
+        variant && this.exp(variant);
+
 
     }
 
@@ -31,7 +38,7 @@ class Badge {
      * @param parent 挂载目标
      */
     public mountTo(parent: HTMLElement) {
-        if (this.parent){
+        if (this.parent) {
             return;
         }
         this.parent = parent;
@@ -51,6 +58,23 @@ class Badge {
         this.parent.removeChild(this.element);
         this.parent.classList.remove('is-relative');
 
+    }
+
+    public exp(variant: BadgeVariant) {
+        if (this.variant) {
+            this.element.classList.remove(this.ns.m(this.variant));
+        }
+        this.variant = variant;
+        this.element.classList.add(this.ns.m(variant));
+
+    }
+
+    public tp(type: BadgeType) {
+        if (this.type) {
+            this.element.classList.remove(this.ns.m(this.type));
+        }
+        this.type = type;
+        this.element.classList.add(this.ns.m(type));
     }
 
     /**

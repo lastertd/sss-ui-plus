@@ -1,5 +1,5 @@
 <template>
-	<ul class="s-timeline" :class="TimelineKls">
+	<ul :class="TimelineKls">
 		<slot/>
 	</ul>
 </template>
@@ -7,6 +7,7 @@
 
 import {STimelineProps} from "./timeline";
 import {computed} from "vue";
+import {useNS} from "@sss-ui-plus/hooks";
 
 defineOptions({
 	name: "STimeline",
@@ -14,14 +15,14 @@ defineOptions({
 })
 
 const props = defineProps({...STimelineProps});
+const timelineNS = useNS('timeline');
 
 const TimelineKls = computed(() => {
-	const direction = props.direction ? `s-timeline--${props.direction}` : '';
-	const size = props.size ? `s-timeline--${props.size}` : '';
 
 	return [
-		direction,
-		size,
+		timelineNS.namespace,
+		timelineNS.m(props.direction),
+		timelineNS.m(props.size)
 	]
 })
 

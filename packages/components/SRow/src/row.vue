@@ -1,6 +1,17 @@
+<template>
+	<div
+		:class="rowNS.namespace"
+		:style="styles"
+		v-bind="$attrs"
+
+	>
+		<slot></slot>
+	</div>
+</template>
 <script setup lang="ts">
 import {SRowProps} from "./row";
 import {computed} from "vue";
+import {useNS} from "@sss-ui-plus/hooks";
 
 
 defineOptions({
@@ -9,28 +20,21 @@ defineOptions({
 })
 
 const props = defineProps({...SRowProps});
+const rowNS = useNS('row');
+
 
 const styles = computed(() => {
 	return {
-		gap: `${props.gap}px`,
-		justifyContent: `${props.horizontal}`,
-		alignItems: `${props.vertical}`,
-		flexFlow: props.wrappable ? 'wrap' : 'nowrap',
+		'--sss-row-gap': props.gap ? `${props.gap}px` : '0',
+		'--sss-row-justify-content': props.justifyContent,
+		'--sss-row-align-item': props.alignItem,
+		'--sss-row-wrap': props.wrap ? 'wrap' : 'nowrap',
 
-	}
+	};
 })
 
 
 </script>
 
-<template>
-	<div
-		class="s-row"
-		:style="styles"
-		v-bind="$attrs"
 
-	>
-		<slot></slot>
-	</div>
-</template>
 

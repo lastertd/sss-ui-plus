@@ -1,13 +1,13 @@
 <template>
 
-	<s-row horizontal="flex-start" :gap="30">
+	<s-row justify-content="flex-start" :gap="20">
 		<s-floating
 			trigger="hover"
 			:close-delay="300"
 
 		>
 			<template #reference>
-				<s-button type="primary" ghost>hove me</s-button>
+				<s-button >hove me</s-button>
 			</template>
 			默认偏移量5，不附带箭头
 		</s-floating>
@@ -18,7 +18,7 @@
 
 		>
 			<template #reference>
-				<s-button type="primary" ghost>hove me</s-button>
+				<s-button >hove me</s-button>
 			</template>
 			设置偏移量15
 		</s-floating>
@@ -29,7 +29,7 @@
 
 		>
 			<template #reference>
-				<s-button type="primary" ghost>hove me</s-button>
+				<s-button >hove me</s-button>
 			</template>
 			设置显示箭头
 		</s-floating>

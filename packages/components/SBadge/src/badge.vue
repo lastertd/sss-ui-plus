@@ -11,12 +11,14 @@
 	</span>
 
 
+
 </template>
 <script setup lang="ts">
 import {SPartial} from "../../abstract/index"
 import {SBadgeProps} from "./badge";
 import {computed, ref, useSlots, watch} from "vue";
 import {useBadge} from "@sss-ui-plus/hooks";
+import {toRef} from "@vue/runtime-core";
 
 defineOptions({
 	name: "SBadge",
@@ -27,14 +29,7 @@ const props = defineProps({...SBadgeProps});
 const slot = useSlots();
 let target = ref<HTMLElement | null>(null);
 
-const theme = computed(() => {
-	const theme = props.theme? `s-badge--${props.theme}`:'';
 
-
-	return [
-		theme,
-	]
-})
 
 // 最大值省略
 const val = computed(() => {
@@ -48,10 +43,11 @@ const val = computed(() => {
 })
 
 
+
 const {hidden, show, setTxt, stop} = useBadge(target, {
 	value: val,
-	type: props.type,
-	theme:theme,
+	type: toRef(props,'type'),
+	variant:toRef(props,'variant'),
 });
 
 watch(() => props.hidden, (flag) => {

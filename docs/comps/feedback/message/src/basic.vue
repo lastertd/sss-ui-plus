@@ -1,9 +1,9 @@
 <template>
 	<s-button
-		empty
+		variant="empty"
 		@click="handleClick"
 	>
-		和我聊天吧
+		chat with me
 	</s-button>
 </template>
 

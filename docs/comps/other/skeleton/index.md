@@ -6,9 +6,9 @@
 
 `skeletonItem`的默认样式是一个高20px、宽100%的矩形长条
 
-通过`isRound` 设置圆角
+通过`round` 设置圆角
 
-通过`isCircle`设置圆形
+通过`circle`设置圆形
 
 ::: tip 
 设置为圆形时, 不应该设置元素的高度， 默认高度始终和宽度相等
@@ -43,11 +43,11 @@ src="./src/loading.vue"
 
 ### Skeleton Props
 
-| 属性名   | 说明                 | 可选值    | 默认值 |
-| -------- | -------------------- | --------- | ------ |
+| 属性名   | 说明                 | 可选值    | 默认值    |
+| -------- | -------------------- | --------- |--------|
 | animated | 是否采用扫描线动画   | `Boolean` | false  |
 | loading  | 是否处于加载中       | `Boolean` | true   |
-| throttle | 切换到真实UI时的延时 | `Number`  | 0      |
+| throttle | 切换到真实UI时的延时 | `Number`  | 50`ms` |
 
 ### Skeleton Slots
 
@@ -63,9 +63,16 @@ src="./src/loading.vue"
 
 ### SkeletonItem Props
 
-| 属性名   | 说明       | 可选值                                | 默认值    |
-| -------- | ---------- |------------------------------------| --------- |
-| type     | 元素的类型 | `triangle` / `rectangle`/  `image` | rectangle |
-| isCircle | 是否是圆形 | `Boolean`                          | false     |
-| isRound  | 是否是圆角 | `Boolean`                          | false     |
+| 属性名     | 说明       | 可选值                              | 默认值    |
+|---------| ---------- |----------------------------------| --------- |
+| variant | 元素的类型 | `'triangle' \| 'rectangle' \| 'image'` | rectangle |
+| circle  | 是否是圆形 | `Boolean`                        | false     |
+| round   | 是否是圆角 | `Boolean`                        | false     |
 
+
+## 源代码
+<SRep aim="SSkeleton"></SRep>
+
+## 贡献者
+
+<SMember></SMember>

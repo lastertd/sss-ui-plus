@@ -1,11 +1,11 @@
 <template>
-	<s-row horizontal="center">
+	<s-row justify-content="center">
 		<s-dropdown
 			style="width: 150px"
 			close-on-click-body
 		>
 			<template #reference>
-				<s-button type="primary" ghost>导航项</s-button>
+				<s-button >导航项</s-button>
 			</template>
 
 			<div class="sss-dropdown-title">Page</div>

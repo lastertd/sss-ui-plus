@@ -16,7 +16,7 @@ export const STagProps = {
     /**
      * @description 标签的主题
      */
-    theme:String as PropType<'dark' | 'light'>,
+    variant:String as PropType<'dark' | 'light'>,
     /**
      * @description 是否是圆角
      */

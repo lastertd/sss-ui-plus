@@ -1,15 +1,8 @@
-
-
 <template>
-	<s-row horizontal="flex-start" :gap="10">
-		<s-link type="default" href="/">default</s-link>
-		<s-link type="primary">primary</s-link>
-		<s-link type="success">success</s-link>
-		<s-link type="info">info</s-link>
-		<s-link type="warning">warning</s-link>
-		<s-link type="danger">danger</s-link>
-
+	<s-row justify-content="flex-start" :gap="20">
+		<s-link href="/" jump-method="newView">新建一个标签页</s-link>
+		<s-link href="/" jump-method="push">增加一个历史记录</s-link>
+		<s-link href="/" jump-method="replace">覆盖当前标签页</s-link>
 	</s-row>
-
 </template>
 

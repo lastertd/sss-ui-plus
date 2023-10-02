@@ -22,13 +22,15 @@ Floating组件分为 引用元素 和 浮动元素 两个部分, 其中:
 - 通过 `trigger` 选择浮动元素的触发方式
 - 通过`closeOnCLickBody` `openOnMounted` 额外控制浮动元素的关闭/打开方式
 
+当trigger被设置为unset时，则只能通过Exposes.open来打开浮动元素
+
 <demo
 src="./src/basic.vue"
 />
 
-## 定位置
+## 浮动元素的位置
 
-使用 `placement` 设置浮动元素相对于引用元素的定位
+使用 `placement` 设置浮动元素相对于引用元素的定位。
 
 <demo
 src="./src/dir.vue"
@@ -97,22 +99,22 @@ src="./src/draggable.vue"
 
 ### Floating Props
 
-| 属性名           | 说明                                                     | 可选值                                                       | 默认值 |
-| ---------------- | -------------------------------------------------------- | ------------------------------------------------------------ | ------ |
-| trigger          | 浮动元素的出现的触发方式                                 | `hover`/ `click`/ `foucs`/ `clickToOpen` /`unset`            | click  |
-| placement        | 浮动元素相对于引用元素的定位                             | `top` /`left`/ `bottom` /`right`/ `top-start` /`left-start`/ `bottom-start` /`right-start`/`top-end` /`left-end`/ `bottom-end` /`right-end`/ | bottom |
-| offset           | 浮动元素相对于引用元素的偏移                             | `Number`                                                     | 5`px`  |
-| transition       | 浮动元素出现时的过渡                                     | [内置过渡](/guide/transition/)                               | ---    |
-| openDelay        | 浮动元素打开延时                                         | `Number`                                                     | 0      |
-| closeDelay       | 浮动元素关闭延时                                         | `Number`                                                     | 0      |
-| disabled         | 是否禁用浮动元素                                         | `Boolean`                                                    | false  |
-| closeOnClickBody | 是否在点击其他元素时关闭                                 | `Boolean`                                                    | false  |
-| openOnMounted    | 是否在挂载时立即显示                                     | `Boolean`                                                    | false  |
-| teleported       | 是否瞬移到body元素下                                     | `Boolean`                                                    | true   |
-| showArrow        | 是否展示箭头                                             | `Boolean`                                                    | false  |
-| floatingClass    | floating元素默认会嵌套一层div，设置这层div的类名         | `String`                                                     | ---    |
-| reference        | 解耦模式下的引用元素                                     | `Ref<MaybeElement>`                                          | ---    |
-| quickTrack       | 是否开启快速跟踪，若浮动元素跟不上引用元素的改变开启此项 | `Boolean`                                                    | false  |
+| 属性名              | 说明                              | 可选值                                                                                                                                                                  | 默认值    |
+|------------------|---------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------|
+| trigger          | 浮动元素的出现的触发方式                    | `'hover' \| 'click' \| 'foucs' \| 'clickToOpen' \| 'unset'`                                                                                                          | click  |
+| placement        | 浮动元素相对于引用元素的定位                  | `'top' \| 'left' \| 'bottom' \| 'right' \| 'top-start' \| 'left-start' \| 'bottom-start' \| 'right-start' \| 'top-end' \| 'left-end' \| 'bottom-end' \| 'right-end'` | bottom |
+| offset           | 浮动元素相对于引用元素的偏移                  | `Number`                                                                                                                                                             | 5`px`  |
+| transition       | 浮动元素出现时的过渡                      | [内置过渡](/guide/transition/)                                                                                                                                           | ---    |
+| openDelay        | 浮动元素打开延时                        | `Number`                                                                                                                                                             | 0      |
+| closeDelay       | 浮动元素关闭延时                        | `Number`                                                                                                                                                             | 0      |
+| disabled         | 是否禁用浮动元素                        | `Boolean`                                                                                                                                                            | false  |
+| closeOnClickBody | 是否在点击其他元素时关闭                    | `Boolean`                                                                                                                                                            | false  |
+| openOnMounted    | 是否在挂载时立即显示                      | `Boolean`                                                                                                                                                            | false  |
+| teleported       | 是否瞬移到body元素下                    | `Boolean`                                                                                                                                                            | true   |
+| showArrow        | 是否展示箭头                          | `Boolean`                                                                                                                                                            | false  |
+| floatingClass    | floating元素默认会嵌套一层div，设置这层div的类名 | `String`                                                                                                                                                             | ---    |
+| reference        | 解耦模式下的引用元素                      | `Ref<MaybeElement>`                                                                                                                                                  | ---    |
+| quickTrack       | 是否开启快速跟踪，若浮动元素跟不上引用元素的改变开启此项    | `Boolean`                                                                                                                                                            | false  |
 
 ### Floating Events
 
@@ -125,8 +127,8 @@ src="./src/draggable.vue"
 
 ### Floating Slots
 
-| 名称      | 说明     |
-| --------- | -------- |
+| 名称        | 说明   |
+|-----------|------|
 | reference | 引用元素 |
 | default   | 浮动元素 |
 
@@ -138,3 +140,9 @@ src="./src/draggable.vue"
 | open   | 用于打开浮动元素  | `() => void` |
 | toggle | 前两者自动选择其一 | `() => void` |
 
+## 源代码
+<SRep aim="SFloating"></SRep>
+
+## 贡献者
+
+<SMember></SMember>

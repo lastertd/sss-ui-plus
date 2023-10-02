@@ -1,10 +1,19 @@
-.s-dropdown {
-    padding: 7px 0;
-}
+@import "../mixn/_index";
 
-.s-dropdown__inner {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    color: inherit;
+& {
+    @ns:@{componentPrefix}-dropdown;
+    .d(@ns, {
+        --sss-dropdown-play:unset;
+        --sss-dropdown-active-color:unset;
+
+        padding: 7px 0;
+    });
+    .d(@ns, {
+        .e(inner, {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            color: inherit;
+        });
+    });
 }

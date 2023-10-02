@@ -1,116 +1,122 @@
-.s-scrollbar {
-    position: relative;
+@import "../mixn/_index";
 
-    &[data-always="true"] {
-        .s-scrollbar__bar {
-            opacity: 1;
+& {
+    @ns: @{componentPrefix}-scrollbar;
+    //base
+    .d(@ns, {
+        position: relative;
+        &[data-always = 'true'] {
+            .d(be(@ns, bar), {
+                opacity: 1;
+            });
         }
-    }
-
-    &[data-native="true"] {
-        .s-scrollbar__warp {
-            &::-webkit-scrollbar {
-                width: 6px;
-                display: unset;
-
-            }
-
-            &::-webkit-scrollbar-thumb {
-                background-color: var(--sss-color-gray-dark); /* 设置滚动条滑块的背景颜色 */
-                border-radius: 9999px;
-
-                &:hover,
-                &:active {
-                    background-color: var(--sss-color-gray-deep-dark); /* 设置滚动条滑块的背景颜色 */
+        &[data-native="true"] {
+            .d(be(@ns, wrapper), {
+                &::-webkit-scrollbar {
+                    width: 6px;
+                    display: unset;
 
                 }
 
-            }
+                &::-webkit-scrollbar-thumb {
+                    background-color: var(--sss-color-gray-dark); /* 设置滚动条滑块的背景颜色 */
+                    border-radius: 9999px;
+
+                    &:hover,
+                    &:active {
+                        background-color: var(--sss-color-gray-deep-dark); /* 设置滚动条滑块的背景颜色 */
+
+                    }
+
+                }
+            });
 
         }
-    }
 
-    &:hover {
-        .s-scrollbar__bar {
-            opacity: 1;
+        &:hover {
+            .d(be(@ns, bar), {
+                opacity: 1;
+
+            })
         }
-    }
 
 
-}
+    });
 
-.s-scrollbar__warp {
-    height: 100%;
-    width: 100%;
-    overflow: auto;
-
-    &::-webkit-scrollbar {
-        display: none;
-
-    }
-
-
-}
-
-.s-scrollbar__bar {
-
-
-    user-select: none;
-    opacity: 0;
-    position: absolute;
-    transition: all .3s ease;
-    background-color: transparent;
-
-    &.is-active {
-        opacity: 1;
-
-        .s-scrollbar__bar__thumb {
-            background-color: var(--sss-color-gray-dark);
-        }
-    }
-
-    &.is-vertical {
-        width: 6px;
+    //ele wrapper
+    .d(be(@ns, wrapper), {
         height: 100%;
-        right: 0;
-        top: 0;
-
-        .s-scrollbar__bar__thumb {
-            position: absolute;
-            width: inherit;
-
-        }
-
-        &.is-outside {
-            left: 100%;
-        }
-    }
-
-    &.is-horizontal {
-        height: 6px;
         width: 100%;
-        bottom: 0;
-        left: 0;
+        overflow: auto;
 
-        .s-scrollbar__bar__thumb {
-            position: absolute;
-            height: inherit;
+        &::-webkit-scrollbar {
+            display: none;
 
         }
+    });
 
-        &.is-outside {
-            top: 100%;
+    //ele bar
+    .d(be(@ns, bar), {
+        user-select: none;
+        opacity: 0;
+        position: absolute;
+        transition: all .3s ease;
+        background-color: transparent;
+
+        .is(active, {
+            opacity: 1;
+            .d(be(@ns, thumb), {
+                background-color: var(--sss-color-gray-dark);
+            });
+
+        });
+
+        .is(vertical, {
+            width: 6px;
+            height: 100%;
+            right: 0;
+            top: 0;
+
+            .d(be(@ns, thumb), {
+                position: absolute;
+                width: inherit;
+            });
+
+            .is(outside, {
+                left: 100%;
+
+            });
+
+        });
+        .is(horizontal, {
+            height: 6px;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+
+            .d(be(@ns, thumb), {
+                position: absolute;
+                height: inherit;
+            });
+
+            .is(outside, {
+                top: 100%;
+            });
+
+        });
+
+    });
+
+    //ele thumb
+    .d(be(@ns, thumb), {
+        background-color: var(--sss-color-gray);
+
+        &:hover {
+            background-color: var(--sss-color-gray-dark);
+
         }
-    }
+    });
 }
 
-.s-scrollbar__bar__thumb {
-    background-color: var(--sss-color-gray);
-
-    &:hover {
-        background-color: var(--sss-color-gray-dark);
-
-    }
-}
 
 

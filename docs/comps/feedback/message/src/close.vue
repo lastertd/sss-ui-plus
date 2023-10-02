@@ -1,7 +1,7 @@
 <template>
-	<s-row horizontal="flex-start" :gap="10">
+	<s-row justify-content="flex-start" :gap="20">
 		<s-button
-			empty
+			variant="empty"
 			@click="handleClick"
 		>
 			showCloseIcon

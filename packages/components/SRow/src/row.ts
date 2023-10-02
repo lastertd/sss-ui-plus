@@ -12,13 +12,13 @@ export const SRowProps = {
         type:Number,
         default:0
     },
-    vertical:{
+    alignItem:{
         type: String as PropType<Vertical>,
         default:'center',
     },
-    horizontal:{
+    justifyContent:{
         type:String as PropType<Horizontal>,
         default:'center',
     },
-    wrappable:Boolean
+    wrap:Boolean,
 } as const

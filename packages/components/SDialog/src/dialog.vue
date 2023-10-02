@@ -1,11 +1,67 @@
+<!--包裹额外一层div的原因是mark是fixed, fixed的父元素不能有transform属性-->
+<template>
+	<teleport to="body" :disabled="!props.appendToBody">
+		<div
+			ref="container"
+			:class="dialogKls"
+			v-show="visible"
+		>
+			<SMessageBox
+				ref="msgBox"
+				:class="dialogNS.e('inner')"
+				:transition="props.transition || 's-transition-fadeDown'"
+				:title="props.title"
+				:no-header="props.noHeader"
+				:no-body="props.noBody"
+				:no-footer="props.noFooter"
+				:show-close-icon="props.showCloseIcon"
+				:cancel-btn-text="props.cancelBtnText"
+				:confirm-btn-text="props.confirmBtnText"
+				:btn-size="props.btnSize"
+				:close-on-press-escape="props.closeOnPressEscape"
+				:draggable="props.draggable"
+				:top="props.top"
+				:before-close="props.beforeClose"
+				v-bind="$attrs"
+				@cancel="onCancel"
+				@confirm="onConfirm"
+				@open="onOpen"
+				@opened="opened"
+				@close="onClose"
+				@closed="closed"
+				@hidden="onHidden"
+
+
+			>
+
+				<template #header v-if="$slots.header">
+					<slot name="header"></slot>
+				</template>
+				<template #default v-if="$slots.default">
+					<slot name="default"></slot>
+				</template>
+				<template #footer v-if="$slots.footer">
+					<slot name="footer"></slot>
+				</template>
+
+
+			</SMessageBox>
+
+		</div>
+
+	</teleport>
+
+</template>
+
+
 <script setup lang="ts">
 import {SDialogEmits, SDialogProps} from "./dialog"
 import {SMessageBox, SMessageBoxInstance} from "../../SMessageBox"
-import {nextTick, onMounted, watch, ref} from "vue";
+import {nextTick, onMounted, watch, ref, computed} from "vue";
 import {unrefElement, useEventListener} from "@vueuse/core";
 import {IndexManager} from "@sss-ui-plus/utils";
 import {MessageTriggerTypes} from "@sss-ui-plus/typings";
-import {useMark, useLockScroll} from "@sss-ui-plus/hooks";
+import {useMark, useLockScroll, useNS} from "@sss-ui-plus/hooks";
 
 defineOptions({
 	name: 'SDialog',
@@ -14,17 +70,27 @@ defineOptions({
 
 const props = defineProps({...SDialogProps});
 const emits = defineEmits({...SDialogEmits})
-const indexManager = new IndexManager();
 const msgBox = ref<SMessageBoxInstance | null>(null);
 const container = ref<HTMLElement | null>(null);
-const visible = ref<Boolean>(props.modelValue);
+const dialogNS = useNS('dialog');
 
+
+const dialogKls = computed(() => {
+	return [
+		dialogNS.namespace,
+		dialogNS.is(props.part, 'part')
+	]
+})
+
+
+const indexManager = new IndexManager();
+const visible = ref<Boolean>(props.modelValue);
 // 标志modelValue是外部修改还是事件提交导致的修改
 let changedBySystem = true;
 
 
 const {lockScroll, unLockScroll} = useLockScroll();
-const {mark, hiddenMark, showMark} = useMark(container, 'cover');
+const {mark, hiddenMark, showMark} = useMark(container, props.part ? "part" : 'cover');
 
 
 // 打开时的回调,所有状态设置为true
@@ -34,8 +100,8 @@ const onOpen = function () {
 	emits("update:modelValue", true);
 	emits('open');
 	unrefElement(container)!.style.zIndex = indexManager.nextIndex().toString();
-	if (props.lockScroll) lockScroll();
-	if (props.showMark) showMark();
+	if (props.lockScroll && !props.part) lockScroll();
+	if (props.modal) showMark();
 
 }
 
@@ -52,7 +118,7 @@ const onHidden = function () {
 	changedBySystem = false;
 	emits('hidden');
 	emits('update:modelValue', false);
-	if (props.showMark) hiddenMark();
+	if (props.modal) hiddenMark();
 }
 
 const onCancel = function () {
@@ -71,7 +137,7 @@ const opened = function () {
 }
 
 const closed = function () {
-	if (props.lockScroll) unLockScroll();
+	if (props.lockScroll && !props.part) unLockScroll();
 	visible.value = false;
 	emits("closed");
 
@@ -103,7 +169,7 @@ onMounted(() => {
 })
 
 // 是否点击遮罩关闭元素
-if (props.closeOnClickMark && props.showMark) {
+if (props.closeOnClickMark && props.modal) {
 	useEventListener(mark, 'click', () => {
 		msgBox.value!.close("mark")
 	})
@@ -118,7 +184,7 @@ defineExpose({
 	/**
 	 * @description func, 关闭消息框, 会触发close事件
 	 */
-	close: (trigger:MessageTriggerTypes) => msgBox.value!.close(trigger),
+	close: (trigger: MessageTriggerTypes) => msgBox.value!.close(trigger),
 	/**
 	 * @description func, 关闭消息框, 无副作用
 	 */
@@ -141,59 +207,4 @@ defineExpose({
 
 
 </script>
-<!--包裹额外一层div的原因是mark是fixed, fixed的父元素不能有transform属性-->
-<template>
-	<teleport to="body" :disabled="!props.appendToBody">
-		<div
-			ref="container"
-			class="s-message-dialog"
-			v-show="visible"
-		>
-			<SMessageBox
-				ref="msgBox"
-				:transition="props.transition || 's-transition-fadeDown'"
-				:title="props.title"
-				:no-header="props.noHeader"
-				:no-body="props.noBody"
-				:no-footer="props.noFooter"
-				:show-close-icon="props.showCloseIcon"
-				:cancel-btn-text="props.cancelBtnText"
-				:confirm-btn-text="props.confirmBtnText"
-				:btn-size="props.btnSize"
-				:close-on-press-escape="props.closeOnPressEscape"
-				:draggable="props.draggable"
-				:top="props.top"
-				:before-close="props.beforeClose"
-				v-bind="$attrs"
-				@cancel="onCancel"
-				@confirm="onConfirm"
-				@open="onOpen"
-				@opened="opened"
-				@close="onClose"
-				@closed="closed"
-				@hidden="onHidden"
-				class="s-message-dialog__inner"
-
-
-			>
-
-				<template #header v-if="$slots.header">
-					<slot name="header"></slot>
-				</template>
-				<template #default v-if="$slots.default">
-					<slot name="default"></slot>
-				</template>
-				<template #footer v-if="$slots.footer">
-					<slot name="footer"></slot>
-				</template>
-
-
-			</SMessageBox>
-
-		</div>
-
-	</teleport>
-
-</template>
-
 

@@ -1,6 +1,6 @@
 <template>
-	<s-row horizontal="space-evenly">
-		<s-button type="primary" ghost ref="reference">hover me</s-button>
+	<s-row justify-content="center">
+		<s-button ref="reference">hover me</s-button>
 	</s-row>
 
 	<s-floating :reference="reference" trigger="hover">

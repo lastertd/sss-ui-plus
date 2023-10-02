@@ -1,11 +1,11 @@
 <template>
 	<s-popconfirm
-		content="are you sure?"
+		text="are you sure?"
 		type="info"
 		@cancel="handleCancel"
 		@confirm="handleConfirm"
 	>
-		<s-button type="primary" ghost>click me</s-button>
+		<s-button >click me</s-button>
 	</s-popconfirm>
 </template>
 

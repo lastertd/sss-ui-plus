@@ -1,33 +1,28 @@
 @import "../mixn/_index";
 
-.s-dropdown__item{
+& {
+    @ns: @{componentPrefix}-dropdown-item;
 
-    .useBorderBox();
-    .flex-row-start-center();
-    align-items: flex-end;
-    flex-flow: row nowrap;
-    & * {
-        color: inherit;
-        &:hover{
-            color: inherit;
+    .d(@ns, {
+
+        .useBorderBox();
+        .useFlexRCC(5);
+        justify-content: var(--sss-dropdown-play);
+
+        .useSizeDft(0);
+
+
+        position: relative;
+        transition: all .1s ease;
+        cursor: default;
+
+        &:hover {
+            background-color: var(--sss-color-gray-deep-fade);
         }
-    }
-
-    position: relative;
-    padding: 8px 25px;
-    transition: all .1s ease;
-    cursor: default;
-    gap: 5px;
-
-    &:hover{
-        background-color: var(--sss-color-gray-deep-fade);
-    }
-    &[data-center="true"] {
-        justify-content: center;
-    }
-
-    &.is-active{
-        font-weight: 1000;
-        color: var(--sss-color-primary);
-    }
+        .is(active, {
+            font-weight: 1000;
+            color: var(--sss-dropdown-active-color);
+        });
+    });
 }
+

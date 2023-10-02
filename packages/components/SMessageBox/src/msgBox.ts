@@ -33,7 +33,7 @@ export const SMsgBoxProps = {
      */
     transition: {
         type:String as PropType<Transition>,
-        default:'s-transition-downFade'
+        default:'s-transition-fadeDown'
     },
     /**
      * @description 是否可以通过按下ESC来关闭消息框

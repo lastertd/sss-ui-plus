@@ -1,13 +1,16 @@
 <template>
-	<s-scrollbar style="height: 400px" >
-		<div class="container">
-			<div class="item"
-			     v-for="(item,index) in dataList"
-			>
-				{{index}}
+	<s-row justify-content="center">
+		<s-scrollbar style="height: 400px;width: 90%" >
+			<div class="container">
+				<div class="item"
+				     v-for="(item,index) in dataList"
+				>
+					{{index}}
+				</div>
 			</div>
-		</div>
-	</s-scrollbar>
+		</s-scrollbar>
+	</s-row>
+
 </template>
 
 <script setup lang="ts">
