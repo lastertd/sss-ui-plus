@@ -118,9 +118,10 @@ const handleClick = () => {
 			emits("change", "on");
 		}
 	}
-	if (props.beforeChange) {
-		props.beforeChange(done);
-	} else done();
+
+	props.beforeChange && props.beforeChange(done);
+	props.beforeChange || done();
+
 }
 
 

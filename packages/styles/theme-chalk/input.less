@@ -8,16 +8,13 @@
     @sizes: small, large;
 
 
-
-
-    //block base
+    //base
     .d(@ns, {
         .useIFlexRCC(0);
         align-items: stretch; //子元素撑满高度
 
 
-        .useBorderRadius(5);
-        .useBorderDft();
+        .useBorderDft(5);
         .useSizeDft(0, 0);
 
 
@@ -52,8 +49,6 @@
 
 
     });
-
-
 
 
     //element inner
@@ -105,6 +100,10 @@
     });
 
     .d(be(@ns, slot), {
+
+        flex-shrink: 0;
+        overflow: hidden;
+
         display: flex;
         align-items: center;
 
@@ -130,7 +129,6 @@
     });
 
 
-
     //modifier size
     each(@sizes, .(@size) {
         .d(bm(@ns, @size), {
@@ -142,6 +140,14 @@
             }
         })
     });
+
+    //status disabled
+    .d(@ns, {
+        .is(disabled, {
+            background-color: var(--sss-color-gray-deep-fade);
+        });
+    });
+
 
 }
 

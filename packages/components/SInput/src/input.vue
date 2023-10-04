@@ -21,7 +21,7 @@
 
 
 			<input ref="inner" :class="inputNS.e('inner')"
-			       :type="props.nativeType"
+			       :type="props.type"
 			       :id="props.id"
 			       :maxlength="props.maxLength"
 			       :minlength="props.minLength"
@@ -54,7 +54,7 @@
 
 				<s-icon target="warning" test="21212" v-if="getValueLength() > (props.maxLength as number)"></s-icon>
 
-				{{ getValueLength() }}/{{ props.maxLength }}
+				{{ getValueLength() }}<template v-if="props.maxLength">/{{ props.maxLength }}</template>
 			</label>
 
 			<s-icon v-if="showCloseIcon"
@@ -149,7 +149,7 @@ const showEyeIcon = computed((): Boolean => {
 	if (props.modelValue == undefined || props.modelValue === '')
 		return false
 
-	return props.showPassword && props.nativeType === 'password' && !props.disabled
+	return props.showPassword && props.type === 'password' && !props.disabled
 })
 
 const showCloseIcon = computed((): Boolean => {
@@ -202,6 +202,7 @@ const handleInput = function () {
 }
 
 const handleBlur = function (event: FocusEvent) {
+	alertHidden();
 	props.checkFunc && (isLegal.value = props.checkFunc(props.modelValue as string, alert));
 	emits("blur", event);
 

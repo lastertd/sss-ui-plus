@@ -6,16 +6,34 @@
 
 
 
+.demo-slot{
+    .s-timeline{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        li{
+            margin: 0;
+        }
+    }
+    .s-dialog .s-message__header__title,
+    .s-drawer .s-message__header__title{
+        font-size: 18px;
+    }
+
+}
+
+
+
 [class^="s-"] {
     desc: "这里是为了避免vite样式影响而设置的样式，请忽略此项";
     line-height: 1.2 !important;
 
+
     h1, h2, h3 {
         //color: var(--sss-color-black) !important;
         //margin: 4px 0;
-        font-size: 1em!important;
+        //font-size: 18px;
     }
-
     a {
         text-decoration: none !important;
 

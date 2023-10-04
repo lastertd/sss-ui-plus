@@ -1,10 +1,10 @@
 <template>
-	<li :class="TimelineItemKls">
+	<li :class="TimelineItemKls" :style="TimelineItemSdl">
 
 
 		<div :class="itemNS.e('timeline')">
 			<div :class="itemNS.e('circle')">
-				<s-icon :class="itemNS.e('icon')" :target="props.icon"></s-icon>
+				<s-icon :class="itemNS.e('icon')" :target="props.icon || props.type"></s-icon>
 			</div>
 
 			<div :class="itemNS.e('line')"></div>
@@ -31,6 +31,7 @@
 import {STimelineItemProps} from "./timelineItem";
 import {computed} from "vue";
 import {useNS} from "@sss-ui-plus/hooks";
+import {getClrVar} from "@sss-ui-plus/utils";
 
 defineOptions({
 	name: "STimelineItem",
@@ -46,6 +47,15 @@ const TimelineItemKls = computed(() => {
 		itemNS.m(props.type),
 		itemNS.m(props.variant)
 	]
+})
+
+const TimelineItemSdl = computed(() => {
+	return {
+		'--sss-timeline-item-color': props.color || getClrVar(props.type) || getClrVar('gray', 'dark'),
+		'--sss-timeline-item-bg-color': props.color || getClrVar(props.type) || getClrVar('gray'),
+		'--sss-timeline-item-br-color': props.color || getClrVar(props.type) || getClrVar('gray'),
+
+	}
 })
 
 </script>

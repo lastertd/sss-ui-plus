@@ -4,12 +4,14 @@ import DefaultTheme from 'vitepress/theme';
 import "./styles/index.less"
 
 import ui from "sss-ui-plus/es/index"
-// import "sss-ui-plus/dist/index.css"
-
-import "../../../packages/styles/global.less"
-
-
+import "sss-ui-plus/dist/index.css"
 import * as w from "sss-ui-plus/global"
+
+
+// import "../../../packages/styles/global.less"
+// import ui from "../../../index"
+
+
 
 
 import DemoBlock from '@ruabick/vitepress-demo-block';

@@ -1,4 +1,4 @@
-import {Prop, PropType} from "vue";
+import {PropType} from "vue";
 import {ElementSizes, ElementTypes} from "@sss-ui-plus/typings";
 import {isBoolean} from "@sss-ui-plus/utils";
 import {isString} from "@vue/shared";
@@ -13,7 +13,7 @@ export const SSwitchProps = {
      * @description 组件大小(高度)
      */
     size:String as PropType<ElementSizes>,
-    type:String as Prop<ElementTypes>,
+    type:String as PropType<ElementTypes | 'cyan'>,
     /**
      * @description 开关状态为off时对应的文字
      */

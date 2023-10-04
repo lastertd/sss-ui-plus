@@ -19,6 +19,10 @@ export const STimelineItemProps = {
      */
     icon:String,
     /**
+     * @description 圆圈的颜色
+     */
+    color:String,
+    /**
      * @description 时间线子项的主题
      */
     variant:String as PropType<'empty' | 'default'>,

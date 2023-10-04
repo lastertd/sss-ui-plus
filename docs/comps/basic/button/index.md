@@ -7,10 +7,11 @@
 - 使用 `type`指定按钮的颜色基调。
 - 使用 `variant`指定按钮的表现形式。
 - 使用 `status` 控制按钮的外观。在button中，该属性控制是否是圆角按钮， 是否是圆形按钮
-  <demo
-  src="./src/basic.vue"
-  title="贴心地为按钮装备了7套皮肤!"
-  />
+
+<demo
+src="./src/basic.vue"
+title="贴心地为按钮装备了7套皮肤!"
+/>
 
 ## 按钮祈祷中...
 
@@ -25,6 +26,7 @@ src="./src/disabled.vue"
 />
 
 ## 图标按钮
+
 - 使用`prefix-icon` 指定按钮的前缀图标。
 - 使用`suffix-icon` 指定按钮的后缀图标。
 
@@ -53,24 +55,22 @@ src="./src/size.vue"
 
 ### Button Props
 
-| 属性名     | 说明           | 类型                                                         | 默认值  |
-| ---------- | -------------- | ------------------------------------------------------------ | ------- |
-| type       | 按钮的类型     | `'primary' \| 'success' \| 'info' \| 'warning' \| 'danger' \| 'cyan'` | default |
-| nativeType | 按钮的原生类型 | `'buton' \| 'sumbit' \| 'reset'`                             | button  |
-| size       | 按钮的大小     | ` 'small' \| 'large'`                                        | normal  |
-| variant    | 按钮的表现形式 | `'ghost' \| 'fantasy' \| 'empty'`                            | ---     |
-| disabled   | 是否禁用按钮   | `Boolean`                                                    | false   |
-| loading    | 是否加载中按钮 | `Boolean`                                                    | false   |
-| prefixIcon | 按钮的前缀图标 | `String`                                                     | ---     |
-| suffixIcon | 按钮的后缀图标 | `String`                                                     | ---     |
+| 属性名        | 说明      | 类型                                                                    | 默认值     |
+|------------|---------|-----------------------------------------------------------------------|---------|
+| type       | 按钮的类型   | `'primary' \| 'success' \| 'info' \| 'warning' \| 'danger' \| 'cyan'` | default |
+| nativeType | 按钮的原生类型 | `'buton' \| 'sumbit' \| 'reset'`                                      | button  |
+| size       | 按钮的大小   | ` 'small' \| 'large'`                                                 | normal  |
+| variant    | 按钮的表现形式 | `'ghost' \| 'fantasy' \| 'empty'`                                     | ---     |
+| disabled   | 是否禁用按钮  | `Boolean`                                                             | false   |
+| loading    | 是否加载中按钮 | `Boolean`                                                             | false   |
+| prefixIcon | 按钮的前缀图标 | `String`                                                              | ---     |
+| suffixIcon | 按钮的后缀图标 | `String`                                                              | ---     |
 
 ### Button Events
 
-| 事件名 | 说明         | 类型                        |
-| ------ | ------------ | --------------------------- |
-| click  | 按钮点击事件 | `(evt: MouseEvent) => void` |
-
-
+| 事件名   | 说明     | 类型                          |
+|-------|--------|-----------------------------|
+| click | 按钮点击事件 | `(evt: MouseEvent) => void` |
 
 ### Button Slots
 
@@ -79,6 +79,7 @@ src="./src/size.vue"
 | default | 默认槽 |
 
 ## 源代码
+
 <SRep aim="SButton"></SRep>
 
 ## 贡献者

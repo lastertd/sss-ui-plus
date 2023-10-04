@@ -1,8 +1,6 @@
 @import "../mixn/_index";
 
 
-
-
 // message box
 & {
     @ns: @{componentPrefix}-message-box;
@@ -34,21 +32,31 @@
 & {
     @ns: @{componentPrefix}-message;
     .d(@ns, {
+        --sss-message-title-font-size: 18px;
+        --sss-message-title-font-weight: bolder;
+        --sss-message-title-icon-bg: transparent;
+        --sss-message-title-margin: 15px;
+        --sss-message-text-margin: 0;
+    });
+
+    .d(@ns, {
         flex: 1;
         overflow: hidden;
+
     });
 
     //element header;
     .d(be(@ns, header), {
+        margin-bottom: var(--sss-message-title-margin);
         .m(default, {
             .useFlexRCC(20);
             justify-content: space-between;
         });
 
         .e(title, {
-            margin: 0 10px 0 0;
-            font-weight: bolder;
-            font-size: inherit;
+            margin: 0;
+            font-weight: var(--sss-message-title-font-weight);
+            font-size: var(--sss-message-title-font-size);
 
             .filter-overflow();
         });
@@ -58,10 +66,11 @@
             outline: none;
             color: var(--sss-color-gray-dark);
             padding: 5px;
+            background-color: var(--sss-message-title-icon-bg);
 
             &:hover,
             &:focus {
-                background-color: var(--sss-color-gray-fade);
+                --sss-message-title-icon-bg: var(--sss-color-gray-fade);
             }
         });
 
@@ -72,14 +81,17 @@
     .d(be(@ns, body), {
         flex: 1;
         font-size: inherit;
-        .e(text, {
-            .filter-overflow();
+    });
 
-        });
+    .d(be(@ns, text), {
+        .filter-overflow();
+        margin-right: var(--sss-message-text-margin);
     });
 
     //element footer
     .d(be(@ns, footer), {
+        margin-top: var(--sss-message-title-margin);
+
         .m(default, {
             display: flex;
             justify-content: flex-end;
@@ -94,6 +106,7 @@
 & {
     @ns: @{componentPrefix}-message-draggable-container;
     @box: @{componentPrefix}-message-box;
+    @inner: @{componentPrefix}-message;
 
 
     .d(@ns, {
@@ -106,6 +119,7 @@
             cursor: move;
             user-select: none;
         });
+
     });
 
 
@@ -115,17 +129,23 @@
 //message-container
 & {
     @ns: @{componentPrefix}-message-container;
+    @box: @{componentPrefix}-message-box;
+    @inner: @{componentPrefix}-message;
     @types: success, info, warning, danger;
 
     .d(@ns, {
         position: fixed;
         transition: all .4s ease;
 
-        & * {
-            font-size: 12px !important;
-            font-weight: normal;
-        }
-        .s-message-box {
+
+        .d(@inner, {
+            --sss-message-title-margin: 0;
+            --sss-message-title-font-size: 12px;
+            --sss-message-title-font-weight: normal;
+
+        });
+
+        .@{box} {
             padding: 5px 10px;
             align-items: center;
             box-shadow: none;
@@ -137,15 +157,15 @@
                 })
             })
         }
-        .d(be(s-message, header), {
+
+        .d(be(@inner, header), {
             .useFlexRCC(5);
-            .e(title, {
-                margin: 0;
-            });
+
             .e(icon, {
                 background-color: transparent;
             })
         });
+
 
     });
 }
@@ -153,11 +173,15 @@
 //notify-container
 & {
     @ns: @{componentPrefix}-notify-container;
+    @inner: @{componentPrefix}-message;
 
     .d(@ns, {
         width: 300px;
         transition: all .4s ease;
-        position: fixed;
+    });
+
+    .d(@inner, {
+        --sss-message-title-font-size: var(--sss-font-size-default);
     });
 
     .s-message__message__text {
@@ -171,19 +195,14 @@
 //confirm-container
 & {
     @ns: @{componentPrefix}-confirm-container;
+    @inner:@{componentPrefix}-message;
     .d(@ns, {
 
         //全屏展示
-        position: fixed;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
+        .useModal();
 
         //消息框居中
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        .useFlexRCC();
 
         //控制大小
         .s-message-box {
@@ -192,20 +211,16 @@
             position: absolute;
         }
 
-        //修改为flex布局，只是为了增加间隙(
-        .s-message {
-            display: flex;
-            flex-flow: column nowrap;
-            gap: 10px;
+        .d(@inner, {
+            --sss-message-text-margin: 25px;
 
-        }
+            .e(text, {
+                word-wrap: break-word;
+                white-space: break-spaces;
+            });
 
-        //允许换行
-        .s-message__body__text {
-            word-wrap: break-word;
-            white-space: break-spaces;
-            padding-right: 25px;
-        }
+        });
+
     })
 }
 

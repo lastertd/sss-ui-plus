@@ -4,6 +4,8 @@ import {Badge, BadgeType ,BadgeVariant} from "@sss-ui-plus/utils";
 
 type targetType = Ref<HTMLElement | undefined | null | VueInstance> | HTMLElement;
 
+
+
 interface BadgeOptions {
     value: Ref<string | number> | ComputedRef<any>
     type?: Ref<BadgeType | undefined>,

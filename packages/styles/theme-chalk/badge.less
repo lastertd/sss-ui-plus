@@ -2,7 +2,7 @@
 
 & {
     @ns:@{componentPrefix}-badge;
-    @types: primary, info, warning, danger, cyan;
+    @types: primary, success, info, warning, danger, cyan;
     @variant: empty, fantasy;
 
     //base
@@ -29,6 +29,8 @@
 
     //modifier types
     .d(@ns, {
+
+
         each(@types, .(@type){
            .m(@type, {
                background: getClrVar(@type);
@@ -39,9 +41,14 @@
 
     //modifier variant empty
     .d(@ns, {
+        .m(empty, {
+            background: var(--sss-color-bg);
+            border-color: getClrVar(primary, light);
+            color: getClrVar(primary);
+        });
         each(@types, .(@type){
-            .m(@type, {
-                .with(bm(@ns, empty), {
+            .m(empty, {
+                .with(bm(@ns, @type), {
                     background: var(--sss-color-bg);
                     border-color: getClrVar(@type, light);
                     color: getClrVar(@type);
@@ -53,9 +60,14 @@
 
     //modifier variant fantasy
     .d(@ns, {
+        .m(fantasy, {
+            background: getClrVar(primary, fade);
+            border-color: getClrVar(primary, light);
+            color: getClrVar(primary);
+        });
         each(@types, .(@type){
-            .m(@type, {
-                .with(bm(@ns, fantasy), {
+            .m(fantasy, {
+                .with(bm(@ns, @type), {
                     background: getClrVar(@type, fade);
                     border-color: getClrVar(@type, light);
                     color: getClrVar(@type);
@@ -68,9 +80,12 @@
     //point
     .d(@ns, {
         each(@types, .(@type){
-            &:empty{
-                background-color: getClrVar(@type)!important;
-            }
+            .m(@type, {
+                &:empty{
+                    background-color: getClrVar(@type)!important;
+                }
+            });
+
         });
     });
 

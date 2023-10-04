@@ -4,6 +4,13 @@
     @ns: @{componentPrefix}-timeline-item;
     @types: success, info, warning, danger;
 
+    //var
+    .d(@ns, {
+        --sss-timeline-item-color: unset;
+        --sss-timeline-item-bg-color: unset;
+        --sss-timeline-item-br-color:unset;
+    });
+
     //base
     .d(@ns, {
         .useBorderBox();
@@ -14,7 +21,7 @@
     .d(be(@ns, timeline), {
         position: absolute;
         left: 0;
-        top: calc(.5em - 3px);
+        top: calc(.5em - 7px);
         height: 100%;
     });
 
@@ -24,8 +31,15 @@
         height: 14px;
         width: 14px;
         border-radius: 50%;
-        background-color: var(--sss-color-gray);
-        color: var(--sss-color-gray-deep-dark);
+        background-color: var(--sss-timeline-item-bg-color);
+        color: var(--sss-timeline-item-color);
+        border-color: var(--sss-timeline-item-br-color);
+        position: relative;
+        z-index: 1;
+        & > * {
+            border-radius: 50%;
+            background-color: var(--sss-color-bg);
+        }
     });
 
     //ele line
@@ -35,7 +49,6 @@
         bottom: 0;
         left: calc(50% - 0.8px);
         border-left: solid 1.6px var(--sss-color-gray);
-        z-index: -1;
     });
 
     //ele content
@@ -43,6 +56,7 @@
         padding-left: 30px;
         padding-bottom: 30px;
     });
+
     //ele time
     .d(be(@ns, time), {
         color: var(--sss-color-gray-deep-dark);
@@ -55,37 +69,43 @@
     });
 
 
-    //modifier variant
-    .d(bm(@ns, empty), {
-        .@{ns}__icon {
-            color: var(--sss-color-gray-dark);
-            background-color: var(--sss-color-white);
-        }
-        .@{ns}__circle {
-            background-color: var(--sss-color-bg);
-            border: solid 2px var(--sss-color-gray);
-        }
-    });
+
 
     //modifier types
     .d(@ns, {
         each(@types, .(@type) {
             .m(@type, {
                 .d(be(@ns, circle), {
-                    background-color: getClrVar(@type);
+                    --sss-timeline-item-bg-color: getClrVar(@type);
                 });
                 .d(be(@ns, icon), {
-                    color: getClrVar(@type);
-                    background-color: var(--sss-color-white);
+                    --sss-timeline-item-color: getClrVar(@type);
+                    background-color: var(--sss-color-bg);
                 });
 
-                .with(bm(@ns, empty), {
-                    .d(be(@ns, circle), {
-                        background-color: var(--sss-color-bg);
-                        border: solid 2px getClrVar(@type);;
-                    });
-                });
+            });
+        });
+    });
 
+
+    //modifier empty
+    .d(@ns, {
+        .m(empty, {
+            .@{ns}__icon {
+                display: none;
+            }
+            .@{ns}__circle {
+                --sss-timeline-item-bg-color: getClrVar(bg);
+                --sss-timeline-item-br-color: getClrVar(gray);
+                border: solid 2px;
+            }
+        });
+        each(@types, .(@type) {
+            .mWith(empty, bm(@ns, @type), {
+                .e(circle, {
+                    --sss-timeline-item-bg-color: getClrVar(bg);
+                    --sss-timeline-item-br-color: getClrVar(@type);
+                }, @ns)
             });
         });
     });

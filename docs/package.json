@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@floating-ui/vue": "^1.0.2",
-    "sss-ui-plus": "0.2.3",
+    "sss-ui-plus": "0.2.3-beta-1",
     "vitepress": "1.0.0-rc.20",
     "vue": "^3.3.4",
     "@vue-macros/volar": "^0.12.2"

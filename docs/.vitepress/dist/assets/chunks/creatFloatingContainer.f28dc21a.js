@@ -1,1 +1,0 @@
-import{g as d}from"./theme.8950470b.js";import"./framework.e5d56cf7.js";(function(){const n=document.createElement("div"),t=document.body,e=new d;n.classList.add("___sss-floating-container"),n.style.zIndex=e.nextIndex().toString(),t.appendChild(n)})();

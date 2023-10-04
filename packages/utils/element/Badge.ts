@@ -1,12 +1,13 @@
 import {useNS} from "@sss-ui-plus/hooks";
+import {ElementTypes} from "@sss-ui-plus/typings";
 
-export declare type BadgeType = 'primary' | 'waring' | 'danger' | 'info' | 'cyan';
+export declare type BadgeType =   'cyan' | ElementTypes;
 export declare type BadgeVariant = 'empty' | 'fantasy';
 
 class Badge {
     protected element: HTMLElement
     protected parent: HTMLElement | undefined
-    protected type: string
+    protected type: string | undefined
     protected variant: string | undefined
     protected ns: ReturnType<typeof useNS>
     static keyframes: Keyframe[] = [

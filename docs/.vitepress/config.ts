@@ -1,5 +1,5 @@
 import {defineConfig} from 'vitepress'
-import { fileURLToPath, URL } from 'node:url'
+import {fileURLToPath, URL} from 'node:url'
 
 import {applyPlugins} from '@ruabick/md-demo-plugins';
 
@@ -11,7 +11,7 @@ export default defineConfig({
     themeConfig: {
         siteTitle: "SSS-UI",
         logo: '/favicon.ico',
-        outline:[2,6],
+        outline: [2, 6],
         nav: [
             {text: '指南', link: '/guide/', activeMatch: '/guide'},
             {text: '组件', link: '/comps/basic/button/index', activeMatch: '/comps'},
@@ -28,6 +28,7 @@ export default defineConfig({
                     items: [
                         {text: '安装', link: '/guide/'},
                         {text: '快速开始', link: '/guide/start'},
+                        {text: '设计原则', link: '/guide/design/'},
                         {text: '内置过渡动画', link: '/guide/transition/'},
                     ]
                 }
@@ -36,8 +37,8 @@ export default defineConfig({
                 {
                     text: '基础组件',
                     items: [
-                        {text: 'Icon 图标', link: '/comps/basic/icon/'},
                         {text: 'Button 按钮', link: '/comps/basic/button/'},
+                        {text: 'Icon 图标', link: '/comps/basic/icon/'},
                         {text: 'Link 链接', link: '/comps/basic/link/'},
                         {text: 'Scrollbar 滚动条', link: '/comps/basic/scrollbar/'},
                     ]
@@ -45,6 +46,19 @@ export default defineConfig({
                 {
                     text: '表单组件',
                     items: [
+                        {text: 'Input 输入框', link: '/comps/form/input/'},
+                        {text: 'Switch 开关', link: '/comps/form/switch/'},
+
+                    ]
+                },
+                {
+                    text: '数据展示组件',
+                    items: [
+                        {text: 'Badge 徽章', link: '/comps/data/badge/'},
+                        {text: 'Progress 进度条', link: '/comps/data/progress/'},
+                        {text: 'Tag 标签', link: '/comps/data/tag/'},
+                        {text: 'Timeline 时间线', link: '/comps/data/timeline/'},
+                        {text: 'Skeleton 骨架屏', link: '/comps/data/skeleton/'},
 
                     ]
                 },
@@ -66,7 +80,6 @@ export default defineConfig({
                     text: '其他组件',
                     items: [
                         {text: 'Divider 分割线', link: '/comps/other/divider/'},
-                        {text: 'Skeleton 骨架屏', link: '/comps/other/skeleton/'},
 
                     ]
                 }
@@ -85,14 +98,14 @@ export default defineConfig({
     },
     vite: {
         plugins: [],
-        resolve:{
-            alias:[
+        resolve: {
+            alias: [
                 {
-                    find:/^.*\/VPSidebar\.vue$/,
+                    find: /^.*\/VPSidebar\.vue$/,
                     replacement: fileURLToPath(new URL('./extendTheme/sideBar.vue', import.meta.url))
                 },
                 {
-                    find:/^.*\/VPNav\.vue$/,
+                    find: /^.*\/VPNav\.vue$/,
                     replacement: fileURLToPath(new URL('./extendTheme/navBar.vue', import.meta.url))
                 },
             ]

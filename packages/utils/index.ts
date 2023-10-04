@@ -23,5 +23,6 @@ export * from "./delay"
 export * from "./fnUnion"
 export * from './types'
 
+export * from "./getClrVar"
 
 

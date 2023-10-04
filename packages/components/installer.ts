@@ -20,7 +20,7 @@ import SBadge from "./SBadge";
 import STag from "./STag"
 import STimeline from "./STimeline"
 import STimelineItem from "./STimelineItem"
-import SProgress from "./Sprogress";
+import SProgress from "./SProgress";
 
 import {App} from "vue";
 

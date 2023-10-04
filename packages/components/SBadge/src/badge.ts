@@ -3,19 +3,20 @@ import {PropType} from "vue";
 
 export const SBadgeProps = {
     /**
-     * @description 徽章类型, 此项不具备响应式, 请确保它的值不会改变
+     * @description 徽章类型.
      */
     type: String as PropType<BadgeType>,
+    /**
+     * @description 徽章的表现形式
+     */
+    variant:String as PropType<'empty' | 'fantasy'>,
     /**
      * @description 徽章文本内容
      */
     value: {
         type: [String, Number] as PropType<string | number>
     },
-    /**
-     * @description 徽章的主题
-     */
-    variant:String as PropType<'empty' | 'fantasy'>,
+
     /**
      * @description 当value为number类型时, 可显示的最大value值
      */

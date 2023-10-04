@@ -24,7 +24,7 @@ export * from "./SBadge"
 export * from "./STag"
 export * from "./STimeline"
 export * from "./STimelineItem"
-export * from "./Sprogress"
+export * from "./SProgress"
 
 export * from "./SMessage"
 

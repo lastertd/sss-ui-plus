@@ -13,19 +13,18 @@ sss ui plus 目前还在快速迭代中...
 ## 如何开始
 选择一个你熟悉的包管理器吧。
 
-### npm 
-
-``` shell
+::: code-group
+``` npm
 npm install sss-ui-plus 
 ```
 
-### yarn
-```shell
+```yarn
 yarn add sss-ui-plus
 ```
 
-### pnpm 
-```shell
+```pnpm
 pnpm install sss-ui-plus
 ```
+:::
+
 

@@ -43,7 +43,7 @@
 				>
 					<slot></slot>
 					<template v-if="props.text">
-						<div :class="msgNS.bb('message', 'text')">
+						<div :class="msgNS.e('text')">
 							{{ props.text }}
 						</div>
 					</template>
