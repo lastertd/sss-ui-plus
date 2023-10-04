@@ -148,7 +148,7 @@ src="./src/slot.vue"
 
 ## 源代码
 
-<SRep aim="SDivider"></SRep>
+<SRep aim="SInput"></SRep>
 
 ## 贡献者
 

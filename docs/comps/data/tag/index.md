@@ -61,7 +61,7 @@ src="./src/closable.vue"
 
 
 ## 源代码
-<SRep aim="SSkeleton"></SRep>
+<SRep aim="STag"></SRep>
 
 ## 贡献者
 

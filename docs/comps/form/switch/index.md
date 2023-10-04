@@ -95,7 +95,7 @@ src="./src/change.vue"
 
 ## 源代码
 
-<SRep aim="SDivider"></SRep>
+<SRep aim="SWitch"></SRep>
 
 ## 贡献者
 

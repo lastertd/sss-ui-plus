@@ -97,7 +97,7 @@ src="./src/size.vue"
 
 
 ## 源代码
-<SRep aim="SSkeleton"></SRep>
+<SRep aim="STimeline"></SRep>
 
 ## 贡献者
 
