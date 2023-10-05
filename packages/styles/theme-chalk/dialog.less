@@ -1,45 +1,41 @@
 @import "../mixn/_index";
 
 
-& {
+.@{componentPrefix}-dialog {
     @ns: @{componentPrefix}-dialog;
-
+    @inner: @{componentPrefix}-message;
+    @drag:@{componentPrefix}-draggable-container;
 
     //base
-    .d(@ns, {
-
-        //全屏
-        position: fixed;
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
+    & {
+        //全屏 & 元素居中
+        .useModal();
         .useFlexRCC();
+    }
 
-
-        //part
-        .is(part, {
-            position: absolute;
-            .s-message-draggable-container{
-                position: absolute;
-                z-index: 30;
-            }
-        })
-    });
-
-    .d(be(@ns, inner), {
+    //ele inner
+    .e(inner, {
         min-width: 400px;
         min-height: 250px;
         width: 30vw;
         position: absolute;
         z-index: 30;
 
-        .s-message {
+        .@{inner} {
             display: flex;
             flex-flow: column nowrap;
             justify-content: space-between;
         }
     });
+
+    //status part
+    .is(part, {
+        position: absolute;
+        .@{drag}{
+            position: absolute;
+            z-index: 30;
+        }
+    })
 
 }
 

@@ -1,20 +1,20 @@
 @import "../global";
 
-
-& {
+.@{componentPrefix}-floating {
     @ns: @{componentPrefix}-floating;
 
-    .d(@ns, {
+
+    //base
+    & {
         .useBorderDft();
         .useBorderRadius(4);
 
         padding: 5px;
         position: relative;
         white-space: nowrap;
-    });
+    }
 
-
-    .d(be(@ns, arrow), {
+    .e(arrow, {
         height: 10px;
         width: 10px;
         position: absolute;
@@ -26,46 +26,51 @@
         background-color: inherit;
     });
 
-    .d(@ns, {
-        &[data-placement^="top"] {
-            transform-origin: center bottom;
-            .d(be(@ns, arrow), {
-                bottom: -5px;
-                border-right: 1px solid var(--sss-color-gray);
-                border-bottom: 1px solid var(--sss-color-gray);
-            });
-        }
-        &[data-placement^="bottom"] {
-            transform-origin: center top;
-            .d(be(@ns, arrow), {
-                top: -5px;
-                border-left: 1px solid var(--sss-color-gray);
-                border-top: 1px solid var(--sss-color-gray);
-            });
 
-        }
-        &[data-placement^="left"] {
-            transform-origin: right center;
-            .d(be(@ns, arrow), {
-                right: -5px;
-                border-right: 1px solid var(--sss-color-gray);
-                border-top: 1px solid var(--sss-color-gray);
-            });
+    &[data-placement^="top"] {
+        transform-origin: center bottom;
+        .e(arrow, {
+            bottom: -5px;
+            border-right: 1px solid var(--sss-color-gray);
+            border-bottom: 1px solid var(--sss-color-gray);
+        }, @ns);
+    }
 
-        }
-        &[data-placement^="right"] {
-            transform-origin: left center;
-            .d(be(@ns, arrow), {
-                left: -5px;
-                border-left: 1px solid var(--sss-color-gray);
-                border-bottom: 1px solid var(--sss-color-gray);
-            });
-        }
-    })
+    &[data-placement^="bottom"] {
+        transform-origin: center top;
+        .e(arrow, {
+            top: -5px;
+            border-left: 1px solid var(--sss-color-gray);
+            border-top: 1px solid var(--sss-color-gray);
+        }, @ns);
+
+
+    }
+
+    &[data-placement^="left"] {
+        transform-origin: right center;
+        .e(arrow, {
+            right: -5px;
+            border-right: 1px solid var(--sss-color-gray);
+            border-top: 1px solid var(--sss-color-gray);
+        }, @ns);
+
+
+    }
+
+    &[data-placement^="right"] {
+        transform-origin: left center;
+        .e(arrow, {
+            left: -5px;
+            border-left: 1px solid var(--sss-color-gray);
+            border-bottom: 1px solid var(--sss-color-gray);
+        }, @ns);
+
+    }
 }
 
 
-.___sss-floating-container {
+.___s-floating-container {
     position: fixed;
     left: 0;
     bottom: 0;

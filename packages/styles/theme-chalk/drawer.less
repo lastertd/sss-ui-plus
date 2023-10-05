@@ -1,74 +1,71 @@
 @import "../mixn/_index";
 
-& {
+.@{componentPrefix}-drawer {
     @ns: @{componentPrefix}-drawer;
+    @inner: @{componentPrefix}-message;
+    @positions: top, left, bottom, right;
 
     //base
-    .d(@ns, {
+    & {
+        .useModal();
+    }
 
-        position: fixed;
-        left: 0;
-        top: 0;
-        bottom: 0;
-        right: 0;
+    //ele inner
+    .e(inner, {
 
-        .m(top, {
-            .d(be(@ns, inner), {
-                width: 100%;
-                height: 30%;
-            });
-        });
-        .m(left, {
-            .d(be(@ns, inner), {
-                height: 100%;
-                width: 30%;
-            });
-
-        });
-        .m(bottom, {
-            .d(be(@ns, inner), {
-                bottom: 0;
-                width: 100%;
-                height: 30%;
-            });
-
-        });
-        .m(right, {
-            .d(be(@ns, inner), {
-                bottom: 0;
-                right: 0;
-                height: 100%;
-                width: 30%;
-            });
-
-        });
-
-        .is(part, {
-            position: absolute;
-
-        })
-    });
-
-
-    //inner
-    .d(be(@ns, inner), {
-        height: 100%;
-        width: 100%;
         min-height: 200px;
         position: absolute;
         border-radius: unset;
         padding: 20px 30px;
         z-index: 1;
 
-        .s-message {
+        .@{inner} {
             display: flex;
             flex-flow: column nowrap;
             justify-content: space-between;
         }
-    })
+    });
 
 
+    //modifier position
+    & {
+        .m(left, {
+            .e(inner, {
+                height: 100%;
+                width: 30%;
+            }, @ns);
+        });
+        .m(top, {
+            .e(inner, {
+                width: 100%;
+                height: 30%
+            }, @ns);
+        });
+        .m(bottom, {
+            .e(inner, {
+                bottom: 0;
+                width: 100%;
+                height: 30%;
+            }, @ns);
+        });
+        .m(right, {
+            .e(inner, {
+                bottom: 0;
+                right: 0;
+                height: 100%;
+                width: 30%;
+            }, @ns);
+        });
+    }
+
+
+    //status part
+    .is(part, {
+        position: absolute;
+
+    });
 }
+
 
 
 

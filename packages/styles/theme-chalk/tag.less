@@ -1,11 +1,13 @@
 @import "../mixn/_index";
 
 
-& {
+.@{componentPrefix}-tag {
     @ns: @{componentPrefix}-tag;
     @types: success, info, warning, danger, primary;
 
-    .d(@ns, {
+
+    //base
+    & {
         .useFlexRCC(7);
         .useBorderDft(4);
         .useSizeSmall(6, 6);
@@ -23,70 +25,62 @@
                 color: white;
             }
         });
+    }
 
-
-    });
 
     //theme default
-    .d(@ns, {
+    .m(dark, {
+        background-color: var(--sss-color-cyan);
+        color: var(--sss-color-white);
 
-        .m(dark, {
-            background-color: var(--sss-color-cyan);
-            color: var(--sss-color-white);
+        .e(icon, {
+            &:hover {
+                background-color: var(--sss-color-gray-dark);
+            }
+        }, @ns);
+    });
 
-            .e(icon, {
-                &:hover {
-                    background-color: var(--sss-color-gray-dark);
-                }
-            }, @ns);
-        });
-
-        .m(light, {
-            border-color: var(--sss-color-cyan-lighter);
-            background-color: var(--sss-color-bg);
-        });
+    .m(light, {
+        border-color: var(--sss-color-cyan-lighter);
+        background-color: var(--sss-color-bg);
     });
 
     //size
-    .d(@ns, {
-        .m(small, {
-            .useSizeMini(5, 5);
-
-        });
-        .m(large, {
-            .useSizeDft(7, 7);
-        });
+    .m(small, {
+        .useSizeMini(5, 5);
 
     });
+    .m(large, {
+        .useSizeDft(7, 7);
+    });
+
 
     //type
-    .d(@ns, {
-        each(@types, .(@type) {
-            .m(@type, {
-                color: getClrVar(@type);
-                background-color: getClrVar(@type, fade);
+    each(@types, .(@type) {
+        .m(@type, {
+            color: getClrVar(@type);
+            background-color: getClrVar(@type, fade);
 
-                & .@{ns}__icon:hover {
-                    color: var(--sss-color-white);
-                    background-color: getClrVar(@type);
-                }
-                &.@{ns}--dark {
-                    color: var(--sss-color-white);
-                    background-color: getClrVar(@type);
+            & .@{ns}__icon:hover {
+                color: var(--sss-color-white);
+                background-color: getClrVar(@type);
+            }
+            &.@{ns}--dark {
+                color: var(--sss-color-white);
+                background-color: getClrVar(@type);
 
-                    .@{ns}__icon:hover {
-                        background-color: var(--sss-color-gray-dark);
-
-                    }
-                }
-
-                &.@{ns}--light {
-                    border-color: getClrVar(@type, lighter);
-                    background-color: var(--sss-color-bg);
+                .@{ns}__icon:hover {
+                    background-color: var(--sss-color-gray-dark);
 
                 }
+            }
 
-            });
+            &.@{ns}--light {
+                border-color: getClrVar(@type, lighter);
+                background-color: var(--sss-color-bg);
+
+            }
+
         });
     });
 }

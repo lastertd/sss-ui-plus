@@ -1,20 +1,17 @@
 @import "../mixn/_index";
 
-
-& {
+.@{componentPrefix}-popconfirm{
     @ns: @{componentPrefix}-popconfirm;
-    .d(@ns, {
+
+    //base
+    & {
         min-width: 200px;
         padding: 0;
         white-space: unset;
-    });
-    .d(be(@ns, inner), {
+    };
+    .e(inner, {
         background-color: inherit;
         border: none;
-        .d(s-message__header, {
-            margin-bottom: 10px;
-
-        })
     });
 }
 

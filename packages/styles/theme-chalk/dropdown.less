@@ -1,19 +1,27 @@
 @import "../mixn/_index";
 
-& {
-    @ns:@{componentPrefix}-dropdown;
-    .d(@ns, {
-        --sss-dropdown-play:unset;
-        --sss-dropdown-active-color:unset;
 
+.@{componentPrefix}-dropdown {
+    @ns: @{componentPrefix}-dropdown;
+
+    //var
+    & {
+        --sss-dropdown-play: unset;
+        --sss-dropdown-active-color: unset;
+    }
+
+    //base
+    & {
         padding: 7px 0;
+    }
+
+    //ele inner
+    .e(inner, {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        color: inherit;
     });
-    .d(@ns, {
-        .e(inner, {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            color: inherit;
-        });
-    });
+
+
 }

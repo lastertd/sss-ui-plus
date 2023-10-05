@@ -1,21 +1,22 @@
 @import "../mixn/_index";
 
-& {
+.@{componentPrefix}-scrollbar {
     @ns: @{componentPrefix}-scrollbar;
     //base
-    .d(@ns, {
+    & {
         position: relative;
+
         &[data-always = 'true'] {
-            .d(be(@ns, bar), {
+            .e(bar, {
                 opacity: 1;
-            });
+            }, @ns);
         }
+
         &[data-native="true"] {
-            .d(be(@ns, wrapper), {
+            .e(wrapper, {
                 &::-webkit-scrollbar {
                     width: 6px;
                     display: unset;
-
                 }
 
                 &::-webkit-scrollbar-thumb {
@@ -25,26 +26,24 @@
                     &:hover,
                     &:active {
                         background-color: var(--sss-color-gray-deep-dark); /* 设置滚动条滑块的背景颜色 */
-
                     }
 
                 }
-            });
+            }, @ns);
 
         }
 
         &:hover {
-            .d(be(@ns, bar), {
+            .e(bar, {
                 opacity: 1;
-
-            })
+            }, @ns);
         }
 
+    }
 
-    });
 
     //ele wrapper
-    .d(be(@ns, wrapper), {
+    .e(wrapper, {
         height: 100%;
         width: 100%;
         overflow: auto;
@@ -56,7 +55,7 @@
     });
 
     //ele bar
-    .d(be(@ns, bar), {
+    .e(bar, {
         user-select: none;
         opacity: 0;
         position: absolute;
@@ -65,9 +64,9 @@
 
         .is(active, {
             opacity: 1;
-            .d(be(@ns, thumb), {
+            .e(thumb, {
                 background-color: var(--sss-color-gray-dark);
-            });
+            }, @ns);
 
         });
 
@@ -77,10 +76,11 @@
             right: 0;
             top: 0;
 
-            .d(be(@ns, thumb), {
+            .e(thumb, {
                 position: absolute;
                 width: inherit;
-            });
+            }, @ns);
+
 
             .is(outside, {
                 left: 100%;
@@ -94,10 +94,10 @@
             bottom: 0;
             left: 0;
 
-            .d(be(@ns, thumb), {
+            .e(thumb, {
                 position: absolute;
                 height: inherit;
-            });
+            }, @ns);
 
             .is(outside, {
                 top: 100%;
@@ -108,12 +108,11 @@
     });
 
     //ele thumb
-    .d(be(@ns, thumb), {
+    .e(thumb, {
         background-color: var(--sss-color-gray);
 
         &:hover {
             background-color: var(--sss-color-gray-dark);
-
         }
     });
 }

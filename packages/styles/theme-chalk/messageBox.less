@@ -2,13 +2,13 @@
 
 
 // message box
-& {
+.@{componentPrefix}-message-box {
     @ns: @{componentPrefix}-message-box;
     @types: success, info, warning, danger;
 
 
     //base
-    .d(@ns, {
+    & {
         .useFlexRCC(5);
         align-items: stretch;
 
@@ -19,35 +19,36 @@
         outline: none;
         padding: 10px 10px 15px;
         font-size: var(--sss-font-size-default);
-    });
+    }
+;
 
-    //icon
-    .d(be(@ns, icon), {
+    //ele icon
+    .e(icon, {
         height: 1.55em;
+    });
+    .e(inner, {
+        flex: 1;
+        overflow: hidden;
     });
 }
 
 
-//message
-& {
+.@{componentPrefix}-message {
     @ns: @{componentPrefix}-message;
-    .d(@ns, {
+
+    //var
+    & {
         --sss-message-title-font-size: 18px;
         --sss-message-title-font-weight: bolder;
         --sss-message-title-icon-bg: transparent;
-        --sss-message-title-margin: 15px;
+        --sss-message-gap: 15px;
         --sss-message-text-margin: 0;
-    });
+    }
 
-    .d(@ns, {
-        flex: 1;
-        overflow: hidden;
 
-    });
-
-    //element header;
-    .d(be(@ns, header), {
-        margin-bottom: var(--sss-message-title-margin);
+    //ele header;
+    .e(header, {
+        margin-bottom: var(--sss-message-gap);
         .m(default, {
             .useFlexRCC(20);
             justify-content: space-between;
@@ -56,7 +57,7 @@
         .e(title, {
             margin: 0;
             font-weight: var(--sss-message-title-font-weight);
-            font-size: var(--sss-message-title-font-size);
+            font-size: var(--sss-message-title-font-size) !important;
 
             .filter-overflow();
         });
@@ -77,20 +78,21 @@
 
     });
 
-    //element body
-    .d(be(@ns, body), {
+    //ele body
+    .e(body, {
         flex: 1;
         font-size: inherit;
     });
 
-    .d(be(@ns, text), {
+    //ele text
+    .e(text, {
         .filter-overflow();
         margin-right: var(--sss-message-text-margin);
     });
 
-    //element footer
-    .d(be(@ns, footer), {
-        margin-top: var(--sss-message-title-margin);
+    //ele footer
+    .e(footer, {
+        margin-top: var(--sss-message-gap);
 
         .m(default, {
             display: flex;
@@ -103,23 +105,19 @@
 
 
 //message-draggable-container
-& {
+.@{componentPrefix}-message-draggable-container {
     @ns: @{componentPrefix}-message-draggable-container;
     @box: @{componentPrefix}-message-box;
     @inner: @{componentPrefix}-message;
 
 
-    .d(@ns, {
-        position: fixed;
-        .d(@box, {
-            position: static !important;
-        });
-
-        .d(s-message__header, {
+    position: fixed;
+    .d(@box, {
+        position: static !important;
+        .e(header, {
             cursor: move;
             user-select: none;
         });
-
     });
 
 
@@ -127,101 +125,93 @@
 
 
 //message-container
-& {
+.@{componentPrefix}-message-container {
     @ns: @{componentPrefix}-message-container;
     @box: @{componentPrefix}-message-box;
     @inner: @{componentPrefix}-message;
     @types: success, info, warning, danger;
 
-    .d(@ns, {
-        position: fixed;
-        transition: all .4s ease;
+    position: fixed;
+    transition: all .4s ease;
 
 
-        .d(@inner, {
-            --sss-message-title-margin: 0;
-            --sss-message-title-font-size: 12px;
-            --sss-message-title-font-weight: normal;
+    .d(@inner, {
+        --sss-message-gap: 0;
+        --sss-message-title-font-size: 12px;
+        --sss-message-title-font-weight: normal;
 
-        });
-
-        .@{box} {
-            padding: 5px 10px;
-            align-items: center;
-            box-shadow: none;
-
-            each(@types, .(@type) {
-                .m(@type, {
-                    background-color: getClrVar(@type, fade);
-                    border-color: getClrVar(@type, lighter);
-                })
-            })
-        }
-
-        .d(be(@inner, header), {
+        .e(header, {
             .useFlexRCC(5);
 
             .e(icon, {
                 background-color: transparent;
             })
         });
-
-
     });
+
+    .d(@box, {
+        padding: 5px 10px;
+        align-items: center;
+        box-shadow: none;
+
+        each(@types, .(@type) {
+            .m(@type, {
+                background-color: getClrVar(@type, fade);
+                border-color: getClrVar(@type, lighter);
+            })
+        })
+    });
+
+
 }
 
 //notify-container
-& {
+.@{componentPrefix}-notify-container {
     @ns: @{componentPrefix}-notify-container;
     @inner: @{componentPrefix}-message;
 
-    .d(@ns, {
-        width: 300px;
-        transition: all .4s ease;
-    });
+    width: 300px;
+    transition: all .4s ease;
 
     .d(@inner, {
         --sss-message-title-font-size: var(--sss-font-size-default);
-    });
+        --sss-message-text-margin: 10px;
 
-    .s-message__message__text {
-        word-wrap: break-word;
-        white-space: break-spaces;
-        padding-right: 25px;
-    }
+        .e(text, {
+            word-wrap: break-word;
+            white-space: break-spaces;
+        });
+    });
 
 }
 
 //confirm-container
-& {
+.@{componentPrefix}-confirm-containe {
     @ns: @{componentPrefix}-confirm-container;
-    @inner:@{componentPrefix}-message;
-    .d(@ns, {
+    @box: @{componentPrefix}-message-box;
+    @inner: @{componentPrefix}-message;
 
-        //全屏展示
+    //base
+    & {
+        //全屏& 元素居中
         .useModal();
-
-        //消息框居中
         .useFlexRCC();
+    }
 
-        //控制大小
-        .s-message-box {
-            min-width: 280px;
-            max-width: 400px;
-            position: absolute;
-        }
+    .d(@box, {
+        min-width: 280px;
+        max-width: 400px;
+        position: absolute;
 
-        .d(@inner, {
-            --sss-message-text-margin: 25px;
-
-            .e(text, {
-                word-wrap: break-word;
-                white-space: break-spaces;
-            });
-
+    });
+    .d(@inner, {
+        --sss-message-text-margin: 25px;
+        .e(text, {
+            word-wrap: break-word;
+            white-space: break-spaces;
         });
+    });
 
-    })
 }
 
 

@@ -1,14 +1,16 @@
 @import "../mixn/_index";
 
 
-& {
-    @ns:@{componentPrefix}-icon;
+.@{componentPrefix}-icon {
+    @ns: @{componentPrefix}-icon;
 
-    .d(@ns, {
+    //var
+    & {
         --sss-icon-color: inherit;
-    });
+    }
 
-    .d(@ns, {
+    //base
+    & {
         .useIFlexRCC();
         cursor: pointer;
         user-select: none;
@@ -18,6 +20,7 @@
         font-size: 1em;
         //line-height:1em !important;
         color: var(--sss-icon-color);
-    });
+    }
 }
+
 

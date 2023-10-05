@@ -1,12 +1,12 @@
 @import "../mixn/_index";
 
-& {
+。@{componentPrefix}-timeline {
     @ns: @{componentPrefix}-timeline;
     @item: @{componentPrefix}-timeline-item;
 
 
     //base
-    .d(@ns, {
+    & {
         margin: 0;
         padding: 0;
         list-style-type: none;
@@ -16,60 +16,58 @@
                 display: none;
             }
         }
+    }
 
-    });
     //modifier direction
-    .d(@ns, {
-        .m(horizontal, {
-            .useFlexRCC();
-            align-items: flex-start;
+    .m(horizontal, {
+        .useFlexRCC();
+        align-items: flex-start;
 
-            .d(be(@item, content), {
-                padding: 30px 30px 0 0;
-            });
 
-            .d(be(@item, timeline), {
-                width: 100%;
-                height: auto;
-            });
-            .d(be(@item, line), {
-                border-left: 0;
-                border-top: solid 1.6px var(--sss-color-gray);
-                width: 100%;
-                left: 0;
-                top: calc(50% - 0.8px);
+        .e(content, {
+            padding: 30px 30px 0 0;
+        }, @item);
 
-            });
+        .e(timeline, {
+            width: 100%;
+            height: auto;
+        }, @item);
 
-        });
+        .e(line, {
+            border-left: 0;
+            border-top: solid 1.6px var(--sss-color-gray);
+            width: 100%;
+            left: 0;
+            top: calc(50% - 0.8px);
+        }, @item);
+
+
     });
 
     //modifier sizes
-    .d(@ns, {
-        .m(large, {
-            .d(be(@item, circle), {
-                height: 16px;
-                width: 16px;
-                font-size: 16px;
-            });
-            .d(be(@item, timeline), {
-                top: calc(.5em - 8px);
+    .m(large, {
+        .e(circle, {
+            height: 16px;
+            width: 16px;
+            font-size: 16px;
+        }, @item);
+        .e(timeline, {
+            top: calc(.5em - 8px);
+        }, @item);
 
-            });
 
-        });
+    });
 
-        .m(small, {
-            .d(be(@item, circle), {
-                height: 12px;
-                width: 12px;
-                font-size: 14px;
-            });
-            .d(be(@item, timeline), {
-                top: calc(.5em - 6px);
-            });
+    .m(small, {
+        .e(circle, {
+            height: 12px;
+            width: 12px;
+            font-size: 14px;
+        }, @item);
 
-        });
-    })
+        .e(timeline, {
+            top: calc(.5em - 6px);
+        }, @item);
+    });
 }
 

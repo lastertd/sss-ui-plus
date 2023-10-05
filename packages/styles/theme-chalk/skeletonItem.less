@@ -1,10 +1,11 @@
 @import "../mixn/_index";
 
 
-& {
+.@{componentPrefix}-skeleton-item {
     @ns: @{componentPrefix}-skeleton-item;
 
-    .d(@ns, {
+    //base
+    & {
         .useBorderBox();
         .useBorderRadius(3);
         .useBGColorGrayLightest();
@@ -14,22 +15,25 @@
         overflow: hidden;
         user-select: none;
 
-        //status, animated
-        .is(animated, {
-            .useBGScanningLine(var(--sss-color-gray-deep-fade));
-        });
 
-        //status circle
-        .is(circle, {
-            height: unset;
-            width: unset;
-            aspect-ratio: 1 / 1;
-            border-radius: 50%;
-        });
+    }
+
+    //status, animated
+    .is(animated, {
+        .useBGScanningLine(var(--sss-color-gray-deep-fade));
     });
 
+    //status circle
+    .is(circle, {
+        height: unset;
+        width: unset;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+    });
+
+
     //modifier image
-    .d(bm(@ns, image), {
+    .m(image, {
         display: flex;
         align-items: center;
         justify-content: center;

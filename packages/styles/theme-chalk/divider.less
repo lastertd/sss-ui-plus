@@ -2,24 +2,21 @@
 
 @plugin "../plugin/index";
 
-
-& {
+.@{componentPrefix}-divider {
     @ns: @{componentPrefix}-divider;
-    @status: dashed, solid;
+    @types: dashed, solid;
     @placements: start, center, end;
-
-
     @dir: vertical, horizontal;
 
 
-    //variable
-    .d(b(@ns), {
+    //var
+    & {
         --sss-divider-gap: 10px;
         --sss-divider-placement: center;
-    });
+    }
 
     //base
-    .d(b(@ns), {
+    & {
         .useBorderBox();
         .useIFlexRCC();
         position: relative;
@@ -29,67 +26,56 @@
         height: 1px;
         font-size: var(--sss-font-size-small);
 
+    }
 
-        .d(be(@ns, content), {
-            padding: 0 10px;
+    //ele
+    .e(content, {
+        padding: 0 10px;
 
-        });
-
-
+        position: absolute;
+        .useIFlexRCC(5);
+        background-color: var(--sss-color-bg);
+        left: var(--sss-divider-placement);
     });
 
-    //status
-    each(@status, .(@type) {
-        .d(bm(@ns, @type), {
+    //modifier type
+    each(@types, .(@type) {
+        .m(@type, {
             border-top: 1px @type var(--sss-color-gray);
             border-left: 1px @type var(--sss-color-gray);
         });
     });
 
-
-    //placement
+    //modifier placement
     each(@placements, .(@v) {
-        .d(bm(@ns, @v), {
+        .m(@v, {
             & when (@v = start) {
-                .d(be(@ns, content), {
+                .e(content, {
                     left: 15px;
-                })
+                }, @ns);
             }
             & when (@v = end) {
-                .d(be(@ns, content), {
+                .e(content, {
                     right: 15px;
-                })
+                }, @ns);
             }
 
         });
     });
 
 
-    //direction vertical
-    .d(bm(@ns, vertical), {
-        margin: 0 10px;
+    //modifier direction
+    .m(vertical, {
+        margin: 0 var(--sss-divider-gap);
         height: 1em;
         width: 0;
         display: inline-flex;
 
-
-        .d(be(@ns, content), {
+        .e(content, {
             padding: 0;
-        });
-    });
-
-
-    //content element
-    .d(be(@ns, content), {
-        position: absolute;
-        .useIFlexRCC(5);
-        opacity: 1;
-        background-color: var(--sss-color-bg);
-        left: var(--sss-divider-placement);
+        }, @ns);
     });
 
 
 }
-
-
 

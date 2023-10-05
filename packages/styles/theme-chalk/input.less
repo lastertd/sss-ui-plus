@@ -3,13 +3,13 @@
 @plugin "../plugin/index";
 
 
-& {
+.@{componentPrefix}-input {
     @ns: @{componentPrefix}-input;
     @sizes: small, large;
 
 
     //base
-    .d(@ns, {
+    & {
         .useIFlexRCC(0);
         align-items: stretch; //子元素撑满高度
 
@@ -23,6 +23,7 @@
 
         width: 100%;
         transition: all .3s;
+
         &:focus-within {
             border: solid 1px var(--sss-color-primary);
             box-shadow: 0 0 5px 0 var(--sss-color-primary-light);
@@ -35,24 +36,21 @@
                 display: inline-block;
             }
         }
+    }
 
-
-    });
 
     //element wrapper
-    .d(be(@ns, wrapper), {
+    .e(wrapper, {
         .useIFlexRCC(7);
         align-items: stretch;
 
         width: 100%;
         padding: 0 7px;
-
-
     });
 
 
     //element inner
-    .d(be(@ns, inner), {
+    .e(inner, {
         flex: 1;
 
         border: none;
@@ -79,12 +77,12 @@
     });
 
     //element icon
-    .d(be(@ns, icon), {
+    .e(icon, {
         flex: 0;
         color: var(--sss-color-gray-dark);
         height: 100%;
 
-        &--limit {
+        .m(limit, {
             display: flex;
             align-items: center;
             white-space: nowrap;
@@ -94,13 +92,12 @@
             &[data-overflow = 'true'] {
                 color: red;
             }
-
-        }
-
+        });
     });
 
-    .d(be(@ns, slot), {
 
+    //ele slot
+    .e(slot, {
         flex-shrink: 0;
         overflow: hidden;
 
@@ -124,28 +121,26 @@
             border-top-right-radius: inherit;
             border-bottom-right-radius: inherit;
         });
-
-
     });
 
 
     //modifier size
     each(@sizes, .(@size) {
-        .d(bm(@ns, @size), {
-            & when (@size = small) {
+        & when (@size = small) {
+            .m(@size, {
                 .useSizeSmall(0, 0);
-            }
-            & when (@size = large) {
+            });
+        }
+        & when (@size = large) {
+            .m(@size, {
                 .useSizeLarge(0, 0);
-            }
-        })
+            });
+        }
     });
 
     //status disabled
-    .d(@ns, {
-        .is(disabled, {
-            background-color: var(--sss-color-gray-deep-fade);
-        });
+    .is(disabled, {
+        background-color: var(--sss-color-gray-deep-fade);
     });
 
 

@@ -22,8 +22,10 @@
 .useBorderDft(@num:0){
     border: 1px solid var(--sss-color-gray);
     background-color: var(--sss-color-bg);
-    box-sizing: border-box;
+
     border-radius: ~"@{num}px";
+
+    box-sizing: border-box;
     & * {
         box-sizing: border-box;
     }

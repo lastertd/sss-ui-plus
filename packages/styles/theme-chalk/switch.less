@@ -1,16 +1,18 @@
 @import "../mixn/_index";
 
 
-& {
+.@{componentPrefix}-switch {
     @ns: @{componentPrefix}-switch;
 
-    .d(@ns, {
-        --sss-switch-color:unset;
-    });
+    //var
+    & {
+        --sss-switch-color: unset;
+
+    }
 
 
     //base
-    .d(@ns, {
+    & {
         .useBorderBox();
         .useFlexRCC(5);
 
@@ -18,15 +20,14 @@
         font-size: 17px;
         height: 24px;
 
-
         .e(input, {
             display: none;
         });
+    }
 
-    });
 
     //ele label
-    .d(be(@ns, label), {
+    .e(label, {
         font-size: var(--sss-font-size-default);
         transition: color .3s ease;
 
@@ -40,7 +41,7 @@
     });
 
     //ele inner
-    .d(@ns, {
+    & {
         .e(inner, {
             height: 100%;
             min-width: 45px;
@@ -57,7 +58,7 @@
             }, @ns);
         });
 
-    });
+    }
 
 
     //ele trigger
@@ -168,7 +169,7 @@
         .e(inner, {
             min-width: 40px;
 
-        },@ns);
+        }, @ns);
 
     });
 
@@ -227,7 +228,7 @@
         .e(inner, {
             min-width: 55px;
 
-        },@ns);
+        }, @ns);
     })
 
 }

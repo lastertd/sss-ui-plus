@@ -1,12 +1,20 @@
 @import "../mixn/_index";
 
-& {
-    @ns:@{componentPrefix}-badge;
+
+.@{componentPrefix}-badge {
+    @ns: @{componentPrefix}-badge;
     @types: primary, success, info, warning, danger, cyan;
     @variant: empty, fantasy;
 
+    & {
+        --sss-badge-font-color: var(--sss-color-white);
+        --sss-badge-bg-color: var(--sss-color-primary);
+        --sss-badge-br-color: transparent;
+    }
+
+
     //base
-    .d(@ns, {
+    & {
         .useBorderRadius(@infinite);
         .useBorderBox();
 
@@ -14,129 +22,73 @@
         right: 0;
         top: 0;
         transform: translate(50%, -50%);
+
         font-size: var(--sss-font-size-small);
         padding: 0 7px;
+        border: solid 1px;
 
-        background: var(--sss-color-primary);
-        border: solid 1px var(--sss-color-bg);
-        color: var(--sss-color-white);
 
-        //没有内容显示为小圆点
-        &:empty{
-            padding: 3px;
-        }
+        background-color: var(--sss-badge-bg-color);
+        border-color: var(--sss-badge-br-color);
+        color: var(--sss-badge-font-color);
+
+
+    }
+
+    //modifier type
+    each(@types, .(@type) {
+        .m(@type, {
+            --sss-badge-bg-color: getClrVar(@type);
+        })
     });
 
-    //modifier types
-    .d(@ns, {
-
-
-        each(@types, .(@type){
-           .m(@type, {
-               background: getClrVar(@type);
-
-           })
-        });
+    //modifier theme empty
+    .m(empty, {
+        --sss-badge-bg-color: var(--sss-color-bg);
+        --sss-badge-br-color: getClrVar(primary, light);
+        --sss-badge-font-color: getClrVar(primary);
     });
-
-    //modifier variant empty
-    .d(@ns, {
+    each(@types, .(@type) {
         .m(empty, {
-            background: var(--sss-color-bg);
-            border-color: getClrVar(primary, light);
-            color: getClrVar(primary);
-        });
-        each(@types, .(@type){
-            .m(empty, {
-                .with(bm(@ns, @type), {
-                    background: var(--sss-color-bg);
-                    border-color: getClrVar(@type, light);
-                    color: getClrVar(@type);
-                });
-
-            })
-        });
-    });
-
-    //modifier variant fantasy
-    .d(@ns, {
-        .m(fantasy, {
-            background: getClrVar(primary, fade);
-            border-color: getClrVar(primary, light);
-            color: getClrVar(primary);
-        });
-        each(@types, .(@type){
-            .m(fantasy, {
-                .with(bm(@ns, @type), {
-                    background: getClrVar(@type, fade);
-                    border-color: getClrVar(@type, light);
-                    color: getClrVar(@type);
-                });
-
-            })
-        });
-    });
-
-    //point
-    .d(@ns, {
-        each(@types, .(@type){
-            .m(@type, {
-                &:empty{
-                    background-color: getClrVar(@type)!important;
-                }
+            .with(bm(@ns, @type), {
+                --sss-badge-bg-color: var(--sss-color-bg);
+                --sss-badge-br-color: getClrVar(@type, light);
+                --sss-badge-font-color: getClrVar(@type);
             });
 
+        })
+    });
+
+    //modifier theme fantasy
+    .m(fantasy, {
+        --sss-badge-bg-color: getClrVar(primary, fade);
+        --sss-badge-br-color: getClrVar(primary, light);
+        --sss-badge-font-color: getClrVar(primary);
+    });
+    each(@types, .(@type) {
+        .m(fantasy, {
+            .with(bm(@ns, @type), {
+                --sss-badge-bg-color: getClrVar(@type, fade);
+                --sss-badge-br-color: getClrVar(@type, light);
+                --sss-badge-font-color: getClrVar(@type);
+            });
+
+        })
+    });
+
+
+    //point
+    &:empty {
+        padding: 3px;
+    }
+
+    each(@types, .(@type) {
+        .m(@type, {
+            &:empty {
+                --sss-badge-bg-color: getClrVar(@type);
+            }
         });
+
     });
 
 }
-
-//.s-badge {
-//
-//
-//
-//
-//
-//    &--empty{
-//        background: var(--sss-color-bg);
-//        border-color: var(--sss-color-primary-light);
-//        color: var(--sss-color-primary);
-//    }
-//
-//
-//    &--cyan {
-//        background: var(--sss-color-cyan);
-//        &.s-badge--empty{
-//
-//        }
-//
-//    }
-//
-//    &--waring {
-//        background: var(--sss-color-warning);
-//        &.s-badge--empty{
-//            background: var(--sss-color-bg);
-//            border-color: var(--sss-color-warning-light);
-//            color: var(--sss-color-warning);
-//        }
-//    }
-//
-//    &--danger {
-//        background: var(--sss-color-danger);
-//        &.s-badge--empty{
-//            background: var(--sss-color-bg);
-//            border-color: var(--sss-color-danger-light);
-//            color: var(--sss-color-danger);
-//        }
-//    }
-//
-//    &--info {
-//        background: var(--sss-color-info);
-//        &.s-badge--empty{
-//            background: var(--sss-color-bg);
-//            border-color: var(--sss-color-info-light);
-//            color: var(--sss-color-info);
-//        }
-//    }
-//
-//}

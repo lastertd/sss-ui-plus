@@ -1,29 +1,27 @@
 @import "../mixn/_index";
 
 
-& {
+.@{componentPrefix}-progress {
     @ns: @{componentPrefix}-progress;
 
     //variable
-    .d(@ns, {
+    & {
         --sss-progress-thumb-color: unset;
         --sss-progress-thumb-width: unset;
-    });
-
+    }
 
     //base
-    .d(@ns, {
+    & {
         .useBorderBox();
         .useFlexRCC(3);
 
         min-width: 400px;
         height: 10px;
         font-size: var(--sss-font-size-small);
-    });
-
+    }
 
     //ele bar
-    .d(be(@ns, bar), {
+    .e(bar, {
         flex: 1;
         .useBorderRadius(@infinite);
 
@@ -34,7 +32,7 @@
 
 
     //ele thumb
-    .d(be(@ns, thumb), {
+    .e(thumb, {
         .useBorderRadius(@infinite);
         .usePulse(var(--sss-progress-thumb-color), 2s, 90deg);
         transition: all .3s linear;
@@ -47,7 +45,7 @@
 
 
     //ele text
-    .d(be(@ns, text), {
+    .e(text, {
         white-space: nowrap;
         overflow: hidden;
         min-width: 2.6em;
@@ -63,7 +61,7 @@
 
 
     //ele icon
-    .d(be(@ns, icon), {
+    .e(icon, {
         color: var(--sss-progress-thumb-color);
         font-size: 15px;
     });

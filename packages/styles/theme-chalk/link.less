@@ -1,68 +1,75 @@
 @import "../mixn/_index";
 
-& {
+
+.@{componentPrefix}-link {
     @ns: @{componentPrefix}-link;
     @types: primary, info, warning, danger;
 
-    .d(@ns, {
+
+    & {
+        --sss-link-font-color: var(--sss-color-cyan);
+        --sss-link-bg-color: var(--sss-color-cyan-light);
+    }
+
+    //base
+    & {
         .useIFlexRCC(3);
 
         cursor: pointer;
         text-decoration: none;
 
-    });
+        color: var(--sss-link-font-color);
 
-    //types
-    .d(@ns, {
-        color: var(--sss-color-cyan);
         &:hover,
         &:focus {
-            color: var(--sss-color-cyan-light);
+            --sss-link-font-color: var(--sss-color-cyan-light);
         }
+
         &:active {
-            color: var(--sss-color-cyan-dark);
+            --sss-link-font-color: var(--sss-color-cyan-dark);
         }
+
         &:after {
-            background-color: var(--sss-color-cyan-light);
+            background-color: var(--sss-link-bg-color);
         }
-        each(@types, .(@type) {
-            .m(@type, {
-                color: getClrVar(@type);
-                &:hover,
-                &:focus {
-                    color: getClrVar(@type, light);
-                }
-                &:active {
-                    color: getClrVar(@type, dark);;
-                }
-                &:after {
-                    background-color: getClrVar(@type, light);
-                }
-            })
+    }
+
+
+    //types
+
+    each(@types, .(@type) {
+        .m(@type, {
+            --sss-link-font-color: getClrVar(@type);
+            &:hover,
+            &:focus {
+                --sss-link-font-color: getClrVar(@type, light);
+            }
+            &:active {
+                --sss-link-font-color: getClrVar(@type, dark);;
+            }
+            &:after {
+                --sss-link-bg-color: getClrVar(@type, light);
+            }
         })
     });
 
 
     //disabled
-    .d(@ns, {
-        .is(disabled, {
-            color: var(--sss-color-cyan);
+    .is(disabled, {
+        --sss-link-font-color: var(--sss-color-cyan);
+        &:after {
+            --sss-link-bg-color: transparent;
+        }
+
+    });
+    each(@types, .(@type) {
+        .mIs(@type, disabled, {
+            --sss-link-font-color: getClrVar(@type);
             &:after {
-                background-color: transparent;
+                --sss-link-bg-color: transparent;
             }
         });
-        each(@types, .(@type) {
-            .m(@type, {
-                .is(disabled, {
-                    color: getClrVar(@type);
-                    &:after {
-                        background-color: transparent;
-                    }
-                });
 
-            });
-
-        })
-    })
+    });
 }
 
