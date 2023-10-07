@@ -1,7 +1,7 @@
 
 <p align="center">
   <img
-    style="height: 150px"
+    style="width: 200px"
     src="https://pic.imgdb.cn/item/65212e6fc458853aef596049.png"
     alt="图片描述">
 </p>
