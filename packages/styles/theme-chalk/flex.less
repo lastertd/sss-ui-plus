@@ -1,0 +1,26 @@
+@import "../mixn/_index";
+
+.@{componentPrefix}-flex{
+    @ns: @{componentPrefix}-flex;
+
+    //var
+    & {
+        --sss-flex-gap: unset;
+        --sss-flex-justify-content: unset;
+        --sss-flex-align-item: unset;
+        --sss-flex-wrap: unset;
+    }
+
+
+    //base
+    & {
+        display: flex;
+        margin-bottom: 20px;
+        align-items: var(--sss-flex-align-item);
+        justify-content: var(--sss-flex-justify-content);
+        gap: var(--sss-flex-gap);
+        flex-wrap: var(--sss-flex-wrap);
+    }
+
+
+}

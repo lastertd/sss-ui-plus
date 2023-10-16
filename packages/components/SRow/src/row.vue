@@ -1,35 +1,34 @@
 <template>
-	<div
-		:class="rowNS.namespace"
-		:style="styles"
+	<component
+		:is="props.tag"
+		:class="ns.namespace"
+		:style="sdl"
 		v-bind="$attrs"
 
 	>
 		<slot></slot>
-	</div>
+	</component>
 </template>
 <script setup lang="ts">
 import {SRowProps} from "./row";
 import {computed} from "vue";
 import {useNS} from "@sss-ui-plus/hooks";
+import {px} from "@sss-ui-plus/utils";
 
 
 defineOptions({
-	name: 'SRow',
+	name: 's-row',
 	inheritAttrs: false
 })
-
+const ns = useNS('row');
 const props = defineProps({...SRowProps});
-const rowNS = useNS('row');
 
 
-const styles = computed(() => {
+const sdl = computed(() => {
 	return {
-		'--sss-row-gap': props.gap ? `${props.gap}px` : '0',
-		'--sss-row-justify-content': props.justifyContent,
-		'--sss-row-align-item': props.alignItem,
-		'--sss-row-wrap': props.wrap ? 'wrap' : 'nowrap',
-
+		[ns.cssVar('gutter')]: px(props.gutter),
+		[ns.cssVar('justify')]: props.justify,
+		[ns.cssVar('align')]: props.align,
 	};
 })
 

@@ -1,1 +1,0 @@
-import{I as o}from"../app.b4d73df4.js";import"./framework.5b50d4be.js";import"./theme.3c1acc45.js";import"./useDraggable.cbf7acc7.js";const a=function(){const n=document.createElement("div"),t=document.body,e=new o;return n.classList.add("___sss-floating-container"),n.style.zIndex=e.nextIndex().toString(),t.appendChild(n),"＞﹏＜"},c=a();export{c as default};
