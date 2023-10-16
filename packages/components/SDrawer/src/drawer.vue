@@ -1,12 +1,13 @@
 <template>
 	<teleport to="body" :disabled="!props.appendToBody">
 		<div v-show="visible" ref="container"
-		     :class="drawerKls"
+		     :class="kls"
 
 		>
 			<SMessageBox
 				ref="msgBox"
-				:class="[drawerNS.e('inner')]"
+				v-bind="attrs"
+				:class="ns.e('inner')"
 				:transition="props.transition ||defaultTransition"
 				:title="props.title"
 				:no-header="props.noHeader"
@@ -25,7 +26,6 @@
 				@close="onClose"
 				@closed="closed"
 				@hidden="onHidden"
-				v-bind="$attrs"
 
 
 			>
@@ -43,7 +43,6 @@
 				</template>
 
 			</SMessageBox>
-
 		</div>
 	</teleport>
 
@@ -57,28 +56,28 @@ import {nextTick, onMounted, Ref, watch, ref, computed} from "vue";
 import {unrefElement, useEventListener} from "@vueuse/core";
 import {IndexManager} from "@sss-ui-plus/utils";
 import {MessageTriggerTypes} from "@sss-ui-plus/typings";
-import {useLockScroll, useMark, useNS} from "@sss-ui-plus/hooks";
+import {useAttrs, useLockScroll, useMark, useNS} from "@sss-ui-plus/hooks";
 
 
 defineOptions({
-	name: "SDrawer",
+	name: "s-drawer",
 	inheritAttrs: false
 })
-
+const ns = useNS('drawer');
 const props = defineProps({...SDrawerProps});
 const emits = defineEmits({...SDrawerEmits})
-const msgBox: Ref<SMessageBoxInstance | null> = ref(null);
-const container: Ref<HTMLElement | null> = ref(null);
-const drawerNS = useNS('drawer');
-
-
-const drawerKls = computed(() => {
+const attrs = useAttrs('scoped');
+const kls = computed(() => {
 	return [
-		drawerNS.namespace,
-		drawerNS.m(props.position),
-		drawerNS.is(props.part, 'part'),
+		ns.namespace,
+		ns.m(props.position),
+		ns.is('part', props.part),
 	]
 })
+
+
+const msgBox: Ref<SMessageBoxInstance | null> = ref(null);
+const container: Ref<HTMLElement | null> = ref(null);
 
 const indexManager = new IndexManager();
 const visible: Ref<Boolean> = ref(props.modelValue);
@@ -87,7 +86,7 @@ let changedBySystem = true;
 
 
 const {lockScroll, unLockScroll} = useLockScroll();
-const {mark, hiddenMark, showMark} = useMark(container, props.part? 'part':'cover');
+const {mark, hiddenMark, showMark} = useMark(container, props.part ? 'part' : 'cover');
 
 
 // 默认过渡通过position计算

@@ -2,7 +2,7 @@
 	<SPartial
 		v-if="slot.default"
 		ref="target"
-		v-bind="$attrs"
+
 	>
 		<slot></slot>
 	</SPartial>
@@ -11,49 +11,47 @@
 	</span>
 
 
-
 </template>
 <script setup lang="ts">
 import {SPartial} from "../../abstract/index"
 import {SBadgeProps} from "./badge";
-import {computed, ref, useSlots, watch} from "vue";
-import {useBadge} from "@sss-ui-plus/hooks";
+import {computed, ref, useAttrs, useSlots, watch} from "vue";
+import { useBadge, useNS} from "@sss-ui-plus/hooks";
 import {toRef} from "@vue/runtime-core";
+import {isEmpty, isNumber} from "@sss-ui-plus/utils";
+
 
 defineOptions({
-	name: "SBadge",
+	name: "s-badge",
 	inheritAttrs: false
 })
-
+const ns = useNS('badge');
 const props = defineProps({...SBadgeProps});
 const slot = useSlots();
-let target = ref<HTMLElement | null>(null);
 
+
+
+let target = ref<HTMLElement | null>(null);
 
 
 // 最大值省略
 const val = computed(() => {
-	if (props.maxvalue !== undefined && typeof props.value === "number") {
-		if (props.value > Number(props.maxvalue)) {
-			return `${props.maxvalue}+`
-		} else return props.value
-	} else {
-		return props.value
+	if (!isEmpty(props.maxvalue) && isNumber(props.value) && props.value > Number(props.maxvalue)) {
+		return `${props.maxvalue}+`
 	}
-})
+	return props.value
 
+})
 
 
 const {hidden, show, setTxt, stop} = useBadge(target, {
 	value: val,
-	type: toRef(props,'type'),
-	variant:toRef(props,'variant'),
+	type: toRef(props, 'type'),
+	variant: toRef(props, 'variant'),
 });
 
-watch(() => props.hidden, (flag) => {
-	if (flag) hidden();
-	else show();
-})
+
+watch(() => props.hidden, (flag) => flag ? hidden() : show())
 
 
 defineExpose({

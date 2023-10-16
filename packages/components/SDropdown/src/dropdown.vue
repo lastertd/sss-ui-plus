@@ -1,8 +1,9 @@
 <template>
 	<s-floating
 		ref="floating"
-		:class="dropdownNS.namespace"
-		:style="dropdownSdl"
+		v-bind="useAttrs('scopedOnly').value"
+		:class="ns.namespace"
+		:style="sdl"
 		:trigger="props.trigger"
 		:placement="props.placement"
 		:transition="props.transition"
@@ -32,13 +33,12 @@
 
 		<template #default>
 			<s-scrollbar
+				v-bind="useAttrs('scoped').value"
+				:class="ns.e('wrapper')"
 				:no-resize="props.scrollbarNoResize"
 				:is-outside="props.scrollbarIsOutside"
-				v-bind="$attrs"
-
-
 			>
-				<ul :class="dropdownNS.e('inner')">
+				<ul :class="ns.e('inner')">
 					<slot></slot>
 				</ul>
 			</s-scrollbar>
@@ -54,24 +54,22 @@ import {SDropdownEmits, SDropdownProps} from "./dropdown";
 import {SFloating, SFloatingInstance} from "../../SFloating";
 import {SScrollbar} from "../../SScrollbar";
 import {computed, provide, ref, useSlots} from "vue";
-import {useNS} from "@sss-ui-plus/hooks";
+import {useAttrs, useNS} from "@sss-ui-plus/hooks";
+import {getClrVar} from "@sss-ui-plus/utils";
 
 
 defineOptions({
-	name: 'SDropdown',
+	name: 's-dropdown',
 	inheritAttrs: false
 })
-
-
+const ns = useNS('dropdown');
 const props = defineProps({...SDropdownProps});
 const emits = defineEmits({...SDropdownEmits});
 const slots = useSlots();
-const dropdownNS = useNS('dropdown');
-
-const dropdownSdl = computed(() => {
+const sdl = computed(() => {
 	return {
-		'--sss-dropdown-active-color':props.activeColor?? 'var(--sss-color-primary)',
-		'--sss-dropdown-play':props.center? 'center' :'start',
+		[ns.cssVar('active-color')]: props.activeColor ?? getClrVar('primary'),
+		[ns.cssVar('justify')]: props.center ? 'center' : 'start',
 
 	}
 })

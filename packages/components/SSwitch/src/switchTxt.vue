@@ -1,3 +1,11 @@
+<template>
+
+	<span ref="txt">
+		{{ props.txt }}
+	</span>
+
+</template>
+
 <script setup lang="ts">
 
 import {watch,ref} from "vue";
@@ -57,10 +65,4 @@ watch(() => props.active, (active) => {
 
 </script>
 
-<template>
 
-	<span ref="txt">
-		{{ props.txt }}
-	</span>
-
-</template>

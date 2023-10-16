@@ -6,29 +6,29 @@
 		@afterLeave="emits('closed')"
 	>
 		<div v-show="visFlag" ref="outer"
-		     :class="msgBoxCls"
+		     v-bind="useAttrs('scoped').value"
+		     :class="kls"
 		     :style="`top:${props.top}`"
-		     v-bind="$attrs"
 		     tabindex="0"
 		     @keydown.esc="close('esc')"
 		>
-			<s-icon :target="msgBoxIcon" :color="msgIconColor" :class="msgBoxNS.e('icon')"></s-icon>
+			<s-icon :target="props.icon || props.type" :color="msgIconColor" :class="ns.e('icon')"></s-icon>
 
-			<div :class="msgNS.namespace">
+			<div :class="[MsgNS.namespace, ns.e('inner')]">
 
 				<div v-if="!props.noHeader" ref="header"
 				     :class="[
-						msgNS.e('header'),
-						msgNS.em('header', 'default', !$slots.header),
+						MsgNS.e('header'),
+						MsgNS.em('header', 'default', !$slots.header),
 
 					]"
 
 
 				>
 					<template v-if="!$slots.header">
-						<h1 :class="msgNS.ee('header', 'title')">{{ props.title }}</h1>
+						<h1 :class="MsgNS.ee('header', 'title')">{{ props.title }}</h1>
 						<s-icon v-if="props.showCloseIcon" ref="closeIcon"
-						        :class="msgNS.ee('header', 'icon')"
+						        :class="MsgNS.ee('header', 'icon')"
 						        target="close"
 						        tabindex="0"
 						        @click="close('icon')"
@@ -39,11 +39,11 @@
 
 
 				<div v-if="!props.noBody" ref="body"
-				     :class="msgNS.e('body')"
+				     :class="MsgNS.e('body')"
 				>
 					<slot></slot>
 					<template v-if="props.text">
-						<div :class="msgNS.e('text')">
+						<div :class="MsgNS.e('text')">
 							{{ props.text }}
 						</div>
 					</template>
@@ -51,12 +51,12 @@
 
 				<div ref="footer" v-if="!props.noFooter"
 				     :class="[
-						 msgNS.e('footer'),
-						 msgNS.em('footer', 'default', !$slots.footer),
+						 MsgNS.e('footer'),
+						 MsgNS.em('footer', 'default', !$slots.footer),
 					]"
 				>
 					<template v-if="!$slots.footer">
-						<div :class="msgNS.em('footer', 'default')">
+						<div :class="MsgNS.em('footer', 'default')">
 							<s-button :size="props.btnSize" type="cyan" variant="ghost" @click="cancel">
 								{{ props.cancelBtnText }}
 							</s-button>
@@ -84,51 +84,44 @@ import {SIcon, SIconInstance} from "../../SIcon";
 import {SButton} from "../../SButton";
 import {computed, nextTick, Ref, ref} from "vue";
 import {MessageTriggerTypes} from "@sss-ui-plus/typings";
-import {useFlag, useDraggable, useNS} from "@sss-ui-plus/hooks";
-import {throttle, fnUnion} from "@sss-ui-plus/utils";
+import {useFlag, useDraggable, useNS, useAttrs} from "@sss-ui-plus/hooks";
+import {throttle, fnUnion, getClrVar} from "@sss-ui-plus/utils";
 
 
 defineOptions({
-	name: 'SMessageBox',
+	name: 's-messageBox',
 	inheritAttrs: false
 })
-
+const MsgNS = useNS('message');
+const ns = useNS('message-box');
 const props = defineProps({...SMsgBoxProps});
 const emits = defineEmits({...SMsgBoxEmits})
+const kls = computed(() => {
+	return [
+		ns.namespace,
+		ns.m(props.type)
 
+	]
+})
 
 const closeIcon: Ref<SIconInstance | null> = ref(null);
 const outer: Ref<HTMLElement | undefined> = ref(undefined);
 const header: Ref<HTMLElement | undefined> = ref(undefined);
 const drag: Ref<HTMLElement | undefined> = ref(undefined);
-const msgBoxNS = useNS('message-box');
-const msgNS = useNS('message');
-
-const msgBoxCls = computed(() => {
-	return [
-		msgBoxNS.namespace,
-		msgBoxNS.m(props.type)
-
-	]
-})
 
 
 
-const msgBoxIcon = computed(() => {
-	if (props.icon) return props.icon
-	return props.type
-})
 const msgIconColor = computed(() => {
 	if (props.iconColor) return props.iconColor;
 	switch (props.type) {
 		case 'success':
-			return 'var(--sss-color-success)';
+			return getClrVar("success");
 		case 'info':
-			return 'var(--sss-color-info)';
+			return getClrVar("info");
 		case 'warning':
-			return 'var(--sss-color-warning)';
+			return getClrVar("warning");
 		case 'danger':
-			return 'var(--sss-color-danger)';
+			return getClrVar("danger");
 	}
 })
 

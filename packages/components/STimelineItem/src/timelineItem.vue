@@ -1,24 +1,24 @@
 <template>
-	<li :class="TimelineItemKls" :style="TimelineItemSdl">
+	<li :class="kls" :style="TimelineItemSdl">
 
 
-		<div :class="itemNS.e('timeline')">
-			<div :class="itemNS.e('circle')">
-				<s-icon :class="itemNS.e('icon')" :target="props.icon || props.type"></s-icon>
+		<div :class="ns.e('timeline')">
+			<div :class="ns.e('circle')">
+				<s-icon :class="ns.e('icon')" :target="props.icon || props.type"></s-icon>
 			</div>
 
-			<div :class="itemNS.e('line')"></div>
+			<div :class="ns.e('line')"></div>
 
 		</div>
 
-		<div :class="itemNS.e('content')">
+		<div :class="ns.e('content')">
 			<div v-if="props.placement === 'start'"
-			     :class="[itemNS.e('time'),itemNS.em('time', 'start')]"
+			     :class="[ns.e('time'),ns.em('time', 'start')]"
 			>{{ props.time }}
 			</div>
 			<slot name="default"/>
 			<div v-if="props.placement === 'end'"
-			     :class="[itemNS.e('time'),itemNS.em('time', 'end')]"
+			     :class="[ns.e('time'),ns.em('time', 'end')]"
 			>{{ props.time }}
 			</div>
 		</div>
@@ -34,26 +34,24 @@ import {useNS} from "@sss-ui-plus/hooks";
 import {getClrVar} from "@sss-ui-plus/utils";
 
 defineOptions({
-	name: "STimelineItem",
+	name: "s-timeline-item",
 	inheritAttrs: true
 })
-
+const ns = useNS('timeline-item');
 const props = defineProps({...STimelineItemProps})
-const itemNS = useNS('timeline-item');
-
-const TimelineItemKls = computed(() => {
+const kls = computed(() => {
 	return [
-		itemNS.namespace,
-		itemNS.m(props.type),
-		itemNS.m(props.variant)
+		ns.namespace,
+		ns.m(props.type),
+		ns.m(props.variant)
 	]
 })
 
 const TimelineItemSdl = computed(() => {
 	return {
-		'--sss-timeline-item-color': props.color || getClrVar(props.type) || getClrVar('gray', 'dark'),
-		'--sss-timeline-item-bg-color': props.color || getClrVar(props.type) || getClrVar('gray'),
-		'--sss-timeline-item-br-color': props.color || getClrVar(props.type) || getClrVar('gray'),
+		[ns.cssVar('color')]: props.color || getClrVar(props.type) || getClrVar('gray', 'dark'),
+		[ns.cssVar('bg-color')]: props.color || getClrVar(props.type) || getClrVar('gray'),
+		[ns.cssVar('br-color')]: props.color || getClrVar(props.type) || getClrVar('gray'),
 
 	}
 })

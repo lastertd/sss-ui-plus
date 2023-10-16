@@ -2,8 +2,8 @@
 	<component
 		ref="icon"
 		v-if="props.target"
-		:class="iconKls"
-		:style="iconSdl"
+		:class="kls"
+		:style="sdl"
 		:is="props.tag"
 		:for="props.for"
 		v-bind="$attrs"
@@ -18,28 +18,24 @@ import {computed, ref} from "vue";
 import {useNS} from "@sss-ui-plus/hooks/useNS";
 
 defineOptions({
-	name: "SIcon",
+	name: "s-icon",
 	inheritAttrs: false,
 })
-
-
+const ns = useNS('icon');
 const props = defineProps({...SIconProps});
 const icon = ref<HTMLElement | null>(null);
-const iconNS = useNS('icon');
-
-const iconKls = computed(() => {
+const kls = computed(() => {
 	return [
-		iconNS.namespace,
-		iconNS.is(props.rotating, 'rotating'),
+		ns.namespace,
+		ns.is(props.rotating, 'rotating'),
 		"iconfont",
 		`sss-${props.target}`
 	]
 })
-const iconSdl = computed(() => {
 
+const sdl = computed(() => {
 	return{
-		'--sss-icon-color': props.color ? `${props.color}` : 'inherit',
-
+		[ns.cssVar('color')]:props.color ? `${props.color}` : 'inherit',
 	}
 })
 

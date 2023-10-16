@@ -13,12 +13,11 @@ import {SSkeletonProps} from "./skeleton";
 import {provide, ref, watch} from "vue";
 
 defineOptions({
-	name: 'SSkeleton',
+	name: 's-skeleton',
 	inheritAttrs: false
 })
-
-
 const props = defineProps({...SSkeletonProps});
+
 
 provide('hasSkeletonAnimation', props.animated)
 provide('isWithinSkeleton', true)

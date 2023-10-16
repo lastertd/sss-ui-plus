@@ -5,14 +5,14 @@
 	>
 		<!--		input prefixSlot-->
 		<div v-if="$slots.prefixSlot"
-		     :class="[inputNS.e('slot'), inputNS.em('slot', 'prefix')]"
+		     :class="[ns.e('slot'), ns.em('slot', 'prefix')]"
 		>
 			<slot name="prefixSlot"></slot>
 		</div>
 
-		<div :class="inputNS.e('wrapper')" ref="wrapper">
+		<div :class="ns.e('wrapper')" ref="wrapper">
 			<!--		input prefix icon-->
-			<s-icon :class="[inputNS.e('icon'), inputNS.em('icon', 'prefix')]"
+			<s-icon :class="[ns.e('icon'), ns.em('icon', 'prefix')]"
 			        :target="props.prefixIcon"
 			        tag="label"
 			        :for="props.id"
@@ -20,7 +20,7 @@
 			></s-icon>
 
 
-			<input ref="inner" :class="inputNS.e('inner')"
+			<input ref="inner" :class="ns.e('inner')"
 			       :type="props.type"
 			       :id="props.id"
 			       :maxlength="props.maxLength"
@@ -37,7 +37,7 @@
 			>
 
 			<!--		input suffix icon-->
-			<s-icon :class="[inputNS.e('icon'), inputNS.em('icon', 'suffix')]"
+			<s-icon :class="[ns.e('icon'), ns.em('icon', 'suffix')]"
 			        :target="props.suffixIcon"
 			        :tag="'label'"
 			        :for="props.id"
@@ -45,7 +45,7 @@
 			></s-icon>
 
 			<!--		input word limit icon-->
-			<label :class="[inputNS.e('icon'), inputNS.em('icon', 'limit')]" v-if="showWordLimit"
+			<label :class="[ns.e('icon'), ns.em('icon', 'limit')]" v-if="showWordLimit"
 
 			       :data-overflow="getValueLength() > (props.maxLength as number)"
 			>
@@ -58,7 +58,7 @@
 			</label>
 
 			<s-icon v-if="showCloseIcon"
-			        :class="[inputNS.e('icon'), inputNS.em('icon', 'clear')]"
+			        :class="[ns.e('icon'), ns.em('icon', 'clear')]"
 			        target="cricle-close"
 			        @click="onClear"
 			        tabindex="0"
@@ -67,7 +67,7 @@
 			></s-icon>
 
 			<s-icon v-if="showEyeIcon"
-			        :class="[inputNS.e('icon'), inputNS.em('icon', 'switch')]"
+			        :class="[ns.e('icon'), ns.em('icon', 'switch')]"
 			        target="eye"
 			        @click="handleEyeIconClick"
 			        tabindex="0"
@@ -81,7 +81,7 @@
 
 		<!--		input suffixSlot-->
 		<div v-if="$slots.suffixSlot"
-		     :class="[inputNS.e('slot'), inputNS.em('slot', 'suffix')]">
+		     :class="[ns.e('slot'), ns.em('slot', 'suffix')]">
 			<slot name="suffixSlot"></slot>
 		</div>
 
@@ -101,26 +101,26 @@ import {useNS} from "@sss-ui-plus/hooks/useNS";
 
 
 defineOptions({
-	name: "SInput",
+	name: "s-input",
 	inheritAttrs: false
+})
+const ns = useNS('input');
+const props = defineProps({...SInputProps});
+const emits = defineEmits({...SInputEmits});
+const inputCls = computed(() => {
+	return [
+		ns.namespace,
+		ns.m(props.size),
+		ns.is(props.disabled, 'disabled')
+	]
 })
 
 
-const props = defineProps({...SInputProps});
-const emits = defineEmits({...SInputEmits});
-const inputNS = useNS('input');
 
 const container = ref<HTMLElement | null>(null);
 const inner: Ref<HTMLInputElement | undefined> = ref(undefined);
 const wrapper = ref<HTMLElement | null>(null);
 
-const inputCls = computed(() => {
-	return [
-		inputNS.namespace,
-		inputNS.m(props.size),
-		inputNS.is(props.disabled, 'disabled')
-	]
-})
 
 
 const {

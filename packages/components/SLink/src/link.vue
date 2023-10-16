@@ -1,17 +1,16 @@
 <template>
 	<a
 		ref="a"
-		:class="linkKls"
+		:class="kls"
 		:href="props.href"
-		v-bind="$attrs"
 		@click.prevent="handleClick"
 
 	>
-		<s-icon :target="props.prefixIcon" :class="linkNS.e('icon')" ></s-icon>
-		<span :class="linkNS.e('inner')">
+		<s-icon :target="props.prefixIcon" :class="ns.e('icon')" ></s-icon>
+		<span :class="ns.e('inner')">
 			<slot></slot>
 		</span>
-		<s-icon :target="props.suffixIcon" :class="linkNS.e('icon')"></s-icon>
+		<s-icon :target="props.suffixIcon" :class="ns.e('icon')"></s-icon>
 	</a>
 
 </template>
@@ -23,24 +22,23 @@ import {computed, ref} from "vue";
 import {useNS} from "@sss-ui-plus/hooks/useNS";
 
 defineOptions({
-	name: 'SLink',
-	inheritAttrs:false
+	name: 's-link',
+	inheritAttrs:true
 })
-
-
+const ns = useNS('link');
 const props = defineProps({...SLinkProps});
-const a = ref<Element | undefined>(undefined);
-const linkNS = useNS('link');
-
-const linkKls = computed(() => {
+const kls = computed(() => {
 	return [
-		linkNS.namespace,
-		linkNS.m(props.type),
-		linkNS.is(props.disabled, 'disabled'),
-		linkNS.is(props.underline, 'underline'),
+		ns.namespace,
+		ns.m(props.type),
+		ns.is(props.disabled, 'disabled'),
+		ns.is(props.underline, 'underline'),
 
 	]
 })
+
+
+const a = ref<Element | undefined>(undefined);
 
 
 const handleClick = () => {

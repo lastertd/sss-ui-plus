@@ -1,4 +1,3 @@
-
 <template>
 
 	<SPartial v-if="slots.reference" ref="reference">
@@ -6,17 +5,19 @@
 	</SPartial>
 
 
-	<div ref="floating"  :style="_floatingStyles" :class="[props.floatingClass]">
+	<div ref="floating" v-bind="useAttrs('scopedOnly').value"  :style="_floatingStyles" :class="props.floatingClass">
 
 		<transition
 			:name="props.transition"
 			@afterEnter="emits('opened')"
 			@afterLeave="emits('closed')"
 		>
-			<div v-if="flag "
-			     :class="floatingNS.namespace"
-			     :data-placement="placement"
-			     v-bind="$attrs"
+			<div
+				v-if="flag "
+				v-bind="useAttrs('scoped').value"
+				:class="ns.namespace"
+				:data-placement="placement"
+
 
 			>
 
@@ -35,32 +36,28 @@ import {SFloatingProps, SFloatingEmits} from "./floating";
 import {useFloating, offset, flip, shift, autoUpdate, arrow} from "@floating-ui/vue";
 import {computed, onMounted, watch, ref, useSlots, onBeforeUnmount, Ref} from "vue";
 import {unrefElement, useEventListener, useMutationObserver} from "@vueuse/core";
-import {useFlag} from "@sss-ui-plus/hooks";
+import {useFlag, useAttrs} from "@sss-ui-plus/hooks";
 import {IndexManager} from "@sss-ui-plus/utils";
 import {SPartial} from "../../abstract"
 import {useNS} from "@sss-ui-plus/hooks/useNS";
+import {toRef} from "@vue/runtime-core";
 
 
 defineOptions({
-	name: 'SFloating',
+	name: 's-floating',
 	inheritAttrs: false,
 })
-
+const ns = useNS('floating');
 const props = defineProps({...SFloatingProps});
 const emits = defineEmits({...SFloatingEmits});
 const slots = useSlots();
-const indexManager = new IndexManager();
-const floatingNS = useNS('floating');
-
 
 
 // slot.reference优先级高于props.reference
-const reference: Ref<HTMLElement | null> = slots.reference ? ref(null) : computed(() => {
-	return ref(unrefElement(props.reference)).value;
-
-});
+const reference: Ref<HTMLElement | null> = slots.reference ? ref(null) : toRef(props, 'reference')
 const floating = ref<HTMLElement | null>(null);
 const _arrow = ref<HTMLElement | null>(null);
+
 
 
 const {floatingStyles, placement, middlewareData, update} = useFloating(reference, floating, {
@@ -69,6 +66,8 @@ const {floatingStyles, placement, middlewareData, update} = useFloating(referenc
 	middleware: [offset(props.offset), flip(), shift(), arrow({element: _arrow})]
 });
 const {flag, setTrue, setFalse} = useFlag(false);
+
+
 
 // 在floating不可见时， 阻止修改css样式
 let _: any;
@@ -95,7 +94,7 @@ const open = () => {
 
 	openTimer = setTimeout(() => {
 		setTrue();
-		floating.value!.style.zIndex = indexManager.nextIndex().toString();
+		floating.value!.style.zIndex = new IndexManager().nextIndex().toString();
 
 
 		emits("open");
@@ -159,8 +158,8 @@ if (props.quickTrack) {
 
 // 可以通过点击body关闭floating
 if (props.closeOnClickBody) {
-	let trigger:Element | null;
-	useEventListener(document.body,'mousedown',(evt:Event) => {
+	let trigger: Element | null;
+	useEventListener(document.body, 'mousedown', (evt: Event) => {
 		if (!flag.value) return;
 		evt.stopPropagation();
 

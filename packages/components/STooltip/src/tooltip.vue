@@ -1,7 +1,8 @@
 <template>
 	<s-floating
 		ref="floating"
-		:class="tooltipKls"
+		v-bind="useAttrs('scoped').value"
+		:class="kls"
 		:trigger="props.trigger"
 		:placement="props.placement"
 		:transition="props.transition"
@@ -16,8 +17,6 @@
 		:floating-class="props.floatingClass"
 		:reference="props.reference"
 		:quick-track="props.quickTrack"
-		v-bind="$attrs"
-
 		@open="emits('open')"
 		@opened="emits('opened')"
 		@close="emits('close')"
@@ -45,23 +44,21 @@
 import {STooltipEmits, STooltipProps} from "./tooltip";
 import {SFloating, SFloatingInstance} from "../../SFloating";
 import {computed, ref, useSlots} from "vue";
-import {useNS} from "@sss-ui-plus/hooks";
+import {useAttrs, useNS} from "@sss-ui-plus/hooks";
 
 
 defineOptions({
-	name: "STooltip",
+	name: "s-tooltip",
 	inheritAttrs: false
 })
-
+const ns = useNS('tooltip');
 const props = defineProps({...STooltipProps});
 const emits = defineEmits({...STooltipEmits})
 const slots = useSlots();
-const tipNS = useNS('tooltip');
-
-const tooltipKls = computed(() => {
+const kls = computed(() => {
 	return[
-		tipNS.namespace,
-		tipNS.m(props.variant),
+		ns.namespace,
+		ns.m(props.variant),
 	]
 })
 

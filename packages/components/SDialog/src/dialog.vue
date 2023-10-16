@@ -2,13 +2,14 @@
 <template>
 	<teleport to="body" :disabled="!props.appendToBody">
 		<div
-			ref="container"
-			:class="dialogKls"
 			v-show="visible"
+			ref="container"
+			:class="kls"
 		>
 			<SMessageBox
 				ref="msgBox"
-				:class="dialogNS.e('inner')"
+				v-bind="attrs"
+				:class="ns.e('inner')"
 				:transition="props.transition || 's-transition-fadeDown'"
 				:title="props.title"
 				:no-header="props.noHeader"
@@ -22,7 +23,6 @@
 				:draggable="props.draggable"
 				:top="props.top"
 				:before-close="props.beforeClose"
-				v-bind="$attrs"
 				@cancel="onCancel"
 				@confirm="onConfirm"
 				@open="onOpen"
@@ -35,13 +35,13 @@
 			>
 
 				<template #header v-if="$slots.header">
-					<slot name="header"></slot>
+					<slot name="header"/>
 				</template>
 				<template #default v-if="$slots.default">
-					<slot name="default"></slot>
+					<slot name="default"/>
 				</template>
 				<template #footer v-if="$slots.footer">
-					<slot name="footer"></slot>
+					<slot name="footer"/>
 				</template>
 
 
@@ -61,36 +61,37 @@ import {nextTick, onMounted, watch, ref, computed} from "vue";
 import {unrefElement, useEventListener} from "@vueuse/core";
 import {IndexManager} from "@sss-ui-plus/utils";
 import {MessageTriggerTypes} from "@sss-ui-plus/typings";
-import {useMark, useLockScroll, useNS} from "@sss-ui-plus/hooks";
+import {useMark, useLockScroll, useNS, useAttrs} from "@sss-ui-plus/hooks";
+
 
 defineOptions({
-	name: 'SDialog',
+	name: 's-dialog',
 	inheritAttrs: false,
 })
-
+const ns = useNS('dialog');
 const props = defineProps({...SDialogProps});
-const emits = defineEmits({...SDialogEmits})
-const msgBox = ref<SMessageBoxInstance | null>(null);
-const container = ref<HTMLElement | null>(null);
-const dialogNS = useNS('dialog');
-
-
-const dialogKls = computed(() => {
+const emits = defineEmits({...SDialogEmits});
+const attrs = useAttrs('scoped');
+const kls = computed(() => {
 	return [
-		dialogNS.namespace,
-		dialogNS.is(props.part, 'part')
+		ns.namespace,
+		ns.is(props.part, 'part')
 	]
 })
+
+
+const msgBox = ref<SMessageBoxInstance | null>(null);
+const container = ref<HTMLElement | null>(null);
+
+
+const {lockScroll, unLockScroll} = useLockScroll();
+const {mark, hiddenMark, showMark} = useMark(container, props.part ? "part" : 'cover');
 
 
 const indexManager = new IndexManager();
 const visible = ref<Boolean>(props.modelValue);
 // 标志modelValue是外部修改还是事件提交导致的修改
 let changedBySystem = true;
-
-
-const {lockScroll, unLockScroll} = useLockScroll();
-const {mark, hiddenMark, showMark} = useMark(container, props.part ? "part" : 'cover');
 
 
 // 打开时的回调,所有状态设置为true

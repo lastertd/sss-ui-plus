@@ -1,17 +1,17 @@
 <template>
 	<div
-		:class="switchKls"
-		:style="switchSdl"
+		:class="kls"
+		:style="sdl"
 		@click="handleClick"
 	>
-		<input :class="switchNS.e('input')" type="radio" placeholder="ヾ(≧▽≦*)o">
+		<input :class="ns.e('input')" type="radio" placeholder="ヾ(≧▽≦*)o">
 
 		<span
 			v-if="props.textStatus !== 'inside'"
 			:class="[
-				switchNS.e('label'),
-				switchNS.em('label', 'left'),
-				switchNS.is('active', !props.modelValue)
+				ns.e('label'),
+				ns.em('label', 'left'),
+				ns.is('active', !props.modelValue)
 			]"
 		>
 			<s-icon :target="props.inactiveIcon"></s-icon>
@@ -20,15 +20,15 @@
 
 		<div
 			:class="[
-				 switchNS.e('inner'),
-				 switchNS.is('round')
+				 ns.e('inner'),
+				 ns.is('round')
 		     ]"
 			v-bind="$attrs"
 
 		>
 			<span :class="[
-					 switchNS.e('trigger'),
-					 switchNS.is('round')
+					 ns.e('trigger'),
+					 ns.is('round')
 				   ]"
 			>
 				<s-icon
@@ -42,7 +42,7 @@
 
 			<switch-txt
 				v-if="props.textStatus === 'inside'"
-				:class="switchNS.e('text')"
+				:class="ns.e('text')"
 				:txt="text"
 				:active="props.modelValue"
 			></switch-txt>
@@ -53,9 +53,9 @@
 		<span
 			v-if="props.textStatus !== 'inside'"
 			:class="[
-				switchNS.e('label'),
-				switchNS.em('label', 'right'),
-				switchNS.is('active', props.modelValue)
+				ns.e('label'),
+				ns.em('label', 'right'),
+				ns.is('active', props.modelValue)
 			]"
 
 		>
@@ -71,32 +71,31 @@ import {SSwitchEmits, SSwitchProps} from "./switch";
 import {computed} from "vue";
 import switchTxt from "./switchTxt.vue"
 import {useNS} from "@sss-ui-plus/hooks";
+import {getClrVar} from "@sss-ui-plus/utils";
 
 defineOptions({
-	name: 'SSwitch',
+	name: 's-switch',
 	inheritAttrs: false
 })
-
+const ns = useNS('switch');
 const props = defineProps({...SSwitchProps});
 const emits = defineEmits({...SSwitchEmits});
-const switchNS = useNS('switch');
-
-const switchKls = computed(() => {
+const kls = computed(() => {
 	return [
-		switchNS.namespace,
-		switchNS.is('checked', props.modelValue),
-		switchNS.is('disabled', props.disabled),
-		switchNS.is('loading', props.loading),
-		switchNS.m(props.size),
+		ns.namespace,
+		ns.is('checked', props.modelValue),
+		ns.is('disabled', props.disabled),
+		ns.is('loading', props.loading),
+		ns.m(props.size),
 	]
 })
-
-const switchSdl = computed(() => {
-	const color = props.color? props.color: props.type?  `var(--sss-color-${props.type})` : 'var(--sss-color-primary)';
+const sdl = computed(() => {
+	const color = props.color? props.color: props.type?  getClrVar(props.type) : getClrVar('primary');
 	return {
-		'--sss-switch-color': color
+		[ns.cssVar('color')]: color
 	}
 })
+
 
 const text = computed(() => {
 	if (props.modelValue) {

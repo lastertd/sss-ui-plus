@@ -1,8 +1,9 @@
 <template>
 	<button
 		ref="container"
-		:class="buttonKls"
-		:disabled="props.disabled || props.loading"
+		v-bind="$attrs"
+		:class="kls"
+		:disabled="(props.disabled || props.loading)"
 		:type="props.nativeType"
 		@click="handleClick($event)"
 
@@ -25,25 +26,21 @@ import {useNS} from "@sss-ui-plus/hooks/useNS";
 
 
 defineOptions({
-	name: "SButton",
-	inheritAttrs: true
+	name: "s-button",
+	inheritAttrs: false
 })
-
-
+const ns = useNS('button');
 const props = defineProps({...SButtonProps})
 const emits = defineEmits({...SButtonEmits})
-const buttonNS = useNS('button');
-
-
-const buttonKls = computed(() => {
+const kls = computed(() => {
 	return [
-		buttonNS.namespace,
-		buttonNS.m(props.type),
-		buttonNS.m(props.size),
-		buttonNS.m(props.variant),
-		buttonNS.is(props.status),
-		buttonNS.is(props.disabled, 'disabled'),
-		buttonNS.is(props.loading, 'loading'),
+		ns.namespace,
+		ns.m(props.type),
+		ns.m(props.size),
+		ns.m(props.variant),
+		ns.is(props.status),
+		ns.is(props.disabled, 'disabled'),
+		ns.is(props.loading, 'loading'),
 
 	]
 
@@ -51,7 +48,7 @@ const buttonKls = computed(() => {
 })
 
 
-const handleClick = (evt: Event) => {
+const handleClick = (evt: MouseEvent) => {
 	emits("click", evt)
 }
 

@@ -1,8 +1,7 @@
 <template>
 	<div
 		ref="item"
-		:class="skeItemKls"
-		v-bind="$attrs"
+		:class="kls"
 	>
 		<svg v-if="props.variant === 'image'" viewBox="0 0 1024 1024" xmlns="http://www.w3.org/2000/svg">
 			<path fill="currentColor"
@@ -18,26 +17,24 @@ import {MaybeHTMLElement} from "@sss-ui-plus/typings";
 import {useNS} from "@sss-ui-plus/hooks";
 
 defineOptions({
-	name: 'SSkeletonItem',
-	inheritAttrs: false
+	name: 's-skeleton-item',
+	inheritAttrs: true
 })
-
+const ns = useNS('skeleton-item');
 const props = defineProps({...SSkeletonItemProps});
-const skeItemNS = useNS('skeleton-item');
-
-const skeItemKls = computed(() => {
+const kls = computed(() => {
 	return[
-		skeItemNS.namespace,
-		skeItemNS.is('round', props.round),
-		skeItemNS.is('circle', props.circle),
-		skeItemNS.is('animated', animated),
-		skeItemNS.m(props.variant)
+		ns.namespace,
+		ns.is('round', props.round),
+		ns.is('circle', props.circle),
+		ns.is('animated', animated),
+		ns.m(props.variant)
 
 	]
 })
 
 
-const animated = inject('hasSkeletonAnimation') as Boolean;
+const animated = inject('hasSkeletonAnimation') as boolean;
 const isWithinSkeleton = inject('isWithinSkeleton');
 const item = ref(undefined) as Ref<MaybeHTMLElement>
 

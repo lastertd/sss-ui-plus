@@ -1,10 +1,10 @@
 <template>
 	<div
 		ref="divider"
-		:class="dividerKls"
-		:style="dividerSdl"
+		:class="kls"
+		:style="sdl"
 	>
-		<span :class="dividerNS.e('content')" ref="content">
+		<span :class="ns.e('content')" ref="content">
 			<s-icon :target="props.prefixIcon"></s-icon>
 			<template v-if="slots.default">
 				<slot></slot>
@@ -17,41 +17,37 @@
 
 <script setup lang="ts">
 import {SDividerProps} from "./divider";
-import {computed, onMounted, ref, useSlots} from "vue";
-import {unrefElement, MaybeElement} from "@vueuse/core";
-import {useNS} from "@sss-ui-plus/hooks/useNS";
+import {computed, ref, useSlots} from "vue";
+import {MaybeElement} from "@vueuse/core";
+import {useNS} from "@sss-ui-plus/hooks";
+import {px} from "@sss-ui-plus/utils";
 
 
 defineOptions({
-	name: 'SDivider',
+	name: 's-divider',
 	inheritAttrs: true
 })
-
+const ns = useNS('divider');
 const props = defineProps({...SDividerProps});
-const content = ref<HTMLElement | undefined>(undefined);
-const divider = ref<MaybeElement>(undefined);
 const slots = useSlots();
-const dividerNS = useNS('divider');
-
-
-const dividerKls = computed(() => {
+const kls = computed(() => {
 	return [
-		dividerNS.namespace,
-		dividerNS.m(props.status),
-		dividerNS.m(props.direction),
-		dividerNS.m(props.placement)
-
+		ns.namespace,
+		ns.m(props.status),
+		ns.m(props.direction),
+		ns.m(props.placement)
 	]
 
 })
-
-const dividerSdl = computed(() => {
+const sdl = computed(() => {
 	return {
-		'--sss-divider-gap': props.gap ? `${props.gap}px` : '15px',
-		'--sss-divider-placement': props.placement,
-
+		[ns.cssVar('gap')]: px(props.gap, 15),
+		[ns.cssVar('placement')]: props.placement,
 	}
 })
+
+const content = ref<HTMLElement | undefined>(undefined);
+const divider = ref<MaybeElement>(undefined);
 
 
 </script>

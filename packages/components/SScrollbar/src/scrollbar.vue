@@ -1,75 +1,74 @@
 <template>
-	<div :class="scrollbarNS.namespace"
-	     :data-always="props.always"
-	     :data-native="props.native"
-	     v-bind="$attrs"
+	<div
+		:class="ns.namespace"
+		:data-always="props.always"
+		:data-native="props.native"
 
 	>
-		<div ref="warp"
-		     :class="scrollbarNS.e('wrapper')"
+		<div ref="wrap"
+		     :class="ns.e('wrapper')"
 		>
 			<slot></slot>
 		</div>
-		<div v-if="!props.native" ref="barY"
-		     :class="[
-				 scrollbarNS.e('bar'),
-				 scrollbarNS.is('vertical'),
-				 scrollbarNS.is(props.isOutside, 'outside'),
-				 scrollbarNS.is(active === 1, 'active')
+		<template v-if="!props.native">
+			<div ref="barY"
+			     :class="[
+				 ns.e('bar'),
+				 ns.is('vertical'),
+				 ns.is(props.isOutside, 'outside'),
+				 ns.is(active === 1, 'active')
 			 ]"
-		>
-			<div ref="thumbY"
-			     :class="[scrollbarNS.e( 'thumb'),scrollbarNS.is('round') ]"
-			     :style="thumbYStyle">
+			>
+				<div ref="thumbY"
+				     :class="[ns.e( 'thumb'),ns.is('round') ]"
+				     :style="thumbYStyle">
 
+				</div>
 			</div>
-		</div>
-		<div v-if="!props.native" ref="barX"
-		     :class="[
-				 scrollbarNS.e('bar'),
-				 scrollbarNS.is('horizontal'),
-				 scrollbarNS.is(props.isOutside, 'outside'),
-				 scrollbarNS.is(active === 2, 'active')
+			<div ref="barX"
+			     :class="[
+				 ns.e('bar'),
+				 ns.is('horizontal'),
+				 ns.is(props.isOutside, 'outside'),
+				 ns.is(active === 2, 'active')
 			 ]"
 
-		>
-			<div ref="thumbX"
-			     :class="[scrollbarNS.e( 'thumb'),scrollbarNS.is('round') ]"
-			     :style="thumbXStyle">
+			>
+				<div ref="thumbX"
+				     :class="[ns.e( 'thumb'),ns.is('round') ]"
+				     :style="thumbXStyle">
+				</div>
 			</div>
-		</div>
+		</template>
+
 	</div>
-
-
 </template>
 
 
 <script setup lang="ts">
 import {SScrollbarEmits, SScrollbarProps} from "./scrollbar";
-import {onMounted, ref} from "vue";
+import {ref} from "vue";
 import {unrefElement, useEventListener, useResizeObserver, useMutationObserver} from "@vueuse/core";
 import {useNS} from "@sss-ui-plus/hooks";
 
 
 defineOptions({
-	name: 'SScrollbar',
-	inheritAttrs: false,
+	name: 's-scrollbar',
+	inheritAttrs: true,
 })
-
-
+const ns = useNS('scrollbar');
 const props = defineProps({...SScrollbarProps});
 const emits = defineEmits({...SScrollbarEmits})
-const scrollbarNS = useNS('scrollbar');
 
 
-const warp = ref<HTMLElement | undefined>(undefined);
+const wrap = ref<HTMLElement | undefined>(undefined);
 const thumbY = ref<HTMLElement | undefined>(undefined);
 const barY = ref<HTMLElement | undefined>(undefined);
 const thumbX = ref<HTMLElement | undefined>(undefined);
 const barX = ref<HTMLElement | undefined>(undefined);
+
+
 const active = ref(0);
-
-
 let flag: 'thumbX' | 'thumbY';
 
 
@@ -116,18 +115,18 @@ const handleMove = (evt: MouseEvent) => {
 	offset.y = move.y - down.y;
 
 
-	const warpEl = unrefElement(warp) as HTMLElement;
+	const wrapEl = unrefElement(wrap) as HTMLElement;
 	const barYEl = unrefElement(barY) as HTMLElement;
 	const barXEl = unrefElement(barX) as HTMLElement;
-	const warpHeight = warpEl!.scrollHeight;
-	const warpWidth = warpEl!.scrollWidth;
+	const wrapHeight = wrapEl!.scrollHeight;
+	const wrapWidth = wrapEl!.scrollWidth;
 	const barHeight = barYEl!.offsetHeight;
 	const barWidth = barXEl!.offsetWidth;
 
 	if (flag === 'thumbY') {
-		unrefElement(warp)!.scrollTop = warpHeight * offset.y / barHeight + origin.y;
+		unrefElement(wrap)!.scrollTop = wrapHeight * offset.y / barHeight + origin.y;
 	} else if (flag === 'thumbX') {
-		unrefElement(warp)!.scrollLeft = warpWidth * offset.x / barWidth + origin.x;
+		unrefElement(wrap)!.scrollLeft = wrapWidth * offset.x / barWidth + origin.x;
 	}
 }
 
@@ -135,13 +134,13 @@ const handleClick = (evt: MouseEvent) => {
 	if (evt.target !== evt.currentTarget) return;
 	evt.stopPropagation();
 
-	const warpEl = unrefElement(warp) as HTMLElement;
+	const wrapEl = unrefElement(wrap) as HTMLElement;
 	const barYEl = unrefElement(barY) as HTMLElement;
 	const thumbYEl = unrefElement(thumbY) as HTMLElement;
 	const thumbXEl = unrefElement(thumbX) as HTMLElement;
 	const barXEl = unrefElement(barX) as HTMLElement;
-	const warpHeight = warpEl!.scrollHeight;
-	const warpWidth = warpEl!.scrollWidth;
+	const wrapHeight = wrapEl!.scrollHeight;
+	const wrapWidth = wrapEl!.scrollWidth;
 	const barHeight = barYEl!.offsetHeight;
 	const barWidth = barXEl!.offsetWidth;
 
@@ -153,13 +152,13 @@ const handleClick = (evt: MouseEvent) => {
 
 
 	if (flag === 'thumbY') {
-		unrefElement(warp)!.scrollTo({
-			top: warpHeight * offset.y / barHeight,
+		unrefElement(wrap)!.scrollTo({
+			top: wrapHeight * offset.y / barHeight,
 			behavior: 'smooth'
 		})
 	} else if (flag === 'thumbX') {
-		unrefElement(warp)!.scrollTo({
-			left: warpWidth * offset.x / barWidth,
+		unrefElement(wrap)!.scrollTo({
+			left: wrapWidth * offset.x / barWidth,
 			behavior: 'smooth'
 		})
 	}
@@ -169,21 +168,21 @@ const handleClick = (evt: MouseEvent) => {
 const computedThumbSize = () => {
 	if (props.native) return
 
-	const warpEl = unrefElement(warp) as HTMLElement;
+	const wrapEl = unrefElement(wrap) as HTMLElement;
 	const barYEl = unrefElement(barY) as HTMLElement;
 	const barXEl = unrefElement(barX) as HTMLElement;
 	const {
-		scrollHeight: warpHeight,
-		scrollWidth: warpWidth,
+		scrollHeight: wrapHeight,
+		scrollWidth: wrapWidth,
 		offsetHeight: viewHeight,
 		offsetWidth: viewWidth
-	} = warpEl!;
+	} = wrapEl!;
 
 	const barHeight = barYEl!.offsetHeight;
 	const barWidth = barXEl!.offsetWidth;
 
-	const thumbHeight = viewHeight * barHeight / warpHeight;
-	const thumbWidth = viewWidth * barWidth / warpWidth;
+	const thumbHeight = viewHeight * barHeight / wrapHeight;
+	const thumbWidth = viewWidth * barWidth / wrapWidth;
 
 
 	// 在不可滚动时，设置滚动条不可见
@@ -213,18 +212,18 @@ const computedThumbPos = () => {
 	if (props.native) return
 
 
-	const warpEl = unrefElement(warp) as HTMLElement;
+	const wrapEl = unrefElement(wrap) as HTMLElement;
 	const barYEl = unrefElement(barY) as HTMLElement;
 	const barXEl = unrefElement(barX) as HTMLElement;
 
-	const {scrollHeight: warpHeight, scrollWidth: warpWidth, scrollTop: viewOffsetY, scrollLeft: viewOffsetX} = warpEl!;
+	const {scrollHeight: wrapHeight, scrollWidth: wrapWidth, scrollTop: viewOffsetY, scrollLeft: viewOffsetX} = wrapEl!;
 
 	const barHeight = barYEl!.offsetHeight;
 	const barWidth = barXEl!.offsetWidth;
 
 
-	const thumbOffsetY = viewOffsetY * barHeight / warpHeight;
-	const thumbOffsetX = viewOffsetX * barWidth / warpWidth;
+	const thumbOffsetY = viewOffsetY * barHeight / wrapHeight;
+	const thumbOffsetX = viewOffsetX * barWidth / wrapWidth;
 
 
 	thumbYStyle.value.top = `${thumbOffsetY}px`;
@@ -234,8 +233,8 @@ const computedThumbPos = () => {
 }
 
 // 滑动
-useEventListener(warp, 'scroll', () => {
-	const el = unrefElement(warp) as HTMLElement
+useEventListener(wrap, 'scroll', () => {
+	const el = unrefElement(wrap) as HTMLElement
 	computedThumbPos();
 	emits('scroll', el.scrollLeft, el.scrollTop);
 })
@@ -253,13 +252,13 @@ if (props.quickJump) {
 
 if (!props.noResize) {
 	// 监听元素大小变化
-	useResizeObserver(warp, () => {
+	useResizeObserver(wrap, () => {
 		computedThumbPos();
 		computedThumbSize();
 	})
 }
 // 监听元素子节点变化
-useMutationObserver(warp, () => {
+useMutationObserver(wrap, () => {
 	computedThumbPos();
 	computedThumbSize();
 }, {
@@ -270,7 +269,7 @@ useMutationObserver(warp, () => {
 
 useEventListener(thumbY, "mousedown", (evt: MouseEvent) => {
 	down.y = evt.clientY;
-	origin.y = unrefElement(warp)!.scrollTop;
+	origin.y = unrefElement(wrap)!.scrollTop;
 	flag = 'thumbY';
 	active.value = 1;
 
@@ -278,7 +277,7 @@ useEventListener(thumbY, "mousedown", (evt: MouseEvent) => {
 })
 useEventListener(thumbX, "mousedown", (evt: MouseEvent) => {
 	down.x = evt.clientX;
-	origin.x = unrefElement(warp)!.scrollLeft;
+	origin.x = unrefElement(wrap)!.scrollLeft;
 	flag = 'thumbX';
 	active.value = 2;
 

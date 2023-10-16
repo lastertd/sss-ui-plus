@@ -1,8 +1,8 @@
 <template>
 	<li>
 		<component
-			:class="itemKls"
 			v-bind="$attrs"
+			:class="kls"
 			:is="props.tag"
 			:data-center="isCenter"
 			:href="props.href"
@@ -25,20 +25,18 @@ import {Ref, inject, warn, computed} from "vue";
 import {useNS} from "@sss-ui-plus/hooks";
 
 defineOptions({
-	name: 'SDropdownItem',
+	name: 's-dropdown-item',
 	inheritAttrs: false
 })
-
-
+const ns = useNS('dropdown-item');
 const props = defineProps({...SDropdownItemProps});
 const emits = defineEmits({...SDropdownItemEmits});
-const itemNS = useNS('dropdown-item');
 
-const itemKls = computed(() => {
+const kls = computed(() => {
 	return [
-		itemNS.namespace,
-		itemNS.is('active', props.active),
-		itemNS.is('disabled', props.disabled),
+		ns.namespace,
+		ns.is('active', props.active),
+		ns.is('disabled', props.disabled),
 	]
 })
 

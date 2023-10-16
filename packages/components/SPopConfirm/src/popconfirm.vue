@@ -1,7 +1,8 @@
 <template>
 	<s-floating
 		ref="floating"
-		:class="popconfirmNS.namespace"
+		v-bind="useAttrs('scoped').value"
+		:class="ns.namespace"
 		:trigger="props.trigger"
 		:placement="props.placement"
 		:transition="props.transition"
@@ -16,8 +17,6 @@
 		:floating-class="props.floatingClass"
 		:reference="props.reference"
 		:quick-track="props.quickTrack"
-		v-bind="$attrs"
-
 		@open="handleOpen"
 		@opened="emits('opened')"
 		@close="emits('close')"
@@ -32,7 +31,7 @@
 		<template #default>
 			<SMessageBox
 				ref="msgBox"
-				:class="popconfirmNS.e('inner')"
+				:class="ns.e('inner')"
 				:transition="props.transition"
 				:type="props.type"
 				:cancel-btn-text="props.cancelBtnText"
@@ -57,21 +56,19 @@ import {SPopconfirmEmits, SPopconfirmProps} from "./popconfirm";
 import {SFloating} from "../../SFloating";
 import {SMessageBoxInstance, SMessageBox} from "../../SMessageBox";
 import {nextTick, ref, useSlots} from "vue";
-import {useNS} from "@sss-ui-plus/hooks";
+import {useAttrs, useNS} from "@sss-ui-plus/hooks";
 
 defineOptions({
-	name: 'SPopconfirm',
+	name: 's-popconfirm',
 	inheritAttrs: false
 })
-
-
+const ns = useNS('popconfirm');
 const props = defineProps({...SPopconfirmProps});
 const emits = defineEmits({...SPopconfirmEmits})
 const slots = useSlots();
-const popconfirmNS = useNS('popconfirm');
+
 
 const msgBox = ref<SMessageBoxInstance | undefined>(undefined);
-
 const floating = ref<InstanceType<typeof SFloating> | undefined>(undefined);
 
 
