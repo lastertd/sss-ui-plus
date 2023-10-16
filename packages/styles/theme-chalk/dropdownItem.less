@@ -9,7 +9,7 @@
     & {
         .useBorderBox();
         .useFlexRCC(5);
-        justify-content: var(--sss-dropdown-play);
+        justify-content: var(--sss-dropdown-justify);
 
         .useSizeDft(0);
 
@@ -29,6 +29,29 @@
         color: var(--sss-dropdown-active-color);
     });
 
+
+}
+
+
+& {
+    @ns:demo;
+
+
+    //只有根元素是 block 其余都是element
+    .e(container, {
+
+    });
+    .e(inner, {
+
+    });
+
+
+    //较大部分element 独立为block
+    .b(container, {
+        .e(inner, {
+
+        })
+    })
 
 }
 

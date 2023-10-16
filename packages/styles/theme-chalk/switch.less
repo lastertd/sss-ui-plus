@@ -63,7 +63,7 @@
 
 
     //ele trigger
-    .d(@ns, {
+    & {
         .e(trigger, {
             position: absolute;
             left: 0;
@@ -90,11 +90,11 @@
                 transform: translateX(-120%);
             }, @ns);
         });
-    });
+    }
 
 
     //ele text
-    .d(@ns, {
+    & {
         .e(text, {
             flex: 1;
             color: var(--sss-color-white);
@@ -111,11 +111,11 @@
             }, @ns);
 
         });
-    });
+    }
 
 
     //modifier size small
-    .d(bm(@ns, small), {
+    .m(small, {
         height: 20px;
         font-size: var(--sss-font-size-small);
 
@@ -176,7 +176,7 @@
 
 
     //modifier size large
-    .d(bm(@ns, large), {
+    .m(large, {
         height: 28px;
         min-width: 65px;
         font-size: 17px;

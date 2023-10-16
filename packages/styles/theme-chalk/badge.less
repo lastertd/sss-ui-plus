@@ -47,48 +47,53 @@
         --sss-badge-bg-color: var(--sss-color-bg);
         --sss-badge-br-color: getClrVar(primary, light);
         --sss-badge-font-color: getClrVar(primary);
-    });
-    each(@types, .(@type) {
-        .m(empty, {
-            .with(bm(@ns, @type), {
-                --sss-badge-bg-color: var(--sss-color-bg);
-                --sss-badge-br-color: getClrVar(@type, light);
-                --sss-badge-font-color: getClrVar(@type);
-            });
 
-        })
+        each(@types, .(@type) {
+            .with(@ns, {
+                .m(@type, {
+                    --sss-badge-bg-color: var(--sss-color-bg);
+                    --sss-badge-br-color: getClrVar(@type, light);
+                    --sss-badge-font-color: getClrVar(@type);
+                });
+            });
+        });
+
     });
+
 
     //modifier theme fantasy
     .m(fantasy, {
         --sss-badge-bg-color: getClrVar(primary, fade);
         --sss-badge-br-color: getClrVar(primary, light);
         --sss-badge-font-color: getClrVar(primary);
-    });
-    each(@types, .(@type) {
-        .m(fantasy, {
-            .with(bm(@ns, @type), {
-                --sss-badge-bg-color: getClrVar(@type, fade);
-                --sss-badge-br-color: getClrVar(@type, light);
-                --sss-badge-font-color: getClrVar(@type);
-            });
 
-        })
+        each(@types, .(@type) {
+            .with(@ns, {
+                .m(@type, {
+                    --sss-badge-bg-color: getClrVar(@type, fade);
+                    --sss-badge-br-color: getClrVar(@type, light);
+                    --sss-badge-font-color: getClrVar(@type);
+                });
+            });
+        });
     });
 
 
     //point
-    &:empty {
-        padding: 3px;
+    & {
+        &:empty {
+            padding: 3px;
+        }
+
+        each(@types, .(@type) {
+            .m(@type, {
+                &:empty {
+                    --sss-badge-bg-color: getClrVar(@type);
+                }
+            });
+
+        });
     }
 
-    each(@types, .(@type) {
-        .m(@type, {
-            &:empty {
-                --sss-badge-bg-color: getClrVar(@type);
-            }
-        });
-
-    });
 
 }

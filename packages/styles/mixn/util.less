@@ -9,12 +9,10 @@
 }
 
 
-
 .is(@s, @r:{}) {
-    &.is-@{s} {
+    .is-@{s}& {
         @r();
     }
-
 }
 
 
@@ -63,7 +61,7 @@
 }
 
 
-.m(@m, @r:{}, @ns:never) {
+.m(@m, @r:{}, @ns:never) when (isruleset(@r)) {
     & when not (@ns = never) {
         .@{ns}--@{m} {
             @r();
@@ -75,6 +73,19 @@
         }
     }
 
+}
+
+.m(@m1, @m2, @r:{}, @ns:never) when (isruleset(@r)) {
+    & when not (@ns = never) {
+        .@{ns}--@{m1}.@{ns}--@{m2} {
+            @r();
+        }
+    }
+    & when (@ns = never) {
+        &--@{m1}&--@{m2} {
+            @r();
+        }
+    }
 }
 
 
@@ -103,8 +114,4 @@
     }
 }
 
-.mWith(@modifier, @a, @rules:{}) {
-    &--@{modifier}.@{a} {
-        @rules();
-    }
-}
+

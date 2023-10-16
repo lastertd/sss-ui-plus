@@ -48,8 +48,20 @@
         position: absolute;
         top: 0;
         bottom: 0;
-        left: calc(50% - 0.8px);
-        border-left: solid 1.6px var(--sss-color-gray);
+        width: 2px;
+        height: 100%;
+        left: calc(50% - 1px);
+        background-color: var(--sss-color-gray);
+
+        .m(dashed, {
+            background: linear-gradient(0deg,
+            transparent 0%,
+            transparent 50%,
+            var(--sss-color-gray) 50%,
+            var(--sss-color-gray) 100%) repeat;
+            background-size: 1px 15px;
+        });
+
     });
 
     //ele content
@@ -70,19 +82,8 @@
     });
 
 
-    //modifier types
-    each(@types, .(@type) {
-        .m(@type, {
-            .e(circle, {
-                --sss-timeline-item-bg-color: getClrVar(@type);
-            }, @ns);
-            .e(icon, {
-                --sss-timeline-item-color: getClrVar(@type);
-                background-color: var(--sss-color-bg);
-            }, @ns);
 
-        });
-    });
+
 
 
     //modifier empty
@@ -98,7 +99,7 @@
         }
     });
     each(@types, .(@type) {
-        .mWith(empty, bm(@ns, @type), {
+        .m(empty, @type, {
             .e(circle, {
                 --sss-timeline-item-bg-color: getClrVar(bg);
                 --sss-timeline-item-br-color: getClrVar(@type);

@@ -1,0 +1,18 @@
+@import "../mixn/_index";
+
+.@{componentPrefix}-row {
+    @ns: @{componentPrefix}-row;
+
+
+    & {
+        --sss-row-gutter:unset;
+        --sss-row-justify:unset;
+        --sss-row-align:unset;
+    }
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: var(--sss-row-justify);
+    align-items: var(--sss-row-align);
+
+}

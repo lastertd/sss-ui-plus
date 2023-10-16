@@ -22,13 +22,16 @@
         position: relative;
 
         margin: var(--sss-divider-gap) 0;
-        width: 100%;
-        height: 1px;
         font-size: var(--sss-font-size-small);
+
+
+        width: 100%;
+        height: .8px;
+        flex: 0;
 
     }
 
-    //ele
+    //ele content
     .e(content, {
         padding: 0 10px;
 
@@ -39,40 +42,48 @@
     });
 
     //modifier type
-    each(@types, .(@type) {
-        .m(@type, {
-            border-top: 1px @type var(--sss-color-gray);
-            border-left: 1px @type var(--sss-color-gray);
-        });
+    .m(solid, {
+        background-color: var(--sss-color-gray);
     });
+    .m(dashed, {
+        background: linear-gradient(45deg,
+        transparent 0%,
+        transparent 50%,
+        var(--sss-color-gray) 50%,
+        var(--sss-color-gray) 100%) repeat;
+        background-size: 15px 1px;
+    });
+
 
     //modifier placement
     each(@placements, .(@v) {
-        .m(@v, {
-            & when (@v = start) {
+        & when (@v = start) {
+            .m(@v, {
                 .e(content, {
                     left: 15px;
                 }, @ns);
-            }
-            & when (@v = end) {
+            });
+        }
+        & when (@v = end) {
+            .m(@v, {
                 .e(content, {
                     right: 15px;
                 }, @ns);
-            }
+            });
 
-        });
+        }
     });
 
 
     //modifier direction
     .m(vertical, {
         margin: 0 var(--sss-divider-gap);
-        height: 1em;
-        width: 0;
-        display: inline-flex;
+        height: 100%;
+        min-height: 1em;
+        width: 0.8px;
 
         .e(content, {
-            padding: 0;
+            padding: 10px 0;
         }, @ns);
     });
 

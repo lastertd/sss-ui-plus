@@ -1,0 +1,37 @@
+@import "../mixn/_index";
+
+
+.@{componentPrefix}-col {
+    @ns: @{componentPrefix}-col;
+
+
+    //mixin offset
+    .mixinOffset(@num) when (@num <= 24) {
+        &-offset-@{num} {
+            @t: (@num * 100 / 24);
+            margin-left: ~"@{t}%"
+        }
+        .mixinOffset(@num+1);
+
+    }
+
+    //mixin span
+    .mixinSpan(@num) when (@num <= 24) {
+        &-span-@{num} {
+            @t: (@num * 100 / 24);
+            flex: 0 0 ~"@{t}%";
+            max-width: ~"@{t}%";
+
+        }
+        .mixinSpan(@num+1);
+
+    }
+
+    .mixinOffset(1);
+    .mixinSpan(1);
+    .useBorderBox();
+
+
+    padding: 0 calc(var(--sss-row-gutter) / 2);
+
+}

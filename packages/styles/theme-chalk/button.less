@@ -87,7 +87,7 @@
     })
 
     //modifier empty theme
-    .m(ghost, {
+    .m(empty, {
         --sss-button-bg-color: var(--sss-color-bg);
         &:hover,
         &:focus {
@@ -97,41 +97,47 @@
         &:active {
             --sss-button-br-color: var(--sss-color-gray-dark)
         }
-    });
-    each(@typeList, .(@type) {
-        .mWith(empty, bm(@ns, @type), {
-            --sss-button-bg-color: var(--sss-color-bg);
-            --sss-button-font-color: getClrVar(@type);
-            --sss-button-br-color: var(--sss-color-gray);
-            &:active {
-                --sss-button-br-color: getClrVar(@type, dark);
-            }
+
+        each(@typeList, .(@type) {
+            .with(@ns, {
+                .m(@type, {
+                    --sss-button-bg-color: var(--sss-color-bg);
+                    --sss-button-font-color: getClrVar(@type);
+                    --sss-button-br-color: var(--sss-color-gray);
+                    &:active {
+                        --sss-button-br-color: getClrVar(@type, dark);
+                    }
+                });
+            });
         });
-    })
+    });
 
     //modifier fantasy theme
     .m(fantasy, {
         &:focus {
             --sss-button-bg-color: var(--sss-color-gray-fade);
         }
+        each(@typeList, .(@type) {
+            .with(@ns, {
+                .m(@type, {
+                    --sss-button-font-color: getClrVar(@type);
+                    --sss-button-bg-color: getClrVar(@type, fade);
+                    --sss-button-br-color: getClrVar(@type, lighter);
+
+                    &:hover,
+                    &:focus {
+                        --sss-button-font-color: var(--sss-color-white);
+                        --sss-button-bg-color: getClrVar(@type);
+                    }
+
+                    &:active {
+                        --sss-button-bg-color: getClrVar(@type, dark);
+                    }
+                })
+            })
+        })
     });
-    each(@typeList, .(@type) {
-        .mWith(fantasy, bm(@ns, @type), {
-            --sss-button-font-color: getClrVar(@type);
-            --sss-button-bg-color: getClrVar(@type, fade);
-            --sss-button-br-color: getClrVar(@type, lighter);
 
-            &:hover,
-            &:focus {
-                --sss-button-font-color: var(--sss-color-white);
-                --sss-button-bg-color: getClrVar(@type);
-            }
-
-            &:active {
-                --sss-button-bg-color: getClrVar(@type, dark);
-            }
-        });
-    })
 
     //modifier ghost theme
     .m(ghost, {
@@ -140,7 +146,7 @@
         --sss-button-font-color: var(--sss-color-black-light);
         &:hover,
         &:focus {
-            color: var(--sss-color-black-light);
+            --sss-button-font-color: var(--sss-color-black-light);
             --sss-button-bg-color: var(--sss-color-gray-fade);
 
         }
@@ -148,24 +154,26 @@
             --sss-button-br-color: transparent;
             --sss-button-font-color: var(--sss-color-black-dark);
         }
+        each(@typeList, .(@type) {
+            .with(@ns, {
+                .m(@type, {
+                    --sss-button-br-color: transparent;
+                    --sss-button-font-color: getClrVar(@type);
+                    --sss-button-bg-color: transparent;
+
+                    &:hover,
+                    &:focus {
+                        --sss-button-font-color: getClrVar(@type, light);
+                        --sss-button-bg-color: getClrVar(@type, fade);
+                    }
+
+                    &:active {
+                        --sss-button-font-color: getClrVar(@type, dark);
+                    }
+                })
+            })
+        })
     });
-    each(@typeList, .(@type) {
-        .mWith(ghost, bm(@ns, @type), {
-            --sss-button-br-color: transparent;
-            --sss-button-font-color: getClrVar(@type);
-            --sss-button-bg-color: transparent;
-
-            &:hover,
-            &:focus {
-                --sss-button-font-color: getClrVar(@type, light);
-                --sss-button-bg-color: getClrVar(@type, fade);
-            }
-
-            &:active {
-                --sss-button-font-color: getClrVar(@type, dark);
-            }
-        });
-    })
 
 
     //status disabled & loading
@@ -176,22 +184,22 @@
 
         each(@typeList, .(@type) {
             .m(@type, {
-               .is(@status, {
-                   .notAllowedMixin(getClrVar(white), getClrVar(@type), getClrVar(gray));
-               });
-            });
-            .mWith(@type, bm(@ns, empty), {
                 .is(@status, {
-                    .notAllowedMixin(getClrVar(@type),getClrVar(bg), getClrVar(gray));
+                    .notAllowedMixin(getClrVar(white), getClrVar(@type), getClrVar(gray));
+                });
+            });
+            .m(@type, empty, {
+                .is(@status, {
+                    .notAllowedMixin(getClrVar(@type), getClrVar(bg), getClrVar(gray));
                 })
             });
-            .mWith(@type, bm(@ns, ghost), {
+            .m(@type, ghost, {
                 .is(@status, {
                     .notAllowedMixin(getClrVar(@type), getClrVar(bg), transparent);
 
                 })
             });
-            .mWith(@type, bm(@ns, fantasy), {
+            .m(@type, fantasy, {
                 .is(@status, {
                     .notAllowedMixin(getClrVar(@type), getClrVar(@type, fade), getClrVar(gray));
                 })

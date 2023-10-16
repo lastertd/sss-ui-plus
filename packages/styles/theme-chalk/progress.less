@@ -6,7 +6,7 @@
 
     //variable
     & {
-        --sss-progress-thumb-color: unset;
+        --sss-progress-color: unset;
         --sss-progress-thumb-width: unset;
     }
 
@@ -34,12 +34,12 @@
     //ele thumb
     .e(thumb, {
         .useBorderRadius(@infinite);
-        .usePulse(var(--sss-progress-thumb-color), 2s, 90deg);
+        .usePulse(var(--sss-progress-color), 2s, 90deg);
         transition: all .3s linear;
         position: relative;
 
         height: 100%;
-        background-color: var(--sss-progress-thumb-color);
+        background-color: var(--sss-progress-color);
         width: var(--sss-progress-thumb-width);
     });
 
@@ -62,7 +62,7 @@
 
     //ele icon
     .e(icon, {
-        color: var(--sss-progress-thumb-color);
+        color: var(--sss-progress-color);
         font-size: 15px;
     });
 }
